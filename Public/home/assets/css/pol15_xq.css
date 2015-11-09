@@ -1,0 +1,31 @@
+/* CSS Document */
+
+
+
+/*获得积分shop css*/
+.main_r{ float:right;overflow:hidden;}
+	.main_bt{overflow:hidden;height:159px; padding-bottom:40px;}
+	.main_bt ul{ width:960px; overflow:hidden;}
+	.main_bt ul li{ float:left; overflow:hidden; width:240px;}
+		.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; padding-bottom:100px; margin-bottom:200px;}
+		.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px; padding:30px 15px;}
+		.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; padding-bottom:100px; margin-bottom:200px;}
+		.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px; padding:30px 15px;}
+				.tab2{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid; margin-top:20px;}
+				.tab2:hover{ border:#c40000 1px solid;}
+				.tab2_bt{ overflow:hidden;}
+				.tab2_bt p{ float:left; overflow:hidden;color:#3a3a3a; padding:0 10px;font-size:12px; line-height:30px;}
+				.tab2_bt span{ color:#808080; font-size:12px;line-height:30px;}
+				.tab2_text{ padding:20px;}
+				.tab2_text img{ width:80px; height:80px;}
+					.tab2_1{ font-size:12px; color:#8d8d8d;width:300px; border-right:1px solid #e6e6e6; padding:0 20px;}
+					.tab2_1 span{color:#444444; display:block;}
+					.tab2_1 span a:hover{ color:#c40000;}
+					.tab2_2{ font-size:12px; color:#8d8d8d;width:70px; border-right:1px solid #e6e6e6; padding:0 60px;}
+					.tab2_2 span{color:#444444; padding:0 2px;}
+					.tab2_2 i{ color:#d41d05; font-size:18px; font-style:normal; font-weight:bold; line-height:30px;}
+					.tab2_3{ color:#666666; font-size:14px; padding:40px; width:100px; display:inline-block; text-align:center;border-right:1px solid #e6e6e6;}
+					.tab2_4{ padding-left:34px;}
+					.tab2_4 span{ font-size:20px; color:#c40000; line-height:30px;}
+
+/*获得积分shop css*/

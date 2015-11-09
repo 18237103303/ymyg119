@@ -1,0 +1,101 @@
+/* CSS Document */
+
+/*main*/
+.main_r{ float:right;overflow:hidden;}
+			.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none;padding-bottom:100px; margin-bottom:200px;}
+				.shop_bt{ overflow:hidden;margin-bottom:20px;}
+				.shop_bt li{ float:left; display:inline-block;border-bottom:#e5e5e5 2px solid; padding:0 20px; text-align:center;}
+				.shop_bt li a{ display:inline-block;color:#808080; padding:20px 20px;font-size:12px;}
+				.shop_bt li span{ margin-left:5px; padding:0 10px; color:#FFF; display:inline-block;background-color:#e5e5e5; border-radius:10px;}
+				.shop_bt li:hover{ color:#c40000; border-bottom:#c40000 2px solid;}
+				.shop_bt .shop_bt_current{border-bottom:#c40000 2px solid;}
+				.shop_bt .icon1{ background-color:#c40000;}
+				
+				#shopgoods{height:18px; border-left:#d8d8d8 1px solid;}
+				.bt{ overflow:hidden;}
+				.bt p{ overflow:hidden; padding:10px 0; float:left;}
+				.bt p label{ line-height:30px;float:left; width:100px; text-align:right; margin-right:10px; font-size:12px; color:#333333;}
+				.bt p input{padding:3px; float:left; border:#d8d8d8 1px solid;font-size:12px; border-left:none;}
+				.bt p a{ font-size:12px;border:#d8d8d8 1px solid; color:#333333;line-height:27px; padding:0 10px; background-color:#f5f5f5;float:left;border-left:none;}
+				.bt p a:hover{ background-color:#d6d6d6;}
+				.bt p select{border:#d8d8d8 1px solid; padding:2px 5px; width:200px;float:left;}
+				
+				.text_top{ overflow:hidden; width:1000px;}
+				.text_top span{ display:inline-block; color:#8b8b8b; font-size:12px; line-height:30px;}
+					.top1{ padding:0 180px;}
+					.top2{ padding:0 65px;}
+					.top3{ padding:0 30px;}
+					.top4{ padding:0 115px;}
+				
+				.text{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid;overflow:hidden; margin-top:10px;}
+				.text:hover{ border:#c40000 1px solid;}
+					.tab2_bt{ overflow:hidden;}
+					.tab2_bt p{ float:left; overflow:hidden;color:#3a3a3a; padding:0 10px;font-size:12px; line-height:30px;}
+					.tab2_bt span{ color:#808080; font-size:12px;line-height:30px;}
+					
+					.tab2_text{ padding:20px 0 20px 20px;}
+					.tab2_text td{font-size:12px;}
+					.tab2_text img{ width:80px; height:80px;}
+					.tab2_1{  width:320px;font-size:12px; color:#8d8d8d;border-right:1px solid #e6e6e6; padding:0 20px;}
+					.tab2_1 span{color:#444444; display:block;}
+					.tab2_1 span a:hover{ color:#c40000;}
+					.tab2_2{ font-size:12px; color:#8d8d8d;width:100px; border-right:1px solid #e6e6e6; padding:0 20px;}
+					.tab2_2 span{color:#444444; padding:0 2px;}
+					.tab2_2 i{ color:#d41d05; font-size:18px; font-style:normal; font-weight:bold; line-height:30px;}
+					.tab2_3{ color:#333333; font-size:14px;width:100px; padding:30px 20px; font-weight:bold;display:inline-block; text-align:center; border-right:1px solid #e6e6e6;}
+					.tab2_3 i a{ color:#8b8b8b; font-size:12px; font-style:normal;line-height:24px; font-weight:normal;}
+					.tab2_3 i a:hover{ color:#c40000;}
+					.tab2_4{ width:190px;margin:0 auto; text-align:center;}
+					.tab2_4>a{ color:#FFF; font-size:14px; text-align:center; background-color:#c40000; padding:5px 15px; margin:0 40px;}
+					.tab2_4>span{ display:block; padding-top:10px;}
+					.tab2_4 span a{ display:block;font-size:12px; text-align:center;}
+					.tab2_4 span a:hover{ color:#c40000;}
+					
+				.text1{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid;overflow:hidden; margin-top:10px;}
+				.text1:hover{ border:#c40000 1px solid;}
+					.tab2_4_1>a{ color:#333333; font-size:14px; text-align:center; border:#e5e5e5 1px solid; padding:5px 20px; margin:0 40px;}
+					.tab2_4_1>a:hover{ background-color:#c40000; color:#FFF;border:#c40000 1px solid;}
+					.tab2_4_1 span{ display:block; padding-top:10px;}
+					.tab2_4_1 span a{ display:block;font-size:12px; text-align:center;}
+					.tab2_4_1 span a:hover{ color:#c40000;}
+
+
+				.text2{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid;overflow:hidden; margin-top:10px;}
+				.text2:hover{ border:#c40000 1px solid;}
+					.tab2_4_2>a{ color:#333333; font-size:14px; text-align:center; padding-left:50px;}
+					.tab2_4_2 a{ display:block;font-size:12px; text-align:center;}
+					.tab2_4_2 a:hover{ color:#c40000;}
+					
+					
+				.text3{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid;overflow:hidden; margin-top:10px;}
+				.text3:hover{ border:#c40000 1px solid;}
+					.tab2_4_2>a{ color:#333333; font-size:14px; text-align:center; padding-left:50px;}
+					.tab2_4_2 a{ display:block;font-size:12px; text-align:center;}
+					.tab2_4_2 a:hover{ color:#c40000;}
+					
+					
+				.text4{display:block;border-bottom:#e7e7e7 1px dashed; width:957px;border:#e5e5e5 1px solid;overflow:hidden; margin-top:10px;}
+				.text4:hover{ border:#c40000 1px solid;}
+					.tab2_4_2>a{ color:#333333; font-size:14px; text-align:center; padding-left:50px;}
+					.tab2_4_2 a{ display:block;font-size:12px; text-align:center;}
+					.tab2_4_2 a:hover{ color:#c40000;}
+
+
+/*main*/
+
+
+
+
+#lean_overlay { position: fixed;z-index:100; top: 0px;left: 0px;height:100%;width:100%;background:#000; display: none;}
+.tan{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; overflow:hidden; padding-bottom:40px;display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan h5{ color:#000000; font-size:14px; padding:10px 0 0 10px; display:inline-block; margin-bottom:20px;}
+	.bt{ clear:both; overflow:hidden;}
+	.bt p{ color:#3a3a3a; font-size:14px; float:left; overflow:hidden; padding:0 10px 0 10px;}
+	.bt span{ color:#808080; font-size:14px;}
+	.tan_text{ overflow:hidden;}
+	.tan_text p{ padding:20px 0 10px 10px; color:#333333; font-size:14px;}
+	.tan_text textarea{ border:#e5e5e5 1px solid; margin:10px; padding:5px;}
+	.tan_text span{ color:#808080; font-size:12px; display:block; text-align:right; padding-right:20px;}
+.tan_a1{ font-size:14px; color:#FFF;background-color:#d62810; padding:10px 30px;display:block; margin:20px auto; width:30px;}
+.tan .dw{ position:absolute; top:5px; right:10px; cursor:pointer;}
+.tan img{ width:13px; height:13px;}

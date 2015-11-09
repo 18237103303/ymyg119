@@ -1,0 +1,41 @@
+/* CSS Document */
+
+
+/*top*/
+.top_wrap{ width:1200px; margin:0 auto; height:30px;}
+	.top_l{ float:left; overflow:hidden;}
+	.top_l p{ line-height:30px;font-size:12px; color:#808080;}
+	.top_l a{ color:#d41d05; line-height:30px;display:inline-block; padding:0 10px;}
+	
+	.top_r{ float:right; overflow:hidden;}
+	.top_r ul{ overflow:hidden;}
+	.top_r ul li{ float:left; font-size:12px;line-height:30px;overflow:hidden; padding:0 10px;}
+	.top_r ul li a{ display:inline-block; font-size:12px; color:#333333;padding:0 5px;}
+	.top_r ul li span{ color:#c40000}
+	.top_r .a1{ color:#c40000;}
+	.top_r ul li a img{ padding:0 5px;}
+	.top_r ul li a:hover{ color:#c40000;}
+/*top*/
+
+
+/*header*/
+.header{width:100%; background-color:#c40000;}
+	.header_wrap{ width:1200px; margin:0 auto; height:80px;}
+		.logo1{ padding:11px 0 0 0; float:left; overflow:hidden;}
+		.logo1 img{ width:176px; height:56px;}
+		
+		.menu{ float:left; overflow:hidden; padding-left:40px;}
+		.menu ul{ overflow:hidden;}
+		.menu ul li{float:left;}
+		.menu ul li a{ color:#FFF; font-size:14px; line-height:80px; padding:0 40px;}
+		
+		.search{ float:right; overflow:hidden; margin:20px 0;}
+		.search p{ line-height:37px; overflow:hidden;}
+		.search p input{ float:left;height:37px; width:420px; padding-left:10px;border-radius:3px 0 0 3px; font-size:12px; color:#b6b6b6; line-height:41px;border:#d9d9d9 2px solid; border-right:none;}
+		.search p a{ float:left;display:block;background-color:#ff4040; font-size:18px; line-height:41px; color:#FFF; padding:0 30px;}
+/*header*/
+
+/*main*/
+.main{background-color:#f8f8f8;}
+.main_wrap{ width:1200px; margin:0 auto; height:100%; clear:both; overflow:hidden;}
+/*main*/

@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+/*body{ min-width:1200px; padding-top:174px;}
+
+.welcomebox{ height:30px; background-color:#f2f2f2; width:100%; border-bottom:1px solid #ccc; position:fixed; left:0; top:0; z-index:33;}
+.headerbox{ width:100%; padding:20px 0; position:fixed; left:0; top:31px; z-index:33; clear:both; background-color:#fff;}
+.navbox{width:100%; height:30px; background-image:url(../images/nav_02.jpg); background-position:center center; position:fixed; left:0; top:144px; z-index:33;  }*/
+
+
+
+/****focus开始***/
+.focusbox{ width:1200px; margin:0 auto; overflow:hidden;}
+.focusbox .left{ width:1200px; position:relative;}
+.focusbox .left .imgbox{ width:1200px; height:490px; overflow:hidden;}
+.focusbox .left .imgbox a{ display:block; width:1200px; height:490px;}
+.focusbox .left .imgbox a img{ display:block; width:1200px; height:490px;}
+.focusbox .left .btn{ position:absolute; right:30px; bottom:20px; width:90%; height:16px; text-align:right;}
+.focusbox .left .btn span{ display:inline-block; text-align:center; width:14px; height:14px; border-radius:50%; cursor:pointer; background-color:#fff; margin:0 3px;}
+.focusbox .left .btn span.on{ background-color:#ec6300;}
+/****focus结束***/
+
+/*****chanpinbox****/
+.chanpinbox{ width:100%; margin:10px 0;}
+.chanpinbox .chanpin{ width:1200px; margin:0 auto;}
+.chanpinbox .chanpin h2{ margin:0px 0; margin-bottom:15px;}
+.chanpinbox .chanpin h2 img{ display:block; margin-left:10px;}
+.chanpinbox .chanpin ul{ overflow:hidden;}
+.chanpinbox .chanpin ul li{ width:370px; margin:0 15px; float:left; margin-bottom:20px;}
+.chanpinbox .chanpin ul li .imga{ display:block; width:370px; height:290px; margin:0 auto; border:1px solid #999; background-color:#d9d9d9; overflow:hidden;}
+.chanpinbox .chanpin ul li .imga img{ display:block; width:370px; height:290px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden; }
+.chanpinbox .chanpin ul li .imga img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.chanpinbox .chanpin ul li .text{ width:360px; padding:12px 5px; border:1px solid #c8a063;}
+.chanpinbox .chanpin ul li .text h3{ overflow:hidden; padding:0 10px;}
+.chanpinbox .chanpin ul li .text h3 .namea{ font-size:16px; line-height:30px; color:#444; display:block; width:200px; float:left; height:30px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:bold; }
+.chanpinbox .chanpin ul li .text h3 .namea:hover{ color:#f72b14;}
+.chanpinbox .chanpin ul li .text h3 span{ display:block; height:30px; line-height:30px; width:140px; text-align:right; float:right; font-size:13px; color:#666;}
+.chanpinbox .chanpin ul li .text h3 span b{ font-size:15px;}
+.chanpinbox .chanpin ul li .text h3 span i{ color:#fb0d1e;}
+.chanpinbox .chanpin ul li p{ height:28px; overflow:hidden; padding:5px 10px;}
+.chanpinbox .chanpin ul li p i{ display:block; font-size:13px; line-height:28px; float:left; color:#585858; width:180px;}
+.chanpinbox .chanpin ul li p a{ display:block; float:right; margin-left:10px; background-image:url(../images/index55_32.png); height:28px; width:122px;}
+.chanpinbox .ssimg{ width:1200px; margin:20px auto;}
+.chanpinbox .ssimg img{ display:block; max-width:1200px; margin:0 auto;}
+/*****chanpinbox****/
+
+/****iconbox****/
+.iconbox{ width:1200px; margin:40px auto;}
+.iconbox ul{ overflow:hidden;}
+.iconbox ul li{ width:170px; float:left; margin:0 15px;}
+.iconbox ul li .imga{ display:block; width:65px; height:65px; margin:0 auto; margin-bottom:5px;}
+.iconbox ul li .imga img{ display:block; width:65px; height:65px; }
+.iconbox ul li h2{ text-align:center; font-size:14px; color:#444; text-align:center; line-height:30px;}
+.iconbox ul li p{ font-size:14px; color:#999; line-height:22px; text-align:center;}
+/****iconbox****/
+
+
+
+
+/****moneyban***/
+.moneyban{ width:100%; position:relative; overflow:hidden; height:790px;}
+.moneyban .ban{ position:absolute; left:50%; margin-left:-960px; width:1920px; height:790px;}
+.moneyban .ban img{ display:block; width:100%;}
+/****moneyban***/
+
+/***moneycbox****/
+.moneycbox{ width:100%; background-color:#c90b2f;}
+.moneycbox .moneyc{ width:1200px; margin:0 auto;}
+.moneycbox .moneyc .jiang{ background-image:url(../images/sasawd_05.jpg); overflow:hidden; padding:30px 10px;}
+.moneycbox .moneyc .jiang .left{ width:360px; float:left; border:5px solid #c00530; background-image:url(../images/yyui_03.jpg); padding:20px 0;}
+.moneycbox .moneyc .jiang .left .gui{ padding:0 10px; margin-bottom:30px;}
+.moneycbox .moneyc .jiang .left .gui h2{ font-size:30px; color:#fff; line-height:40px; text-align:center; margin-bottom:10px;}
+.moneycbox .moneyc .jiang .left .gui p{line-height:30px; color:#fff; padding:10px 5px; padding-left:45px;  font-size:14px; background-repeat:no-repeat; background-position:5px center; border-bottom:1px dashed #fff;}
+.moneycbox .moneyc .jiang .right{ float:left; width:762px;  margin-left:30px; overflow:hidden; }
+.moneycbox .moneyc .jiang .right li{ float:left; width:238px; height:224px; overflow:hidden; border:2px solid #c00530; margin:0 6px; margin-bottom:6px; }
+.moneycbox .moneyc .jiang .right li a{ display:block; width:238px; height:224px; overflow:hidden;}
+.moneycbox .moneyc .jiang .right li a img{ display:block; width:238px; height:224px;}
+.moneycbox .moneyc .jiang .right li.dian{ cursor:pointer;}
+.moneycbox .moneyc .jiang .right li.dian a img{ display:block; width:238px; height:224px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden;}
+.moneycbox .moneyc .jiang .right li.dian a img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.moneycbox .moneyc .shiwu{ background-image:url(../images/sasawd_05.jpg); overflow:hidden; padding:30px 10px; margin:20px 0;}
+.moneycbox .moneyc .shiwu h2{ font-size:24px; height:44px; line-height:44px; color:#fbe3ab; text-align:center;}
+.moneycbox .moneyc .shiwu ul{ overflow:hidden; margin:20px auto; width:1080px; }
+.moneycbox .moneyc .shiwu ul li{ width:230px; float:left; margin:0 20px;}
+.moneycbox .moneyc .shiwu ul li .imga{ display:block; width:226px; height:220px; border:2px solid #c00530; }
+.moneycbox .moneyc .shiwu ul li .imga img{ display:block; width:226px; height:220px;}
+.moneycbox .moneyc .shiwu ul li .namea{ display:block; height:30px; line-height:30px; font-size:18px; text-align:center; color:#fed350; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.moneycbox .moneyc .shiwu ul li p{ height:30px; line-height:30px; font-size:14px; text-align:center; color:#fed350; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.moneycbox .moneyc .zhanshi{ margin:20px auto; background-color:#ebe0c2; width:1170px; overflow:hidden; padding:20px 0;}
+.moneycbox .moneyc .zhanshi .zl{ width:550px; float:left; border-right:1px solid #ae0600; padding:0 30px;}
+.moneycbox .moneyc .zhanshi h3{ line-height:30px; font-size:16px; height:30px; color:#ae0600; margin-bottom:10px;}
+.moneycbox .moneyc .zhanshi .zl .movetext{ background-color:#fff;}
+.moneycbox .moneyc .zhanshi .zl .movetext p{ overflow:hidden; height:30px; font-size:14px; line-height:30px; color:#0864b1;}
+.moneycbox .moneyc .zhanshi .zl .movetext p span{ display:block; width:24%; margin:0 3%; float:left;}
+.moneycbox .moneyc .zhanshi .zl .movetext p a{ display:block; width:34%;margin:0 3%; float:left; height:30px; font-size:14px; line-height:30px; color:#0864b1;}
+.moneycbox .moneyc .zhanshi .zl .movetext p i{ display:block; width:24%;margin:0 3%; float:left;}
+.moneycbox .moneyc .zhanshi .zr{ width:490px; float:left; padding:0 30px;}
+.moneycbox .moneyc .zhanshi .zr p{ line-height:30px; font-size:14px; color:#ae0600;}
+/***moneycbox****/
+
+
+
+/***windowbox***/
+.tishibox2{ position:fixed; left:0; top:0; background-image:url(../images/index_48.png); width:100%; height:100%; padding-top:200px; display:none; }
+.tishibox2 .tishi{width:500px; background-color:#fff; margin:0 auto; padding:20px; border-radius:10px;}
+.tishibox2 .tishi h2{ text-align:center; font-size:24px; color:#c00530; line-height:40px; margin-bottom:10px; }
+.tishibox2 .tishi p{ text-align:center; height:40px; line-height:40px; font-size:14px; color:#444;  margin-bottom:20px }
+.tishibox2 .tishi a.cx{ display:block; width:100px; height:38px; border:1px solid #d62810; color:#fff; background-color:#d62810; font-size:14px; text-align:center; line-height:38px; margin:15px auto; cursor:pointer;}
+
+
+/***tanchuangbox***/
+.tanchuangbox{ position:fixed; left:0; top:0; background-image:url(../images/index_48.png); width:100%; height:100%; padding-top:200px; z-index:9999; }
+.tanchuangbox .tanchuang{width:500px; background-color:#fff; margin:0 auto; padding:30px; border-radius:10px;}
+.tanchuangbox .tanchuang h2{ text-align:center; font-size:24px; color:#0864b1; line-height:40px; }
+.tanchuangbox .tanchuang .wei{ text-align:center; margin:30px 0; }
+.tanchuangbox .tanchuang .wei select{ width:130px; height:30px; display:inline-block; margin:0 10px; line-height:30px; border:1px solid #ccc; font-size:14px; color:#555; }
+.tanchuangbox .tanchuang a.sure{ display:block; width:150px; height:42px; line-height:42px; color:#fff; text-align:center; font-size:14px; margin:20px auto; border-radius:5px; background-color:#0864b1; cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

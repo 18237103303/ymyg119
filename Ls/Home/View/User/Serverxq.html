@@ -1,0 +1,46 @@
+<css href="__PUBLIC__/home/css/Css.css"/>
+<js href="__PUBLIC__/home/js/jquery.kkPages.js" />
+<include file="User:center" />
+<div class="right">
+    <div class="points">
+        <ul>
+            <li><span>可用积分</span><p><i>12345</i></p><a href="center-jifen.html">我的积分</a></li>
+            <li><span>收藏</span><p><i>123</i>商品</p><a href="center-shoucang.html">查看收藏</a></li>
+            <li><span>代金券</span><p><i>5</i>张</p><a href="center-daijin.html">查看代金券</a></li>
+        </ul>
+     </div>
+	<div class="backbox">
+		<h2>我的售后处理</h2>
+		 <if condition="$status eq 0">
+		<!--退款处理中-->
+		<div class="tuihuo">
+			<div class="liucheng">
+				<img src="__PUBLIC__/home/images/ss2_03.jpg" class="lcimg">
+				<div class="chuli">
+					<h3>等待商家处理退款申请</h3>
+					<p>▪&nbsp;如果商家同意，退款申请将达到并退款至您的支付宝账号或银行卡中。<br>
+					▪&nbsp;如果商家拒绝，将需要您修改退款申请。<br>
+					▪&nbsp;如果<span>4</span>天<span>22</span>时<span>22</span>分<span>55</span>秒内商家未处理，推款申请将达成并退款至您的支付宝账号或银行卡中</p><br><br>
+					<p>您还可以<a>取消退款申请</a></p>
+				</div>
+			</div>
+		</div>
+		 <else/>
+		 <!--退款完成-->
+        <div class="tuihuo">
+            <div class="liucheng">
+                	<img src="__PUBLIC__/home/images/ss3_03.jpg" class="lcimg">
+                    <div class="chuli">
+                    	<h3 style="background-image:url(__PUBLIC__/home/images/defd_10.jpg);">退款成功</h3>
+                        <h5>退款成功时间2015-06-08&nbsp;&nbsp;15:31</h5>
+                        <p>▪&nbsp;退款金额：19:20元</p>
+                    </div>
+                </div>
+            </div>
+		 </if>
+	</div>
+</div>
+</div>                   
+<!--Personal结束-->
+
+

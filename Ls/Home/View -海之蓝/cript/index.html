@@ -1,0 +1,40 @@
+<include file="Public:dq" />
+<!--header-->
+<link href="__PUBLIC__/home/assets/css/city.css" rel="stylesheet" type="text/css">
+<div class="city_img"><img src="__PUBLIC__/home/assets/images/city.jpg" alt=""></div>
+ <div class="city_box">
+   <div class="hot_city">
+     <span>热门城市：</span>
+     <a href="#">北京</a>
+     <a href="#">上海</a>
+     <a href="#">广州</a>
+     <a href="#">深圳</a>
+     <a href="#">成都</a>
+     <a href="#">南京</a>
+     <a href="#">天津</a>
+     <a href="#">杭州</a>
+   </div>
+     <div class="city_xuanze">
+         <h2>按省份选择:</h2>
+         <div class="cc 1"><span>北京市</span><p></p></div> <div class="cc 22"><span>天津市</span><p></p></div> <div class="cc 44"><span>上海市</span><p></p></div> <div class="cc 66"><span>重庆市</span><p></p></div> <div class="cc 108"><span>河北省</span><p></p></div> <div class="cc 406"><span>山西省</span><p></p></div> <div class="cc 622"><span>内蒙古</span><p></p></div> <div class="cc 804"><span>辽宁省</span><p></p></div> <div class="cc 945"><span>吉林省</span><p></p></div> <div class="cc 1036"><span>黑龙江省</span><p></p></div> <div class="cc 1226"><span>江苏省</span><p></p></div> <div class="cc 1371"><span>浙江省</span><p></p></div> <div class="cc 1500"><span>安徽省</span><p></p></div> <div class="cc 1679"><span>福建省</span><p></p></div> <div class="cc 1812"><span>江西省</span><p></p></div> <div class="cc 1992"><span>山东省</span><p></p></div> <div class="cc 2197"><span>河南省</span><p></p></div> <div class="cc 2456"><span>湖北省</span><p></p></div> <div class="cc 2613"><span>湖南省</span><p></p></div> <div class="cc 2822"><span>广东省</span><p></p></div> <div class="cc 3015"><span>广西</span><p></p></div> <div class="cc 3201"><span>海南省</span><p></p></div> <div class="cc 3235"><span>四川省</span><p></p></div> <div class="cc 3561"><span>贵州省</span><p></p></div> <div class="cc 3728"><span>云南省</span><p></p></div> <div class="cc 3983"><span>西藏</span><p></p></div> <div class="cc 4136"><span>陕西省</span><p></p></div> <div class="cc 4334"><span>甘肃省</span><p></p></div> <div class="cc 4499"><span>青海省</span><p></p></div> <div class="cc 4588"><span>宁夏</span><p></p></div> <div class="cc 4624"><span>新疆</span><p></p></div> <div class="cc 4802"><span>香港</span><p></p></div> <div class="cc 4822"><span>澳门</span><p></p></div> <div class="cc 4825"><span>台湾省</span>
+<script src="__PUBLIC__/yes1/js/location.js"></script>
+<!--<script>
+    $(function(){
+                 var loc	= new Location();
+                 var yij=eval('(' + loc.zhi('0') + ')');
+                $.each(yij,function(a, b) {
+                 $(".city_xuanze").append(' <div class="cc '+a+'"><span>'+b+'</span><p></p></div>');
+             })
+//          .cc p
+    })
+</script>-->
+<foreach name="rows" item="vo">
+    <script>
+        var loc	= new Location();
+        var yij=eval('(' + loc.zhi("{$vo.dz1}") + ')');
+        var dz1=yij["{$vo.dz2}"];
+        $(".{$vo.dz} p").append('<a href="/Home/Cript/dengl/id/{$vo.id}?dz='+dz1+'" >'+dz1+'</a>');
+    </script>
+</foreach>
+ </div>
+ </div>

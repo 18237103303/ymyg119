@@ -1,0 +1,556 @@
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">编辑商品</div>
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <a class="col-sm-2 btn btn-turquoise">修改商品信息</a>
+                    <a class="col-sm-2 btn btn-secondary">修改商品属性库存</a>
+                    <a href="{:U('Goods/image_edit',array('id'=>$data['goods_id']))}" class="col-sm-2 btn btn-orange">修改商品相册</a>
+                    <a href="{:U('Goods/gabout_edit',array('id'=>$data['goods_id']))}" class="col-sm-2 btn btn-turquoise">修改关联商品</a>
+                </div>
+            </div>
+            <!--商品修改页面-->
+            <div class="form-horizontal">
+                <div class="qiehuan">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <input type="hidden" name="goods_id" value="{$data.goods_id}" id="goods_id"/>
+                            <label class="col-sm-2 control-label" for="field-1">商品名称</label>
+                            <div class="col-sm-6">
+                                <div class="col-sm-16">
+                                    <input  class="form-control" name="goods_name" value="{$data.goods_name}" id="goods_name" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="field-1">商品货号</label>
+                            <div class="col-sm-6" >
+                                <input  class="form-control" name="goods_sn" id="goods_sn" type="text" value="{$data.goods_sn}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="field-1" >商品分类</label>
+                            <div class="col-sm-2" >
+                                {$cat}
+                            </div>
+                        </div>
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="field-1" >排序（数字越大越靠前）</label>
+                            <div class="col-sm-2">
+                                <input name="sort" id="sort" class="form-control" type="text" value="{$data.sort}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <js href="__PUBLIC__/ueditor/ueditor.config.js" />
+                            <js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+                            <label class="col-sm-2 control-label" for="field-2">详情</label>
+                            <div class="col-sm-10">
+                                <textarea  id="goods_desc" name="content">{$data.goods_desc}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group-separator"></div>
+                        <div class="col-sm-3"></div>
+                        <!--<div class="col-sm-3">
+                            <button type="reset" class="btn btn-info" data-dismiss="modal">重新填写</button>
+                        </div>-->
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-info" onclick="getSubmit()" >确定修改</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 商品属性 -->
+                <div class="qiehuan">
+                    <div class="col-sm-2">
+                        <a href="###" class="xzsx btn btn-info">添加商品属性</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                        </div>
+                        <table class="table table-bordered table-striped" style="width: 60%;" id="example">
+                            <thead  class="col-sm-14">
+                            <tr>
+                                <th class="col-sm-5">属性值</th>
+                                <th class="col-sm-1">库存</th>
+                                <th class="col-sm-3">价格阶段</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="middle-align" >
+                            <volist name="attr" id="vo" key="k">
+                                <tr>
+                                    <td>{$vo.attr}<input type="hidden" class="{$k-1}" value="{$vo.attr_value}%" /></td>
+                                    <td>{$vo.goods_count}<input type="hidden" class="{$k-1}" value="{$vo.goods_count}$" /></td>
+                                    <td>{$vo.shop_price}<input type="hidden" class="{$k-1}" value="{$vo.shop_price}#" /></td>
+                                    <td>
+                                        <a href="##" style="float: left;" onclick="szsx({$k-1});" class="btn szsx1 btn-secondary btn-sm btn-icon icon-left">
+                                            属性修改
+                                        </a>
+                                        <a href="##" style="float: left;" onclick="szkc({$k-1});" class="btn szkc btn-secondary btn-sm btn-icon icon-left">
+                                            库存修改
+                                        </a>
+                                        <a href="##" style="float: left;" onclick="szjg({$k-1});" class="btn szjg btn-danger btn-sm btn-icon icon-left">
+                                            价格区间修改
+                                        </a>
+                                        <a href="javascript:del({$vo.id});"  style="float: left;" class="btn btn-danger btn-sm btn-icon icon-left" >
+                                            删除
+                                        </a>
+                                    </td>
+                                    <input type="hidden" class="{$k-1}" value="{$vo.id}"/>
+                                </tr>
+                            </volist>
+                            </tbody>
+                            <!--增加隐藏属性-->
+                            <input type="hidden" id="yc" name="ys"  value=""/>
+                            <!--增加隐藏属性-->
+                        </table>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-info qdxg">确定修改</button>
+                                </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker-bs3.css">
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker.js"></script>
+<script src="__PUBLIC__/admin/assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script>
+    $(function () {
+        $(".qiehuan").hide();
+        $(".qiehuan").eq(0).show();
+        $(".panel-heading a").eq(0).addClass("current");
+        $(".panel-heading a").click(function () {
+            var n = $(this).index();
+            $(".qiehuan").hide();
+            $(".qiehuan").eq(n).fadeIn();
+            $(".panel-heading a").removeClass("current");
+            $(".panel-heading a").eq(n).addClass("current");
+        })
+
+
+        /**/
+        var lx=$('#sboxit-2').val();
+        $.post("{:U('goods/Catt')}",{
+            id:lx
+        },function(data){
+            $('input[name=ys]').val(data);
+        })
+        /*后期的遍历性*/
+        $('#sboxit-2').change(function(){
+            var lx=$('#sboxit-2').val();
+            $.post("{:U('goods/Catt')}",{
+                id:lx
+            },function(data){
+                $('input[name=ys]').val(data);
+            })
+        })
+        /**/
+    })
+</script>
+
+<script type="text/javascript">
+    function getSubmit()//提交表单
+    {
+        //表单验证
+        var goods_name = $("#goods_name").val();
+        var goods_sn = $("#goods_sn").val();
+        var cat_id = $('#sboxit-2').val();
+        var reg3 = new RegExp(/^([\u4E00-\uFA29]*[a-z]*[A-Z]*[0-9]*\s*)+$/g);
+        var sort=$('#sort').val();
+        if (goods_name == "") {
+            alert("商品名称不能为空");
+            $("#goods_name").focus();
+            return false;
+        } else if (!reg3.test(goods_name)) {
+            alert("商品名称有特殊字符");
+            $("#goods_name").focus()
+            return false;
+
+        } else if (goods_sn == "") {
+            alert("商品货号不能为空，请填写编号");
+            $("#goods_sn").focus()
+            return false;
+        } else if (cat_id == "") {
+            alert("商品分类不能为空，请填选择分类");
+            $("#cat_id").focus()
+            return false;
+        }else if (sort == "") {
+            alert("排序不能为空，请填写");
+            $("#sort").focus()
+            return false;
+        }
+        var ue = UE.getEditor('goods_desc').getContent();
+        var cat_id = $('#sboxit-2').val();
+
+        $.ajax({
+            type: "post",
+            url: "{:U('Goods/edit')}",
+            data: {goods_id: $("#goods_id").val(), goods_name: $("#goods_name").val(), goods_sn: $("#goods_sn").val(), goods_desc: ue, sort: sort, cat_id: cat_id
+            },
+            dataType: 'json',
+
+            success: function (msg) {
+
+                if (msg.info == 1) {
+                    alert("修改成功");
+
+                } else {
+                    alert("修改失败");
+                }
+            }
+        });
+    }
+</script>
+<script>
+    $(function () {
+    var ue = UE.getEditor('goods_desc',{
+        toolbars: [
+            ['source','simpleupload','insertimage','|'
+            ]
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        initialFrameWidth:700,
+        initialFrameHeight:300
+    });
+    })
+</script>
+<script type="text/javascript">
+    //编辑属性
+    function getSubmits1()//提交表单
+    {
+        var aid=$('#aid').val();
+        var goods_count=$('#goods_count').val();
+        var market_price=$('#market_price').val();
+        var shop_price=$('#shop_price').val();
+
+        var data = '';
+        var reg = /^\d+$/;
+        var reg1 = /\d*\.?\d{1,2}/;
+
+        if (goods_count == "") {
+            alert("商品库存不能为空，请填写数字");
+            $("#goods_count").focus()
+            return false;
+        } else if (!reg.test(goods_count)) {
+            alert("商品库存非法");
+            $("#goods_count").focus()
+            return false;
+        } else if (market_price == "") {
+            alert("商品售价不能为空，请填写");
+            $("#market_price").focus()
+            return false;
+        } else if (!reg1.test(market_price)) {
+            alert("商品价格非法");
+            $("#market_price").focus()
+            return false;
+        } else if (shop_price == "") {
+            alert("商品进价不能为空，请填写");
+            $("#shop_price").focus()
+            return false;
+        } else if (!reg1.test(shop_price)) {
+            alert("商品进价非法");
+            $("#shop_price").focus()
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            url: "{:U('Goods/upattr')}",
+            data: "&goods_count="+goods_count+"&market_price="+market_price+"&shop_price="+shop_price+"&aid="+aid,
+            dataType: 'json',
+            success: function (msg) {
+                if (msg.info == 1) {
+                    alert("修改成功");
+                    var url = "{:U('Goods/edit',array('id'=>$data['goods_id']))}";
+                    window.location.href = url;
+                } else {
+                    alert("修改失败");
+                }
+            }
+        });
+    }
+</script>
+<!--删除属性-->
+<script>
+    function del(id)
+    {
+        if(window.confirm("确定要删除吗？"))
+        {
+            window.location.href="{:U('Goods/delattr','','')}/id/"+id;
+        }
+    }
+</script>
+
+<!--添加商品的属性-->
+<script>
+    function  addattr(id,v) {
+        $.ajax({
+//接受数据的页面
+            url: "{:U('Goods/getmsgup')}",
+//传值方式
+            type: 'POST',
+//数据类型
+            dataType: 'json',
+//发送的数据
+            data: {
+                id: id
+            },
+            beforeSend: function () {
+                // 禁用按钮防止重复提交
+                $("#submit").attr({disabled: "disabled"});
+            },
+            success: function (a) {
+
+                $('#tanchuang-contenttent').html(a);
+                jQuery('#modal-143').modal('show', {backdrop: 'static'});
+                $(v).val('');
+            }
+        });
+    }
+</script>
+<!--添加属性值的AJAX-->
+<script type="text/javascript">
+    //添加属性
+    function getSubmits()//提交表单
+    {
+        var num = $("#modal-143").find(":input").length;
+        num = num / 2-2;
+        for (var i = 0; i < num; i++) {
+            var at_va=$('#attr_value_' + i).val();
+            //正则匹配
+            var regg=/-/g;
+            if(regg.test(at_va)){
+                alert("输入的值不能有‘-’");
+                $('#attr_value_' + i).val('');
+                $('#attr_value_' + i).focus();
+                return ;
+            }
+        }
+        var attr_id = '';
+        var attr_value = '';
+        var goods_id=$("#attr_goods_id").val();
+        var goods_count=$("#goods_count_1").val();
+        var market_price=$("#market_price_1").val();
+        var shop_price=$("#shop_price_1").val();
+        var reg = /^\d+$/;
+        var reg1 = /\d*\.?\d{1,2}/;
+        if (goods_count == "") {
+            alert("商品库存不能为空，请填写数字");
+            $("#goods_count_1").focus()
+            return false;
+        } else if (!reg.test(goods_count)) {
+            alert("商品库存非法");
+            $("#goods_count_1").focus()
+            return false;
+        } else if (market_price == "") {
+            alert("商品售价不能为空，请填写");
+            $("#market_price_1").focus()
+            return false;
+        } else if (!reg1.test(market_price)) {
+            alert("商品价格非法");
+            $("#market_price_1").focus()
+            return false;
+        } else if (shop_price == "") {
+            alert("商品进价不能为空，请填写");
+            $("#shop_price_1").focus()
+            return false;
+        } else if (!reg1.test(shop_price)) {
+            alert("商品进价非法");
+            $("#shop_price_1").focus()
+            return false;
+        }
+        for (var i = 0; i < num; i++) {
+            attr_id += $('#attr_id_' + i).val() + '-';
+            attr_value += $('#attr_value_' + i).val() + '-';
+        }
+        $.ajax({
+            type: "post",
+            url: "{:U('Goods/addgattrs')}",
+            data: "attr_id=" + attr_id+"&attr_value="+attr_value+"&goods_count="+goods_count+"&market_price="+market_price+"&shop_price="+shop_price+"&goods_id="+goods_id,
+            dataType: 'json',
+            success: function (msg) {
+                if (msg.info == 1) {
+                    alert("添加成功");
+                    var url = "{:U('Goods/edit',array('id'=>$data['goods_id']))}";
+                    window.location.href = url;
+                }else{
+                    alert(msg.msg);
+                }
+            }
+        });
+    }
+
+
+    /*属性设置*/
+    function szsx(index){
+        var index= index||arguments[0];
+        index=index?index:0;
+        var zhi=$("#yc").val();
+//内容区域开始
+        bootbox.dialog({
+            message: zhi,
+            title: "属性指定",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var a= $('.icheck:checked').length;var b='';var b1;
+                        var aa=$('.lbt').length;
+                        if(a<aa){
+                            bootbox.alert('每个类必须选择其中一个属性');
+                            return false;
+                        }else if(a===1){
+                            b=$('.icheck:checked').val();
+                            b1=$('.icheck:checked').next('label').html();
+                        }else{
+                            $('.icheck:checked').each(function(){
+                                b=b?$(this).val()+'|'+b:$(this).val();
+                                b1=b1?$(this).next('label').html()+'|'+b1:$(this).next('label').html();
+                            })
+                        }
+//                        att[index]=att[index]?att[index]+'^'+b:b;
+                        $('.middle-align tr').eq(index).find('td').eq(0).html(b1);
+                        $('.middle-align tr').eq(index).find('td').eq(0).html(""+b1+"<input type='hidden' class="+index+" value="+b+"%>");
+//                            alert(b);alert(b1);alert(att);
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    }
+    /*属性设置*/
+    /*数量设置*/
+    function szkc(index){
+        var index= index||arguments[0];
+        index=index?index:0;
+        bootbox.dialog({
+            message: '<input type="text" placeholder="添加库存袋数" id="kcds" />',
+            title: "增加库存袋数",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var ax= $('#kcds').val();
+                        if(!ax){
+                            bootbox.alert('不能为空');
+                            return false;
+                        }
+//                        att[index]=att[index]?att[index]+'^'+ax:ax;
+                        $('.middle-align tr').eq(index).find('td').eq(1).html(ax);
+                        $('.middle-align tr').eq(index).find('td').eq(1).html(""+ax+"<input type='hidden' class="+index+" value="+ax+"$>");
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    }
+    /*数量设置*/
+    /*价格设置*/
+    function szjg(index){
+        var index= index||arguments[0];
+        index=index?index:0;
+        bootbox.dialog({
+            message: '<textarea name="jgqj" rows="3" cols="40"></textarea><p style="color: red;">示例：5-10=50|10-15=47|15-20=45</p><p style="color: red;">每个价格区间用“|”分割。范围用 “-”表示。该区域的价格用“=”表示。</p><p style="color: red;">注：输入模式为英文输入。。。</p>',
+            title: "设定区域价格 元/袋",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var jgqj= $("textarea[name=jgqj]").val();
+                        if(!jgqj){bootbox.alert('价格内容不能为空');return false;}
+                        /*兼容处理*/
+//                    att[index]=att[index]?att[index]+'^'+jgqj:jgqj;
+                        $('.middle-align tr').eq(index).find('td').eq(2).html(jgqj);
+                        $('.middle-align tr').eq(index).find('td').eq(2).html(""+jgqj+"<input type='hidden'  class="+index+" value="+jgqj+"#>");
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+                    }
+                }
+            }
+        });
+    }
+    /*价格设置*/
+    /*价格设置*/
+$(function(){
+        $('.xzsx').click(function(){
+            var pd='';
+            $('.middle-align tr:last').find('td').each(function(){
+                var leng= $(this).text();
+                if(!leng){pd=1;}
+            })
+            pd=pd?pd:'';
+            if(pd==1){
+                bootbox.alert('已经设置的属性不能有空值');
+            }else{
+                var lens= $('.middle-align tr').length;
+//                alert(lens);
+//                $('#index').val(lens);
+//                att[lens]=new Array();
+                $('.middle-align').append('<tr><td></td><td></td><td></td><td><a href="##" style="float: left;" onclick="szsx('+lens+');" class="btn szsx1 btn-secondary btn-sm btn-icon icon-left">属性修改</a><a href="##" style="float: left;" onclick="szkc('+lens+');" class="btn szkc btn-secondary btn-sm btn-icon icon-left">库存修改</a><a href="##" style="float: left;" onclick="szjg('+lens+');" class="btn szjg btn-danger btn-sm btn-icon icon-left">价格区间修改</a></td></tr>');
+            }
+        })
+    /*修改确定*/
+        $('.qdxg').click(function(){
+            var len= $('#example .middle-align tr').length;
+//            alert(len);
+            var i=0;var ii=0; var att=new Array();
+            for(i;i<len;i++){var val1='';
+                $('.'+i+'').each(function(){
+                    var val= $(this).val();
+                    val1=val1?val1+'^'+val:val;
+                })
+                att[ii]=val1;
+                ii++;
+            }
+            ///////////////////////////
+            $.post("{:U('Goods/sxxg')}",{
+                att:att,
+                id:{$iidd}
+            },function(msg){
+                if (msg == 1) {
+                    bootbox.alert("成功");
+                    var url = "{:U('Goods/ceshi')}";
+                    window.location.href = url;
+                } else {
+                    bootbox.alert("失败");
+                }
+            })
+        })
+    })
+</script>
+
+
+
+
+

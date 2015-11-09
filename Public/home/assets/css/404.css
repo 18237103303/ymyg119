@@ -1,0 +1,9 @@
+/* CSS Document */
+
+.main{ width:1200px; margin:0 auto;overflow:hidden; clear:both; min-height:700px;}
+	.main_l{ float:left; overflow:hidden; padding-top:100px; width:500px;}
+	.main_l img{ width:195px; height:332px; margin:0 auto;display:block;}
+	.main_r{ float:left; overflow:hidden; width:500px; padding-top:200px;}
+	.main_r p{ color:#666666; font-size:24px; font-weight:bold; text-align:center;}
+	.main_r  span{ color:#f13333; font-size:24px; font-weight:bold;}
+	

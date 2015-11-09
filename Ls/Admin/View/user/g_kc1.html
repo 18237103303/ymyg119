@@ -1,0 +1,43 @@
+<!-- Removing search and results count filter -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">数据动态 - Member datail</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>商品名称</th>
+                <th>操作时间</th>
+                <th>操作类型</th>
+                <th>变动数量</th>
+                <th>库存</th>
+            </tr>
+            </thead>
+            <tbody class="middle-align">
+            <foreach name="rows" item="vo" >
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.c_time}</td>
+                <td>{$vo.content}</td>
+                <td>{$vo.num}</td>
+                <td>{$vo.endnum}</td>
+            </tr>
+            </foreach>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+</div>
+<script>
+    $(function(){
+        $('.xq').click(function(){
+           var td= $(this).parents('tr').find('td').eq(0).text();
+           location.href="/Admin/User/gh_sp/sp_id/"+td+'?flag=user';
+        })
+    })
+</script>
+<!-- 弹出层 -->

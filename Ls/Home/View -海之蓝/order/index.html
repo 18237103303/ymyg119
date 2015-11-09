@@ -1,0 +1,269 @@
+<link href="__PUBLIC__/home/assets/css/tijiaodingdan.css" rel="stylesheet" type="text/css">
+
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script>
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	});
+</script>
+<style>
+.dw{ position:absolute;
+top:10px;
+right:10px;}
+
+</style>
+<div class="tbbox">
+	<div class="dbbox">
+        <div class="bzbox"><a href="index.html"><img src="__PUBLIC__/home/assets/images/index_11.png" alt=""></a> </div>
+        <p class="pb">购物车</p>
+    </div>
+    <div class="lcbox"><img src="__PUBLIC__/home/assets/images/lc_03.jpg" alt=""></div>
+</div>
+<div class="mainbox">
+	<div class="shdz">
+    	<p class="shbt">收货地址</p>
+        <p class="shlj"><a href="{:U('Person/pesaddress')}">管理收货地址</a></p>
+    </div>
+    <div class="jszbox">
+    	<p class="zbbox">寄送至</p>
+        <p class="dzbox">{$addr.area} {$addr.xxxx}（{$addr.name} 收） {$addr.lianxi}<br><span class="mr">默认地址</span></p>
+    </div>
+    <div class="xdz"><a href="#signup" rel="leanModal">使用新地址</a></div>
+    <div id="signup"  class="dztcbox" style="display:none;">
+    	<p class="tkbt"><span class="xzdz">新增收货地址</span>电话号码、手机号选填一项,其余均为必填项</p>
+        <form class="dztc" onsubmit="return false;">
+        	 <label><span class="dqbox">所在地区：</span>
+			 <select name="P1" style="border:1px solid #ccc" id="province"></select>&nbsp;&nbsp;
+			 <select name="C1" style="border:1px solid #ccc" id="city"></select>
+			 <select name="area" style="border:1px solid #ccc" id="area"></select>
+			 </label><br>
+             <label><span class="dqboxs" onblur="detail()">详细地址：</span>
+			 <textarea class="dhk" id="ms" placeholder="建议您填写详细收货地址，例如街道名称，门牌号码楼层和房间号等信息"></textarea>
+			 </label><div id="detail"></div>
+             <label><span class="dqbox">邮政编码：</span>
+			 <input value="" type="text" class="srk" id="youzheng" onblur="code()">
+			 </label><div id="pscode"></div>
+             <label><span>收货人姓名：</span>
+			 <input value="" type="text" class="srk" id="name" onblur="xingming()">
+			 </label><div id="showname"></div>
+             <label><span class="dqbox">手机号码：</span><input value="" type="text" class="srk" id="shouji" onblur="phone()">
+			 </label><div id="show"></div>
+             <label>
+			 <input type="checkbox"  class="xz" value="3" id="status"> 设置为默认收货地址
+			 </label><br/>
+             <button class="save" onclick="saveadd()">保存</button><div class="dw"><img style="cursor:pointer;" src="__PUBLIC__/home/assets/images/tan1.jpg"></div>
+
+        </form>
+        <script language="javascript" defer>
+            new PCAS("P1","C1","area");
+         </script>
+    </div>
+    <div class="daxqbox">
+    	<h3 class="qrbt">确认订单信息</h3>
+        <form>
+            <volist name="cart" id='vo'>
+        <table cellpadding="0" cellspacing="0" border="0">
+        	<tbody>
+            	<tr>
+            		<th width="465">商品信息</th>
+                    <th width="133">类型</th>
+                    <th width="81">单价（元）</th>
+                    <th width="62">数量</th>
+                    <th width="159">送积分</th>
+                    <th width="271" colspan="3">金额（元）</th>
+                </tr>
+                <tr>
+                	<td height="33" colspan="8"><div class="fdbox"><P class="dp">店铺：{$key} </P><a target=blank  href="tencent://message/?uin=965489521&Site=qq&Menu=yes"><img src="images/dd_10.jpg" alt="" class="qe"></a></div></td>
+                </tr>
+                <volist name='vo' id='k'>
+                <tr>
+                	<td width="200" height="137"><div class="spbox"><div class="pic" value="{$k.id}"><img src="__ROOT__/Uploads/{$k.goods_thumb}" alt="{$k.goods_name}" style="width:100px;height:60px;"></div><p class="spjs">{$k.goods_name}</p></div></td>
+				    <td class="jz">{$k.attr_name}</td>
+                    <td  class="jz">{$k.g_price}</td>
+                    <td  class="jz">{$k.num}</td>
+                    <td  class="jz">{$k.profit}积分</td>
+                    <td colspan="3"  class="jz amount" style="color:#F00;font-weight:bold;">{$k.amount}</td>
+                </tr>
+                <tr>
+                	<td colspan="3">给卖家留言：<input type="text" value="告诉卖家您的特殊要求"  onFocus="javascript:this.value=''" class="wbk"></td>
+                    <td colspan="2"><label>配送方式: 同城配送</label></td>
+                    
+                    <td class="yf"><p class="xq">运费详情</p><div class="sm">同城配送：免运费</div></td>
+                    <script>
+					   $(function(){	
+						$(".xq").mouseover(function(){
+						//$(this).siblings(".sm").toggle()
+                                                $(this).siblings(".sm").css({display:'block'});
+						 });
+                                                 $(".xq").mouseout(function(){
+						//$(this).siblings(".sm").toggle()
+                                                $(this).siblings(".sm").css({display:'none'});
+						 });
+						});
+					</script>
+                </tr>
+                </volist>
+            </tbody>
+        </table>
+    </volist>
+        
+        <P class="jgze">应付总额 <span class="jgbh">￥666.00</span></P>
+        <div class="jsbtn">
+        	<p class="fhs"><a href="{:U('Cart/index')}">返回购物车</a></p>
+            <input class="tjbtn" value="提交订单"  onclick="sure()">
+        </div>
+        </form>
+        <p class="jgtx">若价格变动，请在提交订单后联系卖家改价，并查看已买到的宝贝</p>
+    </div>
+</div>
+<script>
+    $(function(){
+        var num=$("td.jz.amount").length;
+        var total=0.00;
+        for(var i=0;i<num;i++){
+            var amount=$("td.jz.amount").eq(i).html();
+            total+=parseFloat(amount);
+        }
+        $("p.jgze").find("span.jgbh").html('￥'+total.toFixed(2));
+    });
+    function sure(){
+       var num=$('table').length;var cids='';var memo='';
+       for(var i=0;i<num;i++){
+           var c_num=$('table').eq(i).find('div.pic').length;
+           var cid='';var de_mo='';
+           for(var j=0;j<c_num;j++){
+               var c_id=$('table').eq(i).find('div.pic').eq(j).attr('value');
+               var demo=$('table').eq(i).find(":input").eq(j).val();
+               cid+=c_id+'-';
+               de_mo+=demo+';';
+           }
+           cids+=cid+'_';
+           memo+=de_mo+'_';
+       }
+        $.ajax({
+            'type':'post',
+                    'data':'id=' + cids+'&memo='+memo,
+                    'dataType':"json",
+                    'url':"{:U('Order/orderinfo')}",
+                    'success':function(dat){
+                    if (dat.status == 1){
+                    alert('订单提交成功');
+                    var order_ids=dat.order_ids;
+                            location.href = "{:U('Order/pay')}?order_ids="+order_ids;
+                    } else if(dat.status==2){
+                    alert(dat.msg);
+                    }else if(dat.status==3){
+                        alert("该商品已不在你的购物车里");
+                        location.href = "{:U('Cart/index')}";
+                    }else if(dat.status==4){
+                        alert("快去填写你的收货地址吧！");
+                    }else{
+                        alert("订单提交失败");
+                    }
+                    }
+            });
+    }
+</script>
+ <script>
+function saveadd(){
+    var detail=$('#ms').val();
+	var postcode=$('#youzheng').val();
+	var name=$('#name').val();
+	var shouji=$('#shouji').val();
+	var cf=$('#status').attr("checked");
+	if(cf==true){
+	status=3;
+	}else{
+	status=2;
+	}
+	//var cid=$('#carid').val();
+	var cid="{$id}";
+	//alert(cid);return;
+	//var status=$('#status').val();
+	var province=$('#province').val();
+	var city=$('#city').val();
+	var area=$('#area').val();
+    var url="{:U('Order/changadd')}";
+	if(detail=="" || postcode=="" ||name==""||status==""||province==""||city==""||area==""){
+	alert('请把信息填写完整！');
+	return false;
+	}else{
+	$.ajax({
+		    type:"post",
+		    url:url,
+		    data:{xxxx:detail,postcode:postcode,name:name,lianxi:shouji,status:status,province:province,city:city,area:area},
+		    dataType: 'json',
+		    success:function(msg){
+			//$('#777').html(msg);
+		    if(msg.state==1){
+			alert('添加成功！');
+			window.location.href="{:U('Order/index')}?cid="+cid;
+			}else{
+			alert('添加失败！');
+			window.location.href="{:U('Order/index')}?cid="+cid;
+				}
+		    }
+		  });
+     }
+ }
+//手机验证
+			 
+			  function phone(){
+			  var phone=$("#shouji").val();
+              $.ajax({
+		    		  type:"post",
+		    		  url:"{:U('Person/phone')}",
+		    		  data:{phone:phone},
+		    		  dataType: 'json',
+		    		  success:function(msg){
+		    			  $("#show").html(msg);
+		    		  }
+		    	  }); 
+			  }			                 			  
+//邮箱验证			
+	function code(){			  
+			  var email=$("#youzheng").val();
+            $.ajax({
+		    		  type:"post",
+		    		  url:"{:U('Person/email')}",
+		    		  data:{email:email},
+		    		  dataType: 'json',
+		    		  //beforeSend:function(){$('#myemail').html('[查询中...]')},
+		    		  success:function(msg){
+		    			  $("#pscode").html(msg);
+		    		  }
+		    	  }); 
+  }
+  //姓名验证
+    function xingming(){
+	 var name=$("#name").val();
+	        $.ajax({
+		    		  type:"post",
+		    		  url:"{:U('Person/xingming')}",
+		    		  data:{name:name},
+		    		  dataType: 'json',
+		    		  //beforeSend:function(){$('#myphone').html('[查询中...]')},
+		    		  success:function(msg){
+		    			  $("#showname").html(msg);
+		    		  }
+		    	  }); 
+	 }   
+//详细信息
+function detail(){
+var detail=$("#ms").val();
+	        $.ajax({
+		    		  type:"post",
+		    		  url:"{:U('Person/detail')}",
+		    		  data:{detail:detail},
+		    		  dataType: 'json',
+		    		  //beforeSend:function(){$('#myphone').html('[查询中...]')},
+		    		  success:function(msg){
+		    			  $("#detail").html(msg);
+		    		  }
+		    	  }); 
+} 
+
+		 </script>
+

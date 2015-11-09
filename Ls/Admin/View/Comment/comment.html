@@ -1,0 +1,123 @@
+<script>  
+  function fenlei_delmore(obj,cName){
+	  var checkall = document.getElementsByName(cName);
+	  for(var $i=0;$i<checkall.length;$i++){
+			checkall[$i].checked = obj.checked;
+		  }
+}
+  </script>
+  <style>
+  .col-sm-5{
+  width:33%;
+  }
+  </style>
+  <div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">评论列表 </div>
+						<div class="panel-body">
+						<form action="{:U('Comment/comment')}" method="post">
+							<div class="col-sm-5">
+							<input type="text" class="table-bordered col-sm-5" style="height:33px; " name="content" placeholder="评论内容"/>
+								<a href=""><button class="btn btn-success" type="submit">搜索</button></a>
+							</div>
+							</form>
+							<form action="{:U('Comment/comment')}" method="post">
+							<div class="col-sm-5">
+							<input type="text" class="table-bordered col-sm-5" style="height:33px; " name="rank" placeholder="商品评论等级"/>
+								<a href=""><button class="btn btn-success" type="submit">搜索</button></a>
+							</div>
+							</form>
+							<form action="{:U('Comment/comment')}" method="post">
+							<div class="col-sm-5">
+							<input type="text" class="table-bordered col-sm-5" style="height:33px; " name="id" placeholder="商品ID"/>
+								<a href=""><button class="btn btn-success" type="submit">搜索</button></a>
+							</div>
+							</form>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				
+				<form action={:U('Words/delall')} method="post" id="yourformid">
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+							    <th class="no-sorting">
+								<input type="checkbox"  value="" name="cName[]" onclick="fenlei_delmore(this,'cName[]')">ID
+								</th>
+								<th>用户名</th>
+								<th>评论对象</th>
+								<th>评论等级</th>
+								<th>商品ID</th>
+								<th>Ip</th>
+								<th>评论时间</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						
+						
+							<volist name="list" id="v" >
+						<tbody class="middle-align">
+					
+							<tr>
+							<td><input type="checkbox"  name="cName[]" value="{$v['comment_id']}"></td>
+								<td>{$v.user_name}</td>
+								<php>
+								$id=$v['goods_id'];
+								$rs=M('goods')->where("goods_id='$id'")->find();
+								</php>
+								<td>{$rs.goods_name}</td>
+								<td>{$v.comment_rank}星级</td>
+								<td>{$v.goods_id}</td>
+								<td>{$v.com_ip}</td>
+								<td>{$v.com_time}</td>
+								<!-- <td><a href="{$v.nav_url}" target="_blank"><php> echo mb_substr($v['content'],0,50,'utf-8'); </php></a></td> -->
+								<td>
+								 	 <a href="{:U('Comment/detail',array('id'=>$v['comment_id']))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										查看详情
+									</a> 
+									<!-- <a href="{:U('words/edit',array('id'=>$v['id']))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										已查看留言
+									</a>  -->
+									<a href="{:U('Comment/delete',array('id'=>$v['comment_id']))}" class="btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm('确定要删除吗？');">
+										删除
+									</a>
+
+								</td>
+							</tr>
+							<tr><td colspan="6">{$pages}</td></tr>
+						</tbody>
+						</volist>
+						
+						
+						
+					</table>
+				</div>
+				<button class="btn btn-secondary" data-original-title="点击确定将删除您所选内容" title="" data-placement="bottom" data-toggle="tooltip" type="submit">批量删除</button>
+				</form>
+			</div>
+			
+		<!-- 弹出层 -->
+
+<div id="setmessage"></div>
+
+
+<!--
+ <script type="text/javascript">
+	$("#commentform").submit(function(e){
+		//1.阻止默认
+		e.preventDefault();
+		//2.ajax提交数据
+		$.post('{:U("Nav/navsort")}',{'id':$("#id").val(),'sort':$("#sort").val()},function(data){
+			 window.location.href=window.location.href;
+
+			
+		},'json');
+	});
+ </script>
+-->			
+		

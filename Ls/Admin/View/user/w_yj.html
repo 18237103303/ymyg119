@@ -1,0 +1,68 @@
+<!-- Removing search and results count filter -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">网点的订单 - Member datail</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th>订单号</th>
+                <th>付款时间</th>
+                <th>收货人</th>
+                <th style="width:8%;">送货员的名字</th>
+                <th>金额</th>
+                <th>佣金</th>
+                <th>冻结佣金</th>
+            </tr>
+            </thead>
+            <tbody class="middle-align">
+            <tr>负责的会员</tr>
+            <foreach name="rows" item="vo" >
+            <tr>
+                <td>{$vo.order_sn}</td>
+                <td>{$vo.time}</td>
+                <td>{$vo.consignee}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.profit}</td>
+                <td>{$vo.yj}</td>
+                <td>{$vo.dj_yj}</td>
+            </tr>
+            </foreach>
+            </tbody>
+        </table>
+        <!---->
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th>订单号</th>
+                <th>付款时间</th>
+                <th>收货人</th>
+                <th style="width:8%;">送货员的名字</th>
+                <th>金额</th>
+                <th>佣金</th>
+                <th>冻结佣金</th>
+            </tr>
+            </thead>
+            <tbody class="middle-align">
+            <tr>服务的会员</tr>
+            <foreach name="rows1" item="vo" >
+                <tr>
+                    <td>{$vo.order_sn}</td>
+                    <td>{$vo.time}</td>
+                    <td>{$vo.consignee}</td>
+                    <td>{$vo.name}</td>
+                    <td>{$vo.profit}</td>
+                    <td>{$vo.yj}</td>
+                    <td>{$vo.dj_yj}</td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+        <!---->
+    </div>
+</div>
+<div class="panel panel-default">
+
+</div>
+<!-- 弹出层 -->

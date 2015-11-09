@@ -1,0 +1,172 @@
+<!-- Removing search and results count filter -->
+			
+	
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">广告 广告位置添加 -- AD Position Add</div>
+						<div class="panel-body">
+							<div class="col-sm-5">
+							
+								<button class="btn btn-success" id="pos">广告位置添加 -- AD Position Add</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">广告位置列表 -- AD Position List</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+							    <!--<th>编号</th>-->
+								<th>广告位名称</th>
+								<th>广告位描述</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+							<foreach name="position" item="v">
+						<tbody class="middle-align">
+					
+							<tr>
+							<!--<td>{$v.position_id}</td>-->
+								<td>{$v.position_name}</td>
+								<td>{$v.position_describe}</td>
+							
+								<td>
+									<a href="###" class="btn btn-secondary btn-sm btn-icon icon-left" onclick="edit({$v.position_id},this)">
+										编辑
+									</a>
+									
+									<a href="javascript:del({$v.position_id});" class="btn btn-danger btn-sm btn-icon icon-left">
+										删除
+									</a>
+
+								</td>
+							</tr>
+							
+						</tbody>
+						</foreach>	
+					</table>
+				</div>
+			</div>
+			
+		<!-- 弹出层 -->
+
+
+<script src="__PUBLIC__/admin/assets/js/bootbox/bootbox.min.js"></script>
+<script>
+// 广告位置添加
+$('#pos').click(function(){
+    bootbox.dialog({
+            message: '<input type="text" placeholder="广告所在位置" id="posname" /> <input type="text" placeholder="对于广告位置的简单描述" id="posdesc" />',
+            title: "广告位置添加 -- AD Position Add",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                    	var position=$('#posname').val();
+                    	var des=$('#posdesc').val();
+                    	if(position==''||des==''){
+                    		bootbox.alert('广告位置和描述不能为空');
+                    		return ;
+                    	}
+                        $.ajax({
+                            'type':'post',
+                            'data':'position_name='+$('#posname').val()+'&position_describe='+$('#posdesc').val(),
+                            'dataType':"json",
+                            'url':"{:U('Ad/adposadd')}",
+                            'success':function(dat){
+       
+                                if(dat.status==1){
+                                    bootbox.alert('添加成功');
+                                    var url="{:U('Ad/adposition')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('添加失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+})	
+
+//广告位置信息编辑
+function edit(id,v){
+	
+	var pname=$(v).parent().prev('td').prev('td').html();
+	var pdesc=$(v).parent().prev('td').html();
+    bootbox.dialog({
+            message: '<input type="text" id="pname" value="'+pname+'" /> <input type="text" id="pdesc" value="'+pdesc+'" />',
+            title: "广告位置修改 -- AD Position Update",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        $.ajax({
+                            'type':'post',
+                            'data':'position_name='+$('#pname').val()+'&position_describe='+$('#pdesc').val()+'&id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Ad/updateadpos')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('编辑成功');
+                                    var url="{:U('Ad/adposition')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('编辑失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+}
+</script>
+
+<script>
+
+ function del(id)
+    {
+        
+        
+        if(window.confirm("确定要删除吗？"))
+        {
+          window.location.href="{:U('Ad/adposdel','','')}/id/"+id;
+
+        
+        }
+    
+    
+    
+    
+    }
+</script>
+	
+			
+				

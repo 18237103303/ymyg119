@@ -1,0 +1,78 @@
+ <div class="row">
+     <!--开始-->
+     <div class="col-sm-12">
+         <div class="panel panel-default">
+             <div class="panel-heading">新增区域 &nbsp;&nbsp;&nbsp;</div>
+            <div class="dq">
+              <div class="panel-body">
+                 <div class="col-sm-12">
+                 </div>
+             </div>
+                <form name="glxx" method="post" action="{:U('Zfz/adduser')}">
+                <!--开始基本信息-->
+                <div class="form-group">
+                <label for="field-1" class="control-label">账号：</label>
+                <input type="text" name="ym" class="form-control" id="field-1" style="width: 30%;" placeholder="用户名">
+                </div>
+                    <div class="form-group">
+                        <label for="field-2" class="control-label">密码：</label>
+                        <input type="password" name="ymm" class="form-control" id="field-2" style="width: 30%;" placeholder="密码">
+                    </div>
+             <!--结束基本信息-->
+                <div class="control-label">设置区域</div>
+                <script type="text/javascript" src="__PUBLIC__/yes1/js/area.js"></script>
+                <script type="text/javascript" src="__PUBLIC__/yes1/js/location.js"></script>
+                <script type="text/javascript" src="__PUBLIC__/yes1/js/select2.js"></script>
+                <script type="text/javascript" src="__PUBLIC__/yes1/js/select2_locale_zh-CN.js"></script>
+                <link rel="stylesheet" href="__PUBLIC__/yes1/css/common.css"/>
+                <link rel="stylesheet" href="__PUBLIC__/yes1/css/select2.css"/>
+
+                <select  id="loc_province" name="c1" style="width:120px;">
+                </select>
+                <select  id="loc_city" name="c2" style="width:120px; margin-left: 10px">
+                </select>
+                  <select  id="loc_town" name="c3" style="width:120px; margin-left: 10px">
+                </select>
+
+              </div>
+                 <div class="form-group">
+                 <label for="field-3" class="control-label">详细地址：</label><br/>
+                 <textarea name="xx" id="field-3" style="width: 30%;" rows="5"></textarea>
+                 </div>
+             </form>
+             <div class="panel-body" style="width: 8%;">
+                 <div class="col-sm-4" style="padding-left: 0px;">
+                     <button onclick="as();"  class="btn btn-turquoise" data-placement="bottom" data-toggle="tooltip" type="button">新增</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!--结束-->
+</div>
+ <script>
+     $('input[name=ym]').blur(function(){
+         var mingz= $('input[name=ym]').val();
+         $.post("{:U('Zfz/adduser')}",{
+             type:1,
+             ym:mingz
+         },function(data){
+//             alert(data);
+             if(data==1){
+                 $('input[name=ym]').val('');
+                 alert('用户名已经存在不能注册');
+             }
+         })
+     })
+     function as(){
+         var ym=$('input[name=ym]').val();
+         var ymm=$('input[name=ymm]').val();
+         var xx=$('textarea[name=xx]').val();
+         var c1=$('#loc_province').val();
+         var c2=$('#loc_city').val();
+         var c3=$('#loc_town').val();
+
+         if(ym && ymm && xx && c1 && c2){
+        $('form[name=glxx]').submit();
+         }else{alert('不能为空');}
+     }
+ </script>

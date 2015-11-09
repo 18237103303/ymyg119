@@ -1,0 +1,59 @@
+<include file="User:center" />
+ <div class="right">
+    	<div class="points">
+        	<ul>
+            	<li><span>可用积分</span><p><i>12345</i></p><a href="{:U('User/Integral')}">我的积分</a></li>
+                <li><span>收藏</span><p><i>123</i>商品</p><a href="{:U('User/Collect')}">查看收藏</a></li>
+                <li><span>代金券</span><p><i>5</i>张</p><a href="{:U('User/Cooper')}">查看代金券</a></li>
+            </ul>
+        </div>
+        <div class="shoucangbox">
+        	<h2>收藏的商品</h2>
+            <ul>
+            	<li>
+                	<a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a>
+                    <a class="namea" href="page02-mei-xq.html">烈焰大量无烟煤 精致无</a>
+                    <p><span>¥ 952.00</span></p>
+                    <div class="dwimg"><img src="__PUBLIC__/home/images/wdfwd_03.jpg"></div>
+                </li>
+                <li>
+                	<a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a>
+                    <a class="namea" href="page02-mei-xq.html">烈焰大量无烟煤 精致无</a>
+                    <p><span>¥ 952.00</span></p>
+                    <div class="dwimg"><img src="__PUBLIC__/home/images/wdfwd_03.jpg"></div>
+                </li>
+                <li>
+                	<a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a>
+                    <a class="namea" href="page02-mei-xq.html">烈焰大量无烟煤 精致无</a>
+                    <p><span>¥ 952.00</span></p>
+                    <div class="dwimg"><img src="__PUBLIC__/home/images/wdfwd_03.jpg"></div>
+                </li>
+                <li>
+                	<a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a>
+                    <a class="namea" href="page02-mei-xq.html">烈焰大量无烟煤 精致无</a>
+                    <p><span>¥ 952.00</span></p>
+                    <div class="dwimg"><img src="__PUBLIC__/home/images/wdfwd_03.jpg"></div>
+                </li>
+                <li>
+                	<a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a>
+                    <a class="namea" href="page02-mei-xq.html">烈焰大量无烟煤 精致无</a>
+                    <p><span>¥ 952.00</span></p>
+                    <div class="dwimg"><img src="__PUBLIC__/home/images/wdfwd_03.jpg"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+	$(".shoucangbox ul li").hover(function(){
+		$(this).children(".dwimg").show();
+		},function(){
+		$(this).children(".dwimg").hide();
+		})
+	$(".shoucangbox ul li .dwimg ").click(function(){
+		$(this).parents("li").hide();
+		})
+	})
+</script>
+<!--Personal结束-->

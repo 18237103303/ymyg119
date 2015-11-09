@@ -1,0 +1,33 @@
+<!--footerbox开始-->
+<div class="footerbig">
+	<div class="footbox">
+    	<div class="foot">
+    	<ul>
+			<volist name="article" id="art" >
+			<li>
+            	<h2>{$art.type_name}</h2>
+                <div class="linka">
+					<volist name='art.info' id='a'>
+						<a href="{:U('Article/Detail',array('type_id'=>$a['type_id']))}">{$a.type_name}</a>
+					</volist>
+                </div>
+            </li>
+			</volist>
+        </ul>
+        </div>
+    </div>
+    <div class="footerbox">
+    	<div class="link">
+        	<span>友情链接:</span>
+            <div class="linka">
+				<volist name='links' id='link'>
+				<a href="{$link.link_url}">{$link.link_name}</a>
+				</volist>
+            </div>
+        </div>
+        <p>{:C('WEB_BQ')} {:C('WEB_ICP')}</p>
+    </div>
+</div>
+<!--footerbox开始-->
+</body>
+</html>

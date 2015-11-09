@@ -1,0 +1,66 @@
+<!--footer-->
+<div class="footer">
+  <div class="foot">
+    <div class="wblogo"><img src="__PUBLIC__/home/assets/images/wb_03.png" alt=""></div>
+    <div class="list">
+	<div class="cdbox">
+        <volist name="arr" id="vo">
+            <dl>
+               <dt>{$key}</dt> 
+               <volist name="vo" id='k'>
+                   <dd><a  href="###" onclick="dump(this,{$key})">{$k}</a></dd>
+               </volist>
+            </dl>
+        </volist>
+    </div>
+        <div class="list_r">
+        	<h4>手机登录：bailm.com</h4>
+          <dl>
+            <dt><img src="__PUBLIC__/home/assets/images/wem1.jpg" alt=""></dt>
+            <dd><p>iphone</p></dd>
+          </dl>
+          <dl>
+            <dt><img src="__PUBLIC__/home/assets/images/wen1.jpg" alt=""></dt>
+            <dd><p>android</p></dd>
+          </dl>
+        </div>
+	</div>
+    <div class="yqlink"> 
+	<div class="di">
+    	<ul>
+            <volist name='link_pic' id='vo'>
+        <li><a href="{$vo.link_url}" target="__blank"><img src="__ROOT__/Uploads/{$vo.link_pic}" alt="海之澜"></a></li>
+        </volist>
+        	
+        </ul>
+    </div>
+        <volist name='link_text' id='vo'>
+            <a href="{$vo.link_url}" target="__blank">{$vo.link_name}&nbsp;&nbsp; | &nbsp;&nbsp;</a> 
+        </volist>
+    </div>
+    <p class="copyright">增值电信业务经营许可证:浙B2-20070066 &nbsp;&nbsp;   互联网药品信息服务资格证书:(浙)-经营性-2012-0009 &nbsp;&nbsp;  信息网络传播视听节目许可证:1109366<br>
+      © 2010-2015 bailm.com 版权所有&nbsp;  互联网违法和不良信息举报中心:0571-81683755 blxx@list.alibaba-inc.com  &nbsp;&nbsp;技术支持：<a href="http://www.cccuu.com">河南灵秀网络科技</a></p>
+  </div>
+</div>
+<!--footer-->
+
+</body>
+</html>
+<script>
+    function dump(v,key){
+        //alert(key)
+        var num=$('div.cdbox').find('a').length;
+        //alert(num);
+        var title=$(v).html();
+        //href="{:U('Article/index',array('name'=>$k))}"
+        var index='';
+        for(var i=0;i<num;i++){
+            if($('div.cdbox').find('a').eq(i).html()==title){
+                index=i;
+            }
+        }
+        window.location.href="/Home/Article/index?name="+key+"&index="+index;
+    }
+    </script>
+    <!-- js核心包 -->
+

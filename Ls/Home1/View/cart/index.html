@@ -1,0 +1,308 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol21.css">
+<link href="__PUBLIC__/home/assets/css/gouwuche.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+
+<script>
+            $(function () {
+            $("a[rel*=leanModal]").leanModal("close");
+            });</script>
+<script>
+            $(function () {
+            $('.qxk').click(function () {
+            var p = $(this).parent().parent().parent().parent();
+                    p.find('input[name="subBox"]').attr("checked", this.checked);
+                    re();
+            });
+                    $('input[name="subBox"]').click(function(){
+            re();
+            })
+            })
+</script>
+<include file="Public:dq" />
+<!--header-->
+<div class="mainbox">
+    <div class="daxqbox">
+        <h3 class="qrbt">全部商品&nbsp;&nbsp;&nbsp;{$c_num}</h3>
+        <p class="yf">已选商品（不含运费）</p>
+    </div>
+    <div class="wx"><div class="nx"></div></div>
+    <form>
+        <volist name="cart" id='vo'>
+        <table width="1200">
+                <tbody>
+                    <tr>
+                        <th width="52" height="44" ><label><input type="checkbox"   class="qxk"> 全选</label></th>
+                        <th>商品信息</th>
+                        <th width="141">类型</th>
+                        <th width="106">单价（元）</th>
+                        <th width="119">数量</th>
+                        <th width="303">金额（元）</th>
+                        <th width="144" colspan="3">操作</th>
+                    </tr>
+                    <tr>
+                        <td height="33" colspan="8"><div class="fdbox"><P class="dp">店铺：{$key} </P></div></td>
+                    </tr>
+                <volist name='vo' id='k'>
+                    <tr class="goods_info">
+                        <td class="fxk"><input type="checkbox" name="subBox" value='{$k.id}' class="xz" va="{$k.sp_id}"></td>
+                        <td width="303" height="137">
+                            <!--<div class="bybox">
+                                <div class="by">包邮</div>
+                                <p>仅限于同城送货</p>
+                            </div>-->
+                            <div class="spbox"><div class="pic"><a href="{:U('Good/info',array('id'=>$k['sp_id']))}"><img src="__ROOT__/Uploads/{$k.goods_thumb}" alt="{$k.goods_name}" style="width:100px;height:60px;"></a></div><p class="spjs">{$k.goods_name}</p></div></td>
+                        <td class="jz"><a>{$k.attr_name}</a></td>
+                        <td  class="jz">{$k.g_price}</td>
+                        <td  class="jz">
+                            <div class="slbox">
+                                <div class="jian"><img src="__PUBLIC__/home/assets/images/gwc_10.jpg" /></div>
+                                <input  value="{$k.num}" class="sl" onkeyup="shuru(this,{$k.stock})" data-max="{$k.stock}" data-min="1"/>
+                                <a class="jia" onclick="jia(this, {$k.stock})" href="###"><img src="__PUBLIC__/home/assets/images/gwc_12.jpg" /></a>
+                            </div>
+                        </td>
+
+                        <td  class="jz">00.00</td>
+                        <td colspan="3"  class="jz" ><a href="###" onclick="collect({$k.sp_id})">移入收藏夹</a><br>
+                            <!--<a href="###" onclick="delete1({$k.id})">删除</a>-->
+                            <a style="bottom:0px;" class="a11" href="#signup" rel="leanModal">删除</a>
+                            <!--确定是否删除弹窗-->
+                              <div id="signup" class="tan1">
+                                <p>确定删除！</p>
+                              <a href="###" onclick="delete1({$k.id})">确定</a>
+                            <div class="dw"><img src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                            </div>
+                             <!--确定是否删除弹窗-->
+                        </td>
+                    </tr>
+                </volist>
+
+                </tbody>
+            </table>
+        </volist>   
+
+        <div class="hjbox">
+            <div class="zx"><input type="checkbox"  id="check_grp1" class="qxk"> &nbsp;&nbsp;全选   <a href="###" onclick="all_delete()"> 删除</a>             <span class="ybk">已选商品<b>3</b>件  &nbsp;&nbsp;(同城送货免邮费)   合计：<span class="hs">￥666.00</span></span></div>
+            <div class="jsbox"><a href="###" onclick="order()">结算</a></div>
+        </div>
+    </form>
+    <div class="zgrmbox">
+        <dl class="qhbt">
+            <dd>掌柜热卖</dd>
+            <dd>最近浏览过的</dd>
+            <dd>猜你喜欢的</dd>
+            
+        </dl>
+        <script>
+                    $(".qhbt dd").eq(0).addClass("on1");
+                    $(function () {
+                    var n = 0;
+                            $(".qhbt dd").click(function () {
+                    n = $(this).index();
+                            $(".qhbt dd").removeClass("on1");
+                            $(this).addClass("on1");
+                    })
+                    })
+        </script>
+        <div class="qhxbox">
+            <!------掌柜热卖的-------->
+            <div class="dyx">
+                <volist name="gdata" id="vo">
+                    <div class="twbox">
+                        <div class="tpic"><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}"></a></div>
+                        <p><span class="jg">￥{$vo.market_price}</span><br>
+                            <a href="#">{$vo.goods_name}</a></p>
+                    </div>
+                </volist>
+            </div>
+            <!--------最近浏览过的--------------->
+            <div class="dyx">
+                <volist name="history" id="vo">
+                <div class="twbox">
+                    <div class="tpic"><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}"></a></div>
+                    <p><span class="jg">￥{$vo.market_price}</span><br>
+                        <a href="#">{$vo.goods_name}</a></p>
+                </div>
+                </volist>
+            </div>
+            <!----猜你喜欢的------>
+            <div class="dyx">
+                <volist name='link' id='vo'>
+                    <div class="twbox">
+                        <div class="tpic"><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}"></a></div>
+                        <p><span class="jg">￥{$vo.market_price}</span><br>
+                            <a href="#">{$vo.goods_name}</a></p>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <script>
+                jQuery(".zgrmbox").slide({mainCell: ".qhxbox", titCell: ".qhbt dd", effect: "fade", trigger: "click", delayTime: 1000, interTime: 3000, titOnClassName: "on"});</script>
+</div>
+
+<script>
+            $(function () {
+            //价格变动
+            var table = $('div.mainbox').find('table');
+                    for (var i = 0; i < table.length; i++){
+            var goods_info = table.eq(i).find("tr.goods_info");
+                    for (var j = 0; j < goods_info.length; j++){
+            var price = goods_info.eq(j).find("td").eq(3).html();
+                    var num = goods_info.eq(j).find("td").eq(4).find(':input').val();
+                    var total_f = price * num;
+                    goods_info.eq(j).find("td").eq(5).html(total_f.toFixed(2));
+            }
+            }
+            //判断总价格，选中的商品
+            re();
+            //点击'-'
+            $(".slbox .jian").click(function () {
+                    var v = $(this).parent().find(".sl").val();
+                    v = Number(v);
+                    var num;
+                    if (v > 1) {
+            $(this).parent().find(".sl").val(v - 1);
+                    num = v - 1;
+            } else {
+            $(this).parent().find(".sl").val(1);
+                    num = 1;
+            }
+            var price = $(this).parent().parent().prev('td').html();
+            var total_fee = price * num;
+            $(this).parent().parent().next('td').html(total_fee.toFixed(2));
+            re();
+            });
+            });
+            //点击‘+’
+                    function jia(r, num){
+                    var v = $(r).prev(":input").val();
+                    v = Number(v);
+                    var nu = parseInt(v + 1);
+                    if (parseInt(nu) > parseInt(num)){
+                        return false;
+                    }
+                    $(r).prev(":input").val(nu);
+                    var price = $(r).parent().parent().prev('td').html();
+                    var total_fee = price * (v + 1);
+                    $(r).parent().parent().next('td').html(total_fee.toFixed(2));
+                    re();
+                    }
+            //输入数量
+            function shuru(v,stock){
+                var s_num=$(v).val();
+                if(!s_num){
+                    $(v).val(1);
+                }
+                if(parseInt(s_num)>parseInt(stock)){
+                    $(v).val(stock);
+                }
+                if(parseInt(s_num)<1){
+                    $(v).val(1);
+                }
+                //正则判断
+                var patt1 = new RegExp(/^([0-9]*)+$/g);
+                var result = patt1.test(s_num);
+                if(result==false){
+                        $(v).val(1);
+                }  
+                var s_price = $(v).parent().parent().prev('td').html();
+                var s_total_fee = s_price * $(v).val();
+                $(v).parent().parent().next('td').html(s_total_fee.toFixed(2));
+                re();
+            }
+            //移入收藏夹
+            function collect(id){
+            if (window.confirm('你确定将该商品加入收藏夹吗？ ')){
+            $.ajax({
+            'type':'post',
+                    'data':'gid=' + id,
+                    'dataType':"json",
+                    'url':"{:U('Cart/collect')}",
+                    'success':function(dat){
+                    if (dat.status == 1){
+                    alert('成功加入收藏');
+                    }
+                    if (dat.status == 0){
+                    alert('收藏失败');
+                    }
+                    if (dat.status == 2){
+                    alert('该商品已收藏过');
+                    }
+                    }
+            });
+            }
+            }
+            function delete1(id){
+            $.ajax({
+            'type':'post',
+                    'data':'id=' + id,
+                    'dataType':"json",
+                    'url':"{:U('Cart/delete')}",
+                    'success':function(dat){
+                    if (dat.status == 1){
+                            location.href = "{:U('Cart/index')}";
+                    } else{
+                           alert('删除失败');
+                    }
+                    }
+            });
+            }
+            function  re(){
+            var num = $('div.mainbox').find(':checked[name="subBox"]').attr('checked', 'true');
+                    var total_num = 0; var total_f = 0.00;
+                    for (var t = 0; t < num.length; t++){
+            var c_n = num.eq(t).parent().next('td').next('td').next('td').next('td').find(":input").val();
+                    total_num += parseInt(c_n);
+                    var t_pr = num.eq(t).parent().next('td').next('td').next('td').next('td').next('td').html();
+                    total_f += parseFloat(t_pr);
+            }
+            $("div.zx").find('b').html(total_num);
+                    $("div.zx").find("span.hs").html('￥' + total_f.toFixed(2));
+            }
+            //批量删除
+            function all_delete(){
+            var num_1 = $('div.mainbox').find(':checked[name="subBox"]').attr('checked', 'true');
+                    var cid = '';
+                    if(num_1.length<1){
+                        alert("你没有选择任何商品");
+                        return false;
+                    }
+                    for (var t = 0; t < num_1.length; t++){
+            cid += num_1.eq(t).attr('value') + '-';
+            }
+            $.ajax({
+            'type':'post',
+                    'data':'id=' + cid,
+                    'dataType':"json",
+                    'url':"{:U('Cart/all_delete')}",
+                    'success':function(dat){
+                    if (dat.status == 1){
+                    alert('删除成功');
+                            location.href = "{:U('Cart/index')}";
+                    } else{
+                    alert('删除失败');
+                    }
+                    }
+            });
+            }
+            //点击结算按钮
+            function order(){
+            var num_2 = $('div.mainbox').find(':checked[name="subBox"]').attr('checked', 'true');
+                    var cd = '';
+                    for (var t = 0; t < num_2.length; t++){
+            cd += num_2.eq(t).attr('value') + '-' + num_2.eq(t).parent().next("td").next("td").next("td").next("td").find(":input").val() + ',';
+            }
+            if (!cd){
+            alert('你还没有选择商品');
+            } else{
+            // alert(cd);
+            window.location.href = "{:U('Cart/order')}?id=" + cd;
+            }
+
+            }
+            function sys(v,gid){                                          
+                $(v).addClass("on1");
+            }
+            
+</script>

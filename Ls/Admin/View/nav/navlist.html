@@ -1,0 +1,138 @@
+<!-- Removing search and results count filter -->
+			
+	
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">导航 导航列表 -- NAV List</div>
+						<div class="panel-body">
+							<div class="col-sm-5">
+							
+								<a href="{:U('Nav/addnav')}"><button class="btn btn-success">导航添加 -- NAV Add</button></a>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">导航列表 -- NAV List</h3>
+					
+				</div>
+				
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th>导航名称</th>
+								<th>导航连接</th>
+								<th>导航排序</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						
+						
+							<volist name="nav" id="v" key="k">
+						<tbody class="middle-align">
+					
+							<tr>
+							
+								<td>{$v.nav_name}</td>
+								<td><a href="{$v.nav_url}" target="_blank">{$v.nav_url}</a></td>
+							    <td> 
+							    <form action="{:U('Nav/navsort')}" id="commentform" method="post">
+							    <input type="hidden" name="id" id="id{$k}" value="{$v.id}">
+							    <input type="text" name='sort' id="sort{$k}" style="width:50px" value="{$v.sort}">
+							    <button type="button" onclick="getSubmit({$k})">修改</button>
+							    </form>
+							 
+							    </td>
+								<td>
+									<a href="{:U('Nav/updatenav',array('id'=>$v['id']))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										编辑
+									</a>
+									
+									<a href="javascript:del({$v.id});" class="btn btn-danger btn-sm btn-icon icon-left">
+										删除
+									</a>
+
+								</td>
+							</tr>
+							
+						</tbody>
+						</volist>
+						<tr>
+						<td colspan="4">
+						<form action="{:U('Nav/navlist')}" method="post">
+						<input type="hidden" name="sortid" value="1">
+						<input type="submit" value="重新排序" class="btn btn-warning btn-sm btn-icon"></td>
+						</form>
+						</tr>
+						
+						<tr>
+						<td colspan="4">{$link}</td>
+						</tr>	
+					</table>
+				</div>
+				
+			</div>
+			
+		<!-- 弹出层 -->
+
+<div id="setmessage"></div>
+
+
+<script type="text/javascript">
+
+       
+function getSubmit(e)//提交表单
+          {
+          	var sort=$("#sort"+e).val();
+   
+            $.ajax({
+              type:"post",
+     
+              url:"{:U('Nav/navsort')}",
+              data:{id:$("#id"+e).val(),sort:$("#sort"+e).val()
+                  },
+     
+              dataType: 'json',
+             
+             
+              success:function(msg){
+                	 if(msg.info==1){
+                	bootbox.alert("排序修改成功");
+                }else{
+                	bootbox.alert("排序修改失败");
+                }
+              }
+            });
+          }
+
+    </script>
+
+
+
+
+<script>
+
+ function del(id)
+    {
+        
+        
+        if(window.confirm("确定要删除吗？"))
+        {
+          window.location.href="{:U('Nav/navdelete','','')}/id/"+id;
+
+        
+        }
+    
+    
+    
+    
+    }
+
+</script>
+	
+				

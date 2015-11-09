@@ -1,0 +1,234 @@
+<!-- Removing search and results count filter -->
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">属性列表管理</div>
+            <div class="panel-body">
+                <div class="col-sm-7">
+                    <button class="btn btn-turquoise"  id="add_cate">新增属性</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">属性组</h3>
+    </div>
+    <div class="panel-body">
+        <div id="treeGrid">
+        </div>
+    </div>
+</div>
+<!-- 弹出层 -->
+<!-- Bottom Scripts -->
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/jqwidgets/styles/jqx.base.css" type="text/css" />
+        <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxdatatable.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxtreegrid.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/assets/js/jqwidgets/jqxdropdownlist.js"></script>
+<script src="__PUBLIC__/admin/assets/js/bootbox/bootbox.min.js"></script>
+<!-- Imported scripts on this page -->
+<script type="text/javascript">
+            $(document).ready(function () {
+    var list = {$data} ;
+            var source =
+    {
+    dataType: "json",
+            dataFields: [
+            { name: "cat_id", type: "number" },
+            { name: "parent_id", type: "number" },
+            { name: "cat_name", type: "string" },
+            { name: "pid", type: "string" },
+            ],
+            hierarchy:
+    {
+    keyDataField: { name: 'cat_id' },
+    parentDataField: { name: 'parent_id' }
+    },
+            id: 'cat_id',
+            localData: list
+    };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            $("#treeGrid").jqxTreeGrid(
+    {
+        source: dataAdapter,
+        columnsResize: true,
+        sortable: true,
+        filterable: false,
+            ready: function () {
+            var ids = {$ids};
+                    $.each(ids, function(a, b){
+                    //$("#treeGrid").jqxTreeGrid('expandRow', b);
+                    });
+            },
+            columns: [
+            { text: '分类名称', dataField: "cat_name", align: 'center', width: 150 },
+            { text: '编号', editable: false, dataField: "cat_id", align: 'center', width:100, cellsAlign: 'center'},
+            {
+              text: '操作', cellsAlign: 'center', width:300, align: "center", columnType: 'none', editable: false, sortable: false, dataField: "pid", cellsRenderer: function (row, column, value) {
+                if(value==0){
+                    return "<button data-row='" + row + "' class='btn btn-secondary btn-sm btn-icon icon-left' onclick='add_child(" + row + ")'>添加属性</button>&nbsp;&nbsp;&nbsp;<button data-row='" + row + "' class='btn btn-danger btn-sm btn-icon icon-left' onclick='edit(" + row + ",this)'>编辑</button>&nbsp;&nbsp;&nbsp;<button data-row='" + row + "' class='btn btn-secondary btn-sm btn-icon icon-lef' onclick='drop(" + row + ")'>删除</button>";
+                }else{
+                    return "<div class='col-sm-1'></div><button data-row='" + row + "' class='btn btn-danger btn-sm btn-icon  col-sm-4' onclick='edit(" + row + ",this)'>编辑</button><div class='col-sm-1'></div><button data-row='" + row + "' class='btn btn-secondary btn-sm btn-icon icon-lef col-sm-4' onclick='drop(" + row + ")'>删除</button>";
+                }
+               }
+            }
+            ]
+    });
+    });
+//新增分类
+$('#add_cate').click(function(){
+    bootbox.dialog({
+            message: '<input type="text" placeholder="添加属性名称" id="cate_input" />',
+            title: "添加商品分类：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var cate=$('#cate_input').val();
+                        if(cate==''){
+                            bootbox.alert("名称不能为空");
+                            return ;
+                        }
+                        $.ajax({
+                            'type':'post',
+                            'data':'cat_name='+cate,
+                            'dataType':"json",
+                            'url':"{:U('Attr/addcate')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('添加成功');
+                                    var url="{:U('Attr/index')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('添加失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+                    }
+                }
+            }
+    });
+})
+//新增下级分类
+function add_child(id){
+    bootbox.dialog({
+            message: '<input type="text" placeholder="添加分类" id="cate_input" />',
+            title: "添加下级分类：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                       var cate=$('#cate_input').val();
+                        if(cate==''){
+                            bootbox.alert("属性名称不能为空");
+                            return ;
+                        }
+                        $.ajax({
+                            'type':'post',
+                            'data':'cat_name='+cate+'&pid='+id+'&parent_id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Attr/addcate_child')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('添加成功');
+                                    var url="{:U('Attr/index')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('添加失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+}
+//点击编辑按钮
+function edit(id,v){
+    var name=$('tr[data-key='+id+']').find('td').find('span:last').html();
+    bootbox.dialog({
+        message: '属性名称：<input type="text" id="c_input" value="'+name+'"/>',
+        title: "编辑属性名称：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var cate=$('#c_input').val();
+                        if(cate==''){
+                            bootbox.alert("名称不能为空");
+                            return ;
+                        }
+                        $.ajax({
+                            'type':'post',
+                            'data':'cat_name='+cate+'&cat_id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Attr/editcate')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('编辑成功');
+                                    var url="{:U('Attr/index')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('编辑失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+}
+function drop(id){
+    $.ajax({
+                            'type':'post',
+                            'data':'id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Attr/deletecate')}",
+                            'success':function(dat){
+                                if(dat.info==1){
+                                    bootbox.alert('删除成功');
+                                    var url="{:U('Attr/index')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('删除失败');
+                                }
+                            }
+                        });
+}
+</script>
+
+
+

@@ -1,0 +1,244 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol4.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+<script>
+    $(function () {
+        $("a[rel*=leanModal]").leanModal("close");
+    });
+</script> 
+<style>
+    #tijiao{
+        cursor:pointer;
+        background-color: #d62810;
+        color: #fff;
+        display: block;
+        font-size: 14px;
+        margin: 20px auto;
+        padding: 10px 30px;
+        width: 30px;
+    }
+    #cancel{
+        cursor:pointer;
+        display: block;
+        font-size: 12px;
+        text-align: center;
+		margin-top:10px;
+
+
+    }
+</style>
+<!--header-->
+<div class="header">
+    <div class="header_wrap">
+
+        <div class="logo1">
+            <a href="index.html"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="{:U('Person/Pesinfoshow')}">账号设置</a></li>
+                <!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+    <div class="main_wrap">
+        <include file="Public:personleft"/>
+        <div class="main_r">
+            <div class="shop">
+                <div class="shop_bt">
+                    <ul>
+                        <li><a href="{:U('Person/allorder')}">全部订单</a></li>
+                        <li  class="shop_bt_current"><a href="{:U('Person/nopay')}">待付款<span class="icon1">{$shownum.need}</span></a></li>
+                        <li><a href="{:U('Person/send')}" >待卖家发货<span>{$shownum.send}</span></a></li>
+                        <li><a href="{:U('Person/confirm')}">待确认收货<span >{$shownum.confirm}</span></a></li>
+                        <li><a href="{:U('Person/finish')}">交易完成<span>{$shownum.finish}</span></a></li>
+                        <li><a href="{:U('Person/comment')}">待评价<span>{$shownum.comment}</span></a></li>
+
+                    </ul>
+                </div>
+                <div class="bt">
+                    <form method="post" action="{:U('Person/search')}">
+                        <p>
+                            <input type="text"  onFocus="javascript:this.value = ''" id="shopgoods" name="shopgoods">
+                            <input type="submit" value="订单搜索"/>
+                        </p>
+
+                        <p><label>订单时间</label>
+                            <select name="changtime" id="changtime" >
+                                <option value="0">请选择时间</option> 
+                                <option value="1">最近一周</option> 
+                                <option value="2">最近一月</option> 
+                                <option value="3">最近三月</option> 
+                                <option value="4">最近一年</option>
+                            </select>
+                            <input type="submit" value="搜索"/>
+                        </p>
+                    </form>
+
+                </div>
+                <div class="text_top">
+                    <span class="top1">商品</span>
+                    <span class="top2">类型 / 数量 / 小计</span>
+                    <span class="top3">订单状态</span>
+                    <span class="top4">操作</span>
+                </div>
+                <empty name="needpay">
+                    <div class="text">
+                        <center><span>还没有订单</span></center>
+                    </div>
+                    <else/>
+                    <volist name="needpay" id="v">  <php>$countlist=count($v['goods']);</php>
+                        <div class="text">
+                            <div class="tab2_bt">
+                                <p><span>订单号：</span>{$v.order_sn}</p>
+                                <p><span>下单时间：</span>{$v.add_time|date='Y-m-d H:i',###}</p>
+                            </div>
+                            <div class="tab2_text">
+                                <TABLE>
+                                    <volist name="v.goods" id="vo" key="i">
+                                        <tr>
+
+                                            <td><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}" title="{$vo.goods_name}"></a></td>
+                                            <td class="tab2_1"><span><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}">{$vo.goods_name}</a></span>
+                                                {$v.att}
+                                            </td>
+                                            <td class="tab2_2"><i>¥<php> echo $vo['market_price']*$vo['goods_number'];</php></i><br><span>{$vo.goods_number}</span>件</td>
+                                           <if condition="$i eq 1">
+                                            <td class="tab2_3" rowspan="{$countlist}" >
+                                        <php>
+                                            if($v['order_status']==0){echo "待支付";};
+                                            if($v['order_status']==1){echo "未发货";};
+                                            if($v['order_status']==2){echo "等待确认收货";};
+                                            if($v['order_status']==3){echo "已取消订单";};
+                                            if($v['order_status']==4){echo "退货中";};
+                                            if($v['order_status']==5){echo "退货成功";};
+                                            if($v['order_status']==6){echo "交易成功";};
+
+                                        </php>
+
+                                        
+                                        <br><i><a href="{:U('Person/aftersend',array('id'=>$v['order_id'],'type'=>$v['order_status']))}">订单详情</a></i></td>
+                                        <td class="tab2_4" rowspan="{$countlist}">
+                                        <php>
+                                            if($v['order_status']==0){echo "<a href='index.php?s=/Home/Order/pay/order_ids/".$v['order_id']."-'>立即付款</a>";}
+                                            if($v['is_comment']==0&&$v['order_status']==6){echo "<a href='index.php?s=/Home/Person/goodscomment/id/".$vo['goods_id']."'>评论</a>";}
+                                            if($v['order_status']==2){echo "<a href='index.php?s=/Home/Person/confirm/id/".$v['order_id']."'>确认收货</a>";}									
+                                        </php>
+                                        <!--  -->
+									
+                                        <span> 
+
+                                            <if condition="$v.order_status eq 3">
+                                                <div id="cancel">
+                                                    已取消订单
+                                                </div>
+                                            </if><if condition="$v.order_status eq 0">
+                                                <div id="cancel" onclick="cancel({$v.order_id}, 3)">取消订单</div>
+                                            </if>
+                                        </span>
+                                        <if condition="$v.postscript eq NULL"><span><a href="#signup" rel="leanModal">订单留言</a></span></if>
+                                        <div id="signup" class="tan">
+                                            <h5>订单留言</h5>
+                                            <div class="bt">
+                                                <p><span>订单号：</span>{$v.order_sn}</p>
+                                                <p><span>订单金额：</span>￥<php> echo $vo['market_price']*$vo['goods_number'];</php></p>
+                                            </div>
+                                            <div class="tan_text">
+                                                <p>给对方的留言：</p>
+                                                <form class="shipping_address">
+                                                    <textarea rows="5" placeholder="请填写留言内容" cols="92" id="content"></textarea>
+                                                    <input type="hidden" id="leave" value="{$vo.order_id}"/>
+
+                                                    <span>还可以输入200字</span>
+                                            </div>
+
+                                            <div id="tijiao"  onclick="tijiao()">提交</div>
+                                            <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                            </form>
+                                        </div>
+                                        </td><else/></if>
+                                        </tr>
+                                    </volist>
+                                </TABLE>
+                            </div>
+
+                        </div>			
+                    </volist>
+                </empty>
+				<div class="Pagination">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--main-->
+<script>
+    function tijiao() {
+
+//var $this_form = $('form.shipping_address');
+        var textinfo = $('#content').val();
+        if (textinfo == "") {
+            alert('留言内容不能为空！');
+        } else {
+            var orderid = $('#leave').val();
+            $.ajax({
+                'type': 'post',
+                'url': "{:U('Person/leavewords')}",
+                'data': {order: orderid, info: textinfo},
+                'dataType': 'json',
+                'success': function (dat) {
+                    if (dat.status == 1) {
+                        alert('留言成功！');
+                        window.location.href = "{:U('Person/nopay')}";
+                    } else {
+                        alert('留言失败！');
+                    }
+                }
+            });
+
+
+        }
+
+    }
+    function cancel(l, s) {
+
+        var checkval = $('#check').attr("checked");
+        var orderid = l;
+        var orderst = s;
+        if (checkval == false) {
+            alert('您没有选中任何商品！');
+            return false;
+        } else {
+            //alert('uiuiu');
+            $.ajax({
+                'type': 'post',
+                'url': "{:U('Person/cancel')}",
+                'data': {order: orderid, status: orderst},
+                'dataType': 'json',
+                'success': function (dat) {
+                    if (dat.status == 1) {
+                        //alert('取消订单成功！');
+                        window.location.href = "{:U('Person/nopay')}";
+                    } else {
+                        alert('取消订单失败！');
+                    }
+                }
+            });
+        }
+    }
+</script>
+
+
+<!--footer-->
+

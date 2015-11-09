@@ -1,0 +1,24 @@
+/* CSS Document */
+
+/*main*/
+.main_r{ float:right;overflow:hidden;}
+			.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; min-height:700px;}
+			.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px;padding-left:15px; line-height:70px;}
+			
+			.shop .tab1{width:957px;color:#3b3b3b; border:#cacaca 1px solid;font-size:16px; line-height:50px; display:inline-block; background-color:#f0f0f0;}
+			.shop .tab1 .tab1_1{ padding:0 190px;}
+			.shop .tab1 .tab1_2{ padding:0 10px;}
+			.shop .tab1 .tab1_3{ padding:0 120px;}
+			.shop .tab1 .tab1_4{ padding:0 30px;}
+			
+			.shop .tab2_text{ padding:20px; border-bottom:#e8e8e8 1px solid;}
+			.shop .tab2_text img{ width:80px; height:80px;}
+			.shop .tab2_text .tab2_1{ font-size:12px; color:#8d8d8d;width:300px;  padding:0 20px;}
+			.shop .tab2_text .tab2_1 span{color:#444444; display:block;}
+			.shop .tab2_text .tab2_1 span a:hover{ color:#c40000;}
+			.shop .tab2_text .tab2_2{ font-size:30px; font-weight:bold; color:#c40000;width:70px;  padding:0 20px;}
+			.shop .tab2_text .tab2_2_2{ color:#ff7d13;font-size:30px; font-weight:bold;width:70px;  padding:0 20px;}
+			.shop .tab2_text .tab2_2_3{ color:#9a9a9a;font-size:30px; font-weight:bold;width:70px;  padding:0 20px;}
+			.shop .tab2_text .tab2_3{ color:#343434; font-size:14px; padding:30px 20px; width:200px; display:inline-block; text-align:center;}
+			.shop .tab2_text .tab2_4{ color:#343434; font-size:14px; text-align:center;padding:5px 40px; margin:0 20px;}
+/*main*/

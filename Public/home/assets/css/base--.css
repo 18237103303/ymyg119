@@ -1,0 +1,261 @@
+@charset "utf-8";
+*{padding:0;margin:0;font-family:"Microsoft YaHei";}
+img{border:none;}
+li{list-style:none;}
+a{color:#333; text-decoration:none;}
+a:focus{outline:none;}
+a{blr:expression(this.onFocus=this.blur());}
+input{ outline:none;}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}/* CSS Document */
+
+/*header*/
+.topbox{
+	border-bottom:1px solid #ccc;
+	height:30px;
+	line-height:30px;
+	font-size:12px;}
+.top{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;}
+.wz{
+	width:500px;
+	float:left;
+	color:#808080;
+	font-family:"新宋体";}
+.wz a{
+	color:#d41d05;
+	font-family:"新宋体";}
+.yb{
+	width:334px;
+	float:right;
+	overflow:hidden;}
+.link{
+	overflow:hidden;
+	float:left;}
+.hzlsy{
+	float:left;
+	margin-left:10px;}
+.hzlbox{
+	float:left;
+	margin-left:15px;}
+.wdhzl{
+	background-image:url(../images/index_06.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	padding-right:12px;
+	position:relative;}
+.tckbox{
+	width:50px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	padding:6px;
+	position:absolute;
+	right:28%;
+	top:30px;
+	z-index:1;
+	display:none;}
+.scjbox{
+	float:left;
+	margin-left:10px;}
+.scj{
+	width:48px;
+	background-image:url(../images/index_06.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	padding-left:10px;
+	position:relative;
+	cursor:pointer;}
+.tcbox{
+	display:none;
+	width:60px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	padding:6px;
+	margin-left:4px;
+	position:absolute;
+	right:444px;
+	top:30px;
+	z-index:1;}
+.gwc{
+	float:left;
+	margin-left:20px;}
+.ssbox{
+	overflow:hidden;
+	width:1200px;
+	margin:0 auto;
+	margin-top:20px;}
+.qh{
+	overflow:hidden;}
+.qh li{
+	float:left;
+	margin-left:10px;}
+.qh li{
+	width:50px;
+	height:24px;
+	text-align:center;
+	line-height:24px;cursor:pointer;}
+.qhbox .on1{ background-color:#c40000; color:#fff; }	
+.navbox{
+	width:1200px;
+	margin:0 auto;
+	margin-top:20px;}
+.logo{
+	float:left;}
+.weizhi{
+	float:left;
+	overflow:hidden;
+	margin-left:40px;}
+.dwf{
+	float:left;
+	}
+.wzbox{
+	float:left;
+	margin-left:20px;
+	margin-top:10px;}
+.dlwz{
+	background-image:url(../images/index_06.png);
+	background-position:40px;
+	background-repeat:no-repeat;
+	position:relative;
+	cursor:pointer;}
+.xlbox{
+	width:332px;
+	height:248px;
+	background-color:#fff;
+	border:1px solid #ccc;
+	position:absolute;
+	top:98px;
+	left:652px;
+	z-index:1;
+	padding:10px;
+	display:none;}
+.cslbbox{
+	overflow:hidden;
+	border-bottom:1px solid #cccccc;
+	padding-bottom:6px;
+	margin-top:6px;
+	line-height:21px;}
+.cslbbox h3{
+	width:56px;
+	font-size:14px;
+	font-weight:bold;
+	float:left;}
+.cslbbox p{
+	width:232px;
+	font-size:14px;
+	float:left;
+	margin-left:20px;}
+.more{
+	margin-left:240px;
+	margin-top:10px;
+	font-size:14px;}
+.more a{
+	color:#06F;}
+.sswz{
+	font-size:12px;}
+.search{
+	float:left;
+	overflow:hidden;
+	margin-left:120px;}
+.zbkbox{
+	overflow:hidden;}
+.sskbox{
+	width:428px;
+	height:36px;
+	border:2px solid #c40000;
+	border-radius:6px;
+	float:left;
+	padding-top:4px;
+	overflow:hidden;}
+.sskbox a{
+	display:inline-block;
+	margin-top:4px;}
+.btn{
+	float:left;
+	color:#fff;}
+.srkbox{
+	width:380px;
+	height:34px;
+	line-height:38px;
+	padding-left:6px;
+	color:#ccc;
+	border:none;
+	float:left;}
+.ssbtn{
+	float:left;}
+.btn{
+	width:140px;
+	height:42px;
+	background-color:#a90000;
+	border:none;
+	text-align:center;
+	line-height:42px;
+	font-size:16px;
+	color:fff;
+	border-radius:6px;
+	margin-left:10px;
+	cursor:pointer;}
+.wzlink{
+	font-size:12px;
+	margin-top:4px;}
+.wzlink a{
+	margin-left:10px;}
+/*header*/
+
+
+
+
+	
+/*footer*/	
+.footer{
+	background-color:#262626;
+	padding:30px;
+	color:#fff;}
+.foot{
+	width:1200px;
+	margin:0 auto;}
+	
+.cdbox{
+	overflow:hidden;
+	margin-top:20px;}
+.cdbox dl{
+	min-height:167px;
+	float:left;
+	border-right:1px solid #d41d05;
+	padding-right:60px;
+	margin-left:30px;}
+.cdbox dl dt{
+	font-size:16px;
+	font-weight:bold;}
+.cdbox dl dd{
+	font-size:14px;
+	margin-top:10px;}
+.cdbox dl dd a{
+	color:#cdcdcd;}
+.yqlink{
+	margin-top:20px;
+	font-size:12px;
+	border-top:1px solid #404040;
+	padding-top:10px;}
+.yqlink a{
+	color:#8f8f8f;
+	line-height:22px;}
+.copyright{
+	font-size:12px;
+	color:#8f8f8f;
+	margin-top:20px;
+	line-height:22px;}
+.copyright a{
+	color:#8f8f8f;}
+/*footer*/	
+
+#lean_overlay {
+    position: fixed;
+    z-index:0;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background:#000;
+    display: none;}

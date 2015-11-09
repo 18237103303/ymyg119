@@ -1,0 +1,233 @@
+@charset "utf-8";
+/* CSS Document */
+
+/****citybox****/
+.citybox{ width:1200px; margin:60px auto; }
+.citybox a.back{ display:block; width:150px; height:42px; line-height:42px; color:#fff; text-align:center; font-size:14px; margin:20px auto; border-radius:5px; background-color:#fd240e; cursor:pointer;}
+
+.citybox h2{ font-size:16px; line-height:30px; height:30px; color:#f91227; color:#444; font-weight:bold; padding:0 40px; }
+.citybox .ulbox{ overflow:hidden; margin-top:40px; }
+.citybox ul{ overflow:hidden; float:left; width:600px;}
+.citybox ul li{ width:440px; padding:0 30px;margin:0 50px; padding-bottom:20px;}
+.citybox ul li .top{ height:60px; background-color:#e6e6e6; overflow:hidden; cursor:pointer;}
+.citybox ul li .top h4{ font-size:20px; color:#0959ba; line-height:60px; letter-spacing:2px;  font-weight:bold; text-align:center; width:360px; float:left; margin-left:40px;}
+.citybox ul li .top a{ display:block; width:40px; height:13px; margin-top:22px; float:left;}
+.citybox ul li .top a img{ display:block; width:21px; height:13px;}
+.citybox ul li .top a img.img2{ display:none; }
+.citybox ul li .hidetext{ display:none;}
+.citybox ul li .hidetext .box{ margin:15px 0;}
+.citybox ul li .hidetext .box h3{ font-size:16px; color:#f4424f; text-align:center; height:44px; line-height:44px; margin-bottom:10px;}
+.citybox ul li .hidetext .box .linka{}
+.citybox ul li .hidetext .box .linka a{ display:inline-block; margin:0 10px; padding:0 4px; height:20px; line-height:20px; font-size:15px; margin-bottom:8px; cursor:pointer; }
+.citybox ul li .hidetext .box .linka a:hover{ background-color:#fd240e; color:#fff;}
+/****citybox****/
+
+/***bannerbox33***/
+.bannerbox33{ width:100%; position:relative; height:240px; overflow:hidden;}
+.bannerbox33 .banner{ width:1920px; position:absolute; left:50%; margin-left:-960px;}
+.bannerbox33 .banner img{ display:block; width:100%;}
+/***bannerbox33***/
+
+
+
+/***searchbox***/
+.searchbox{ width:1200px; margin:30px auto;}
+.searchbox h2{ font-size:14px; height:30px; line-height:30px; font-size:14px; color:#666; margin-bottom:20px;}
+.searchbox h2 a{ line-height:30px; font-size:14px; color:#666;}
+.searchbox .search{ overflow:hidden;}
+.searchbox .search .left{ width:230px; float:left; border:1px solid #ccc;}
+.searchbox .search .left h3{ height:40px; line-height:40px; font-size:16px; color:#666; padding:0 20px;}
+.searchbox .search .left .imga{ display:block; border-top:1px solid #ccc; padding:30px 0; width:230px; overflow:hidden;}
+.searchbox .search .left .imga img{ display:block; margin:0 auto; width:200px; height:200px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden;}
+.searchbox .search .left .imga img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.searchbox .search .right{ width:px; float:left; margin-left:20px;}
+.searchbox .search .right h3{ font-size:14px; height:30px; line-height:30px; font-size:14px; color:#666; margin-bottom:20px;}
+.searchbox .search .right h3 a{ line-height:30px; font-size:14px; color:#126ab4;}
+.searchbox .search .right ul{ overflow:hidden; width:900px;}
+.searchbox .search .right ul li{ width:278px; margin-right:20px; float:left; margin-bottom:20px;background-color:#d9d9d9; border:1px solid #ccc;}
+.searchbox .search .right ul li .imga{ display:block; width:200px; height:200px; margin:0 auto; padding:10px 39px; overflow:hidden;}
+.searchbox .search .right ul li .imga img{ display:block; width:200px; height:200px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden; }
+.searchbox .search .right ul li .imga img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.searchbox .search .right ul li .text{ width:268px; padding:0px 5px; padding-bottom:10px;}
+.searchbox .search .right ul li .namea{ font-size:14px; line-height:30px; color:#5e5d5d; text-align:center; display:block; width:100%;overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.searchbox .search .right ul li .namea:hover{ color:#ff2f2d;} 
+.searchbox .search .right ul li p{ font-size:16px; color:#ff2f2d; text-align:center; line-height:28px; height:28px; overflow:hidden; width:100%;}
+/***searchbox***/
+
+
+/****zixunbox***/
+.zixunbox{ width:100%; margin:80px 0;}
+.zixunbox .zixun{ border:1px solid #ccc; padding:20px; width:1158px; border:1px solid #ccc; margin:0 auto;}
+.zixunbox .zixun .title{ overflow:hidden; height:40px; line-height:40px; font-size:16px; color:#4d4d4d; margin-bottom:20px;}
+.zixunbox .zixun .title span{ display:block; width:60%; float:left; }
+.zixunbox .zixun .title i{ display:block; width:20%; float:right; text-align:center; }
+.zixunbox .zixun ul{}
+.zixunbox .zixun ul li{ padding:4px 0; border-bottom:1px dashed #ccc; overflow:hidden; height:26px; line-height:26px; font-size:13px; color:#666;}
+.zixunbox .zixun ul li a{ display:block; width:60%; float:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; height:26px; line-height:26px; font-size:14px; color:#126ab4;}
+.zixunbox .zixun ul li span{ display:block; width:20%; float:right; text-align:center; }
+.zixunbox .zixun ul li a:hover{ text-decoration:underline;}
+
+.zixunbox .xiangqing{ border:1px solid #ccc; padding:20px; width:1158px; border:1px solid #ccc; margin:0 auto; padding-bottom:100px;}
+.zixunbox .xiangqing h2{ font-size:18px; color:#444; line-height:30px; text-align:center;}
+.zixunbox .xiangqing h3{ font-size:13px; line-height:28px; height:28px; text-align:center; color:#666; margin-bottom:40px;}
+.zixunbox .xiangqing p{ font-size:14px; color:#444; line-height:34px;}
+.zixunbox .xiangqing p span{ display:inline-block; width:2em;}
+/****zixunbox***/
+
+
+
+/****zhinanbox开始***/
+.zhinanbox{ width:100%; margin:50px 0;}
+.zhinanbox .zhinan{ width:1200px; margin:0 auto; overflow:hidden;}
+.zhinanbox .zhinan .left{ width:220px; float:left; border:1px solid #ccc; border-top:none; }
+.zhinanbox .zhinan .left .link{}
+.zhinanbox .zhinan .left .link h2{ height:48px; border-left:3px solid #126ab4; line-height:48px; text-indent:20px; color:#4d4d4d; font-size:20px; border-top:1px solid #ccc; }
+.zhinanbox .zhinan .left .link .linka{ border-top:1px solid #ccc;}
+.zhinanbox .zhinan .left .link .linka a{ display:block; height:44px; line-height:10px; line-height:44px; font-size:14px; color:#444; text-indent:30px;}
+.zhinanbox .zhinan .left .link .linka a:hover{ background-color:#126ab4; color:#fff;}
+.zhinanbox .zhinan .left .link .linka a.current{ background-color:#126ab4; color:#fff;}
+.zhinanbox .zhinan .right{ width:900px; float:left; border:1px solid #ccc; margin-left:20px; padding:28px; }
+.zhinanbox .zhinan .right h2{ font-size:16px; line-height:30px; text-align:center; color:#333; font-weight:bold; }
+.zhinanbox .zhinan .right h6{ font-size:13px; line-height:28px; color:#444; height:28px; text-align:right; margin-bottom:30px;font-family:"宋体";}
+.zhinanbox .zhinan .right p{ font-size:13px; line-height:30px; color:#555; padding-left:50px;/*font-family:"宋体";*/}
+.zhinanbox .zhinan .right p strong{/*font-family:"宋体";*/}
+/****zhinanbox结束***/
+
+
+/**productbox***/
+.productbox{ width:1200px; margin:60px auto;}
+.productbox .top{ overflow:hidden; }
+.productbox .top .left { width:456px; float:left;}
+.productbox .top .left  .imga{ display:block; width:456px; height:446px; overflow:hidden;}
+.productbox .top .left  .imga img{ display:block; width:456px; height:446px; float:left;}
+.productbox .top .left  .bottom{ overflow:hidden; margin-top:6px;}
+.productbox .top .left  .bottom img{ display:block; width:104px; height:96px; cursor:pointer; float:left; margin:0 3px; border:2px solid #fff;  }
+.productbox .top .left  .bottom img.on{ border:2px solid #000;}
+.productbox .top .right{ width:560px; float:left; margin-left:50px;}
+.productbox .top .right h2{ height:30px; line-height:30px; font-size:16px; color:#444; border-bottom:1px dashed #ccc; padding:10px 0; margin-bottom:15px;}
+.productbox .top .right .tishi{ padding:10px 15px; padding-left:70px; background-image:url(../images/tishi_03.png); background-position:15px center; background-repeat:no-repeat; font-size:14px; line-height:30px; color:#444; border:1px dashed #f03030; }
+.productbox .top .right .zhong{ overflow:hidden; padding:10px 0; }
+.productbox .top .right .zhong p{ width:60px; float:left; line-height:30px; font-size:14px; color:#555;}
+.productbox .top .right .zhong>i{ width:300px; float:left; line-height:30px; font-size:14px; color:#555; display:block; }
+.productbox .top .right .zhong .xuan{ overflow:hidden; float:left;}
+.productbox .top .right .zhong .xuan label{ width:104px;float:left; margin-right:20px; cursor:pointer;}
+.productbox .top .right .zhong .xuan label span{ display:block; width:100px; height:28px; text-align:center; color:#555; line-height:28px; border:2px solid #ccc; font-size:13px; text-align:center;}
+.productbox .top .right .zhong .xuan label input{ display:none;}
+.productbox .top .right .zhong .xuan label i{ display:block; width:104px; height:30px; line-height:30px; margin-top:8px; color:#555; font-size:13px; text-align:center; }
+.productbox .top .right .zhong .xuan label.on span{ border:2px solid #126ab4; background-image:url(../images/cpxq_06.jpg); background-position:89px 16px; background-repeat:no-repeat;} 
+.productbox .top .right .zhong .xuan label.on i{ color:#ed0707;}
+.productbox .top .right .zhong .jisuan{ overflow:hidden; width:156px; margin:0 5px; float:left;}
+.productbox .top .right .zhong .jisuan span{ display:block; width:30px; height:28px; border:1px solid #ccc; font-size:24px; font-weight:bold; line-height:28px; text-align:center; color:#666; float:left; cursor:pointer;}
+.productbox .top .right .zhong .jisuan input{ display:block; width:80px;height:28px; border:1px solid #ccc; font-size:14px; line-height:28px; text-align:center; color:#666; float:left;border-left:none; border-right:none;  }
+.productbox .top .right .zhong .jisuan input.je{ border:1px solid #ccc;}
+.productbox .top .right .zhong .jisuan i{ display:block; float:left; line-height:30px; font-size:14px; color:#444; min-width:20px; margin-left:5px;}
+.productbox .top .right .zhong .cuxiao{ width:420px; float:left;}
+.productbox .top .right .zhong .cuxiao h6{ font-size:14px; line-height:30px; height:30px; color:#c40000; }
+.productbox .top .right .zhong .cuxiao .imga{ display:block; padding:5px; width:42px; height:48px; border-radius:4px; border:1px solid #ccc;}
+.productbox .top .right .zhong .cuxiao .imga img{ display:block; width:42px; height:48px;}
+.productbox .top .right .caozuo{ overflow:hidden; margin-top:30px;}
+.productbox .top .right .caozuo a{ display:block; width:180px; height:40px; margin-right:30px; float:left;}
+.productbox .top .right .caozuo a img{ display:block; width:180px; height:40px; }
+.productbox .top .right .zhong.br{ padding:20px 0; border-bottom:1px dashed #ccc;}
+.productbox .zhanshi{ margin:30px 0; margin-top:62px; border:1px solid #ccc; position:relative; }
+.productbox .zhanshi h2{ height:30px; line-height:30px; font-size:15px; color:#444; border-top:2px solid #ff0000;border-left:1px solid #ccc; border-right:1px solid #ccc; width:120px; background-image:url(../images/efer_26.jpg); position:absolute; top:-32px; left:-1px; text-align:center;}
+.productbox .zhanshi ul{ overflow:hidden; margin:20px 0;}
+.productbox .zhanshi ul li{ width:158px; float:left; margin:0 20px;}
+.productbox .zhanshi ul li .imga{ display:block; width:138px; height:138px; margin:0 auto; overflow:hidden; }
+.productbox .zhanshi ul li .imga img{ display:block; width:138px; height:138px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden;   }
+.productbox .zhanshi ul li .imga img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.productbox .zhanshi ul li .namea{ display:block; height:30px; line-height:30px; font-size:14px; color:#666; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.productbox .zhanshi ul li p{ font-size:14px; color:#ff2f2d; text-align:center; line-height:28px; height:28px; overflow:hidden; width:100%;}
+.productbox .zhanshi ul li .namea:hover{ color:#ed0707; }
+
+.productbox .cardbox{ margin:30px 0;}
+.productbox .cardbox .title{ overflow:hidden; border-bottom:1px solid #000;}
+.productbox .cardbox .title span{ display:block; float:left; width:130px; cursor:pointer; padding:4px 0; text-align:center; height:30px; line-height:30px; font-size:16px; color:#555; border-bottom:2px solid #fff; text-align:center;}
+.productbox .cardbox .title span i{ color:#28a7e1;}
+.productbox .cardbox .title span.current{ border-bottom:2px solid #000; color:#000;}
+.productbox .cardbox .qhcard{}
+.productbox .cardbox .card{ padding:20px; border:1px solid #ccc; display:none;}
+.productbox .cardbox .card>p{ font-size:14px; color:#565656; line-height:30px;}
+.productbox .cardbox .card .imgbox{ overflow:hidden; margin:30px auto; width:1090px;}
+.productbox .cardbox .card .imgbox img{ display:block; width:505px; height:340px; margin:20px; float:left;}
+.productbox .cardbox .card .tt{ overflow:hidden; height:48px; line-height:48px; border-bottom:1px solid #ccc; }
+.productbox .cardbox .card .tt span{ display:block; float:left; font-size:16px; color:#555; padding:0 13px;}
+.productbox .cardbox .w1{ width:450px;}
+.productbox .cardbox .w2{ width:200px;}
+.productbox .cardbox .w3{ width:200px;}
+.productbox .cardbox .w4{ width:200px;}
+.productbox .cardbox .tac{ text-align:center;}
+.productbox .cardbox .card .box{ overflow:hidden;}
+.productbox .cardbox .card .box ul{ padding:20px 0; border-bottom:1px solid #ccc; overflow:hidden;}
+.productbox .cardbox .card .box ul li{ float:left; overflow:hidden; padding:0 13px; }
+.productbox .cardbox .card .box ul li h6{ overflow:hidden; }
+.productbox .cardbox .card .box ul li h6 span{ width:72%; float:left; font-size:13px; line-height:20px; color:#555;}
+.productbox .cardbox .card .box ul li h6 i{ width:25%; float:right; font-size:13px; line-height:20px; color:#888; text-align:right;}
+.productbox .cardbox .card .box ul li .tip{ overflow:hidden; margin-top:10px;}
+.productbox .cardbox .card .box ul li .tip span{ display:block; float:left; font-size:12px; margin:0 5px; background-color:#eee; color:#666; height:20px; line-height:20px; padding:0 5px; }
+.productbox .cardbox .card .box ul li p{ line-height:30px; font-size:14px; color:#888; }
+.productbox .cardbox .card .box ul li p i{ color:#565656;}
+.productbox .cardbox .card .box ul li .star{ display:inline-block; width:12px; height:12px;margin:0 2px;}
+.productbox .cardbox .card .box ul li .star img{ display:block; width:12px; height:12px;}
+.productbox .zuijin{ }
+.productbox .zuijin h2{ height:30px; line-height:30px; width:130px; font-size:16px; color:#444; border-bottom:2px solid #000;text-align:center;}
+.productbox .zuijin ul{ overflow:hidden; padding:20px 0; border:1px solid #ccc;}
+.productbox .zuijin ul li{ width:158px; float:left; margin:0 20px;}
+.productbox .zuijin ul li .imga{ display:block; width:138px; height:138px; margin:0 auto; overflow:hidden; }
+.productbox .zuijin ul li .imga img{ display:block; width:138px; height:138px;-moz-transition:all 1s linear;-o-transition:all 1s linear;-ms-transition:all 1s linear;-webkit-transition:all 1s linear;transition:all 1s linear; overflow:hidden;  }
+.productbox .zuijin ul li .imga img:hover{-moz-transform:scale(1.1);-o-transform:scale(1.1);-ms-transform:scale(1.1);-webkit-transform:scale(1.1);transform:scale(1.1);}
+.productbox .zuijin ul li .namea{ display:block; height:30px; line-height:30px; font-size:14px; color:#666; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.productbox .zuijin ul li p{ font-size:14px; color:#ff2f2d; text-align:center; line-height:28px; height:28px; overflow:hidden; width:100%;}
+.productbox .zuijin ul li .namea:hover{ color:#ed0707; }
+
+
+
+
+
+
+
+
+
+
+
+/**productbox***/
+
+
+/***windowbox***/
+.tishibox{ position:fixed; left:0; top:0; background-image:url(../images/index_48.png); width:100%; height:100%; padding-top:250px; display:none; }
+.tishibox .tishi{width:500px; background-color:#fff; margin:0 auto; padding:20px; border-radius:10px;}
+.tishibox .tishi h3{ font-size:20px; color:#222; line-height:40px; text-align:center; margin-bottom:10px; }
+.tishibox .tishi p{ text-align:center; height:40px; line-height:40px; font-size:14px; color:#666; font-family:"宋体"; margin-bottom:20px }
+.tishibox .tishi p a{ color:#237dec; font-size:14px; margin:0 5px; font-family:"宋体"; }
+.tishibox .tishi .guanbi{ display:block; width:110px; line-height:30px; height:30px; margin:20px auto; color:#fff; text-align:center; border-radius:5px; background-color:#d62810; cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

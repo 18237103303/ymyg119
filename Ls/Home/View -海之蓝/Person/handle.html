@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol18.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<!--header-->
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="index.html"><img src="images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="">首页</a></li>
+            	<li><a href="">账号设置</a></li>
+            	<li><a href="">我是商家</a></li>
+            </ul>
+        </div>
+        
+        <div class="search">
+        	<form>
+            	<p><input type="text" value="输入产品名称" onFocus="javascript:this.value=''"><a href="">搜索</a></p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    	<include file="Public:personleft"/>       
+        <div class="main_r">
+        	<div class="shop">
+            	<h4>我来退货</h4>
+                <div class="text">
+				<volist name="orderlist" id="v">
+                    <div class="tab2">
+                    	<div class="tab2_bt">
+                            <p><input type="checkbox"></p>
+                            <p><span>订单号：</span>{$v.order_sn}</p>
+                            <p><span>下单时间：</span>{$v.add_time|date='Y-m-d H:i',###}</p>
+                        </div>
+                        <div class="tab2_text">
+                        	<TABLE>
+							<volist name="v.goods" id="vo">							
+                            	<tr>
+                                	<td><a href=""><img src="{$vo.goods_thumb}" alt="" title="{$vo.goods_name}"></a></td>
+                                    <td class="tab2_1"><span><a href="">{$vo.goods_name}</a> [交易快照]</span><br>
+									{$type}
+									</td>
+                                    <td class="tab2_2"><i>¥<php>echo $vo['goods_number']*$vo['market_price']; </php></i>
+									<br>共<span>{$vo.goods_number|default=0}</span>件</td>
+                                    <td class="tab2_3_3">{$v.postscript}</td>
+                                    <td class="tab2_4_4"><a href="{:U('Person/aggre',array('id'=>$v['order_id']))}">处理</a></td>
+                                </tr>
+								</volist>
+                            </TABLE>
+                        </div>
+                    </div>
+                </volist>
+    
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--main-->

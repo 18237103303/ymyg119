@@ -1,0 +1,24 @@
+[ 2015-11-04T10:40:39+08:00 ] ::1 /index.php/Home/User/center-daijin.html
+ERR: 非法操作:center-daijin
+
+[ 2015-11-04T10:41:21+08:00 ] ::1 /index.php/Home/User/center-send.html
+ERR: 非法操作:center-send
+
+[ 2015-11-04T10:45:28+08:00 ] ::1 /index.php/Home/Order/center-dingdan-fk-xq.html
+ERR: 非法操作:center-dingdan-fk-xq
+
+[ 2015-11-04T10:45:33+08:00 ] ::1 /index.php/Home/Order/center-dingdan-fk.html
+ERR: 非法操作:center-dingdan-fk
+
+[ 2015-11-04T10:48:30+08:00 ] ::1 /index.php/Home/Order/page-city.html
+ERR: 非法操作:page-city
+
+[ 2015-11-04T10:49:25+08:00 ] ::1 /index.php/Home/User/center-send.html
+ERR: 非法操作:center-send
+
+[ 2015-11-04T12:06:47+08:00 ] ::1 /index.php/Home/User/center-daijin.html
+ERR: 非法操作:center-daijin
+
+[ 2015-11-04T17:37:02+08:00 ] ::1 /
+ERR: Think\Model:getAllinfos方法不存在！
+

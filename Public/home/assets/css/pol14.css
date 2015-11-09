@@ -1,0 +1,46 @@
+/* CSS Document */
+
+/*main*/
+.main_r{ float:right;overflow:hidden;}
+			.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none;padding-bottom:100px; margin-bottom:200px;}
+			.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px;padding-left:15px; line-height:70px;}
+				.zh{ border:#dcdcdc 1px solid; line-height:38px;}
+				.zh span{ color:#797979; font-size:12px; padding:0 10px;}
+				.zh a{ color:#d41d05; font-size:12px; padding-left:5px;}
+				.zh img{ width:11px; height:10px;}
+					.bt{width:956px;color:#333333; border:#b0b0b0 1px solid;font-size:14px; line-height:42px; margin-top:20px; display:inline-block; background-color:#f3f3f3;}
+					.bt table td{width:200px; text-align:center;}
+					.nr{width:956px;color:#333333;font-size:14px; line-height:70px; display:inline-block; }
+					.nr table td{ color:#333333; font-size:14px; line-height:70px; width:200px; text-align:center;}
+					.nr span>a{ padding:0 5px; color:#50b3ff;}
+					.nr span{ color:#c40000;}
+					.nr span a:hover{ color:#c40000;}
+						.nr_1{ border:#e8e8e8 1px solid; background-color:#f3f3f3;}
+				.text p{ padding-top:50px;}
+				.text p a{ color:#FFF; font-size:16px; padding:10px 20px; background-color:#c40000; text-align:center; margin-left:390px;}
+/*main*/
+
+
+
+
+
+
+#lean_overlay { position: fixed;z-index:100; top: 0px;left: 0px;height:100%;width:100%;background:#000; display: none;}
+.tan{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; height:260px; display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan p{ color:#000000; font-size:20px; text-align:center;}
+.tan>a{ font-size:14px; color:#FFF; margin:0 20px;}
+.tan_a1{ background-color:#d62810; padding:10px 30px;}
+.tan_a2{ background-color:#aaaaaa; padding:10px 30px;}
+.tan .dw{ position:absolute; top:-15px; right:10px; cursor:pointer;}
+.tan img{ width:13px; height:13px;}
+
+
+.tan1{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; height:260px; display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan1 span{ color:#000000; font-size:14px; padding:10px 0 0 10px; display:inline-block; margin-bottom:20px;}
+.tan1 p{ color:#000000; font-size:14px; padding:20px 0 0 10px; padding-left:100px;}
+.tan1 p label{ line-height:39px;float:left; width:100px; text-align:right; margin-right:10px; font-size:14px; color:#333333;}
+.tan1 input{ background-color:#e8e8e8; width:236px; height:39px; font-size:14px; color:#323232px; line-height:39px; padding-left:5px; border-radius:3px;border:none; border:1px solid #999;}
+.tan1 a{ font-size:14px; color:#FFF;background-color:#d62810; padding:10px 30px;display:block; margin:20px auto; width:30px;}
+.tan1 .dw{ position:absolute; top:5px; right:10px; cursor:pointer;}
+.tan1 img{ width:13px; height:13px;}
+

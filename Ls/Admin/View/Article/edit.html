@@ -1,0 +1,93 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">文章修改</h3>
+                <div class="panel-options">
+                    <a href="#" data-toggle="panel">
+                        <span class="collapse-icon">&ndash;</span>
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" action='' method=''>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="field-1">文章标题</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="biaoti"  value="{$data.0.arc_title}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group-separator"></div>
+                    <div class="form-group has-error">
+                        <label class="col-sm-2 control-label" for="field-6">文章分类</label>
+
+                        <div class="col-sm-10">
+                            {$str}
+                        </div>
+                    </div>
+                    <div class="form-group-separator"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="field-6">文章内容</label>
+                        <js href="__PUBLIC__/js/jquery-2.0.2.js" />
+                        <js href="__PUBLIC__/ueditor/ueditor.config.js" />    
+                        <js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+                        <script>
+                            $(function () {
+                                var ue = UE.getEditor('goods_desc');
+                            })
+                        </script>
+                        <div class="col-sm-10">
+                            <textarea  id="goods_desc" name="content">{$data.0.content}
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-separator"></div>
+                    <div class="form-group">
+                        <a  class="btn btn-gray btn-single" href="{:U('Article/article')}">返回</a>
+                        <button type="button" class="btn btn-info btn-single pull-right" onclick="edit({$data.0.arc_id})">修改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Imported styles on this page -->
+<script src="__PUBLIC__/admin/assets/js/bootbox/bootbox.min.js"></script>
+<script src="__PUBLIC__/admin/assets/js/ckeditor/ckeditor.js"></script>
+<script src="__PUBLIC__/admin/assets/js/ckeditor/adapters/jquery.js"></script>
+<script>
+                                                                    function edit(id) {
+                                                                        var type_id = $('#sboxit-2').val();
+                                                                        if (type_id == '') {
+                                                                            bootbox.alert("文章分类不能为空");
+                                                                            return false;
+                                                                        }
+                                                                        var arc_title = $('#biaoti').val();
+                                                                        var keywords = $('#keyword').val();
+                                                                        var description = $('#description').val();
+                                                                        var content =UE.getEditor('goods_desc').getContent();
+                                                                        var sort = $('#sort').val();
+                                                                        $.ajax({
+                                                                            'type': 'post',
+                                                                            'url': "{:U('Article/editarticle')}",
+                                                                            'data': 'type_id=' + type_id + '&arc_title=' + arc_title + '&keywords=' + keywords + '&description=' + description + '&content=' + content + '&sort=' + sort + '&arc_id=' + id,
+                                                                            'dataType': 'json',
+                                                                            'success': function (dat) {
+                                                                                if (dat.status == 1) {
+                                                                                    alert('修改成功');
+                                                                                    window.location.href="{:U('Article/article')}"
+                                                                                } else {
+                                                                                    alert('修改失败');
+                                                                                }
+                                                                            }
+                                                                        })
+                                                                    }
+</script>

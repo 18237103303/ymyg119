@@ -1,0 +1,55 @@
+<link href="__PUBLIC__/home/assets/css/zhuce.css" rel="stylesheet" type="text/css">
+<div class="ssbox">
+  <div class="logo"><a href="{:U('Index/index')}"><img src="__PUBLIC__/home/assets/images/index_11.png" alt="海之澜"></a></div>
+  <div class="weizhi">
+    <div class="dwf"><img src="__PUBLIC__/home/assets/images/index_14.png" alt=""></div>
+    <div class="wzbox">
+      <div class="dlwzbox">
+          <a href="/Home/Cript/index"><p class="dlwz"><?php echo session('Dz')?:'新乡市';?></p></a>
+      </div>
+     <p class="sswz">请选择地址</p>
+    </div>
+  </div>
+  <div class="search">
+    <div class="zbkbox">
+    	<div class="qhbox">
+        	<ul class="qh">
+            	<li>产品</li>
+                <li>店铺</li>
+            </ul>
+        </div>
+         <script>
+		 $(".qhbox li").eq(0).addClass("on1");
+          $(function(){
+	       var n=0;
+           $(".qhbox li").click(function(){
+  	       n=$(this).index();
+ 	       $(".qhbox li").removeClass("on1");
+  	       $(this).addClass("on1");
+           })
+           })
+        </script>
+     <div class="nr">
+      <form action="{:U('Good/selgoods')}" method="post">
+        <div class="sskbox">
+          <input type="text" name="goods_name"  class="srkbox" placeholder="输入商品名称" required>
+         <!--  <div class="ssbtn"><a></a></div> -->
+        </div>
+        <button class="btn">搜索</button>
+      </form>
+      <form action="{:U('Good/search')}" method="post">
+        <div class="sskbox">
+          <input type="text" placeholder="输入店铺名称" class="srkbox" name="shopname" required>
+          <!-- <div class="ssbtn"><a></a></div> -->
+        </div>
+        <button class="btn">搜索</button>
+      </form>
+      </div> 
+    </div>
+    <script>
+      	jQuery(".zbkbox").slide({mainCell:".nr",titCell:".qhbox li",trigger:"click"});
+	</script>
+   
+  </div>
+</div>
+<!--header-->

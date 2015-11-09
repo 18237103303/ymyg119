@@ -1,0 +1,108 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol18.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+<script>
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	});
+</script>
+
+<!--header-->
+
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="index.html"><img src="images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="">首页</a></li>
+            	<li><a href="">账号设置</a></li>
+            	<li><a href="">我是商家</a></li>
+            </ul>
+        </div>
+        
+        <div class="search">
+        	<form>
+            	<p><input type="text" value="输入产品名称" onFocus="javascript:this.value=''"><a href="">搜索</a></p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<!--header-->
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    	<include file="Public:personleft"/>
+        <div class="main_r">
+        	<div class="shop">
+            	<h4>我来发货</h4>
+                <div class="text">
+				<volist name="orderlist" id="v">
+                    <div class="tab2">
+                    	<div class="tab2_bt">
+                            <p><input type="checkbox"></p>
+                            <p><span>订单号：</span>{$v.order_sn}</p>
+                            <p><span>下单时间：</span>{$v.add_time|date='Y-m-d H:i',###}</p>
+                        </div>
+                        <div class="tab2_text">
+                        	<TABLE>
+							<volist name="v.goods" id="vo">
+                            	<tr>
+                                	<td><a href=""><img src="{$vo.goods_thumb}" alt="" title="{$vo.goods_name}"></a></td>
+                                    <td class="tab2_1"><span><a href="">{$vo.goods_name}</a> [交易快照]</span>
+									<br>{$type}
+									</td>
+                                    <td class="tab2_2"><i>¥<php>echo $v['goods_number']*$v['market_price']; </php></i><br>共<span>{$v.goods_number|default=0}</span>件</td>
+                                    <td class="tab2_3">
+									<if condition="$v['shipping_status'] eq 0">等待商家发货</if>
+									</td>
+                                    <td class="tab2_4"><a href="#signup1" rel="leanModal">立即发货</a>
+                                        <div id="signup1" class="tan1">
+                                        	<h5>立即发货</h5>
+                                            <p>输入送货员编号：</p>
+                                            <form>
+                                            	<input type="text" id="shipping">
+                                            </form>
+											<button class="tan_a1" onclick="shipping({$v.order_id})" style=" width: 100px;border:none;">确定</button>
+                                            <!-- <a  href="" onclick="shipping({$v.order_id})">确定</a> -->
+                                            <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                        </div>
+                                    </td>
+                                </tr>
+								</volist>
+                            </TABLE>
+                        </div>
+                    </div>
+                  </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--main-->
+<script>
+function shipping(v){
+var orderid=v;
+var shippingid=$('#shipping').val();
+ $.ajax({
+		    		  type:"post",
+		    		  url:"{:U('Person/shipping')}",
+		    		  data:{order_id:orderid,shippingid:shippingid},
+		    		  dataType: 'json',
+		    		  //beforeSend:function(){$('#myphone').html('[查询中...]')},
+		    		  success:function(msg){
+		    			  if(msg.status==1){
+						 window.location.href="{:U('Person/sendgoods')}";
+						  }else{
+						  alert('发货失败！');
+						  }
+		    		  }
+		    	  }); 
+}
+</script>

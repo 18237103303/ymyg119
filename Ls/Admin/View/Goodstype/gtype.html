@@ -1,0 +1,197 @@
+<!-- Removing search and results count filter -->
+<script>  
+  function fenlei_delmore(obj,cName){
+	  var checkall = document.getElementsByName(cName);
+	  for(var $i=0;$i<checkall.length;$i++){
+			checkall[$i].checked = obj.checked;
+		  }
+}
+  </script>
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">商品类型-- Goods Type</div>
+						<div class="panel-body">
+							<div class="col-sm-7">
+							<button class="btn btn-secondary" id="add_cate">新建商品类型</button>
+							</div>
+							
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+				<form name="myform" action="{:U('Goods/gtypedeleteall')}" method="post">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th class="no-sorting">
+								<input type="checkbox"  value="" name="cName[]" onclick="fenlei_delmore(this,'cName[]')">全选
+								</th>
+								<th>商品类型名</th>
+								<th>属性数</th>								
+								<th>操作</th>
+								
+							</tr>
+						</thead>
+						
+						<tbody class="middle-align">
+						<volist name="list" id="list">
+							<tr>
+								<td>
+								<input type="checkbox"  name="cName[]" value="{$list['type_id']}">
+								</td>
+								<td>{$list.type_name}</td>
+								<php>
+								$where['cat_id']=$list['type_id'];
+								$resultcount=M('goods_attribute')->where($where)->select();
+								$count=count($resultcount);
+								</php>
+								<td>{$count}</td>
+								
+								<td>
+                                                                
+									<a href="#" class="btn btn-secondary btn-sm btn-icon icon-left" onclick="edit({$list.type_id},this)">
+										编辑
+									</a>
+									
+									<a href="{:U('Goodstype/gtypedelete')}?id={$list.type_id}" class="btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm('确定要删除吗？');">
+										删除
+									</a>
+                                                               
+									<a href="{:U('Goodstype/gtypeatt')}?id={$list.type_id}" class="btn btn-warning btn-sm btn-icon icon-left">
+										属性列表
+									</a> 
+								</td>
+							</tr>
+							</volist>	
+						</tbody>
+					</table>
+					<if condition="quanx('adattr',2)">
+					 <button class="btn btn-secondary" data-original-title="点击确定将删除您所选内容" title="" data-placement="bottom" data-toggle="tooltip" type="submit">批量删除</button>
+					</if>
+					</form> 
+					{$page}
+					
+				</div>
+			</div>
+			
+		<!-- 弹出层 -->
+		<script src="__PUBLIC__/admin/assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script>
+
+$("#danger_msg_1").click(function(ev)
+							{
+								ev.preventDefault();
+								
+								var opts = {
+									"closeButton": true,
+									"debug": false,
+									"positionClass": "toast-top-full-width",
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut"
+								};
+								
+								toastr.error("title.", "content", opts);
+							});
+	
+//添加商品类型
+$('#add_cate').click(function(){
+    bootbox.dialog({
+            message: '<input type="text" placeholder="商品类型名称" id="cate_input"/> <span id="w"></span> ',
+            title: "商品类型添加",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+					if($('#cate_input').val()==""){
+							 //$('#w').html('类型不能为空！');
+							 bootbox.alert('类型不能为空！');
+							  return;							  
+							  };
+                        $.ajax({
+                            'type':'post',
+                            'data':'name='+$('#cate_input').val()+'',
+                            'dataType':"json",
+                            'url':"{:U('Goodstype/gtypedoadd')}",																					
+                            'success':function(dat){
+                              // var data = eval('(' + dat + ')');
+							  
+                                if(dat.status==1){
+                                    //bootbox.alert('添加成功');
+                                    var url="{:U('Goodstype/gtype')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('添加失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+})
+						
+//编辑商品类型
+function edit(id,l){
+var name=$(l).parent().prev('td').prev('td').html();
+    bootbox.dialog({
+            message: '<input type="text" placeholder="商品类型名称" id="c_input"  value="'+name+'"/>',
+            title: "商品类型修改",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        $.ajax({
+                            'type':'post',
+                            'data':'type_name='+$('#c_input').val()+'&id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Goodstype/gtypeupdate')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    //bootbox.alert('编辑成功');
+                                    var url="{:U('Goodstype/gtype')}";
+                                    window.location.href=url;
+                                }else{
+                                    bootbox.alert('编辑失败');
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+}							
+							
+</script>
+			
+		
+			
+				

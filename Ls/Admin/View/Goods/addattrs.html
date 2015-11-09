@@ -1,0 +1,159 @@
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">添加商品属性 -- Goods--add</div>
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <a class="col-sm-2 btn btn-gray">添加商品信息</a>
+                    <a class="col-sm-2 btn btn-turquoise">添加商品属性库存</a>
+                    <a class="col-sm-2 btn btn-gray">添加商品相册</a>
+                    <a class="col-sm-2 btn btn-gray">添加关联商品</a>
+                </div>
+                <div class="form-horizontal">
+                    <div class="qiehuan">
+                        <div class="panel-body">					
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-8"></div>
+                                    <label class="col-sm-4 control-label" for="field-1">商品类型</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select id="type_id" name="type_id" type="text" class="form-control msg" onchange="getmsg(this[selectedIndex].value, this);">
+                                        <option>无属性请点击这里</option>
+                                        <volist name="type" id="vo">
+                                            <option  value="{$vo.type_id}">{$vo.type_name}</option>
+                                        </volist>	
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                
+                            </div>
+                            <div class="col-sm-4" style='display:none' id='xiayibu'>
+                                <a class="btn btn-info" href="{:U('Goods/addimage')}" >下一步</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#type_id").val("");
+    })
+    function  getmsg(id, v) {
+        $.ajax({
+//接受数据的页面
+            url: "{:U('Goods/getmsg')}",
+//传值方式
+            type: 'POST',
+//数据类型
+            dataType: 'json',
+//发送的数据
+            data: {
+                id: $('.msg').val()
+            },
+            beforeSend: function () {
+                // 禁用按钮防止重复提交
+                $("#submit").attr({disabled: "disabled"});
+            },
+            success: function (a) {
+                $('#tanchuang-contenttent').html(a);
+                jQuery('#modal-143').modal('show', {backdrop: 'static'});
+                $(v).val('');
+            }
+        });
+    }
+
+
+
+</script>
+<!--AJAX添加属性值-->
+<script type="text/javascript">
+
+
+    function getSubmits()//提交表单
+    {
+
+        var num = $("#modal-143").find(":input").length;
+        num = num / 2 - 2;
+
+        for (var i = 0; i < num; i++) {
+            var at_va = $('#attr_value_' + i).val();
+            //正则匹配
+            var regg = /-/g;
+            if (regg.test(at_va)) {
+                alert("输入的值不能有‘-’");
+                $('#attr_value_' + i).val('');
+                $('#attr_value_' + i).focus();
+                return;
+            }
+        }
+
+        var attr_id = '';
+        var attr_value = '';
+        var type_id = $("#type_id_hidd").val();
+        //alert(type_id);return ;
+        var goods_count = $("#goods_count").val();
+        var market_price = $("#market_price").val();
+        var shop_price = $("#shop_price").val();
+        var reg = /^\d+$/;
+        var reg1 = /\d*\.?\d{1,2}/;
+
+        if (goods_count == "") {
+            alert("商品库存不能为空，请填写数字");
+            $("#goods_count").focus()
+            return false;
+        } else if (!reg.test(goods_count)) {
+            alert("商品库存非法");
+            $("#goods_count").focus()
+            return false;
+        } else if (market_price == "") {
+            alert("商品售价不能为空，请填写");
+            $("#market_price").focus()
+            return false;
+        } else if (!reg1.test(market_price)) {
+            alert("商品价格非法");
+            $("#market_price").focus()
+            return false;
+        } else if (shop_price == "") {
+            alert("商品进价不能为空，请填写");
+            $("#shop_price").focus()
+            return false;
+        } else if (!reg1.test(shop_price)) {
+            alert("商品进价非法");
+            $("#shop_price").focus()
+            return false;
+        }
+
+        for (var i = 0; i < num; i++) {
+            attr_id += $('#attr_id_' + i).val() + '-';
+            attr_value += $('#attr_value_' + i).val() + '-';
+        }
+
+        $.ajax({
+            type: "post",
+            url: "{:U('Goods/addgattr')}",
+            data: "attr_id=" + attr_id + "&attr_value=" + attr_value + "&goods_count=" + goods_count + "&market_price=" + market_price + "&shop_price=" + shop_price + "&type_id=" + type_id,
+            dataType: 'json',
+            success: function (msg) {
+                if (msg.info == 1) {
+                    alert("添加成功");
+                    $("#type_id").val("");
+                    $("#xiayibu").css({display:'block'});
+                } else {
+                    alert(msg.msg)
+                }
+            }
+        });
+    }
+</script>

@@ -1,0 +1,66 @@
+<include file="User:center" />
+<div class="right">
+    	<div class="points">
+        	<ul>
+            	<li><span>可用积分</span><p><i>12345</i></p><a href="{:U('User/Integral')}">我的积分</a></li>
+                <li><span>收藏</span><p><i>123</i>商品</p><a href="{:U('User/Collect')}">查看收藏</a></li>
+                <li><span>代金券</span><p><i>5</i>张</p><a href="{:U('User/Cooper')}">查看代金券</a></li>
+            </ul>
+        </div>
+        <div class="xinxibox">
+        	<h2>个人信息&nbsp;>&nbsp;头像上传</h2>
+            <div class="shangchuan">
+                 <div id="localImag"><img id="preview" src="__PUBLIC__/home/images/index2_29.jpg" style="display: block; width: 100px; height: 100px;"></div>
+                <input type="file" name="file" id="doc" onchange="javascript:setImagePreview();">
+                <h6>仅支持JPG、GIF、PNG格式，且文件小于5M</h6>
+               	<input type="button" value="保存">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Personal结束-->
+<script type="text/javascript">
+//下面用于图片上传预览功能
+function setImagePreview(avalue) {
+var docObj=document.getElementById("doc");
+
+var imgObjPreview=document.getElementById("preview");
+if(docObj.files &&docObj.files[0])
+{
+//火狐下，直接设img属性
+imgObjPreview.style.display = 'block';
+imgObjPreview.style.width = '150px';
+imgObjPreview.style.height = '180px';
+//imgObjPreview.src = docObj.files[0].getAsDataURL();
+
+//火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+}
+else
+{
+//IE下，使用滤镜
+docObj.select();
+var imgSrc = document.selection.createRange().text;
+var localImagId = document.getElementById("localImag");
+//必须设置初始大小
+localImagId.style.width = "150px";
+localImagId.style.height = "180px";
+//图片异常的捕捉，防止用户修改后缀来伪造图片
+try{
+localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+}
+catch(e)
+{
+alert("您上传的图片格式不正确，请重新选择!");
+return false;
+}
+imgObjPreview.style.display = 'none';
+document.selection.empty();
+}
+return true;
+}
+
+</script>
+	

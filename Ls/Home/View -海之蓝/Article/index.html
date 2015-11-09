@@ -1,0 +1,47 @@
+<link href="__PUBLIC__/home/assets/css/index.css" rel="stylesheet" type="text/css">
+
+<include file="Public:dq" />
+<!--header-->
+<include file="Public:nav" />
+<script>
+    
+    $(".qbflbox").css({display:'none'});
+</script>
+<!--指南开始-->
+  <div class="zhinan">
+    <div class="zhinan_left">
+        <volist name="arr" id="vo">
+            <dl>
+               <dt>{$key}</dt> 
+               <volist name="vo" id='k'>
+                   <dd><a  attr="{$key}">{$k}</a></dd>
+                   <!--<dd><a  onclick="art(this,{$key})" attr="{$key}">{$k}</a></dd>-->
+               </volist>
+            </dl>
+        </volist>
+    </div>
+    <div class="zhinan_right">
+       
+            <h2>{$adata.arc_title}</h2>
+            <span>{$adata.pubtime}</span>
+            <br/>
+            <div>{$adata.content}</div>
+        
+        
+        
+        
+    </div>
+  </div>
+<script>
+    $(function(){
+        var index={$index};
+        $("div.zhinan_left").find('a').eq(index).addClass('cur');
+        
+    });
+  
+    $(".zhinan_left a").click(function(){
+        var index=$(".zhinan_left a").index(this);
+        var key=$(".zhinan_left a").eq(index).attr('attr');
+        window.location.href="{:U('Article/index')}?name="+key+"&index="+index;
+    })
+    </script>

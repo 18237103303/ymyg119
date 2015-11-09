@@ -1,0 +1,111 @@
+/* CSS Document */
+
+.main_r{ float:right;overflow:hidden;}
+			.shop{  width:971px; border-top:none; min-height:700px;}
+			.shop h4{border-bottom:#c40000 2px solid; padding:20px 0 10px 15px;}
+				.bt{ overflow:hidden;}
+					.bt_top p{ overflow:hidden; background:url(../images/fkbt1.jpg) no-repeat center center; padding:20px 0; color:#333333;}
+					.bt_top i{ color:#333333; font-size:12px; display:inline-block; line-height:28px; font-style:normal; padding:0 72px;}
+					.bt_top span{ color:#808080; font-size:12px; line-height:24px; padding-left:40px;}
+					.bt_top .icon2{ color:#FFF;}
+					
+					.text{ border:#c40000 1px solid; padding:20px;  margin-top:20px; position:relative;}
+					.text h2{ color:#333333; font-size:16px; font-weight:bold;}
+					.text p{ color:#808080; font-size:12px; padding:20px 0; background:url(../images/pol_icon11.jpg) no-repeat 56px center;}
+					.text span{ color:#333333; padding-left:30px; padding-right:5px;}
+					.text i{ font-style:normal; color:#d41d05; padding:0 2px;}
+					.text .dw{ position:absolute; top:-18px; left:29%;}
+						.text1{ color:#FFF; font-size:14px; padding:8px 20px; background-color:#c40000;}
+						.text2{ color:#0ab1ca; font-size:12px; padding-top:10px; padding-left:10px;}
+						.text2:hover{ color:#c40000;}
+						
+					.list{ border:#e5e5e5 1px solid; margin:20px 0; padding:20px; border-top:#c40000 1px solid;}
+					.list h4{  width:400px;}
+						.list_top{ font-size:12px;}
+						.list_top p{ color:#808080;}
+						.list_top span{ color:#333333;}
+						
+						.xinxi{ font-size:12px; line-height:30px; padding:20px 0;}
+						.xinxi span{ width:80px; display:inline-block;color:#808080;}
+						.xinxi p{ color:#333333; padding:0 10px;}
+						
+				.nr{ overflow:hidden; width:1000px;}
+					.nr_bt span{ display:inline-block; color:#8b8b8b; font-size:12px; line-height:30px;}
+						.top1{ padding:0 140px;}
+						.top2{ padding:0 50px;}
+						.top3{ padding:0 30px;}
+						.top4{ padding:0 75px;}
+						.top5{ padding:0 50px;}
+						
+						.nr_text{ padding:10px 20px; margin-right:20px;}
+						.nr_text img{ width:80px; height:80px;}
+						.nr_text .tab2_1{ font-size:12px; color:#8d8d8d;width:180px;  padding:0 20px; border-right:1px solid #e5e5e5;}
+						.nr_text .tab2_1 span{color:#444444; display:block;}
+						.nr_text .tab2_1 span a:hover{ color:#c40000;}
+						.nr_text .tab2_2{ font-size:12px;color:#3a3a3a;width:70px;  padding:0 20px;border-right:1px solid #e5e5e5;}
+						.nr_text .tab2_3{ color:#343434; font-size:14px; padding:30px 20px; width:200px; display:inline-block; text-align:center;border-right:1px solid #e5e5e5;}
+							.t1{ color:#8b8b8b; font-size:12px; width:80px; text-align:center; padding:10px 0;}
+							.t2{ color:#000000; font-size:12px;width:80px; text-align:center;padding:10px 0;}
+						.nr_text .tab2_4{ color:#333333; font-size:14px; text-align:center;padding:5px 40px; margin:0 20px;border-right:1px solid #e5e5e5;}
+						.nr_text .tab2_5{ color:#333333; font-size:14px; text-align:center;padding:5px 40px; margin:0 20px;}
+						
+				.fk{ overflow:hidden;}
+					.fk_l{ float:left; overflow:hidden;}
+					.fk_l p{ color:#333333; font-size:12px; line-height:24px;}
+					.fk_l span{ color:#d62810; font-size:18px; line-height:26px;}
+					.fk_l i{ color:#333333; font-size:14px; font-style:normal; line-height:26px;}
+					
+					.fk_r{ float:right; overflow:hidden;}
+					.fk_r p{ color:#333333; font-size:12px; padding-bottom:30px;}
+					.fk_r a{ display:inline-block;color:#FFF; font-size:14px; background-color:#d41d05; padding:10px 20px; overflow:hidden; margin-right:20px;}
+
+
+
+/*pol_5_xq_1.html  css*/
+					.bt_top1 p{ overflow:hidden; background:url(../images/fkbt1_1.jpg) no-repeat center center; padding:20px 0; color:#333333;}
+					.bt_top1 i{ color:#333333; font-size:12px; display:inline-block; line-height:28px; font-style:normal; padding:0 72px;}
+					.bt_top1 span{ color:#808080; font-size:12px; line-height:24px; padding-left:40px;}
+					.bt_top1 .icon2{ color:#FFF;}
+					.text3{ border:#c40000 1px solid; padding:20px;  margin-top:20px; position:relative;}
+					.text3 h2{ color:#333333; font-size:16px; font-weight:bold;}
+					.text3 p{ color:#808080; font-size:12px; padding:20px 0;}
+					.text3 .dw{ position:absolute; top:-18px; left:49%;}
+
+/*pol_5_xq_1.html  css*/
+
+
+
+
+
+/*pol_5_xq_2.html  css*/
+					.bt_top2 p{ overflow:hidden; background:url(../images/fkbt1_2.jpg) no-repeat center center; padding:20px 0; color:#333333;}
+					.bt_top2 i{ color:#333333; font-size:12px; display:inline-block; line-height:28px; font-style:normal; padding:0 72px;}
+					.bt_top2 span{ color:#808080; font-size:12px; line-height:24px; padding-left:40px;}
+					.bt_top2 .icon2{ color:#FFF;}
+					.text4{ border:#c40000 1px solid; padding:20px;  margin-top:20px; position:relative;}
+					.text4 h2{ color:#333333; font-size:16px; font-weight:bold;}
+					.text4 p{ color:#808080; font-size:12px; padding:20px 0;}
+					.text4 .dw{ position:absolute; top:-18px; left:70%;}
+					.text4 .img1{ width:21px; height:21px;}
+
+/*pol_5_xq_2.html  css*/
+
+
+
+/*pol_5_xq_2.html  css*/
+					.bt_top3 p{ overflow:hidden; background:url(../images/fkbt1_4.jpg) no-repeat center center; padding:20px 0; color:#333333;}
+					.bt_top3 i{ color:#333333; font-size:12px; display:inline-block; line-height:28px; font-style:normal; padding:0 72px;}
+					.bt_top3 span{ color:#808080; font-size:12px; line-height:24px; padding-left:40px;}
+					.bt_top3 .icon2{ color:#FFF;}
+					.text5{ border:#c40000 1px solid; padding:20px;  margin-top:20px; position:relative;}
+					.text5 h2{ color:#333333; font-size:16px; font-weight:bold;}
+					.text5 p{ color:#808080; font-size:12px; padding:20px 0;}
+					.text5 .text1_1{ color:#333; font-size:14px; padding:8px 30px; background-color:#FFF; border:#e5e5e5 1px solid;}
+					.text5 .text1_1:hover{ color:#FFF;background-color:#c40000; border:#c40000 1px solid;}
+					.text5 .dw{ position:absolute; top:-18px; left:89%;}
+					.text5 .img1{ width:21px; height:21px;}
+
+/*pol_5_xq_2.html  css*/
+
+
+

@@ -1,0 +1,80 @@
+<div class='row'>
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				添加品牌 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form role="form" class="form-horizontal" action="{:U('Brand/add')}" method='post' enctype="multipart/form-data">
+                                    <div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">选择类型</label>
+						<div class="col-sm-10">
+                                                    <select class="form-control" id="field-1" name='group_id' required>
+                                                        <option value="">请选择</option>
+                                                        <option value="1">家居</option>
+                                                        <option value='2'>食品</option>
+                                                        <option value='3'>服装</option>
+                                                        <option value='4'>旅游</option>
+                                                        <option value='5'>娱乐</option>
+                                                        <option value='6'>美妆</option>
+                                                        <option value='7'>家电</option>
+                                                        <option value='8'>数码</option>
+                                                        <option value='9'>交通工具</option>
+                                                    </select>
+						</div>
+					</div>
+                                    <div class="form-group-separator"></div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-6">品牌名称</label>
+						<div class="col-sm-10">
+							<input name='brand_name' type="text" class="form-control" id="field-1" required >
+						</div>
+					</div>
+                                    <div class="form-group-separator"></div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-4">品牌logo</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" id="field-4" name='brand_logo'>
+						</div>
+					</div>
+					<!--无刷新上传-->
+					<div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-5">品牌简介</label>
+							
+							<div class="col-sm-10">
+								<textarea class="form-control" cols="5" id="field-5" name="brand_desc"></textarea>
+							</div>
+						</div>
+					<div class="form-group-separator"></div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">品牌官网网址</label>
+						<div class="col-sm-10">
+							<input name='site_url' type="text" class="form-control" id="field-1" placeholder="http://www.****.com " required>
+						</div>
+					</div>	
+					<div class="form-group-separator"></div>	
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">排序</label>
+						<div class="col-sm-10">
+							<input name='sort' type="text" class="form-control" id="field-1" required>
+						</div>
+					</div>	
+					<div class="form-group-separator"></div>
+					<div class="form-group">
+						<button type="reset" class="btn btn-gray btn-single">取消</button>
+						<button type="submit" class="btn btn-info btn-single pull-right">新增</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	
+	

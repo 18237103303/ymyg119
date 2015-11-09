@@ -1,0 +1,43 @@
+/* CSS Document */
+
+.main_r{ float:right;overflow:hidden;}
+	.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; min-height:700px;}
+		.h4_q h4{ background:url(../images/pol_icon4.jpg) no-repeat left center;padding-left:15px; line-height:70px; border-bottom:#c40000 2px solid; width:120px;}
+		.h4_q{ border-bottom:#e5e5e5 1px solid; overflow:hidden;}
+		.dianpu{ overflow:hidden;}
+			.dianpu_t{ overflow:hidden; border-bottom:#c40000 2px solid; padding-top:50px;}
+				.dp_l{ overflow:hidden; float:left;}
+				.dp_l p{ color:#c40000; font-size:16px; line-height:36px;}
+				.dp_r{ float:right; overflow:hidden; padding-top:10px;}
+				.dp_r span{ color:#999999; font-size:16px; padding:0 5px;}
+				.dp_r a{ background:url(../images/icon5.png) no-repeat left center;color:#999999; font-size:16px; padding-left:20px; margin:0 10px;}
+			.dp_b{ overflow:hidden;}
+			.dp_b ul{ overflow:hidden; width:980px;margin-top:15px;}
+			.dp_b ul li{ float:left; padding:10px 10px !important; border:1px solid #ccc; width:202px;margin-right:15px; overflow: hidden;margin-bottom: 10px;}
+				.zuo{ float:left; overflow:hidden;}
+				.zuo .zuo_l{ float:left; padding-top:13px;margin-right:15px;}
+				.zuo .zuo_r{ float:left;}
+				.zuo .zuo_r img{ width:77px; height:44px; padding-right:10px;}
+				.you{ float:left; overflow:hidden;}
+				.you p{ color:#0d0d0d; font-size:14px; padding-bottom:5px; width:86px; overflow: hidden; height:16px;}
+				
+				
+			.dp_b dl{float:left; position:relative; margin:20px 18px; border:#e8e8e8 1px solid;}
+			.dp_b dl:hover{border:#c40000 1px solid; transition:all 0.3s;}
+			.dp_b dl dt img{ width:173px; height:192px;}		
+			.dp_b dl dd a{ color:#808080; font-size:12px; line-height:18px; width:163px; display:block;padding:0 5px;}	
+			.dp_b dl dd p{ color:#ff5151; font-size:14px; font-weight:bold;}
+			.dp_b .a11{ position:absolute; bottom:5px; right:5px;}
+			.dp_b .a12{position:absolute; cursor:pointer;top:5px;right:5px;}
+			.dp_b .a12 input{ display:block; width:12px; height:12px;}
+				
+				
+#lean_overlay { position: fixed;z-index:100; top: 0px;left: 0px;height:100%;width:100%;background:#000; display: none;}
+
+.tan1{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; overflow:hidden; padding-bottom:40px;display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan1 p{ color:#0d0d0d; font-size:18px;  text-align:center; padding:50px;margin-bottom:10px;}
+.tan1 a{ color:#FFF; padding:10px 40px; background-color:#c40000; display:block; margin:0 auto; width:34px; background-image:none;}
+.tan1 .dw{ position:absolute; top:5px; right:10px; cursor:pointer;}
+.tan1 img{ width:13px; height:13px;}
+
+

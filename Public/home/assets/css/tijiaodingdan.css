@@ -1,0 +1,246 @@
+@charset "utf-8";
+.navbox{
+	overflow:hidden;}
+.flbox{
+	float:left;
+	width:232px;
+	height:40px;
+	background-color:#c40000;
+	line-height:40px;
+	cursor:pointer;}
+.spfl{
+	text-align:center;
+	color:#fff;}
+.dhbox{
+	float:left;
+	overflow:hidden;
+	font-size:14px;
+	font-weight:bold;}
+.dhbox li{
+	float:left;
+	margin:10px 20px 0 30px;}
+.tbbox{
+	overflow:hidden;
+	width:1200px;
+	margin:0 auto;
+	margin-top:20px;}
+.dbbox{
+	float:left;
+	overflow:hidden;}
+.lcbox{
+	float:left;
+	margin-left:240px;
+	margin-top:20px;}
+.bzbox{
+	float:left;}
+.pb{
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+	margin-left:20px;
+	margin-top:20px;}
+
+	
+
+
+.mainbox{
+	width:1200px;
+	margin:0 auto;
+	border-radius:4px;
+	padding:40px;
+	margin-bottom:100px;
+	position:relative;}
+.shdz{
+	overflow:hidden;}
+.shbt{
+	float:left;
+	font-size:16px;
+	font-weight:bold;}
+.shlj{
+	float:right;
+	font-size:14px;
+	margin-right:60px;}
+.shlj a{
+	color:#0256f1;}
+.jszbox{
+	margin-top:10px;
+	border:1px solid #ccc;
+	padding:20px;
+	overflow:hidden;}
+.zbbox{
+	height:32px;
+	background-image:url(../images/dd_03.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+	padding-left:30px;
+	margin-left:30px;
+	float:left;
+	color:#c40000;}
+.dzbox{
+	float:left;
+	margin-left:40px;}
+.mr{
+	color:#7e7e7e;
+	cursor:pointer;}
+.xdz{
+	background-color:#e5e5e5;
+	background-image:url(../images/j_03.jpg);
+	background-position:10px;
+	background-repeat:no-repeat;
+	padding-left:20px;
+	width:88px;
+	height:24px;
+	border:1px solid #c6c5c5;
+	font-size:14px;
+	line-height:24px;
+	text-align:center;
+	margin-top:10px;}
+.dztcbox{
+	width:700px;
+	height:400px;
+	background-color:#fff;
+	border:5px solid #000;
+	border-radius:10px;
+	padding:50px;
+	font-size:14px;}
+.dztc{
+	margin-top:20px;
+	line-height:36px;}
+.xzdz{
+	color:#c40000;
+	margin-right:30px;}
+.srk{
+	width:228px;
+	height:22px;
+	border:1px solid #ccc;}
+.dqbox{
+	margin-left:14px;}
+.dqboxs{
+	margin-left:14px;
+	padding-bottom:40px;}
+.dhk{
+	font-size:14px;
+	color:#666;
+	width:400px;
+	height:60px;
+	border:1px solid #ccc;}
+.xz{
+	margin-left:86px;}
+.save{
+	width:82px;
+	height:34px;
+	background-color:#ff0000;
+	color:#fff;
+	border:none;
+	text-align:center;
+	line-height:34px;
+	border-radius:4px;
+	margin-left:85px;}
+.qrbt{
+	margin-top:20px;
+	font-size:16px;
+	font-weight:bold;
+	border-bottom:1px solid #c40000;
+	padding-bottom:10px;}
+table,tr,td{
+	width:1200px;
+	margin-top:20px;
+	font-size:12px;}
+table{
+	border-bottom:1px solid #ccc;
+	padding-bottom:20px;}
+.fdbox{
+	overflow:hidden;}
+.dp{
+	background-image:url(../images/dd_07.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+	padding-left:34px;
+	float:left;}
+.qe{
+	margin-left:10px;
+	float:left;}
+.spbox{
+	overflow:hidden;
+	width:280px;}
+.pic{
+	float:left;}
+.spjs{
+	float:left;
+	font-size:12px;
+	width:170px;
+	margin-left:10px;
+	margin-top:20px;}
+.xlk{
+	border:1px solid #ccc;}
+.wbk{
+	border:1px solid #ccc;
+	width:600px;
+	height:30px;
+	color:#999;
+	padding-left:6px;}
+.jz{
+	text-align:center;}
+.yf{
+	padding-left:10px;
+	background-image:url(../images/index_06.png);
+	background-position:62px;
+	background-repeat:no-repeat;
+	padding-right:10px;
+	position:relative;
+	cursor:pointer;}
+
+.sm{
+	border:1px solid #ccc;
+	position:absolute;
+	left:0;
+	top:30px;
+	padding:6px;
+	display:none;
+	z-index:1;
+	background-color:#fff;}
+.jgze{
+	font-size:14px;
+	margin-top:20px;
+	padding-left:1000px;
+	border-bottom:1px dashed #ccc;
+	padding-bottom:10px;}
+.jgbh{
+	font-size:16px;
+	color:#ab0504;
+	font-weight:bold;}
+.jsbtn{
+	overflow:hidden;
+	margin-top:20px;
+	margin-left:920px;}
+.fhs{
+	float:left;
+	background-image:url(../images/dd_23.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+	padding-left:20px;
+	font-size:14px;
+	margin-top:10px;}
+.tjbtn{
+	float:left;
+	width:166px;
+	height:40px;
+	background-color:#d62810;
+	line-height:40px;
+	text-align:center;
+	color:#fff;
+	margin-left:20px;
+	border:none;
+	cursor:pointer;
+	font-size:16px;}
+.jgtx{
+	width:348px;
+	background-image:url(../images/sj_03.jpg);
+	background-position:left;
+	background-repeat:no-repeat;
+	padding-left:20px;
+	margin-left:830px;
+	font-size:12px;
+	margin-top:10px;}
+.hx{
+	text-decoration:line-through;}

@@ -1,0 +1,82 @@
+
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker-bs3.css">
+<!-- Imported scripts on this page -->
+<div class="panel-body">
+    <label class="col-sm-3 control-label" for="field-1">填写年份按季度统计</label>
+    <form action="{:U('Goods/salecount')}"  method="post">
+   <button type="submit" class="btn btn-warning btn-sm btn-icon icon-left">
+        查询
+    </button>
+
+    <div class="col-sm-10">
+        <input class=" datepicker" type="text" name='stime'  placeholder="例如：2015"/>
+
+    </div>
+    </form>
+
+</div>
+<script>
+    var xenonPalette = ['#68b828', '#7c38bc', '#0e62c7', '#fcd036', '#4fcdfc', '#00b19d', '#ff6264', '#f7aa47'];
+</script>
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Standard Bar</h3>
+                <div class="panel-options">
+                    <a href="#" data-toggle="panel">
+                        <span class="collapse-icon">&ndash;</span>
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">	
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($)
+                    {
+                        $("#bar-1").dxChart({
+                            dataSource: {$data},
+                            series: {
+                                argumentField: "day",
+                                valueField: "sales",
+                                name: "销量",
+                                type: "bar",
+                                color: '#68b828'
+                            }
+                        });
+
+                        $("#bar-1-randomize").on('click', function (ev)
+                        {
+                            ev.preventDefault();
+
+                            $('#bar-1').dxChart('instance').option('dataSource', [
+                                {day: "Monday", sales: between(1, 25)},
+                                {day: "Tuesday", sales: between(1, 25)},
+                                {day: "Wednesday", sales: between(1, 25)},
+                                {day: "Thursday", sales: between(1, 25)},
+                                
+                            ]);
+                        });
+                    });
+
+                    function between(randNumMin, randNumMax)
+                    {
+                        var randInt = Math.floor((Math.random() * ((randNumMax + 1) - randNumMin)) + randNumMin);
+
+                        return randInt;
+                    }
+                </script>
+                <div id="bar-1" style="height: 440px; width: 100%;"></div>
+                <br />
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="__PUBLIC__/admin/assets/js/jquery-ui/jquery-ui.min.js"></script>
+<script src="__PUBLIC__/admin/assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+<script src="__PUBLIC__/admin/assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>

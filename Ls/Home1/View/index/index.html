@@ -1,0 +1,381 @@
+<link href="__PUBLIC__/home/assets/css/index.css" rel="stylesheet" type="text/css">
+<script>
+
+$(function(){
+   $(".zddtbox li a.btn_a").click(function(event) { 
+      var index=this.title
+      var id='#'+'index_'+index
+     $("html,body").animate({scrollTop: $(id).offset().top}, 500);
+   });
+     $(window).scroll(function(){
+    t = $(document).scrollTop();
+    if(t>500){
+      $('#tbox').show();
+    }else{
+      $('#tbox').hide();
+    }
+    if(t > 50){
+        $('#gotop').fadeIn('slow');
+    }else{
+        $('#gotop').fadeOut('slow');
+    }       
+})   
+	
+   $('#gotop').click(function(){ 
+        $('body,html').animate({
+            scrollTop: 0
+        },
+        800);//点击回到顶部按钮，缓懂回到顶部,数字越小越快
+
+    })
+});
+</script>
+<include file="Public:dq" />
+<!--header-->
+<include file="Public:nav" />
+
+<div class="bannerbox">
+	<div class="banner">
+ 		 <div class="lbpic">
+         	<volist name="ads1" id="v">
+			<empty name="v">
+			<else/>
+				<a href="{$v.ad_link}" target="_blank" onclick="getclick({$v.id})"><img src="__ROOT__/Uploads/{$v.ad_code}" alt="{$v.name}"></a>
+			</empty>
+			</volist> 
+        </div>
+	</div>
+  <script>
+	jQuery(".banner").slide({mainCell:".lbpic",effect:"leftLoop", autoPlay:true});
+ </script>
+  <div class="ycbox">
+    <div class="jzbgbox">
+      <div class="ztyzbox">
+        <div class="ztpic">
+            <empty name="index_pic">
+                <img src="/public/home/assets/images/index_03_03.png" alt="海之澜">
+                <else/>
+                <img src="{$index_pic}" alt="海之澜" width='50' height='50'>
+            </empty>
+            
+        </div>
+        <p class="hybox">Hi,<?php if(session('Q_USER')){echo Name(session('Q_USER'));}else{ echo '你好';} ?><br>
+          欢迎来到海之澜</p>
+      </div>
+      <?php if(session('Q_USER')){ }else{ ?>
+      <div class="dlzcbox">
+        <div class="dlbox"><a href="/User/Qtdz/login">登录</a></div>
+        <div class="zcbox"><a href="/User/Qtdz/register">注册</a></div>
+      </div>
+      <?php } ?>
+      <div class="ddztbox">
+        <p><a href="{:U('Person/nopay')}">{$order_1}</a><br>待付款</p>
+        <p><a href="{:U('Person/confirm')}">{$order_2}</a><br>待收货</p>
+        <p><a href="{:U('Person/comment')}">{$order_3}</a><br>待评价</p>
+      </div>
+    </div>
+    <div class="qhbox">
+      <ul class="qhxx">
+        <li class="gg">公告</li>
+        <li class="gg">规则</li>
+        <li class="gg">帮助</li>
+      </ul>
+      <script>
+		 $(".qhxx .gg").eq(0).addClass("on1");
+          $(function(){
+	       var n=0;
+           $(".qhxx .gg").click(function(){
+  	       n=$(this).index();
+ 	       $(".qhxx .gg").removeClass("on1");
+  	       $(this).addClass("on1");
+           })
+           })
+        </script>
+      <div class="qhxbox">
+        <P class="qhx">正式投诉工商网监司长千万奖金唤
+          起千万善行百家淘宝最美文艺店铺淘宝
+          “极速退款” 可秒退正式投诉工商网司
+          起千万善行百家淘宝最美文</P>
+          <P class="qhx">正式投诉工商网监司长千万奖金唤
+          起千万善行百家淘宝最美文艺店铺淘宝
+          “极速退款” 可秒退正式投诉工商网司
+          起千万善行百家淘宝最美文</P>
+          <P class="qhx">正式投诉工商网监司长千万奖金唤
+          起千万善行百家淘宝最美文艺店铺淘宝
+          “极速退款” 可秒退正式投诉工商网司
+          起千万善行百家淘宝最美文</P>
+      </div>
+    </div>
+    <script>
+      jQuery(".qhbox").slide({mainCell:".qhxbox",titCell:".gg",effect:"fade",trigger:"click",delayTime:1000,interTime:3000,titOnClassName:"on"});
+     </script>
+    <div class="tpbox">
+	<empty name="ads2">
+	<else/>
+	 <a href="{$ads2.ad_link}" target="_blank" onclick="getclick({$ads2.id})"><img src="__ROOT__/Uploads/{$ads2.ad_code}" alt="{$ads2.name}" style="width:238px;height:154px"></a>
+	 </empty>
+	</div>
+  </div>
+</div>
+<div class="minabox">
+	<div class="hdbox">
+    	 <div class="jrxz">
+        	<h3>今日新增</h3>
+            <p class="jsbox">{$newgoods.0.goods_name}</p>
+            <div class="bghs">剩余库存{$newgoods.0.goods_count}</div>
+            <p class="jgbox">{$newgoods.0.market_price}</p>
+            <div class="jrpic"><a href="{:U('Good/info',array('id'=>$newgoods[0]['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.0.goods_thumb}" alt="" width="231" height="199"></a></div>
+        </div>
+  
+        <div class="jkbox">
+        	<div class="jk" style="margin-top:0">
+                
+                <p>{$newgoods['1']['goods_name']}</p>
+                <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['1']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.1.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+            <div class="jk">
+                
+                <p>{$newgoods[2]['goods_name']}</p>
+                <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['2']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.2.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+        </div>
+    
+        <div class="jkbox">
+        	<div class="jk" style="margin-top:0">
+                
+                <p>{$newgoods[3]['goods_name']}</p>
+                <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['3']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.3.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+            <div class="jk">
+               
+                <p>{$newgoods[4]['goods_name']}</p>
+                 <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['4']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.4.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+        </div>
+        <div class="jkbox">
+        	<div class="jk" style="margin-top:0">
+                
+                <p>{$newgoods[5]['goods_name']}</p>
+                <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['5']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.5.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+            <div class="jk">
+                
+                <p>{$newgoods[6]['goods_name']}</p>
+                <div class="jkpic"><a href="{:U('Good/info',array('id'=>$newgoods['6']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.6.goods_thumb}" alt="" width="168" height="126"></a></div>
+            </div>
+        </div>
+		    <div class="cjsg">
+        	<h3>超级闪购</h3>
+            <p class="jsbox">{$newgoods.7.goods_name}</p>
+            <div class="bghs">剩余库存{$newgoods.7.goods_count}</div>
+            <div class="cjpic"><a href="{:U('Good/info',array('id'=>$newgoods['7']['goods_id']))}"><img src="__ROOT__/Uploads/{$newgoods.7.goods_thumb}" alt=""  width="177" height="281"></a></div>
+        </div>
+    </div>
+    <div class="rmppbox">
+    	<div class="rmbtbox">
+            <p class="rmbt">热门品牌</p>
+            <p class="hyp">换一批</p>
+        </div>
+        <!--广告切换JS-->
+       
+        <script type="text/javascript">
+        $(document).ready(function(){ 
+          var i=0;
+          $(".hyp").click(function(){
+             var a=i%3;
+             var h=(i+1)%3;
+             var j=(i+2)%3;
+             $("#"+a).hide();
+             $("#"+h).show();
+             $("#"+j).hide();
+             i++;
+          })
+         
+        })
+            
+        </script>
+
+        
+        <div class="xmbox">
+            <div class="rmpic">
+			<empty name="ads6">
+			<else/>
+            <a href="{$ads6.ad_link}" target="_blank" onclick="getclick({$ads6.id})"><img src="__ROOT__/Uploads/{$ads6.ad_code}" alt="{ads6.name}"></a>
+			</empty>
+            </div>
+            
+                <div class="dyl" id="0" style="margin-top:0;">
+                <!--广告模块-->
+                <volist name="brand" id="v">
+                    <div class="ppic">
+
+                    <a href="{$v.site_url}" target="__blank"><img src="__ROOT__/Uploads/{$v.brand_logo}" alt="" style="width:130px;height:78px"></a>
+                    </div>
+                </volist>   
+                </div>
+
+                <div class="dyl" id="1" style="margin-top:0;display:none;">
+                <!--广告模块-->
+                <volist name="brand1" id="v">
+                    <div class="ppic">
+
+                    <a href="{$v.site_url}"><img src="__ROOT__/Uploads/{$v.brand_logo}" alt="" style="width:130px;height:78px"></a>
+                    </div>
+                </volist>   
+                </div>
+
+
+                <div class="dyl" id="2" style="margin-top:0;display:none;">
+                <!--广告模块-->
+                <volist name="brand2" id="v">
+                    <div class="ppic">
+
+                    <a href="{$v.site_url}"><img src="__ROOT__/Uploads/{$v.brand_logo}" alt="" style="width:130px;height:78px"></a>
+                    </div>
+                </volist>   
+                </div>
+
+			
+			<div class="rmpic02">
+			<empty name="ads7">
+			<else/>
+			<a href="{$ads7.ad_link}" target="_blank" onclick="getclick({$ads7.id})"><img src="__ROOT__/Uploads/{$ads7.ad_code}" alt="{ads7.name}"></a>
+			</empty>
+			</div>
+			
+    </div>
+   <div class="ggt">
+   <empty name="ads3">
+   <else/>
+   <img src="__ROOT__/Uploads/{$ads3.ad_code}" alt="{ads3.name}" style="height:91px;">
+   </empty>
+   </div>
+	<volist name="floor_goods" id="vo">
+    <div class="lcbox"  id="index_{$vo.group_id}"> 
+    	<div class="lcbt">
+        	<h3>{$vo.group_title}</h3>
+            <p><a href="{:U('Navgoods/navgoods',array('id'=>$key+1))}">more&gt;</a></p>
+            <div class="yl0{$vo.group_id}"><p>{$vo.group_id}F</p></div>
+        </div>
+        <div class="spbox">
+        	<div class="zleft">
+            	<p class="splink">
+				<volist name="vo[brand]" id="bvo">
+					<a href="{$bvo.site_url}">{$bvo.brand_name}</a>
+				</volist>
+				</p>
+                <div class="lunbo">
+                	<div class="jtbox">
+                    	<div class="zjt"><img src="__PUBLIC__/home/assets/images/jt_03.jpg" alt="海之澜"></div>
+                        <div class="yjt"><img src="__PUBLIC__/home/assets/images/jt_05.jpg" alt="海之澜"></div>
+                    </div>
+                	<div class="lbtp">
+						<volist name="vo[brand]" id="bvo">
+							<a href="{$bvo.site_url}"><img src="__ROOT__/Uploads/{$bvo.brand_logo}" alt="{$bvo.brand_name}"></a>
+						</volist>
+                    </div>
+                </div>
+              	<div class="jrbox"><a href="{:U('Navgoods/navgoods',array('id'=>$vo['group_id']))}">进入{$vo.group_title}频道</a></div>
+            </div>
+            <div class="splb">
+				<volist name="vo[goods_zs]" id="gvo">
+                	<div class="spjs">
+                    	<p class="jx">{$gvo.goods_name}</p>
+                        <p class="jg">¥{$gvo.market_price}</p>
+                        <div class="sppic"><a href="{:U('Good/info',array('id'=>$gvo['goods_id']))}"><img src="__ROOT__/Uploads/{$gvo.goods_thumb}" alt="{$gvo.goods_name}"></a></div>
+                    </div>
+				</volist>
+            </div>
+            <div class="xlphbox">
+            	<div class="rxbt">
+                    <ul class="qhzbox">
+                        <li onclick='hot(this)'>热销</li>
+                        <li onclick='sale(this)'>人气</li>
+                    </ul>
+                   <script>
+                       var num=$(".qhzbox li").length;
+                       for(var i=0;i<num;i++){
+                           if(i%2==0){
+                               $(".qhzbox li").eq(i).addClass("on1");
+                            }
+                       }
+						 
+                                                   function hot(v){
+                                                       $(v).parent().find("li").removeClass("on1");
+                                                       $(v).addClass("on1");
+                                                   }
+                                                   function sale(v){
+                                                       $(v).parent().find("li").removeClass("on1");
+                                                       $(v).addClass("on1");
+                                                   }
+       			  </script>
+                    <h3>分销之星</h3>
+                </div>
+                <div class="rxphbox">
+                	<ul class="rxph">
+					<volist name="vo[goods_rx]" id="rvo">
+                    	<li><a href="{:U('Good/info',array('id'=>$rvo['goods_id']))}"><span class="xh">{$i}</span>
+						<b style="">{$rvo.goods_name}</b>
+						<span class="cjl">{$rvo.number}成交量</span></a></li>
+					</volist>
+                    </ul>
+                    <ul class="rxph">
+					<volist name="vo[goods_rq]" id="qvo">
+                    	<li><a href="{:U('Good/info',array('id'=>$qvo['goods_id']))}"><span class="xh">{$i}</span> <b>{$qvo.goods_name} </b><span class="cjl">{$qvo.count}人气量</span></a></li>
+                    </volist>  
+                    </ul>
+                </div>
+            </div>
+            <script>
+              jQuery(".xlphbox").slide({mainCell:".rxphbox",titCell:".qhzbox li",effect:"fade",trigger:"click",delayTime:1000,interTime:3000,titOnClassName:"on"});
+            </script>
+        </div>
+    </div>
+	</volist>
+	<script>
+            jQuery(".lunbo").slide({mainCell:".lbtp",effect:"leftLoop",prevCell:".zjt",nextCell:".yjt",autoPlay:true,delayTime:1000,interTime:5000});
+    </script>     
+   <div class="ggt02">
+   <empty name="ads7">
+   <else/>
+   <a href="{$ads4.ad_link}" target="_blank" onclick="getclick({$ads4.id})"><img src="__ROOT__/Uploads/{$ads4.ad_code}" alt="{$ads4.name}"></a>
+   </empty>
+   </div>
+</div>
+
+<div class="zddtbox" id="tbox">
+    	<ul>
+        	<li><a class="btn_a" href="javascript:void(0)" title="1"><img src="__PUBLIC__/home/assets/images/tubai_03-01.png" /><p>家居</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="2"><img src="__PUBLIC__/home/assets/images/tubai_03-03.png" /><p>食品</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="3"><img src="__PUBLIC__/home/assets/images/tubai_03-02.png" /><p>服装</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="4"><img src="__PUBLIC__/home/assets/images/tubai_03-04.png" /><p>旅游</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="5"><img src="__PUBLIC__/home/assets/images/tubai_03-05.png" /><p>娱乐</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="6"><img src="__PUBLIC__/home/assets/images/tubai_03-06.png" /><p>美妆</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="7"><img src="__PUBLIC__/home/assets/images/tubai_03-07.png" /><p>家电</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="8"><img src="__PUBLIC__/home/assets/images/tubai_03-08.png" /><p>数码</p></a></li>
+            <li><a class="btn_a" href="javascript:void(0)" title="9"><img src="__PUBLIC__/home/assets/images/icon_07.png" /><p>交通</p></a></li>
+            <li><a id="gotop" href="javascript:void(0)" title="回到顶部"><img src="__PUBLIC__/home/assets/images/zd_18.png" /></a></li>
+        </ul>
+</div>
+</div>
+<!--点击广告数加一-->
+<script type="text/javascript">
+function getclick(id){
+
+   $.ajax({
+//接受数据的页面
+                                url: "{:U('Index/addclick')}",
+//传值方式
+                                type: 'POST',
+//数据类型
+                                dataType: 'json',
+//发送的数据
+                                data: {
+                                    id: id
+                                },
+                              
+                            });
+
+
+}
+</script>

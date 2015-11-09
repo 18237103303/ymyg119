@@ -1,0 +1,100 @@
+<!-- Removing search and results count filter -->
+<js href="__PUBLIC__/ueditor/ueditor.config.js" />    
+<js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">发布公告</h3>
+	</div>
+	<div class="panel-body">
+           <div class="row">
+			<div class="col-sm-11">
+						<div class="form-group">			
+                                                                        {$data}
+						</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-1">
+						<label class="control-label">公告标题 </label>
+			</div>
+			<div class="col-sm-11">
+						<div class="input-group">
+						<span class="input-group-btn">
+						<button class="btn btn-info" type="button">标题</button>
+						</span>
+						<input class="form-control no-left-border form-focus-info" type="text" id='biaoti'>
+						</div>
+			</div>
+			<br />
+		</div>
+		<br />
+		 <div class="row">
+                            <js href="__PUBLIC__/js/jquery-2.0.2.js" />
+                            <js href="__PUBLIC__/ueditor/ueditor.config.js" />    
+                            <js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+                            <script>
+                                $(function () {
+                                    var ue = UE.getEditor('content');
+                                })
+                            </script> 
+							<div class="col-sm-1">
+									<label class="control-label" >公告内容 </label>
+			                </div>
+                            <div class="col-sm-10">
+
+                                <script id="content" name="content" type="text/plain">
+                                </script>
+                            </div>
+                        </div>
+		<br>
+		
+		<div class="row">
+			<div class="col-sm-4">
+
+			</div>
+			<div class="col-sm-4">
+				<button class="btn btn-secondary" type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="点击确定将发布文章内容" id='publish'>确定</button>
+			</div>
+			<div class="col-sm-4">
+				
+			</div>
+		</div>
+	</div>
+</div>	
+	<script src="__PUBLIC__/admin/assets/js/jquery-ui/jquery-ui.min.js"></script>
+	
+        <script>
+            $('#publish').click(function(){
+                var arc_title=$('#biaoti').val();
+                var content= UE.getEditor('content').getContent();
+                //alert(content);return ;
+                var patt1 = new RegExp(/^([\u4E00-\uFA29]*[a-z]*[A-Z]*[0-9]*)+$/g);
+                var result = patt1.test(arc_title);
+                if(result==false){
+                    alert("文章标题用中文或英文表示");
+                    return ;
+                }
+                
+                if(arc_title==""||content==""){
+                    alert('填写不能为空');
+                    return ;
+                }
+               $.ajax({
+                   'type':'post',
+                   'url':"{:U('Article/add_art')}",
+                   'data':'&arc_title='+arc_title+'&content='+content+'&type_id=-99',
+                   'dataType':'json',
+                   'success':function(dat){
+                       if(dat.status==1){
+                           alert('发布成功');
+                           window.location.href="{:U('Article/bulist')}";
+                       }else if(dat.status==0){
+                           alert("发布失败");
+                       }else{
+                           alert(dat.msg);
+                       }
+                   }
+               }) 
+            });
+            </script>

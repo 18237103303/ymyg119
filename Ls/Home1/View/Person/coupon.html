@@ -1,0 +1,115 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol13.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<!--header-->
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="/"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="/">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	
+            </ul>
+        </div>      
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+	<include file="Public:personleft"/>
+        <div class="main_r">
+        	
+        	<div class="shop">
+            	<h4>我的积分</h4>
+                <div class="main_bt">
+            <ul>
+                <li>
+                	<div class="bt1">
+                        <p>剩余可用积分</p>
+                        <span>{$coupon1.jf}</span>
+                    </div>
+                </li>
+                <li>
+                	<div class="bt3">
+                        <p>获得积分</p>
+                        <span>{$coup1|default=0}</span>
+                        <a href="{:U('Person/gaincoup',array('type'=>'gain'))}">获得积分</a>
+                    </div>
+                </li>
+                <li>
+                	<div class="bt3">
+                        <p>消费积分</p>
+                        <span>{$consume|default=0}</span>
+                        <a href="{:U('Person/gaincoup',array('type'=>'consume'))}">消费积分</a>
+                    </div>
+                </li>
+                <li>
+                	<div class="bt3">
+                        <p>冻结积分</p>
+                        <span>{$coupon1.dj_jf}</span>
+                        <a href="{:U('Person/gaincoup',array('type'=>'dj_jf'))}">冻结积分</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+		
+                <div class="text">
+                	<div class="tab1">
+                    	<p><span class="tab1_1">来源/用途</span><span class="tab1_2">积分变换</span><span class="tab1_3">日期</span><span class="tab1_4">状态</span></p>
+                    </div>
+					<volist name="coupls" id="v">			
+                    <div class="tab2">
+                        <div class="tab2_text">
+                        	<TABLE>
+							<volist name="v.goods" id="vo" key="i">
+                            	<tr>
+                                	<td><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}" title="{$vo.goods_name}"></a></td>
+                                    <td class="tab2_1"><span><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}">{$vo.goods_name}</a></span><br><if condition="$i eq 1">编号:{$v.order_sn}<else/></if></td>
+                                    <if condition="$i eq 1"> 
+									<if condition="$v['order_status'] eq 6 and $v['pay_name'] neq 2 "><td class="tab2_2" rowspan="{$i}">
+									+{$v.coup|default=0}
+									</td></if>
+                                        <if condition="$v['order_status'] eq 6 and $v['pay_name'] eq 2"><td class="tab2_2_2" rowspan="{$i}"><php>echo "-". $v['order_amount']/$v['score']*100;</php></br>
+									<php>echo "+".$v['profit']*$bile/100;</php>
+									</td></if>
+									<if condition=" ($v['order_status'] eq 4) or ($v['order_status'] eq 2) or ($v['order_status'] eq 1)">
+									<td class="tab2_2_3" rowspan="{$i}">
+									{$v.coup|default=0}
+									</td>
+									</if>
+									
+                                    <td class="tab2_3" rowspan="{$i}"><i><if condition="$v.order_status eq 6">{$v.confirm_time|date="Y-m-d H:i",###}<else/>{$v.add_time|date="Y-m-d H:i",###}</if></td>
+                                    <if condition="$v['order_status'] eq 6">
+                                        <td class="tab2_4" style="padding: 5px 38px;">
+                                        <if condition="$v['pay_name'] eq 2 and $v['order_status'] eq 6">消费<br/></if>
+                                            获得
+                                        </td>
+                                    </if>
+									
+									<if condition="$v['order_status'] eq 2 or $v['order_status'] eq 1 or $v['order_status'] eq 4">
+									<td class="tab2_4" style="padding: 5px 35px;">冻结</td></if>
+									<else/></if>
+                                </tr>
+								</volist>
+                            </TABLE>
+                        </div>    
+                    </div>
+					</volist>
+					<div class="Pagination">{$page}</div>
+                </div>
+				
+            </div>
+    </div>
+</div>
+<!--main-->
+

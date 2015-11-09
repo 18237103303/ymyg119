@@ -1,0 +1,65 @@
+<css href="__PUBLIC__/home/css/center.css"/>
+<js href="__PUBLIC__/home/js/PCASClass.js" />
+
+<js href="__PUBLIC__/home/js/bday-picker.js" />
+
+<include file="Public:nav" />
+
+<!--Personal开始-->
+<div class="personal">
+	<div class="left">
+    	<div class="face"><img src="__PUBLIC__/home/images/center1_03.png"></div>
+        <div class="person">
+        	<h2><span>个人中心</span></h2>
+            <div class="linkbox">
+            	<h3>账号管理</h3>
+                <div class="linka">
+                	<a href="{:U('User/Index')}" <if condition="$current eq 'index'"> class="current"</if>><i>·</i>个人信息</a>
+                	<a href="{:U('User/ChangePsd')}" <if condition="$current eq 'changepsd'"> class="current"</if>><i>·</i>密码修改</a>
+                	<a href="{:U('Order/Comment')}" <if condition="$current eq 'comment'"> class="current"</if>><i>·</i>我的评价</a>
+                </div>
+            </div>
+            <div class="linkbox">
+            	<h3>订单信息</h3>
+                <div class="linka">
+                	<a href="{:U('Order/Order')}" <if condition="$current eq 'all'"> class="current"</if>><i>·</i>全部订单</a>
+                	<a href="{:U('Order/Order',array('status'=>1))}" <if condition="$current eq 'pay'"> class="current"</if>><i>·</i>等待付款</a>
+                	<a href="{:U('Order/Order',array('status'=>2))}" <if condition="$current eq 'fh'"> class="current"</if>><i>·</i>等待卖家发货</a>
+                	<a href="{:U('Order/Order',array('status'=>3))}" <if condition="$current eq 'com'"> class="current"</if>><i>·</i>需要评价</a>
+                    <a href="{:U('Order/Order',array('status'=>4))}" <if condition="$current eq 'done'"> class="current"</if>><i>·</i>交易完成</a>
+                </div>
+            </div>
+            <div class="linkbox">
+            	<h3>我的账户</h3>
+                <div class="linka">
+                	<a href="{:U('User/Integral')}" <if condition="$current eq 'integral'"> class="current"</if>><i>·</i>我的积分</a>
+					<a href="{:U('User/Award')}" <if condition="$current eq 'award'"> class="current"</if>><i>·</i>我的抽奖</a>
+                	<a href="{:U('User/Collect')}" <if condition="$current eq 'collect'"> class="current"</if>><i>·</i>我的收藏</a>
+                	<a href="{:U('User/Cooper')}" <if condition="$current eq 'cooper'"> class="current"</if>><i>·</i>我的代金券</a>
+                </div>
+            </div>
+            <div class="linkbox">
+            	<h3>售后管理</h3>
+                <div class="linka">
+                	<a href="{:U('User/Server')}" <if condition="$current eq 'server'"> class="current"</if>><i>·</i>退货/退款管理</a>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+<!--Personal结束-->
+<script language="javascript" defer>
+new PCAS("province6","city6","area6","江苏省","苏州市","沧浪区");
+new PCAS("province7","city7","area7","江苏省","苏州市","沧浪区");
+
+</script>
+<script type="text/javascript">
+      $(document).ready(function(){
+        $("#picker3").birthdaypicker({
+          dateFormat: "bigEndian",
+          monthFormat: "long",
+          placeholder: false,
+          hiddenDate: false
+        });
+      });
+    </script>

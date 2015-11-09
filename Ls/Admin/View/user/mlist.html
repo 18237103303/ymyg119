@@ -1,0 +1,209 @@
+<!-- Removing search and results count filter -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">用户 查看类型 -- Member Select</div>
+						<div class="panel-body">
+                            <div class="col-sm-7">
+                                <button class="btn btn-turquoise" onclick="jQuery('#modal-8').modal('show', {backdrop: 'static'}); $('.num1').show();$('.num2').hide();$('.num3').hide();$('#field-a').val('');$('input[name=wd]').val('');$('#field-b').val('');">新增会员</button>
+                                <button class="btn btn-secondary" onclick="shy();">配送合作商</button>
+                                <!-- <button class="btn btn-orange" id="danger_msg_1">未验证会员 - Waiting</button> -->
+                                <button class="btn btn-turquoise" onclick="ghs();">财务</button>
+                                <button class="btn btn-success" onclick="fwd();">线下住专员</button>
+                                <button class="btn btn-success" onclick="kf();">400客服</button>
+                                <button class="btn btn-turquoise" onclick="pthy();">普通会员</button>
+                                <button class="btn btn-success" onclick="qb();">全部</button>
+                                <button class="btn btn-primary" onclick="tf();">停封</button>
+                            </div>
+							<div  class="col-sm-5">
+								<div class="col-sm-10"><input class="form-control" name="cx" type="text"  placeholder="请输入会员ID或者名字..."></div>	
+								<div class="col-sm-2"><button class="btn btn-success" onclick="cx();">查询</button></div>
+							</div>
+						</div>
+					</div>	
+				</div>
+<script>				
+function shy(){
+location.href="{:U('Admin/User/mlist',array('type'=>1))}";
+}
+function ghs(){
+location.href="{:U('Admin/User/mlist',array('type'=>2))}";
+}
+function fwd(){
+location.href="{:U('Admin/User/mlist',array('type'=>3))}";
+}
+function pthy(){
+location.href="{:U('Admin/User/mlist',array('type'=>4))}";
+}
+function qb(){
+location.href="{:U('Admin/User/mlist',array('type'=>6))}";
+}
+function tf(){
+location.href="{:U('Admin/User/mlist',array('type'=>5))}";
+}
+function kf(){
+location.href="{:U('Admin/User/mlist',array('type'=>8))}";
+}
+
+function cx(){
+var cxn1=$('input[name=cx]').val();
+if(cxn1){
+location.href="/Admin/User/mlist/type/7/cxn/"+cxn1;
+}else{alert('不能为空。。');}
+}
+//$('input[name=cx]').keyup(function(){var a= $(this).val().replace(/\W/g,'');$(this).val(a);})
+</script>				
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">用户列表 - Member List</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<!-- <th class="no-sorting">
+									批量
+								</th> -->
+								<td>会员编号</td>
+								<th>用户账号</th>
+								<th>电话</th>
+								<th>邮箱</th>
+								<th>角色</th>
+								<!-- <th>地址</th> -->
+								<!-- <th>积分</th> -->
+								<!-- <th>冻结积分</th> -->
+								<!-- <th>服务网点</th> -->
+								<th>最后登录的时间</th>
+								<!-- <th>备注</th> -->
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody class="middle-align">
+		<foreach name="rows" item="vo" >			
+							<tr>
+						<!-- 		<td>
+									<input type="checkbox" class="cbr">
+								</td> -->
+								<td>ID：<span>{$vo.id}</span></td>
+								<td><input  type="text" name="name" value="{$vo.name}" disabled></td>
+								<td><input type="text" name="phone"value="{$vo.phone}"/>
+								</td>
+								<td><input type="text" name="email" value="{$vo.email}"/></td>
+								<!-- <td>{$vo.address}</td> -->
+								<!-- <td>{$vo.jf}</td> -->
+								<!-- <td>{$vo.dj_jf}</td> -->
+								<!-- <td>{$vo.up_id}</td> {$vo.grand}-->
+								<td>
+								{$vo.grand}
+								</td>
+								<td>{$vo.l_time}</td>
+								<!-- <td>{$vo.user_addr}</td> -->
+								<td>{$vo.status}</td>
+								<td>
+									<a href="##" class="btn xiangq btn-secondary btn-sm btn-icon icon-left">
+										详情
+									</a>
+									
+									<a href="##"  class="btn xiug btn-secondary btn-sm btn-icon icon-left">
+										修改
+									</a>
+									
+									<a href="{:U('User/userexe',array('id'=>$vo['id'],'type'=>3))}" class="btn btn-danger btn-sm btn-icon icon-left">
+										删除
+									</a>
+									<if condition="$tf neq 'kq' ">
+									<a href="{:U('User/userexe',array('id'=>$vo['id'],'type'=>4))}" class="btn btn-warning btn-sm btn-icon icon-left">
+										封停
+									</a>
+									<else />
+									<a href="{:U('User/userexe',array('id'=>$vo['id'],'type'=>5))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										启用
+									</a>
+									</if>
+								</td>
+							</tr>
+		</foreach>						
+						</tbody>
+			
+					</table>	
+				</div>
+			</div>
+<div class="panel panel-default">			
+{$rpage}
+</div>		
+		<!-- 弹出层 -->		
+<script>
+/**/
+$("#danger_msg_1").click(function(ev)
+							{
+								ev.preventDefault();
+								var opts = {
+									"closeButton": true,
+									"debug": false,
+									"positionClass": "toast-top-full-width",
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut"
+								};
+								toastr.error("title.", "content", opts);
+							});
+
+$(function(){
+    /*修改*/
+    $('.xiug').click(function(){
+        var rows= $(this).parents('tr');
+        var id=rows.find('td').eq(0).find('span').text();
+        var name=rows.find('td input[name=name]').val();
+        var phone=rows.find('td input[name=phone]').val();
+        var email=rows.find('td input[name=email]').val();
+        var jues=rows.find('td').eq(4).find('select[name=grand]').val();
+        $.post("{:U('User/userexe')}",{
+            name:name,
+            phone:phone,
+            email:email,
+            jues:jues,
+            id:id,
+            type:2
+        },function(data){
+            //alert(data);
+            if(data==1){alert('修改成功');}else if(data==0){alert('没有修改项');}else{alert('出现未知错误');}
+        })
+    })
+    /*对输入内容进行过滤*/
+//    $('input[name=name]').keyup(function(){
+//        var a= $(this).val().replace(/\W/g,'');
+//        $(this).val(a);
+//    })
+    $('input[name=phone]').keyup(function(){
+        var a= $(this).val().replace(/\D/g,'');
+        $(this).val(a);
+    })
+    $('.xiangq').click(function(){
+        var rows= $(this).parents('tr');
+        var id=rows.find('td').eq(0).find('span').text();
+        location.href="/Admin/User/mlist/xq/9/xq_id/"+id+'?flag=user';
+//<script type="text/javascript"charset="utf-8" src="/Public/yes/yes.js">
+//	layer.open({
+//	title:'用户详情',
+//	offset:['5%', '15%'],
+//	fix:true,
+//	move:false,
+//    type: 2,
+//    area: ['70%', '70%'],
+//    skin: 'layui-layer-rim', //加上边框
+//    content: ['/Admin/User/mlist/xq/9/xq_id/'+id, 'no']
+//	});
+    })
+})							
+</script>
+
+				

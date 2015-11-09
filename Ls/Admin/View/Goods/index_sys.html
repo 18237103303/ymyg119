@@ -1,0 +1,271 @@
+<!-- Removing search and results count filter -->
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">商品展示设置</div>
+            <div class="panel-body">
+                <div class="col-sm-3">
+                    <button class="btn btn-turquoise" id="add_config">添加商品</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">商品展示</h3>
+    </div>
+    <div class="panel-body">
+        <button class="btn btn-turquoise" onclick="delete_all()">清空列表</button>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($)
+            {
+                $("#example-2").dataTable({
+                    dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                    aoColumns: [
+                        {bSortable: false},
+                        null,
+                        null,
+                        {bSortable: false},
+                        {bSortable: false},
+                        {bSortable: false}
+                    ]
+                });
+
+                // Replace checkboxes when they appear
+                var $state = $("#example-2 thead input[type='checkbox']");
+                $state.prop('checked', false);
+                $("#example-2").on('draw.dt', function ()
+                {
+                    cbr_replace();
+
+                    $state.trigger('change');
+                });
+
+                // Script to select all checkboxes
+                $state.on('change', function (ev)
+                {
+
+                    var $chcks = $("#example-2 tbody input[type='checkbox']");
+                    //alert($chcks.length);
+                    if ($state.is(':checked'))
+                    {
+                        $chcks.prop('checked', true).trigger('change');
+                    }
+                    else
+                    {
+                        $chcks.prop('checked', false).trigger('change');
+                    }
+                });
+            });
+        </script>
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th class="no-sorting">
+                    全选&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="cbr">
+                </th>
+                <th>商品id</th>
+                <th>商品名称</th>
+                <th>首页</th>
+                <th>推广</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody class="middle-align">
+            <volist name="data" id="vo">
+                <tr>
+                    <td>
+                        <input type="checkbox" class="cbr">
+                    </td>
+                    <td>{$vo.goods_id}</td>
+                    <td>{$vo.goods_name}</td>
+                    <td>
+                        <if condition="$vo['is_alone_sale'] eq 1">
+                            <img src="__PUBLIC__/admin/assets/images/right.png" width="15"/>
+                            <else/>
+                            <img src="__PUBLIC__/admin/assets/images/error.png" width='15'/>
+                        </if>
+                    </td>
+                    <td>
+                        <if condition="$vo['is_best'] eq 1">
+                            <img src="__PUBLIC__/admin/assets/images/right.png" width="15"/>
+                            <else/>
+                            <img src="__PUBLIC__/admin/assets/images/error.png" width='15'/>
+                        </if>
+                    </td>
+                    <td>
+                        <a href="###" class="btn btn-secondary btn-sm btn-icon icon-left" onclick="edit({$vo.goods_id})">
+                            编辑
+                        </a>
+                        <a href="{:U('Goods/sys',array('gid'=>$vo['goods_id'],'type'=>delete))}" class="btn btn-danger btn-sm btn-icon icon-left">
+                            删除
+                        </a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 弹出层 -->
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/admin/assets/js/datatables/js/jquery.dataTables.min.js"></script>
+<script src="__PUBLIC__/admin/assets/js/bootbox/bootbox.min.js"></script>
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/admin/assets/js/datatables/dataTables.bootstrap.js"></script>
+<script src="__PUBLIC__/admin/assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+<script src="__PUBLIC__/admin/assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+<script>
+    $('#add_config').click(function(){
+        bootbox.dialog({
+            message: '<label class="col-sm-2 control-label">商品ID：</label><input type="text" placeholder="添加值ID" id="config_value" class="col-sm-3 control-label"/><br/><br/>\n\
+                 <label class="col-sm-2 " style="width:18%">展示设置：</label><label><input type="checkbox" class="cbr cbr-turquoise" title="captcha_register" id="is_alone_sale" >首页展示</label><label><input type="checkbox" class="cbr cbr-primary" title="captcha_user_login" id="is_best" >推广设置</label>',
+            title: "选取展示位置：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var gid=$('#config_value').val();
+                        if(gid==''){
+                            bootbox.alert('输入不能为空');
+                            return ;
+                        }
+                        var is_alone_sale=$("#is_alone_sale").prop("checked")
+                        var is_best=$("#is_best").prop("checked");
+                        if(is_alone_sale==true){
+                            is_alone_sale=1;
+                        }else{
+                            is_alone_sale=0;
+                        }
+                        if(is_best==true){
+                            is_best=1;
+                        }else{
+                            is_best=0;
+                        }
+                        if(is_alone_sale==0&&is_best==0){
+                            bootbox.alert("你还没有选中");
+                            return false;
+                        }
+                        $.ajax({
+                            'type':'post',
+                            'data':'id='+gid+'&is_alone_sale='+is_alone_sale+"&is_best="+is_best+"&type=add",
+                            'dataType':"json",
+                            'url':"{:U('Goods/sys')}",
+                            'success':function(dat){
+                                // var data = eval('(' + dat + ')');
+                                if(dat.info==1){
+                                    bootbox.alert('添加成功');
+                                    var url="{:U('Goods/index_sys')}";
+                                    window.location.href=url;
+                                }else if(dat.info==0){
+                                    bootbox.alert('添加失败');
+                                }else{
+                                    bootbox.alert("你没有权限添加该商品");
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    })
+    //编辑
+    function edit(id){
+
+        bootbox.dialog({
+            message: ' <label class="col-sm-2 " style="width:18%">展示设置：</label><label><input type="checkbox" class="cbr cbr-turquoise" title="captcha_register" id="is_alone_sale" >首页展示</label><label><input type="checkbox" class="cbr cbr-primary" title="captcha_user_login" id="is_best" >推广展示</label>',
+            title: "修改设置：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var is_alone_sale=$("#is_alone_sale").prop("checked")
+                        var is_best=$("#is_best").prop("checked");
+                        if(is_alone_sale==true){
+                            is_alone_sale=1;
+                        }else{
+                            is_alone_sale=0;
+                        }
+                        if(is_best==true){
+                            is_best=1;
+                        }else{
+                            is_best=0;
+                        }
+                        $.ajax({
+                            'type':'post',
+                            'data':'id='+id+'&is_alone_sale='+is_alone_sale+"&is_best="+is_best+"&type=edit",
+                            'dataType':"json",
+                            'url':"{:U('Goods/sys')}",
+                            'success':function(dat){
+                                // var data = eval('(' + dat + ')');
+                                if(dat.info==1){
+                                    bootbox.alert('修改成功');
+                                    var url="{:U('Goods/index_sys')}";
+                                    window.location.href=url;
+                                }else if(dat.info==0){
+                                    bootbox.alert('修改失败失败');
+                                }else{
+                                    bootbox.alert("对不起，你没有权限设置");
+                                }
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    }
+    //点击清空列表按钮
+    function delete_all() {
+        var chcks = $('tbody').find(':checked').attr('checked', 'true');
+        if (chcks.length == 0) {
+            bootbox.alert("你还没有勾选");
+            return;
+        }
+        var id = '';
+        for (var i = 0; i < chcks.length; i++) {
+            id += chcks.eq(i).parent().parent().parent().next('td').html() + '-';
+        }
+        $.ajax({
+            'type': 'post',
+            'data': 'id=' + id+"&type=delete_all",
+            'dataType': 'json',
+            'url': "{:U('Goods/sys')}",
+            'success': function (dat) {
+                if (dat.info == 1) {
+                    bootbox.alert('删除成功');
+                    var url = "{:U('Goods/index_sys')}";
+                    window.location.href = url;
+                } else {
+                    bootbox.alert('删除失败');
+                }
+            }
+        });
+    }
+</script>
+
+
+
+

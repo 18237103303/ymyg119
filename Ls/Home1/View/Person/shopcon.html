@@ -1,0 +1,149 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol21.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/Css.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+<script>
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	});
+	
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	}); 
+  function fenlei_delmore(obj,cName){
+	  var checkall = document.getElementsByName(cName);
+	   for(var $i=0;$i<checkall.length;$i++){
+			checkall[$i].checked = obj.checked;
+		  }	  
+}
+</script>
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="{:U('Index/index')}"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="/">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	<!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>
+        
+   <!--      <div class="search">
+        	<form>
+            	<p><input type="text" value="输入产品名称" onFocus="javascript:this.value=''"><a href="">搜索</a></p>
+            </form>
+        </div> -->
+        
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    <include file="Public:personleft"/>        
+        <div class="main_r"><form name="myform" id="myform1" onsubmit="return false">
+        	<div class="shop">
+            		<div class="dianpu_t">
+                    	<div class="dp_l">
+                        	<p>全部宝贝</p>
+                        </div>
+                        <div class="dp_r">                       	
+                            	<input type="checkbox" class="quanbtn" name="cName[]" onclick="fenlei_delmore(this,'cName[]')"><span>全选</span>
+								<a href="#signup1" rel="leanModal">删除</a>
+                            <div id="signup1" class="tan1">
+                                <p>确定要删除商品吗？</p>
+                                <a href="###" onclick="delall()">确定</a>
+                                <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="dianpu">
+				
+                    <div class="dp_b">
+					<volist name="shoplist" id="v">
+                    	<dl>
+                            <dt><a href="{:U('Good/info',array('id'=>$v['goods_id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt="{$v.goods_name}" title="{$v.goods_name}"></a></dt>
+                            <dd><a style="width:160px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; " href="">{$v.goods_name}</a>
+                            <p style="padding:5px 0;">￥{$v.market_price}</p>
+                            </dd>
+                            <a style="bottom:0px;" class="a11" href="#signup" rel="leanModal">
+							<img src="__PUBLIC__/home/assets/images/icon5.png" name="picture"  onMouseOver="this.src='__PUBLIC__/home/assets/images/icon5_bj.png'" onMouseOut="this.src='__PUBLIC__/home/assets/images/icon5.png'"></a>
+                            		 <div id="signup" class="tan1">
+                                    <p>确定删除！</p>
+                                    <a href="###" onclick="delgoods({$v.col_goodsid})">确定</a>
+                                    <div class="dw"><img src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                    </div>
+                            <div class="a12"><input type="checkbox" name="cName[]" value="{$v.col_goodsid}"></div>
+                        </dl>
+                    	</volist><input type="hidden" value="1" name="type"/>
+                    </div>
+                </div>
+            </div></form>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){	
+	$('.dp_b').kkPages({
+		PagesClass:'dl', //需要分页的元素
+		PagesMth:8, //每页显示个数		
+		PagesNavMth:3 //显示导航个数
+		});
+});
+</script>
+<script>
+function delgoods(v){
+var delid=v;
+$.ajax({
+                   'type':'post',
+                   'url':"{:U('Person/deleteshop')}",
+                   'data':{delid:delid},
+                   'dataType':'json',
+                   'success':function(dat){
+                       if(dat.status==1){
+                           //alert('88888');
+                           window.location.href="{:U('Person/shopcon')}";
+                       }else{
+					   alert('操作失败！');
+					   //alert('111');
+					   }
+                   }
+               });
+ }
+ function delall(){
+var chcks = $('dl').find(':checked').attr('checked','true');
+if(chcks.length==0){
+  alert('请选择商品！');
+  }else{
+  var data=$("#myform1").serialize(); 
+    $.ajax({
+        'type':'post',
+        'data': data,
+        'dataType':'json',
+        'url':"{:U('Person/delete_all')}",
+        'success':function(dat){
+            if(dat.status==1){
+                alert('删除成功');
+                var url="{:U('Person/shopcon')}";
+                window.location.href=url;
+            }else{
+                alert('删除失败');
+				var url="{:U('Person/shopcon')}";
+                window.location.href=url;
+            }
+        }
+    });
+  }
+}
+</script>
+

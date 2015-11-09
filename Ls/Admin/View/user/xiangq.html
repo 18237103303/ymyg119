@@ -1,0 +1,134 @@
+<!-- Removing search and results count filter -->
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">会员详情 - Member datail</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<tr><td style="width:15%;">会员编号</td><td id="bh">{$row.id}</td></tr>
+						<tr><td>会员名字</td><td>{$row.name}</td></tr>
+                        <tr><td>城市地址</td>
+                            <td>
+                            <script type="text/javascript" src="__PUBLIC__/yes1/js/area.js"></script>
+                            <script type="text/javascript" src="__PUBLIC__/yes1/js/location.js"></script>
+                            <script type="text/javascript" src="__PUBLIC__/yes1/js/select2.js"></script>
+                            <script type="text/javascript" src="__PUBLIC__/yes1/js/select2_locale_zh-CN.js"></script>
+                            <link rel="stylesheet" href="__PUBLIC__/yes1/css/common.css"/>
+                            <link rel="stylesheet" href="__PUBLIC__/yes1/css/select2.css"/>
+
+
+                    <select disabled id="loc_province" style="width:120px;">
+                    </select>
+                    <select disabled id="loc_city" style="width:120px; margin-left: 10px">
+                    </select>
+                    <select disabled id="loc_town" style="width:120px;margin-left: 10px">
+                    </select>
+                                <script>
+                                    $(function(){
+                                        var v1="{$address[0]}";
+                                        var v2="{$address[1]}";
+                                        var v3="{$address[2]}";
+                                        v1?$('#loc_province').val(v1).trigger("change"):'';
+                                        v2?$('#loc_city').val(v2).trigger("change"):'';
+                                        v3?$('#loc_town').val(v3).trigger("change"):'';
+                                    })
+                                </script>
+                        </td></tr>
+                        <tr><td>积分</td><td>￥<em>{$row.jf}</em>&nbsp;&nbsp;<i id="jf" style="cursor:pointer;">[详情信息]</i></td></tr>
+                        <tr><td>冻结积分</td><td>￥<em>{$row.dj_jf}</em>&nbsp;&nbsp;<i id="dj_jf" style="cursor:pointer;">[详情信息]</i></td></td></tr>
+                        <tr><td>负责服务网点</td><td>{$rowss}</td></tr>
+                        <tr><td>详细地址</td><td>{$row.user_addr}</td></tr>
+                        <tr><td>密码操作</td><td><button class="btn btn-secondary btn-sm btn-icon icon-left" onclick="jQuery('#modal-9').modal('show', {backdrop: 'static'});$.cookies.set( 'user',{$row.id});">修改</button></td></tr>
+                        <tr><td>订单</td><td><button id="dd" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>收货地址</td><td><button id="sh" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>账变明细</td><td><button id="zb" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+					</table>	
+				</div>
+			</div>
+<div class="panel panel-default">			
+<!--{$rpage}-->
+</div>		
+		<!-- 弹出层 -->		
+<script>
+
+							
+$(function(){
+//    开始
+    //收货地址
+    $('#sh').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/diz/id/"+bh+'?flag=user';
+    })
+    //订单管理
+    $('#dd').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/dingd/id/"+bh+'?flag=user';
+    })
+    //账变明细
+    $('#zb').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/id/"+bh+'?flag=user';
+    })
+//    积分状态查看
+    $('#jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/jf/id/"+bh+'?flag=user';
+    })
+    $('#dj_jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/dj_jf/id/"+bh+'?flag=user';
+    })
+
+//    结束
+	/*修改*/
+	$('.xiug').click(function(){
+	var rows= $(this).parents('tr');
+	var id=rows.find('td').eq(0).find('span').text();
+	var name=rows.find('td input[name=name]').val();
+	var phone=rows.find('td input[name=phone]').val();
+	var email=rows.find('td input[name=email]').val();
+	var jues=rows.find('td').eq(4).find('select[name=grand]').val();
+	$.post("{:U('User/userexe')}",{
+	name:name,
+	phone:phone,
+	email:email,
+	jues:jues,
+	id:id,
+	type:2
+	},function(data){
+	//alert(data);
+	if(data==1){alert('修改成功');}else if(data==0){alert('没有修改项');}else{alert('出现未知错误');}
+	})
+	})
+	/*对输入内容进行过滤*/
+	$('input[name=name]').keyup(function(){
+	var a= $(this).val().replace(/\W/g,'');
+	$(this).val(a);
+	})
+	$('input[name=phone]').keyup(function(){
+	var a= $(this).val().replace(/\D/g,'');
+	$(this).val(a);
+	})
+	$('.xiangq').click(function(){
+	var rows= $(this).parents('tr');
+	var id=rows.find('td').eq(0).find('span').text();
+	//alert(id);
+            /*	layer.open({
+                title:'用户详情',
+                offset:['5%', '15%'],
+                fix:true,
+                move:false,
+                type: 2,
+                area: ['70%', '70%'],
+                skin: 'layui-layer-rim', //加上边框
+                content: ['/Admin/User/mlist/xq/9/xq_id/'+id, 'no']
+                });*/
+	})
+})							
+</script>
+            <!--<script type="text/javascript"charset="utf-8" src="/Public/yes/yes.js"></script>		-->
+		
+			
+				

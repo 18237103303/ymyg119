@@ -1,0 +1,58 @@
+<style>
+    body{padding: 0}
+</style>
+<div class="row">
+    <?php
+    //从服务器中获取GD库的信息
+    if(function_exists("gd_info")){
+    $gd=gd_info();
+    $gdinfo=$gd['GD Version'];
+    }else{
+    $gdinfo="未知";
+    }
+    //从GD库中查看是否支持FreeType字体
+    $freetype=$gd["FreeTyep Support"]?"支持":"不支持";
+    //从php配置文件中获得是否可以远程文件获取
+    $allowurl=ini_get("file_uploads")?"支持":"不支持";
+    //从php配置文件中获取最大上传限制
+    $max_upload=ini_get("file_uploads")?ini_get("upload_max_filesize"):"Disabled";
+    //从php配置文件中获取脚本的最大执行时间
+    $max_ex_time=ini_get("max_execution_time")."秒";
+    //以下两条获取服务器时间，中国大陆采用的是东八区的时间，设置时区为EtcGMT-8
+    date_default_timezone_set("Etc/GMT-8");
+    $systemtime=date("Y-m-d H:i:s",time());
+    //格式化输出以上获得的系统信息
+    echo "<table align=center cellspacing=0 cellpadding=0>";
+    echo "<caption><h2>系统信息</h2></caption>";
+    ?>
+         <tr>
+                <th>服务器操作系统 &nbsp;</th>
+                <td><?php echo (PHP_OS); ?></td>
+         </tr>
+
+        <tr>
+            <th>ThinkPHP版本</th>
+            <td><?php echo (THINK_VERSION); ?></td>
+        </tr>
+        <tr>
+            <th>运行环境</th>
+            <td><?php echo ($_SERVER['SERVER_SOFTWARE']); ?></td>
+        </tr>
+        <tr>
+            <th>MYSQL版本</th>
+            <?php $system_info_mysql = M()->query("select version() as v;"); ?>
+            <td><?php echo ($system_info_mysql["0"]["v"]); ?></td>
+        </tr>
+        <tr>
+            <th>上传限制</th>
+            <td><?php echo ini_get('upload_max_filesize');?></td>
+        </tr>
+        <tr>
+            <th>GD库版本</th>
+            <td><?php echo $gdinfo;?></td>
+        </tr>
+        <tr><th>FreeType:</th>  <td><?php echo $freetype;?></td></tr>
+        <tr><th>最大执行时间:</th>  <td><?php echo $max_ex_time;?></td></tr>
+        <tr><th>服务器时间:</th>  <td><?php echo $systemtime;?></td></tr>
+    </table>
+</div>

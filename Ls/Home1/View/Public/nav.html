@@ -1,0 +1,56 @@
+<div class="navbox">
+  <div class="flbox">
+   <p class="spfl">所有商品分类</p>
+   	<div class="qbflbox">
+	 <dl>
+     <foreach name="cate" item="vo" key="k">
+      <dd>
+        <div class="nio"><img src="__PUBLIC__/home/assets/images/indexa_{$k}.png" />
+		<input type="hidden" name="id" id="cid" value="$vo['cat_id']">
+		    <a href="{:U('Navgoods/navgoods',array('id'=>$vo['group_id']))}">{$vo.cat_name}</a>
+		
+		</div>
+        
+          <div class="navjy">
+            <div class="jy">
+              <h3>{$vo.cat_name}</h3>
+			    <volist name="vo['children']" id="vo2">
+              <p class="jybt">{$vo2.cat_name}</p>
+			  
+              <p class="dhlink">
+				  <volist name="vo2['children']" id="vo3">
+				  <a href="{:U('Good/index',array('cid'=>$vo3['cat_id']))}">{$vo3.cat_name}</a>&nbsp;&nbsp;
+				  </volist>
+              </p>
+			  </volist>
+             </div>
+          </div>
+       
+      </dd>
+	  </foreach>
+      
+     </dl>
+	</div>
+  </div>
+  <!--控制商品分类的鼠标事件-->
+  <script type="text/javascript">
+	$(function(){	
+		$(".flbox p").click(function(){
+			$(this).siblings(".qbflbox").toggle()
+			});
+		/*鼠标指向父级*/
+		$(".qbflbox dd").hover(function(){
+			/*子级显示*/
+		 $(this).children(".navjy").show();			 
+		  },function(){
+		 $(this).children(".navjy").hide();		
+		 })			
+	   });
+  </script>
+  <ul class="dhbox">
+    <li><a href="/">首页</a></li>
+   <volist name="nav" id="v">
+    <li><a href="{:U('Navgoods/navgoods',array('id'=>$v['id']))}">{$v.navtype}</a></li>
+    </volist>
+  </ul>
+</div>

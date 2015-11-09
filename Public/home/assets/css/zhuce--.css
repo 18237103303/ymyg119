@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+.zhuce{ width:600px; border-top:2px solid #c40000; margin:0 auto; margin-top:30px; min-height:650px;}
+.zhuce h2{ font-size:16px; color:#d41d05; text-align:center; margin:20px 0px;}
+.zhuce form p{ overflow:hidden; margin-bottom:20px;}
+.zhuce form p label{ line-height:34px; font-size:16px; color:#333333; float:left; width:150px; text-align:right; margin-right:6px;}
+.zhuce form p label span{color:#d41d05; }
+.zhuce form p input{ float:left; border:1px solid #cccccc; width:266px; height:34px;}
+.zhuce form p b{ float:left; font-weight:normal;color:#d41d05; line-height:34px; margin-left:10px; font-size:14px;}
+.zhuce form p select{ height:24px; width:120px; overflow:hidden; margin-top:5px;}
+.zhuce form .yanzheng img{ margin-left:10px; margin-right:10px; float:left;}
+.zhuce form .yanzheng input{ width:150px;}
+.zhuce form .tong{ margin-left:156px;}
+.zhuce form .tong input{ height:16px; width:16px;}
+.zhuce form .tong i{ float:left; margin-left:10px; font-style:normal; font-size:12px; font-family:"宋体"; color:#333333;}
+.zhuce form .tong i a{ color:#d41d05;}
+.zhuce form .tong i a:hover{ text-decoration:underline;}
+.zhuce .zhuce_btn input{ color:#fff; cursor:pointer; background-color:#d41d05; border:0px; margin-left:156px;}
+.cheng{ overflow:hidden; margin-top:100px; margin-left:50px;}
+.cheng span{ float:left; font-size:16px; color:#333333; padding:10px 0;  padding-left:35px;background-image:url(../images/zhuce1.jpg); background-position:left center; background-repeat:no-repeat;}
+.cheng i{ float:left; font-style:normal; margin-top:14px; margin-left:60px;font-family:"宋体"; color:#333333; font-size:12px;}
+.cheng i b{ font-weight:normal;color:#d41d05;}
+.xieyi{ width:1000px; margin:0 auto; min-height:600px;}
+.xieyi h2{ font-size:18px; text-align:center; margin-top:40px; margin-bottom:20px;}
+.xie1{ font-size:16px; line-height:28px;color:#333333;}
+.denglu{ width:1000px; margin:0 auto; margin-top:100px; overflow:hidden; min-height:600px;}
+.deng_left{height:345px; width:450px; float:left;}
+.deng_left img{height:345px; width:450px;}
+.deng_right{ float:right;}
+
+.deng_right form{ border:1px solid #cccccc; border-top:2px solid #c40000; height:322px; width:310px;}
+.deng_right form h2{ color:#c40000; text-align:center; font-size:16px; margin:20px;}
+.deng_right form p { margin-bottom:20px;}
+.deng_right form p input{ color:#666; background-repeat:no-repeat; padding-left:35px; background-position:10px center;border:1px solid #cccccc; width:231px; height:34px; display:block; margin:0 auto;}
+.deng_right form .login_btn{ margin-top:40px;}
+.deng_right form .login_btn input{ width:266px; height:40px; background-color:#c40000; border:0px; color:#FFF; padding-left:0px; font-size:18px; cursor:pointer;}
+.deng_right form p a{ display:block;width:266px; height:40px; background-color:#d87a00; margin:0 auto; text-align:center; line-height:40px; border:0px; color:#FFF; padding-left:0px; font-size:18px;}
+
+.zhinan{ overflow:hidden; width:1200px; margin:0 auto; margin-top:30px;}
+.zhinan_left{ float:left; width:220px;border-bottom:1px solid #CCC;border-right:1px solid #CCC; border-left:1px solid #CCC; margin-bottom:30px;}
+.zhinan_left dl dt{ color:#333333; font-size:18px;padding:10px 20px;border-bottom:1px solid #CCC; border-top:1px solid #CCC; border-left:3px solid #bc0000;}
+.zhinan_left dl dd a{ display:block;color:#333333; font-size:14px;padding:10px 0px; text-align:center}
+.zhinan_left dl dd a:hover{ background-color:#f5f5f5;}
+.zhinan_left dl dd .cur{ background-color:#bc0000; color:#FFF;}
+.zhinan_left dl dd .cur:hover{background-color:#bc0000;}
+.zhinan_right{ margin-bottom:30px; overflow:hidden; font-size:12px;color:#333; padding:20px;float:right;border:1px solid #CCC;width:920px; min-height:800px;}
+.zhinan_right p{ padding-top:10px; font-family:"宋体"; line-height:24px;}
+.zhinan_right h2{ font-weight:bold; font-size:18px;text-align:center; margin:20px;} 
+.zhinan_right span{ float:right;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

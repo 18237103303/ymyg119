@@ -1,0 +1,201 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{padding:0;margin:0;font-family:"Microsoft YaHei";}
+img{border:none; display:block;}
+li{list-style:none;}
+i{ font-style:normal;}
+a{color:#333; text-decoration:none;}
+a:focus{outline:none;}
+a{blr:expression(this.onFocus=this.blur());}
+body{ min-width:1200px;}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+input,button,textarea{font-family:"Microsoft YaHei";outline:none;}
+
+
+/***welcomebox***/
+.welcomebox{ height:30px; background-color:#f2f2f2; width:100%; border-bottom:1px solid #ccc;}
+.welcomebox .welcome{ width:1200px; margin:0 auto; line-height:30px; font-size:12px; color:#666; overflow:hidden; }
+.welcomebox .welcome .lp{ width:50%; float:left; overflow:hidden; font-family:"宋体"; line-height:30px; font-size:12px; color:#666;}
+.welcomebox .welcome .lp a{ display:inline-block; margin:0 10px; font-family:"宋体"; line-height:30px; font-size:12px; color:#666;}
+.welcomebox .welcome .rp{ width:40%; float:right; overflow:hidden; text-align:right; font-family:"宋体"; line-height:30px; font-size:12px; color:#666;}
+.welcomebox .welcome .rp a{ display:inline-block; margin:0 10px; height:30px; font-family:"宋体"; line-height:30px; font-size:12px; color:#666;}
+.welcomebox .welcome .rp a.car{ background-image:url(../images/index1_03.png); padding-left:17px; height:30px; background-position:left center; background-repeat:no-repeat; }
+.welcomebox .welcome .rp span{font-family:"宋体";}
+.welcomebox .welcome .rp span i{ color:#c40000; font-family:"宋体"; margin:0 5px;}
+/***welcomebox***/
+
+
+
+/****headerbox开始***/
+.headerbox{ width:100%; padding:20px 0; clear:both; background-color:#fff;}
+.headerbox .header{ width:1200px; margin:0 auto; height:73px; clear:both;}
+.headerbox .header .logoa{ display:block; width:180px; height:73px; overflow:hidden; float:left; margin:0 20px;}
+.headerbox .header .logoa img{ display:block; width:180px; height:73px; }
+.headerbox .header .weizhi{ float:left; overflow:hidden; margin-left:20px; overflow:hidden;}
+.headerbox .header .weizhi img{ display:block; width:39px; height:54px; margin:9px 5px; float:left;}
+.headerbox .header .weizhi .diming{ overflow:hidden; float:left; margin-left:5px;}
+.headerbox .header .weizhi .diming a{ display:inline-block; padding-right:12px; height:73px; line-height:73px; background-image:url(../images/index1_13.png); background-position:right center; background-repeat:no-repeat; line-height:73px; font-size:14px; margin-left:15px; color:#444; font-family:"宋体"; cursor:pointer; }
+.headerbox .header .sousuo{ overflow:hidden; float:right;background-color:#ffffff; margin:3px 0;}
+.headerbox .header .sousuo .ss{ border-radius:5px;border:3px solid #0864b1; height:38px; overflow:hidden; }
+.headerbox .header .sousuo .ss input[type=text]{ width:402px; height:38px; display:block; float:left; border:none; line-height:38px; font-size:14px; color:#555; padding-left:38px; background-image:url(../images/ssssss_03.png); background-position:12px center; background-repeat:no-repeat;}
+.headerbox .header .sousuo .ss input[type=button]{ cursor:pointer; color:#fff; font-size:15px; width:80px; height:38px; display:block; float:left; background-color:#0864b1; border:none; text-align:center; }
+.headerbox .header .sousuo p{ height:20px; line-height:20px; font-size:12px; font-family:"宋体"; margin-top:8px; }
+.headerbox .header .sousuo p span{ display:inline-block; margin:0 5px; font-family:"宋体"; }
+.headerbox .header .sousuo p i{ display:inline-block; margin:0 5px; color:#c40000; font-family:"宋体"; }
+.headerbox .header h2{ height:33px; margin:20px; line-height:33px; font-size:19px; color:#333; float:left; padding:0 30px; border-left:1px solid #222; }
+.headerbox .header .tjimg{ float:right; height:29px; margin-top:22px;}
+.headerbox .header .tjimg img{ display:block; width:617px; height:29px;}
+
+/****headerbox结束***/
+
+/***navbox开始***/
+.navbox{width:100%; height:30px; background-image:url(../images/nav_02.jpg); background-position:center center; }
+.navbox .nav{ width:1200px; margin:0 auto; overflow:hidden;}
+.navbox .nav ul.zuo{ overflow:hidden; float:left; width:686px; background-position:right top; background-repeat:no-repeat; background-image:url(../images/cds_03.jpg); padding-right:104px; }
+.navbox .nav ul.zuo li{ float:left; height:30px;}
+.navbox .nav ul.zuo li a{ text-align:center; padding:0 15px; font-size:14px; font-family:"宋体"; line-height:30px; height:30px; color:#fff; }
+.navbox .nav ul.you{ float:left; overflow:hidden; width:410px; }
+.navbox .nav ul.you li{ float:left; height:30px;}
+.navbox .nav ul.you li a{ text-align:center; padding:0 20px; font-size:14px; font-family:"宋体"; line-height:30px; height:30px; color:#fff; }
+/***navbox结束***/
+
+
+/***kefu开始***/
+.kefu{ width:35px; position:fixed; left:0; top:350px; overflow:hidden; z-index:555; }
+.kefu .left{ width:35px; height:135px; cursor:pointer; float:right; }
+.kefu .left img{ display:block; width:36px; height:135px;}
+.kefu .right{ width:0px; overflow:hidden; float:right; background-color:#f3f3f3;}
+.kefu .right .rbox{ width:150px; border:1px solid #ccc;}
+.kefu .right .rbox img{ display:block; width:150px; height:140px;}
+.kefu .right .rbox .linka{}
+.kefu .right .rbox .linka a{ display:block; width:86px; height:22px; border-radius:4px;  margin:15px auto; background-color:#ec6300; text-align:center; color:#fff; font-size:14px;}
+/***kefu结束***/
+
+
+
+/***footer开始***/
+.footerbig{ width:100%; padding:20px 0; background-color:#f3f3f3; }
+.footbox{width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
+.footbox .foot{ width:1200px; margin:0 auto; overflow:hidden;}
+.footbox .foot ul{ overflow:hidden; margin:0 auto; width:1000px;}
+.footbox .foot ul li{ width:179px; padding:0 10px; min-height:185px; padding-bottom:20px;  border-right:1px solid #ccc; float:left;}
+.footbox .foot ul li h2{ height:30px; line-height:30px; font-size:16px; color:#222; font-weight:bold; font-family:"宋体"; margin-bottom:5px; text-align:center;}
+.footbox .foot ul li a{ font-size:12px; line-height:30px; color:#666; display:block; font-family:"宋体"; text-align:center;}
+.footbox .foot ul li.last{ border:none;}
+.footerbox{ line-height:20px; font-size:12px; color:#666; font-family:"宋体"; padding-top:30px;}
+.footerbox .link{ width:1000px; margin:0 auto; overflow:hidden;}
+.footerbox .link span{ display:block; width:95px; margin-right:5px; float:left; text-align:right; font-family:"宋体"; }
+.footerbox .link .linka{ width:900px; float:left; }
+.footerbox .link .linka a{ display:inline-block; height:20px; color:#666; line-height:20px; font-family:"宋体"; font-size:12px; margin-right:10px;}
+.footerbox p{ width:1200px; margin:0 auto; font-family:"宋体"; text-align:center; margin-top:15px;  }
+.footerbox p a{ color:#666; line-height:20px; font-family:"宋体"; }
+.footerbig a:hover{ color:#d03535 !important;}
+/***footer结束***/
+
+/***fx开始****/
+.fxbox{ position:fixed; right:0; top:0; height:100%; width:36px; box-shadow:0 0 4px #999; padding-top:10%; z-index:333; background-color:#fff;}
+.fxbox .fx{}
+.fxbox .fx .box{ position:relative; margin-bottom:10px;}
+.fxbox .fx .box.mt60{ margin-top:60px;}
+.fxbox .fx .box a.btna{ display:block; padding:5px 0; cursor:pointer;}
+.fxbox .fx .box a.btna i{ display:block; width:23px; height:23px; margin:4px auto; overflow:hidden;}
+.fxbox .fx .box a.btna i img.img2{ display:none; }
+.fxbox .fx .box a.btna span{ display:block; line-height:24px; font-size:12px; color:#444; text-align:center;}
+.fxbox .fx .box a.btna:hover{ background-color:#ec6300;}
+.fxbox .fx .box a.btna:hover span{ color:#fff;}
+.fxbox .fx .box a.btna:hover i img.img2{ display:block; }
+.fxbox .fx .box a.btna:hover i img.img1{ display:none; }
+.fxbox .fx .box a.weimaa{ display:block; padding:5px 0; cursor:pointer; margin-top:10px;}
+.fxbox .fx .box a.weimaa img{ display:block; width:23px; height:23px; margin:4px auto; }
+.fxbox .fx .box .hidebox{ position:absolute; right:37px; top:-30px; background-color:#fff; display:none;}
+.fxbox .fx .box .hidebox.top2{ top:12%;}
+.fxbox .fx .box .hidebox.top3{ top:-200px;}
+.fxbox .fx .box .hidebox.top4{ top:0px;}
+
+.fxbox .fx .box .hidebox .weideng{ border:1px solid #ccc;}
+.fxbox .fx .box .hidebox .weideng .ming{ padding:15px; overflow:hidden; width:240px;}
+.fxbox .fx .box .hidebox .weideng .ming .touxiang{ display:block; width:68px; height:68px; padding:4px; border:1px solid #ccc; border-radius:50%; float:left;}
+.fxbox .fx .box .hidebox .weideng .ming .touxiang img{ display:block; width:68px; height:68px; }
+.fxbox .fx .box .hidebox .weideng .ming span{ display:block; width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; float:right; font-size:14px; color:#444; line-height:78px;}
+.fxbox .fx .box .hidebox .weideng .ming span a{ color:#373ceb;}
+.fxbox .fx .box .hidebox .xinxi{ padding:15px; overflow:hidden;  border:1px solid #ccc;width:240px; border-top:none;}
+.fxbox .fx .box .hidebox .xinxi a{ display:block; width:100px; margin:0 10px; float:left;}
+.fxbox .fx .box .hidebox .xinxi a img{ display:block; width:30px; height:30px; margin:5px auto; }
+.fxbox .fx .box .hidebox .xinxi a span{ display:block; line-height:30px; text-align:center; font-size:14px; color:#444; }
+.fxbox .fx .box .hidebox p.scp{ height:30px; line-height:30px; padding:10px; border:1px solid #ccc; font-size:14px; line-height:30px; color:#444; width:140px; text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.fxbox .fx .box .hidebox p.scp a{ color:#373ceb;font-size:14px; line-height:30px;  }
+
+.fxbox .fx .box .hidebox .cun{ box-shadow:0 0 4px #bbb; }
+.fxbox .fx .box .hidebox .cun h2{ height:36px; line-height:36px; font-size:14px; color:#444; padding:0 20px; background-color:#ebebeb;}
+.fxbox .fx .box .hidebox .cun b.close{ display:block; width:10px; height:10px; position:absolute; right:13px; top:13px; cursor:pointer;} 
+.fxbox .fx .box .hidebox .cun .cpbox{ width:310px; height:300px; overflow-y:scroll; border-bottom:1px solid #ccc;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei{ position:relative; overflow:hidden; padding:10px; border-bottom:1px solid #ccc;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .imga{ display:block; width:66px; height:66px; float:left;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .imga img{ display:block; width:66px; height:66px;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text{ float:right; width:190px;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .namea{ display:block; line-height:28px; font-size:12px; color:#555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .namea:hover{ color:#f60505;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money{ overflow:hidden; margin:10px 0;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money .liang{ overflow:hidden; float:left;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money .liang span{ display:block; width:11px; height:16px; float:left; cursor:pointer; }
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money .liang input{ display:block; width:40px; height:14px; font-size:12opx; color:#666; text-align:center; margin:0 2px; border:1px solid #ccc; float:left; }
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money .liang b{ display:block; width:20px; line-height:16px; color:#666; font-size:12px; text-align:center; float:left; font-weight:normal;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei .text .money i{ display:block; width:100px; float:left; font-size:12px; line-height:16px; color:#f60505; text-align:center;}
+.fxbox .fx .box .hidebox .cun .cpbox .mei span.close{ display:block; width:14px; height:14px; position:absolute; right:10px; top:10px; cursor:pointer;} 
+.fxbox .fx .box .hidebox .jiesuan{ padding:25px 20px;}
+.fxbox .fx .box .hidebox .jiesuan p{ overflow:hidden; height:30px; line-height:30px; font-size:12px; color:#666;}
+.fxbox .fx .box .hidebox .jiesuan p span{ display:block; width:150px; float:left;}
+.fxbox .fx .box .hidebox .jiesuan p span b{ color:#f60505; font-size:14px;}
+.fxbox .fx .box .hidebox .jiesuan p i{ color:#f60505; font-size:14px; float:right; display:block; width:100px; text-align:center;}
+.fxbox .fx .box .hidebox .jiesuan a{ display:block; height:30px; line-height:30px; color:#fff; border-radius:5px; width:80%; font-size:12px; margin:20px auto; background-color:#cf171f; text-align:center;}
+
+
+.fxbox .fx .box .hidebox .weixin{ padding:10px; background-color:#f7f7f7; box-shadow:0 0 4px #bbb; }
+.fxbox .fx .box .hidebox .weixin img.weima{display:block; width:94px; height:94px;}
+.fxbox .fx .box .hidebox .weixin p{ font-size:12px; line-height:26px; color:#444; text-align:center;}
+/***fx结束****/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

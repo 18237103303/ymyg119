@@ -1,0 +1,27 @@
+[ 2015-09-15T09:26:08+08:00 ] ::1 /favicon.ico
+ERR: 无法加载模块:Favicon
+
+[ 2015-09-15T09:49:54+08:00 ] ::1 /favicon.ico
+ERR: 无法加载模块:Favicon
+
+[ 2015-09-15T09:50:01+08:00 ] ::1 /Public/admin/assets/css/wail.css
+ERR: 无法加载模块:Public
+
+[ 2015-09-15T15:22:24+08:00 ] ::1 /favicon.ico
+ERR: 无法加载模块:Favicon
+
+[ 2015-09-15T15:22:24+08:00 ] ::1 /favicon.ico
+ERR: 无法加载模块:Favicon
+
+[ 2015-09-15T15:22:28+08:00 ] ::1 /Public/admin/assets/css/wail.css
+ERR: 无法加载模块:Public
+
+[ 2015-09-15T15:36:00+08:00 ] ::1 /user]
+ERR: 无法加载模块:User]
+
+[ 2015-09-15T15:36:03+08:00 ] ::1 /Public/admin/assets/css/wail.css
+ERR: 无法加载模块:Public
+
+[ 2015-09-15T16:19:43+08:00 ] ::1 /Public/admin/assets/js/bootbox.min.js
+ERR: 无法加载模块:Public
+

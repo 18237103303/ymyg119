@@ -1,0 +1,251 @@
+<css href="__PUBLIC__/home/css/Css.css"/>
+<js href="__PUBLIC__/home/js/jquery.kkPages.js" />
+<js href="__PUBLIC__/home/js/webuploader.html5only.min.js" />
+<js href="__PUBLIC__/home/js/diyUpload.js" />
+
+<include file="User:center" />
+<div class="right">
+       <div class="ddpj">
+       		<div class="tt">
+            	<a class="imga"><img src="__PUBLIC__/home/images/ppp_03.jpg"></a>
+                <div class="text">
+                	<h2>烈焰大量无烟煤 精致无烟煤 高品质无烟煤 品质保证 价格优惠</h2>
+                    <dl><dt>价格</dt><dd><strong>2580</strong>元</dd></dl>
+                    <dl><dt>月销量</dt><dd><i>81</i>吨</dd></dl>
+                    <dl><dt>评价</dt><dd><span><img src="__PUBLIC__/home/images/star_03.jpg"></span><span><img src="__PUBLIC__/home/images/star_03.jpg"></span>
+                    <span><img src="__PUBLIC__/home/images/star_03.jpg"></span>
+                    <span><img src="__PUBLIC__/home/images/star_03.jpg"></span>
+                    <span><img src="__PUBLIC__/home/images/star_03.jpg"></span>&nbsp;4.8分&nbsp;<b>（累计评价497）</b></dd></dl>
+                    <dl><dt>类型</dt><dd>1号煤</dd></dl>
+                    <dl><dt>数量</dt><dd>2000斤</dd></dl>
+                </div>
+            </div>	
+            <div class="starbox">
+            	<div class="sum">
+                	<span style="background-image:url(__PUBLIC__/home/images/ppp_07.jpg);">好评：</span>
+                    <span style="background-image:url(__PUBLIC__/home/images/ppp_09.jpg);">中评：</span>
+                    <span style="background-image:url(__PUBLIC__/home/images/ppp_11.jpg);">差评：</span>
+                </div>
+            	<div class="gradecon" id="Addnewskill_119">
+                    <ul class="rev_pro clearfix">
+                        <li>
+                            <span class="revtit">描述相符：</span>
+                            <div class="revinp">
+                                <span class="level">
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                </span>
+                                <span class="revgrade">5分 惊喜</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="revtit">服务态度：</span>
+                            <div class="revinp">
+                                <span class="level">
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_hollow" cjmark=""></i>
+                                </span>
+                                <span class="revgrade">5分 惊喜</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="revtit">发货速度：</span>
+                            <div class="revinp">
+                                <span class="level">
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_hollow" cjmark=""></i>
+                                </span>
+                                <span class="revgrade">5分 惊喜</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="revtit">服务态度：</span>
+                            <div class="revinp">
+                                <span class="level">
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_solid" cjmark=""></i>
+                                    <i class="level_hollow" cjmark=""></i>
+                                </span>
+                                <span class="revgrade">5分 惊喜</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lun">
+                	<textarea placeholder="评价商品"></textarea>
+                </div>
+                <div id="box">
+                    <div id="test" ></div>
+                </div>
+                <div class="caozuo">
+                	
+                    <a>提交评价</a>
+                    <label><input type="checkbox">&nbsp;匿名上传</label>
+                </div>
+            </div>
+       </div> 
+    </div>
+</div>
+<!--Personal结束-->
+<script type="text/javascript">
+
+$('#test').diyUpload({
+	url:'server/fileupload.php',
+	success:function( data ) {
+		console.info( data );
+	},
+	error:function( err ) {
+		console.info( err );	
+	}
+});
+
+
+</script>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{display:inline-table}
+*html .clearfix{height:1%}
+.clearfix{display:block}
+*+html .clearfix{min-height:1%}
+.fl{float:left;}
+
+.gradecon{padding:10px 0;font-size:12px;}
+.rev_pro li{line-height:20px;height:20px; margin-bottom:10px;}
+.rev_pro li .revtit{text-align:right;display:block;float:left;margin-right:10px;width:70px; font-size:12px; color:#666;font-family:"宋体"; }
+.revinp{float:left;display:inline;}
+.level .level_solid,.level .level_hollow{float:left;background-image:url(__PUBLIC__/home/images/icon2.png);background-repeat:no-repeat;display:inline-block;width:15px;height:15px;}
+.level .level_solid{background-position:0px 0px;}
+.level .level_hollow{background-position:-21px 0px;}
+.revgrade{margin-left:20px; font-size:12px; color:#666;font-family:"宋体"; }
+</style>
+<script type="text/javascript">
+var degree = ['','1分 很差','2分 不满','3分 一般','4分 满意','5分 惊喜','未评分'];
+//重新点评
+function addComment2(e,inid,opt,id){
+	$.ajax({
+		url:'/siteMessage/content',
+		type:'post',
+		data:'id='+id,
+		dataType:'json',
+		success:function(data){
+			if(data.status==1){
+				var list = $('#Addnewskill_119');
+				list.eq(0).html(data.talent+'(人才ID：'+data.talentId+')');
+				list.eq(1).html(data.job);
+				list.eq(2).html(data.ms);
+				
+				var arr = [data.total,data.expAuth,data.killAuth,data.followTime,data.formality,data.appReact];
+				var list2 = $('span.level','#Addnewskill_119');
+				$('input[name="InterviewCommentInfoSub[opt]"]').val(opt+1);
+				list2.each(function(i,v){
+						var a = '';
+						
+						if(i>0){
+							a = 'cjmark';
+							$(v).parents('li').find('input').val(arr[i]);
+						}
+						var str = '';
+						if(arr[i]==6){
+							for(var n=0;n<=4;n++){
+								str += '<i '+a+' class="level_hollow"></i>';
+							}
+							$(v).parents('li').find('input').prop('disabled',true)
+						}else{
+							$(v).parents('li').find('input').prop('checked',true)
+							for(var n=0;n<arr[i];n++){
+								str += '<i '+a+' class="level_solid"></i>';
+							}
+							for(var n=0;n<(5-arr[i]);n++){
+								str += '<i '+a+' class="level_hollow"></i>';
+							}
+						}
+						$(v).html(str);
+						$(v).next().html(degree[arr[i]]);
+					
+				})
+				
+				
+				create_show(119);
+			}else{
+				ui.error(data.msg,2000);
+			}
+		}
+	})	
+}
+//提交点评
+function addComment3(){
+	$.ajax({
+		url:'/siteMessage/commentinterview',
+		type:'post',
+		data:$('form[name="comment"]').serialize(),
+		dataType:'json',
+		success:function(data){
+
+		}
+
+	})
+}
+
+$(function(){
+	//点星星
+	$(document).on('mouseover','i[cjmark]',function(){
+		var num = $(this).index();
+		var pmark = $(this).parents('.revinp');
+		var mark = pmark.prevAll('input');
+	
+		if(mark.prop('checked')) return false;
+		
+		var list = $(this).parent().find('i');
+		for(var i=0;i<=num;i++){
+			list.eq(i).attr('class','level_solid');
+		}
+		for(var i=num+1,len=list.length-1;i<=len;i++){
+			list.eq(i).attr('class','level_hollow');
+		}
+		$(this).parent().next().html(degree[num+1]);
+
+	})
+	//点击星星
+	$(document).on('click','i[cjmark]',function(){
+		var num = $(this).index();
+		var pmark = $(this).parents('.revinp');
+		var mark = pmark.prevAll('input');
+		
+		if(mark.prop('checked')){
+			mark.val('');
+			mark.prop('checked',false);mark.prop('disabled',true);	
+		}else{
+			mark.val(num);
+			mark.prop('checked',true);mark.prop('disabled',false);	
+		}
+	})
+	//选框
+	$('#Addnewskill_119 input[type="checkbox"]').change(function(){
+		if($(this).not(':checked')){//!($(this).prop('checked'))
+			$(this).prop('checked',false);$(this).prop('disabled',true)
+			var smark = $(this).nextAll('.revinp');
+			smark.find('span.revgrade').html('未评分');
+			smark.find('i').attr('class','level_hollow');
+			smark.val(6);
+		}
+	})
+	
+
+})
+</script>
+

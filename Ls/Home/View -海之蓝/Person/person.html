@@ -1,0 +1,167 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<div class="header">
+    <div class="header_wrap">
+
+        <div class="logo1">
+            <a href="/"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="{:U('Index/index')}">首页</a></li>
+                <li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            </ul>
+        </div>
+
+<!--         <div class="search">
+            <form>
+                <p><input type="text" value="输入产品名称" onFocus="javascript:this.value = ''"><a href="">搜索</a></p>
+            </form>
+        </div>
+ -->
+    </div>
+</div>
+<!--header-->
+<!--main-->
+<div class="main">
+    <div class="main_wrap">
+        <include file="Public:personleft" />
+
+        <div class="main_r">
+            <div class="main_bt">
+                <ul>
+                    <li>
+                        <div class="bt1">
+                            <p>可用积分</p>
+                            <span>{$showcount.jf|default=0}</span>
+                            <a href="{:U('Person/coupon')}">积分</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bt1">
+                            <p>收藏</p>
+                            <span>{$showcount.shop}<i>店铺</i></span>
+                            <a href="{:U('Person/goodscon')}">查看收藏</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bt1">
+                            <p>收藏</p>
+                            <span>{$showcount.goods}<i>宝贝</i></span>
+                            <a href="{:U('Person/shopcon')}">查看收藏</a><!-- <i><a href="">提现</a></i> -->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bt4">
+                            <p>账户安全</p>
+                            <div class="bt4_1"><span>一般</span><img src="__PUBLIC__/home/assets/images/pol_icon2.png" alt=""><i><a href="">提升></a></i></div>
+                            <div class="bt4_2"><p><a class="a2" href=""><span>手机:</span>13318****850</a></p><p><a class="a3" href=""><span>邮箱:</span> 未绑定</a></p></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="shop">
+                <h4>资料设置</h4>
+
+                <h5><div id="show"></div></h5>
+                <h5>亲爱的<a href="">{$detail.nic}</a>，填写真实的资料，有助于好友找到您哦！</h5>
+                <p><label>当前头像:</label>
+                    <input type="hidden" value="{$detail.pic}" id="pic"/>
+                   <empty name="detail.pic">
+                    <img src="/public/home/assets/images/index_03_03.png" alt="海之澜">
+                    <else/>
+                    <img  src="{$detail.pic}" alt=""/> 
+                </empty>
+                    <span class="p1"><a href="{:U('Person/picchange',array('userid'=>$detail['id']))}">编辑头像</a>
+                    </span>				 
+                </p>
+                <p><label>*昵称:</label><input type="text" value="{$detail.nic}" name="nic" id="nic">
+                </p>
+                <p><label>真实姓名:</label><input type="text" value="{$detail.c_name}" name="c_name" id="c_name"></p>
+                <p><label>性别：</label><i>
+                        <input class="check" type="radio" name="six" value="1"  id="six" <if condition=" $detail['six'] eq 1 ">checked="checked"</if> /><b>先生</b></i>
+                    <i>
+                        <input class="check" type="radio" name="six" value="0" id="six" <if condition=" $detail['six'] eq 0 ">checked="checked" </if> /><b>女士</b></i>
+                </p>                  
+                <p><label>居住地:</label>
+                    <select name="province" id="province"></select>
+                    <select name="city" id="city"></select>
+                    <select name="area" id="area"></select>
+                </p>
+                <div class="button"><p><a href="###" onclick="sub()">保存</a></p></div>
+
+            </div>
+        </div>
+        <script language="javascript" defer>
+            new PCAS("province", "city", "area", "吉林省", "白城市", "大安市");
+        </script>
+        <script>
+            //提交表单
+            function sub() {
+                //if(){
+                //}else{
+                $.ajax({
+                    'type': 'post',
+                    'url': "{:U('Person/person')}",
+                    'data': 'pic=' + $('#pic').val() + '&nic=' + $('#nic').val() + '&c_name=' + $('#c_name').val() + '&six=' + $('#six').val() + '&province=' + $('#province').val() + '&city=' + $('#city').val() + '&area=' + $('#area').val(),
+                    'dataType': 'json',
+                    'success': function (data) {
+                        $('#show').html(data);
+                    }
+                });
+                //}
+
+            }
+        </script>
+    </div>
+</div>
+<!--main-->
+
+<script>
+    function uploadImgNoCut(api_url, upload_url, obj) {
+        var imgfileId = $(obj).attr("id");
+        var image_show = $(obj).parent().parent().find(".image_show");
+        $.ajaxFileUpload({
+            fileElementId: imgfileId,
+            url: api_url,
+            dataType: 'json',
+            data: {'img': imgfileId, 'thumbname': 'tmp'},
+            success: function (data, textStatus) {
+                if (data.code != 1) {
+                    alert(data.message);
+                } else {
+                    var x, y, w, h;
+                    x = y = 0;
+                    w = 500;
+                    h = 281;
+                    var d = dialog({
+                        title: "上传图片",
+                        content: '<img id="jcrop1" width="500px;" src="' + upload_url + data.data + '">&nbsp;&nbsp;<input type="hidden" id="img_url1" name="img_url1" value="' + data.data + '"><br>',
+                        okValue: '确定',
+                        ok: function () {
+                            $.post('?c=iimage&a=uploadimg', {path: $("#img_url1").val(), 'replace': 'tmp'}, function (data) {
+                                var html = "<img class='card_img'  src='" + upload_url + data.data + "'>";
+                                var field_name = $(image_show).find("input:hidden").attr("name");
+                                html += '<input type="hidden" id="' + field_name + '" name="' + field_name + '" value="' + data.data + '">';
+                                $(image_show).html(html);
+                                $('#s_identityIdPic').prev('a').html('替换');
+                                preview();
+                            }, "json");
+                        }
+                    });
+                    d.showModal();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                var msg = "服务器出错，错误内容：" + XMLHttpRequest.responseText;
+                alert(msg);
+            }
+        });
+    }
+</script>
+
+
+

@@ -1,0 +1,108 @@
+<!-- Removing search and results count filter -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">分站信息 - Member datail</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<tr><td style="width:15%;">分站编号</td><td id="bh">{$row.id}</td></tr>
+						<tr><td>分站名字</td><td>{$row.name}</td></tr>
+						<tr><td>利润</td><td>￥{$row.yj}<i id="yj" style="cursor:pointer;">[详情信息]</i></td></tr>
+						<tr><td>冻结的利润</td><td>￥{$row.dj_yj}<i id="dj_yj" style="cursor:pointer;">[详情信息]</i></td></tr>
+                        <!--地址区域的操作-->
+                        <tr><td>城市地址 </td>
+                            <td>
+                                <script type="text/javascript" src="__PUBLIC__/yes1/js/area.js"></script>
+                                <script type="text/javascript" src="__PUBLIC__/yes1/js/location.js"></script>
+                                <script type="text/javascript" src="__PUBLIC__/yes1/js/select2.js"></script>
+                                <script type="text/javascript" src="__PUBLIC__/yes1/js/select2_locale_zh-CN.js"></script>
+                                <!--<link rel="stylesheet" href="__PUBLIC__/yes1/css/common.css"/>-->
+                                <link rel="stylesheet" href="__PUBLIC__/yes1/css/select2.css"/>
+
+
+                                <select  id="loc_province" style="width:120px;">
+                                </select>
+                                <select  id="loc_city" style="width:120px; margin-left: 10px">
+                                </select>
+                                <select id="loc_town" style="width:120px;margin-left: 10px">
+                                </select>
+                                <button class="btn btn-secondary btn-sm btn-icon icon-left dztz" style="margin-left: 3%;">调整</button>
+                                <script>
+                                    $(function(){
+                                        var v1="{$dq[0]}";
+                                        var v2="{$dq[1]}";
+                                        var v3="{$dq[2]}";
+                                        v1?$('#loc_province').val(v1).trigger("change"):'';
+                                        v2?$('#loc_city').val(v2).trigger("change"):'';
+                                        v3?$('#loc_town').val(v3).trigger("change"):'';
+                                        $('.dztz').click(function(){
+                                            var one1=  $('#loc_province').val();
+                                            var one2= $('#loc_city').val();
+                                            var one3= $('#loc_town').val();
+                                            var bh=$('#bh').text();
+                                            $.post("/Admin/User/wddz/",{
+                                                one1:one1,
+                                                one2:one2,
+                                                one3:one3,
+                                                id:bh
+                                            },function(data){
+                                                if(data==9){alert('无更新内容');}else if(data==-1){alert('更新失败');}else{alert('更新成功'); location.href="";}
+                                            })
+                                        })
+                                    })
+
+                                </script>
+                            </td></tr>
+                        <!--地址区域的操作结束-->
+                        <tr><td>密码操作</td><td><button class="btn btn-secondary btn-sm btn-icon icon-left" onclick="jQuery('#modal-9').modal('show', {backdrop: 'static'});$.cookies.set( 'user',{$row.id});">修改</button></td></tr>
+                        <tr><td>订单</td><td><button id="dd" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>区域用户</td><td><button id="zb" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+<!--增加地址区域-->
+<tr><td>区域配送</td><td class="qyps"><button class="btn btn-secondary btn-sm btn-icon icon-left">调整</button></td></tr>
+<!--增加地址区域-->
+                        <tr><td>模拟登陆</td><td><button id="dl" class="btn btn-secondary btn-sm btn-icon icon-left">确定</button></td></tr>
+                        <tr><td>删除该用户</td><td><button id="sc" class="btn btn-secondary btn-sm btn-icon icon-left">确定</button></td></tr>
+					</table>
+				</div>
+			</div>
+<div class="panel panel-default">			
+<!--{$rpage}-->
+</div>		
+		<!-- 弹出层 -->		
+<script>
+$(function(){
+    $('#zb').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/Zfz/xj/id/"+bh+'?flag=user';
+    })
+    $('#dd').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/Zfz/yj/id/"+bh+'?flag=user';
+    })
+    $('#yj').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/Zfz/yj/type/1/id/"+bh+'?flag=user';
+    })
+    $('#dj_yj').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/Zfz/yj/type/2/id/"+bh+'?flag=user';
+    })
+    $('#sc').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/Zfz/sc/id/"+bh+'?flag=user';
+    })
+    $('#dl').click(function(){
+            var bh=$('#bh').text();
+            location.href="/Admin/Zfz/dl/id/"+bh;
+        })
+//    区域配送
+    $('.qyps').click(function(){
+        var id=$('#bh').text();
+        location.href="/Admin/Zfz/dqps/id/"+id;
+    })
+})
+</script>
+            <!--<script type="text/javascript"charset="utf-8" src="/Public/yes/yes.js"></script>		-->
+		
+			
+				

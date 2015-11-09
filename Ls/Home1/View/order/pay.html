@@ -1,0 +1,134 @@
+<link href="__PUBLIC__/home/assets/css/zffs.css" rel="stylesheet" type="text/css">
+
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script>
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("");
+	});
+</script>
+<div class="tbbox">
+	<div class="dbbox">
+        <div class="bzbox"><a href="{:U('Index/index')}"><img src="__PUBLIC__/home/assets/images/index_11.png" alt=""></a> </div>
+        <p class="pb">购物车</p>
+    </div>
+    <div class="lcbox"><img src="__PUBLIC__/home/assets/images/xq_03.jpg" alt=""></div>
+</div>
+<!--header-->
+<div class="mainbox">
+	<P class="tjbox"><span class="ls">订单已提交，</span>您正在使用海之澜担保交易</P>
+       <div class="jsdz">
+    	   <div class="jszbox">
+              <p class="jsz">寄送至： {$addr}</p>            
+              <p class="sq">订单详情</p>
+                <table cellpadding="0" cellspacing="0" border="1" width="850" class="bgbox">
+       		<tbody>
+            	<tr>
+                	<td height="36">订单号</td>
+                    <td>商家</td>
+                    <td>数量</td>
+                    <td>金额</td>
+                </tr>
+                <volist name='order_data' id='vo'>
+                    <tr>
+                	<td height="30">{$vo.order_sn}</td>
+                    <td>{$vo.shop_name}</td>
+                    <td>{$vo.total_num}</td>
+                    <td>￥{$vo.total_fee}</td>
+                    <td style="display:none" class="order_fee">{$vo.order_id}</td>
+                </tr>
+                </volist>
+            </tbody>
+       </table> 
+                <script>
+				   $(function(){	
+					$(".sq").click(function(){
+					$(this).siblings(".bgbox").toggle()
+					 })
+					});
+		    </script>
+            </div>
+           <p class="ddze">订单总金额：<span class="hs">￥{$total}</span></p>
+       </div>
+    <form action="/Alipay/Zf/alipayapi.php" method="post" name="bd">
+        <input type="hidden" name="pici_sn" value="{$pici_sn}"/>
+        <input type="hidden" name="pici_fee" value="{$total}"/>
+    </form>
+       <label ><span class="jc">送海之澜积分:</span><span class="bh">{$score}</span> </label>
+       <div class="zsx"><img src="__PUBLIC__/home/assets/images/xq_07.jpg" alt=""></div>
+       <div class="zfbox">
+           <div class="qhbox">
+               <ul class="zfqh">
+                   <li  class="on">第三方支付 </li>
+                   <li>积分支付 </li>
+               </ul>
+           </div>
+           <div class="zffs">
+                <div class="zhifu">
+                   <p class="hdbox">在线支付</p>
+                   <div class="fdbox">
+                      <div class="zx"> <label><input type="radio" name="zf" value=""  class="an"><img src="__PUBLIC__/home/assets/images/zf_03.jpg"></label></div>
+                      <div class="zx"><label><input type="radio" name="zf" value="" class="an" ><img src="__PUBLIC__/home/assets/images/zf_05.jpg"></label></div>
+                   </div>
+                   <p class="hdbox">手机扫码支付</p>
+                   <div class="fdbox">
+                      <div class="zx"> <label><input type="radio" name="zf" value=""  class="an"><img src="__PUBLIC__/home/assets/images/zf_10.jpg"></label></div>
+                      
+                   </div>
+                </div>
+                <div class="zhifu">
+                     <p class="hdbox">提示 ：您目前的积分为{$user_score}</p>
+                     
+                </div>
+            </div>
+        </div>
+        <script>
+      		jQuery(".zfbox").slide({mainCell:".zffs",titCell:".zfqh li",effect:"fade",trigger:"click",delayTime:1000,interTime:3000,titOnClassName:"on"});
+		$(function(){
+            $('#pay').click(function(){
+                $('form[name=bd]').submit();
+            })
+        })
+        function score(){
+            var num=$("td.order_fee").length;
+            var ids='';
+            for(var i=0;i<num;i++){
+                var order_id=$("td.order_fee").eq(i).html();
+                ids+=order_id+'-';
+            }
+            $.ajax({
+                'type':'post',
+                'url':"{:U('Order/score')}",
+                'data':'ids='+ids,
+                'dataType':'json',
+                'success':function(dat){
+                    alert(dat.msg);
+                    if(dat.info==2){
+                        window.location.href="{:U('Person/allorder')}";
+                    }
+                }
+            })
+        }
+        </script>
+        <div class="jsbox">
+        	<div class="ljzf" id="pay"><a href="#signup" rel="leanModal">立即支付</a></div>
+               
+                <div class="ljzf" style="margin-left: 300px;"><a href="###" onclick="score()">积分支付</a></div>
+            <div id="signup" class="zftc" style="display:none">
+                	<p class="zzf">正在支付</p>
+                    <p class="zfsm">请在新开的页面完成支付，支付完成前不要关闭窗口</p>
+                    <div class="wcbox">
+                    	<p class="cgdj">如您已成功付款,请点击:</p>
+                        <div class="zfcg"><a href="#">已完成支付</a></div>
+                    </div>
+                    <div class="ckbox">
+                    	<p class="sbdj">如您付款失败,请点击: </p>
+                        <div class="zfck"><a href="#">重新支付</a></div>
+                        <p class="lxkf">&nbsp;&nbsp;&nbsp;&nbsp; 或  &nbsp;&nbsp;&nbsp;<a href="#">联系客服</a></p>
+                    </div>
+                </div>
+            <!--<p class="sy">如果交易金额大于网银限额，建议使用  <span class="lys"> 海之澜支付平台</span>   <a href="#">充值支付>></a></p>-->
+        </div>
+
+</div>

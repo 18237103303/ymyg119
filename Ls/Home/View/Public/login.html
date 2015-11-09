@@ -1,0 +1,27 @@
+<css href="__PUBLIC__/home/css/denglu.css"/>
+
+<!--headerbox--> 
+<div class="headerbox">
+	<div class="header">
+    	<a class="logoa" href="{:U('Index/Index')}"><img src="__PUBLIC__/home/images/index1_07.png"></a>
+        <h2>登录</h2>
+    </div>
+</div> 
+<!--headerbox--> 
+
+<!--comebox-->
+<div class="comebox">
+	<div class="denglu">
+    	<div class="left"><img src="__PUBLIC__/home/images/denglu_03.jpg"></div>
+        <div class="right">
+        	<h2>会员登录</h2>
+            <div class="biaodan">
+            	<input type="text" style="background-image:url(images/decede_03.jpg);">
+                <input type="password" style="background-image:url(images/decede_06.jpg);">
+            </div>
+            <p><a class="zc" href="{:U('Public/Register')}">免费注册</a><a class="wj" href="{:U('User/Getpsd',array('step'=>1))}">忘记密码？</a></p>
+            <input type="button" value="登录" onClick="document.location='{:U('User/Index')}'">
+        </div>
+    </div>
+</div>
+<!--comebox-->

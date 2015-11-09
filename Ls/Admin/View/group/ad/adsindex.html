@@ -1,0 +1,96 @@
+<!-- Removing search and results count filter -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">广告 广告添加 -- AD Add</div>
+						<div class="panel-body">
+							<div class="col-sm-5">
+							
+								<a href="{:U('Ad/adsadd')}"><button class="btn btn-success">广告添加 -- AD Add</button></a>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">广告列表 -- AD List</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th>广告名称</th>
+								<th>广告位置</th>
+								<th>媒介类型</th>
+                                <th>开始日期</th>
+                                <th>结束日期</th>
+                                <th>点击次数</th> 
+								<th>操作</th>
+							</tr>
+						</thead>
+							<foreach name="result" item="v">
+						<tbody class="middle-align">
+					
+							<tr>
+								<td>{$v.name}</td>
+								<td>{$v.position_id}</td>
+							    <td>
+							    <if condition="$v['ad_type'] eq 0 ">
+							    图片
+							    <elseif condition="$v['ad_type'] eq 1 "/>
+							    文字
+							    <else />
+							    </if>
+
+							    </td>
+							    <td>{$v.start_time}</td>
+							    <td>{$v.end_time}</td>
+							    <td>{$v.click}</td>
+								<td>
+									<a href="{:U('Ad/adsupdate',array('id'=>$v['id']))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										编辑
+									</a>
+									
+									<a href="javascript:del({$v.id});" class="btn btn-danger btn-sm btn-icon icon-left">
+										删除
+									</a>
+
+								</td>
+							</tr>
+							
+							
+						</tbody>
+						</foreach>
+						<tr>
+							<td colspan="7">{$link}</td>
+						</tr>	
+					</table>
+				</div>
+			</div>
+			
+		<!-- 弹出层 -->
+
+<script>
+
+ function del(id)
+    {
+        
+        
+        if(window.confirm("确定要删除吗？"))
+        {
+          window.location.href="{:U('Ad/adsdelete','','')}/id/"+id;
+
+        
+        }
+    
+    
+    
+    
+    }
+</script>
+			
+		
+			
+				

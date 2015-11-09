@@ -1,0 +1,124 @@
+/* CSS Document */
+
+/*main*/
+body{
+	background-color:#f8f8f8;}
+.main{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;
+	background-color:#fff;
+	padding-top:40px;
+	padding-bottom:60px;}
+.zblbox{
+	float:left;
+	width:350px;
+	font-size:14px;
+	line-height:30px;
+	padding-left:10px;}
+.spms{
+	width:324px;
+	font-size:16px;}
+.jg{
+	color:#F00;
+	font-size:16px;
+	font-weight:bold;}
+.ckbox{
+	border:1px solid #ccc;
+	background-image:url(../images/pj_36.jpg);
+	background-position:20px;
+	background-repeat:no-repeat;
+	padding-left:50px;
+	height:50px;
+	line-height:20px;
+	margin-top:10px;
+	font-size:12px;}
+.spxq{
+	border-left:1px solid #ccc;
+	margin-top:4px;
+	margin-bottom:4px;
+	padding-left:20px;}
+.yblbox{
+	float:left;
+	width:840px;
+	border-top:1px solid #F00;
+	font-size:14px;}
+.dj{
+	margin-top:20px;
+	margin-left:10px;}
+.pfm{ margin-left:10px; overflow:hidden; margin-top:20px; cursor:pointer;}
+.pfm p{float:left;}
+.wjxbox{float:left;}
+.wjxbox img{ margin:0 3px;margin-left:10px;}
+.bm{
+	color:#909090;
+	margin-left:20px;}
+.fs{
+	color:#fbbd10;
+	margin-left:20px;}
+.jx{
+	color:#da1e05;
+	margin-left:20px;}
+.pjkbox{
+	margin-top:20px;
+	width:756px;}
+.pjk{
+	overflow:hidden;
+	border:1px solid #ccc;
+	}
+.pjsp{
+	width:54px;
+	height:72px;
+	float:left;
+	font-size:12px;
+	background-color:#f5f5f5;
+	text-align:center;
+	padding-top:30px;}
+textarea{
+	width:680px;
+	height:80px;
+	border:none;
+	padding:10px;
+	font-size:14px;}
+.pjsrk{
+	float:left;}
+.sctpbox{
+	overflow:hidden;
+	border:1px solid #ccc;
+	border-top:none;}
+.sctp{
+	width:54px;
+	height:50px;
+	float:left;
+	font-size:12px;
+	background-color:#f5f5f5;
+	text-align:center;
+	padding-top:20px;}
+.scsrk{
+	float:left;
+	overflow:hidden;}
+.txk{
+	float:left;
+	margin-top:16px;
+	margin-left:20px;}
+.sc{
+	float:left;
+	margin-left:20px;
+	margin-top:24px;}
+
+.tjpj{
+	margin-top:30px;
+	margin-left:570px;}
+.tj{
+	width:98px;
+	height:32px;
+	background-color:#da1e05;
+	color:#fff;
+	border:none;
+	cursor:pointer;}
+/*main*/
+
+
+#lean_overlay { position: fixed;z-index:100; top: 0px;left: 0px;height:100%;width:100%;background:#000; display: none;}
+
+

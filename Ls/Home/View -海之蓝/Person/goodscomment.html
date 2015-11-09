@@ -1,0 +1,175 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_pl.css">
+<script src="__PUBLIC__/home/assets/js/jquery1.42.min.js"></script>
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/uploadify/jquery.uploadify.min.js"></script>
+
+<!--header-->
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="/"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="/">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	<!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>
+        
+        
+        
+    </div>
+</div>
+<!--header-->
+<div class="main">
+	<div class="zblbox">
+    	<div class="sppic"><img src="__ROOT__/Uploads/{$list.goods_thumb}" alt="" width="320"></div>
+        <p class="spms">{$list.goods_name}</p>
+        <p>价格：<span class="jg">￥{$tb.market_price}</span></p>
+        <p class="ps">配送：同城配送</p>
+        <p class="yxl">月销量：{$number}件</p>
+        <p class="pj">评价：<img src="__PUBLIC__/home/assets/images/pjx_03.jpg" alt=""><php>echo substr($rank,0,3);</php> 分</p>
+        <div class="ckbox">
+        	<P class="spxq">现在查看的是您所买的商品信息于<br>2015年1月15日下单购买了此商品</P>
+        </div>
+    </div>
+	<input type="hidden" value="{$list.goods_id}" name='good' id="goods_id"/>
+    <div class="yblbox">
+    	<p class="dj">好评：<img src="__PUBLIC__/home/assets/images/pj_06.jpg"> 中评：<img src="__PUBLIC__/home/assets/images/pj_08.jpg"> 差评：<img src="__PUBLIC__/home/assets/images/pj_10.jpg"></p>
+        <div class="pfm">
+            	<p class="bt">描述相符：</p>
+                <div class="wjxbox"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"></div>
+                <p class="bm">2分 不满</p>
+            </div>
+        <div class="pfm">
+            	<p class="bt">服务态度：</p>
+                <div class="wjxbox"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"></div>
+                <p class="fs">3分 一般</p>
+            </div>
+        <div class="pfm">
+            	<p class="bt">发货速度：</p>
+                 <div class="wjxbox"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"></div>
+                 <p class="fs">4分 满意</p>
+            </div>
+        <div class="pfm">
+            	<p class="bt">物流速度：</p>
+                <div class="wjxbox"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"><img src="__PUBLIC__/home/assets/images/pj_18.jpg"></div>
+                <p class="jx">5分 惊喜</p>
+            </div>
+        <script>
+				$(function(){
+				$(".wjxbox img").click(function(){
+					var v = $(this).attr("src")
+					var t = "__PUBLIC__/home/assets/images/pj_18.jpg";
+					if(v==t){
+						$(this).attr("src","__PUBLIC__/home/assets/images/pj_16.jpg");
+						$(this).attr("class","check1");
+					}else{
+						$(this).attr("src","__PUBLIC__/home/assets/images/pj_18.jpg");
+						$(this).attr("class","");
+					}
+				});
+			});
+     </script>
+        <div class="pjkbox">
+        	<div class="pjk">
+            	<div class="pjsp">评价<br>商品</div>
+                <div class="pjsrk"><textarea name="content" id="content"></textarea></div>
+            </div>
+            <div class="sctpbox">
+              <p class="sctp">上传<br>图片</p><input type="hidden" value="{$tb.order_id}" id="orderid"/>
+              <div class="scsrk">
+			           
+              	<div class="txk" id="showimg">
+				 <!--<img id="preview" src="" width="80" height="50" style="display: block; width: 150px; height: 180px;"> -->
+				</div>
+                <div class="sc" >				
+                <input type="file" name="imagea" id="upload_picture" style="width:150px;">				
+				</div>
+				<script>
+							//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__PUBLIC__/home/assets/js/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('Person/uploads')}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+				       'onUploadSuccess' : function(file, data, response){
+					   
+					   var num=data.search(/.jpg/);
+					   var s_num=parseInt(num)+4;
+					   var img=data.substring(0,s_num);
+					   
+					    //$('#preview').attr('src',"/Uploads/"+img);
+                                            $("#showimg").append('<img id="preview" src="/Uploads/'+img+'" width="80" height="50" style="display: block; width: 150px; height: 180px;">');
+					    // $('#upload_picture-queue').html('<img src=''');
+                        //$('#images').val(data);
+					     
+					    }
+				    });
+					
+				</script>
+				<!-- <input  type="file" id="files" class="sctx" name='upload'> -->
+				</div>
+              </div>
+            </div>
+            <div class="tjpj">
+                <label><input type="checkbox" id="noname" value="1"> &nbsp;&nbsp;匿名评价</label>
+               <!--  <input type="submit" value="提交评价" class="tj"> -->
+				<button onclick="sub()" class="tj">提交评价</button>
+            </div>           
+        </div>
+    </div>
+	
+</div>
+<script>
+function sub(){
+var imgsrc = $('#preview').attr('src');
+var number=$('.check1').length;
+var content=$("#content").val();
+var checkval=$('#noname').attr("checked");
+var goodsid=$('#goods_id').val();
+var orderid=$('#orderid').val();
+if(checkval!=true){
+var noname=1;
+}else{
+var noname=0;
+}
+if(number==0){
+alert('请选择评论星级！');
+return false;
+}else{
+  var rank=number/4;
+   $.ajax({
+                   'type':'post',
+                   'url':"{:U('Person/goodscomments')}",
+                   'data':{comment_rank:rank,show_img:imgsrc,noname:noname,content:content,goodsid:goodsid,order_id:orderid},
+                   'dataType':'json',
+                   'success':function(dat){
+                       if(dat.status==1){
+                           alert('评论成功！');
+                           window.location.href="{:U('Person/comment')}";
+                       }else{
+					   alert('评论失败！');
+					   }
+                   }
+               });
+}
+
+
+}
+
+		
+					
+</script>
+

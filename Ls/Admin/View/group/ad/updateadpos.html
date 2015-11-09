@@ -1,0 +1,50 @@
+<!-- Removing search and results count filter -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">广告位置修改 -- AD Position Update</div>
+						<div class="panel-body">
+							<div class="col-sm-5">
+							
+								<a href="{:U('Ad/adposition')}"><button class="btn btn-success">广告位置查看 -- AD Position List</button></a>
+							</div>
+						</div>
+						<div class="panel-body">
+						<form action="{:U('Ad/updateadpos')}" method="post">
+						<input type="hidden" name="position_id" value="{$result.position_id}"/>
+						
+							<div class="row">
+							<div class="col-sm-5">
+						    <a class="btn btn-success" style="float:left">广告位名称</a>
+							
+								<div class="col-sm-10"><input class="form-control" type="text" name="position_name" value="{$result.position_name}">
+							    </div>
+                            </div>
+							<br>
+							</div>
+							
+							<div class="row">
+							<div class="col-sm-5">
+						    <a class="btn btn-success" style="float:left">广告位描述</a>
+								<div class="col-sm-10"><input class="form-control" type="text" name="position_describe" value="{$result.position_describe}">
+								</div>
+                            </div>
+							<br>
+							</div>
+                            <div class="row">
+							<div class="col-sm-5">							
+								<input class="btn btn-success" type="submit" value="确认修改"/>
+							</div>
+							</div>
+						</form>
+							
+						</div>
+					</div>	
+				</div>
+			</div>
+			
+						
+		
+			
+				

@@ -1,0 +1,121 @@
+<link href="__PUBLIC__/home/assets/css/index.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/city.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/product_list1.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/Css.css" rel="stylesheet" type="text/css">
+
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<include file="Public:dq" />
+<div class="guanggao">
+<volist name="ads" id="v">
+<a href="{$v.ad_link}" target="_blank" onclick="getclick({$v.id})"><img src="__ROOT__/Uploads/{$v.ad_code}" alt="{$v.name}"
+         style="width:1200px;height:160px"></a>
+</volist>
+<map name="Map">
+  <area shape="rect" coords="18,96,133,125" href="dianpu.html">
+</map>
+</div>
+
+
+<div class="p_list">
+  <div class="shai">
+   <h2><a href="dianpu.html">{$cname.cat_name}</a></h2>
+   <form>
+     <p></p><span>共{$gcount}件相关商品</span>
+   </form>
+  </div>
+  <div class="xuan">
+    <span class="icon1">{$cname.cat_name}</span>
+    <div class="banf">
+    <ul>
+    <foreach name='cate1' item="v">
+    <li><a href="{:U('Good/index',array('cid'=>$v['cat_id']))}">{$v.cat_name}</a></li>
+    </foreach>
+    </ul>
+    <ul class="hidden1">
+    <foreach name='cate2' item="v">
+    <li><a href="{:U('Good/index',array('cid'=>$v['cat_id']))}">{$v.cat_name}</a></li>
+    </foreach>
+    </ul>
+
+     <p><i>更多></i></p>
+    
+    </div>
+   
+  </div>
+ 
+ <script>
+    $(".xuan p i").click(function(){
+    $(this).parent("p").siblings(".hidden1").toggle();
+    })
+  </script>
+ 
+ 
+  
+  <h2 class="zong">
+  <a class="ceu" href="{:U('Cate/index')}">综合</a><a href="{:U('Cate/index',array('action'=>1))}" >人气</a><a href="{:U('Cate/index',array('action'=>2))}">销量</a><a href="{:U('Cate/index',array('action'=>3))}">价格</a></h2>
+  <div class="list_box">
+  <ul class="list_p">
+  <volist name="goods" id="v">
+    <li><a href="{:U('Goods/info',array('id'=>$v['id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt="{$v.goods_name}" width="215" height="210"></a>
+    <p><span>￥{$v.market_price}</span></p>
+    <a class="jianjie_01" href="{:U('Goods/info',array('id'=>$v['id']))}">{$v.goods_name}</a>
+	<div class="icon2">
+        <p class="jia_qq">总销量：
+            <span>
+        <if condition="empty($v['count'])">
+        0
+        <else/>
+        {$v.count}
+        </if>
+        </span>
+		
+        </p>
+        <b>送{$v.jf}积分</b>
+    </div>
+    </li>
+   </volist>
+  </ul>
+      
+       <div class='Pagination'>
+      {$page}
+  </div>
+  </div>
+</div>
+
+<script>
+$(function(){
+	$(".xin_list1").eq(0).show();
+	$(".title_01 span").eq(0).addClass("on1"); 
+	$(".title_01 span").click(function(){
+
+		$(".title_01 span").removeClass("on1");
+		$(this).addClass("on1");
+	
+		var n=$(".title_01 span").index($(this));
+		$(".xin_list1").hide();
+		$(".xin_list1").eq(n).show();
+		})
+	})
+
+</script>  
+<!--点击广告数加一-->
+<script type="text/javascript">
+function getclick(id){
+
+   $.ajax({
+//接受数据的页面
+                                url: "{:U('Index/addclick')}",
+//传值方式
+                                type: 'POST',
+//数据类型
+                                dataType: 'json',
+//发送的数据
+                                data: {
+                                    id: id
+                                },
+                              
+                            });
+
+
+}
+</script>

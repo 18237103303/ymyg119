@@ -1,0 +1,72 @@
+<link href="__PUBLIC__/home/assets/css/city.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/product_list1.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/Css.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/home/assets/js/jquery.SuperSlide.2.1.1.source.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<!--header-->
+<include file="Public:dq" />
+<!--header-->
+
+<div class="guanggao">
+<img src="__PUBLIC__/home/assets/images/guanggao.jpg" alt="">
+</div>
+<div class="p_list">
+  <h2 class="zong">
+  <a class="ceu" href="#">综合</a><a href="{:U('Good/search',array('type'=>1,'shopname'=>$names))}">人气</a><a href="{:U('Good/search',array('type'=>2,'shopname'=>$names))}">销量</a></h2>
+  <div class="list_box">
+          <div class="dp_list">
+		 <empty name="shoplist">
+		  <link href="__PUBLIC__/home/assets/css/index.css" rel="stylesheet" type="text/css">
+          <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/404.css">
+		  <script>
+        $(".qbflbox").css({display:'none'});
+       </script>
+<!--404开始-->
+<div class="main">
+	<div class="main_l">
+    	<img src="__PUBLIC__/home/assets/images/404.png" alt="">
+    </div>
+    <div class="main_r">
+    	<p>对不起，您访问的页面<span>不存在</span>或被<span>删除</span>！</p>
+    </div>
+</div>
+		  <else/>
+		  <volist name="shoplist" id="shop">
+            <div class="dp_box">
+                <div class="z1">
+                   <empty name="shop.shop_logo">
+				<img src="__PUBLIC__/home/assets/images/fdff.png"/>
+				<else/>
+                    <img src="__ROOT__/Uploads/{$shop.shop_logo}" alt="{$shop.shop_name}">
+					</empty>
+                </div>
+                <div class="z2">
+                    <p><b>{$shop.shop_name}</b>官方旗舰店</p>
+                    <i>所在地：{$shop.shop_detail}</i>
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin={$shop.shop_qq}&site=qq&menu=yes"><img src="__PUBLIC__/home/assets/images/qq.jpg" alt=""></a>
+                </div>
+                <div class="z3">
+                    <p>收藏人数</p>
+                    <span><b>{$shop.num}</b></span>
+                    <!-- <span>服务态度：<b>4.8</b></span>
+                    <span>物流服务：<b>4.8</b></span> -->
+                </div>
+                <div class="z4">
+                    <a href="{:U('Shop/shop',array('shop_id'=>$shop['ghs_id']))}">进入店铺</a>
+                </div>
+            </div>
+			</volist> 
+			</empty>
+           {$page}			
+          </div>
+  </div>
+</div> 
+<script>
+$(function(){
+	$('.dp_list').kkPages({
+		PagesClass:'.dp_box', //需要分页的元素
+		PagesMth:8, //每页显示个数		
+		PagesNavMth:3 //显示导航个数
+		});
+}); 
+</script>

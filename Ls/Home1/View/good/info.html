@@ -1,0 +1,701 @@
+<link href="__PUBLIC__/home/assets/css/store.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/Css.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/zoom.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<script src="__PUBLIC__/home/assets/js/zoom.js"></script>
+    <!--放大镜特效-->
+<script type="text/javascript">
+    $(function(){
+        $('.cloudzoom').attr('rel');
+        CloudZoom.quickStart({zoomWidth:100,zoomHeight:100});
+    })
+   
+    
+</script>
+<include file="Public/dq" /> 
+<!--header-->
+   <div class="store">
+      <div class="store_nav">
+         <div class="store_navtop">
+		 <div class="store_logo">
+            <a href="{:U('Shop/shop',array('shop_id'=>$shop_id))}">
+		   <empty name="shop_logo">
+				<img src="__PUBLIC__/home/assets/images/fdff.png" style="width:302px;height:90px;" alt="海之澜">
+		   <else /> 
+				<img src="__ROOT__/uploads/{$shop_logo}" style="width:302px;height:90px;"  alt="海之澜">
+		   </empty> 
+		   </a>
+		   </div>
+		   <div class="store_search">
+             <form action="{:U('Shop/seach')}" method="post">
+               <input class="shuru" type="text" name="ss" required="required" placeholder="输入您需要的商品名字">
+               <input class="sousuo_btn" type="submit" value="">
+               <input class="sousuo_btn" type="hidden" name="shop_id" value="{$shop_id}">
+             <!--   <input class="sousuo_btn" type="hidden" name="cat_id" value="{$goods.cat_id}"> -->
+             </form>
+           </div>
+		    <volist name="shop" id="shvo">
+           
+           <div class="store_cang">
+			 <span onclick="scsp()">快收藏我吧~</span>
+			  <div style="display:none" id="wd_id">{$shvo.ghs_id}</div>
+             <!--  <b><i>￥10元</i>五分好评返现</b> -->
+           </div>
+		   <script>
+				function scsp(){		
+						var scsp = $('#dywr').html(); 	//商品id
+							if(parseInt(scsp)){
+								$.ajax({
+										 url:"{:U('Good/sc')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												goods_id:scsp,
+											},
+								success:function(a){
+									var info=a.info;
+									if(parseInt(a.info) == 0){
+										location.href = "{:U('Public/error1')}";
+									}
+									if(parseInt(a.info) == 2){
+										location.href = "{:U('User/Qtdz/login')}";
+									}
+									if(parseInt(a.info) == 1){  
+										alert("收藏成功!");
+									}
+									if(parseInt(a.info) == 3){  
+										alert("您已经收藏过了!");
+									}
+								} 
+							})
+							}
+						}
+		   </script>
+		   
+		   </volist>
+         </div>
+         <div class="store_bottom">
+            <ul>	
+			 <volist name="shop" id="svo">
+				<li>
+					<a href="{:U('Shop/shop',array('shop_id'=>$svo['ghs_id']))}">
+						首页
+					</a>
+				</li>
+			 </volist>
+             <volist name="navs" id="nvo">
+              <li><a href="{:U('Shop/shop_list',array('id'=>$nvo['cat_id']))}">{$nvo.cat_name}</a></li>
+			  </volist>
+            </ul>
+         </div>  
+      </div>  
+      
+      <div class="store_xiang">
+        <div class="product_detail">
+          <div class="detail_left">
+             <div class="detail_b">
+             <div class="detail_img">
+                <ul>
+                 <!--
+                  <li><img src="__ROOT__/Uploads/{$gallery.0.s_img_url}" alt="{$gallery.0.img_title}" class="cloudzoom"  rel="adjustX:10, adjustY:-4" data-cloudzoom = "zoomImage: '__ROOT__/Uploads/{$gallery.0.img_url}'"></li>
+			-->
+                        <volist name="gallery" id="gavo">
+                  <li><img src="__ROOT__/Uploads/{$gavo.s_img_url}" alt="{$gavo.img_title}" class="cloudzoom"  rel="adjustX:10, adjustY:-4" data-cloudzoom = "zoomImage: '__ROOT__/Uploads/{$gavo.img_url}'"></li>
+				 </volist>
+                </ul>
+               <div class="detail_imgbtn">
+                   <div class="ooo1">
+                <volist name="gallery" id="gavo">
+                    <p><img src="__ROOT__/Uploads/{$gavo.img_url}" alt="{$gavo.img_title}"></p> 
+                </volist></div>
+                    <div class="prev"><img src="__PUBLIC__/home/assets/images/xq2_13.png" alt="海之澜"></div>
+               <div class="next"><img src="__PUBLIC__/home/assets/images/xq2_15.png" alt="海之澜"></div>
+               </div>
+              
+             </div>
+                 <script>
+	jQuery(".detail_imgbtn").slide({mainCell:".ooo1",vis:3,effect:"left",autoPlay:false,pnLoop:false });
+     
+/*相册展示*/
+
+$(function(){
+	$(".detail_imgbtn .ooo1 p").removeClass("on");
+	$(".detail_imgbtn .ooo1 p").eq(0).addClass("on");
+        var length=$(".detail_imgbtn .ooo1 p").length;
+        for(var i=0;i<length;i++){
+            $(".detail_img ul li img").eq(i).hide();
+        }
+        $(".detail_img ul li img").eq(0).show();
+	var src;
+	
+	$(".detail_img ul li img").attr("src",src);
+	$(".detail_imgbtn .ooo1 p").click(function(){
+            
+		$(".detail_imgbtn .ooo1 p").removeClass("on");
+		$(this).addClass("on");
+                var index=$(".detail_imgbtn .ooo1 p").index(this);
+                
+                
+                $(".detail_img ul li img").hide();
+                $(".detail_img ul li img").eq(index).show();
+		src = $(this).children("img").attr("src");
+		$(".detail_img ul li img").eq(index).attr("src",src);
+                
+	});
+});
+
+		 
+</script
+</script>
+             <div class="detail_text">
+               <h2>{$goods.goods_name}</h2>
+               <div class="xiang_jiage">
+               <p class="you"><span>价格</span><b id="shoujia">￥{$goods.market_price}</b></p>
+               </div>
+               <h3><p><span>交易成功<b><?php echo count($zhh); ?></b></span><span>累计评价<b><?php echo count($pldywr); ?></b></span>
+			   <span>送积分<b id="jf">{$jinf}</b></span></p></h3>
+               <form id="ct">
+				<volist name="nim" id="vo">
+					<div class="size">
+					<span>{$key}</span>
+					<p>
+					<volist name="vo" id="vvo">
+						<label><input type="radio" onclick="get_count(this)" name="attr" id="attr_{$i}" value="{$vvo}">{$vvo}</label>
+					</volist>
+					</p>
+					</div>
+				</volist>
+				<div id="dywr" style="display:none;">{$goods.goods_id}</div>
+				<script>
+					function get_count(v){
+						var num=$("#ct").find("div.size").length;
+						var str='';
+						for(var i=0;i<num;i++){
+						  var attr=$("#ct").find("div.size").eq(i).find("label.current").find(":radio").val();
+						  str+=attr+'-';
+						}
+						var patt1 = new RegExp("undefined");
+                        var result = patt1.test(str);
+						var sid = ($('#dywr').html());
+						if(!result){
+							$('#num').val(1);
+							$.ajax({
+							url:"{:U('Good/goods_ar')}",
+							type:'POST',
+							dataType:'json',
+							data:{
+							msg:str,
+							sid:sid
+							},
+							/*  beforeSend: function () {
+							  
+						   },*/
+						   success:function(a){
+						   var sl=a.sl;//库存
+						   var jf=a.jf;//积分
+						   var sj=a.sj;//价格
+						   var sxid=a.sxid;//属性id
+							  if(!sxid){
+								  $('#shuxingid').html(0);
+							  }else{
+								  $('#shuxingid').html(sxid);
+							  }
+							  if(!jf){
+							  }else{
+							  $('#jf').html(jf);
+							  }
+							  if(!sl){
+							   $('#kuncun').html('<p style="color:red;">已售馨</p>');
+							   $('#beikuncun').html(sl);
+							  }else{
+							  $('#beikuncun').html(sl);
+							  $('#kuncun').html('库存'+sl+'件');
+							  }
+							  if(parseInt(sj)==0){
+							  }else{
+							  $("#shoujia").html('￥'+sj);
+							  }
+							} 
+						})
+						}
+						
+					}
+				</script>
+               <script>
+				$(function(){
+					$(".size p label").eq(0).addClass("current");
+					$(".size p label").click(function(){
+						$(this).siblings("label").removeClass("current");
+						$(this).addClass("current");
+					})
+				})
+				$(function(){
+					$(".size2 p label").eq(0).addClass("current");
+					$(".size2 p label").click(function(){
+						$(this).siblings("label").removeClass("current");
+						$(this).addClass("current");
+					})
+				})
+				</script>
+               <div class="shuliang">
+                 <span>数量</span>
+                 <div class="shuliang_box">
+                    <img src="__PUBLIC__/home/assets/images/jian.jpg" class="jianshu" alt="海之澜"> 
+					<input value="1" id="num" onkeyup="shuru(this)">
+					<img src="__PUBLIC__/home/assets/images/jia.jpg" class="jiashu" alt="海之澜">
+                 </div> 
+                    <p id="kuncun">库存{$goods.goods_count}件</p>
+					<div id="beikuncun" style="display:none">{$goods.goods_count}</div>
+					<div id="shuxingid" style="display:none">{$goods.id}</div>
+               </div>
+                 <p class="goumai_btn">
+						<a href="###" onclick="lj_gm()">立即购买</a>
+						<input type="button" onclick="cart_index()" value="加入购物车">
+				 <script>
+				 function cart_index(){
+				 
+						var num=$("#ct").find("div.size").length;
+						var str='';
+						for(var i=0;i<num;i++){
+						  var attr=$("#ct").find("div.size").eq(i).find("label.current").find(":radio").val();
+						  str+=attr+'-';
+						}
+						var patt1 = new RegExp("undefined");
+                        var result = patt1.test(str);
+						var sid = $('#dywr').html();	        //商品id
+						var shijikc = $('#beikuncun').html(); 	//实际库存
+						var number = $('#num').val();			//商品数量
+						var	shuxingid = $('#shuxingid').html();	//属性id	
+						if(!result){  							//属性选完
+							if(parseInt(shijikc)>0){
+								//库存大于0
+								if(parseInt(shijikc)>=parseInt(number)){
+									//数量大于库存
+									if(parseInt(shuxingid)!=0){
+									//alert(shuxingid)
+										$.ajax({
+											url:"{:U('Good/jrgw')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												goodsid:sid,
+												goodsnum:number,
+												gattrid:shuxingid,
+											},
+											/*  beforeSend: function () {
+											  
+										   },*/
+										   success:function(a){
+										   if(parseInt(a.info)==2){
+												location.href = "{:U('Public/error1')}";
+										   }
+										   if(parseInt(a.info)==1){
+												location.href = "{:U('Cart/index')}";
+										   }
+										   if(parseInt(a.info)==3){
+												location.href = "{:U('/User/Qtdz/login')}";
+										   }
+										 } 
+										})
+									}else{
+										alert("该属性无效");
+									}
+								}else{
+									alert("您选择的数量已经大于实际库存");
+								}
+							}else{
+								alert("库存不足,无法购买");
+							}
+						}else{
+							alert("请选择属性");
+							
+						}	
+					}
+				 </script>
+				  <script>
+				function lj_gm(){
+				
+						var num=$("#ct").find("div.size").length;
+						var str='';
+						for(var i=0;i<num;i++){
+						  var attr=$("#ct").find("div.size").eq(i).find("label.current").find(":radio").val();
+						  str+=attr+'-';
+						}
+						var patt1 = new RegExp("undefined");
+                        var result = patt1.test(str);
+						var sid = $('#dywr').html();	        //商品id
+						var shijikc = $('#beikuncun').html(); 	//实际库存
+						var number = $('#num').val();			//商品数量
+						var	shuxingid = $('#shuxingid').html();	//属性id	
+						
+						if(!result){  							//属性选完
+				
+							if(parseInt(shijikc)>0){
+								//库存大于0
+								
+								if(parseInt(shijikc)>=parseInt(number)){
+									//数量大于库存
+									
+									if(parseInt(shuxingid)!=0){
+										$.ajax({
+											url:"{:U('Good/ljgm')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												goodsid:sid,
+												goodsnum:number,
+												gattrid:shuxingid,
+											},
+											/*  beforeSend: function () {
+											  
+										   },*/
+										   success:function(a){
+										    var cid=a.info;
+											if(parseInt(a.e) == 0){
+												location.href = "{:U('/User/Qtdz/login')}";
+											}else{
+											   if(parseInt(a.info) == 0){
+													location.href = "{:U('Public/error1')}";
+											   }else{
+											   
+													location.href = "{:U('Order/index')}?cid="+cid;
+											   }
+										   }
+										 } 
+										})
+									}else{
+										alert("该属性无效");
+									}
+								}else{
+									alert("您选择的数量已经大于实际库存");
+								}
+							}else{
+								alert("库存不足,无法购买");
+							}
+						}else{
+							alert("请选择属性");
+						}
+						
+					}
+				 </script>
+				 </p>
+               </form>
+               <div class="chengnuo">
+               		承诺<span>7天无理由退货</span>按时发货
+               </div>
+               <div class="shoucang">
+			   <if condition="$sc eq 1 ">
+			   <p style="background-image:url(__PUBLIC__/home/assets/images/xq2_07.png);">收藏商品({$rqs}人气)</p>   
+			   <else /> 
+			   <p style="background-image:url(__PUBLIC__/home/assets/images/xq2_10.png);"><a href="###" onclick="scsp()">收藏商品({$rqs}人气)</a></p>
+			   </if>      	
+               </div>
+             </div>
+             </div>
+             <div class="store_tuijian">
+               <h2>掌柜推荐</h2>
+               <ul>
+			   <volist name="zt" id="ztvo">
+                <li><a href="{:U('Good/info',array('id'=>$ztvo['goods_id']))}"><img src="__ROOT__/uploads/{$ztvo.goods_thumb}" alt="{$ztvo.goods_name}"></a><p>价格&nbsp;￥{$ztvo.market_price}</p></li>
+				</volist>
+			  </ul> 
+             </div>
+             <div class="product_bottom">
+               <div class="product_b_l">
+                  <dl>
+                  <dt>宝贝推荐</dt>
+				  <volist name="bt" id="btvo">
+                  <dd><a href="{:U('Good/info',array('id'=>$btvo['goods_id']))}"><img src="__ROOT__/uploads/{$btvo.goods_thumb}" alt="{$btvo.goods_name}"></a>
+                  <a href="{:U('Good/info',array('id'=>$btvo['goods_id']))}">{$btvo.goods_name}</a>
+                  <p><b>￥{$btvo.market_price}</b><span>已售出{$btvo.number}笔</span></p>
+                  </dd>
+				</volist>
+                  </dl> 
+               </div>
+               <div class="product_b_r">
+                 <ul class="title1">
+                   <li>详细信息</li>
+                   <li>评价详情<span>（<?php echo count($pldywr); ?>）</span></li>
+                   <li>订购记录<span>（<?php echo count($zhh); ?>）</span></li>
+                 </ul>
+					<div class="product_xq">
+                    <div class="product_xqimg">
+					<?PHP echo $goods['goods_desc']; ?>
+                    </div>  
+                 </div>
+                 <script>
+					$(function(){
+						$('#ds').kkPages({
+							PagesClass:'dd', //需要分页的元素
+							PagesMth:3, //每页显示个数		
+							PagesNavMth:2 //显示导航个数
+							});
+							$('.jilu dl').kkPages({
+							PagesClass:'dd', //需要分页的元素
+							PagesMth:6, //每页显示个数		
+							PagesNavMth:2 //显示导航个数
+							});
+					}); 
+				</script>
+				 <script>
+					$(function(){
+						$('#xs').kkPages({
+							PagesClass:'dd', //需要分页的元素
+							PagesMth:1, //每页显示个数		
+							PagesNavMth:2 //显示导航个数
+							});
+					}); 
+				</script>
+                 <div class="product_xq">
+                 <h2 class="man"><i>商品满意度：</i><span>{$qus}</span>
+				<?php
+				 for($j=1;$j<=$das;$j++){
+					echo " <img src=\"__PUBLIC__/home/assets/images/xing.jpg\" alt=\"海之澜\">";
+				 }
+				 if($xiaos){
+					echo " <img src=\"__PUBLIC__/home/assets/images/pj_77.jpg\" alt=\"海之澜\">";
+				 }
+				 ?>
+				 </h2>
+                    <div class="pinjia">
+                        <div class="all1">
+							<p><label><input name="pl" type="radio" checked="checked" onclick="getmsg(this)" value="qb"><span>全部</span></label></p>
+							<!-- <p><label><input name="pl" type="radio" onclick="getmsg()" id="qb"><span>追评</span><i>12</i></label></p> -->
+							<p><label><input name="pl" type="radio" onclick="getmsg(this)" value="tp"><span>图片</span><i>{$wtpl}</i></label></p>
+                        </div>
+                        <dl id="ds">
+						<volist name="pldywr" id="pldywr">
+                          <dd>
+						  <notempty name="pldywr['user_head']"><img class="yonghu" src="{$pldywr.user_head}" alt="海之澜"></notempty>
+						  <empty name="pldywr['user_head']"><img class="yonghu" src="__PUBLIC__/home/assets/images/index_03_03.png" alt="海之澜"></empty>
+                          <div class="pingjia_text"><span>{$pldywr.user_name}</span><b>{$pldywr.content}</b>
+                          <h3>
+						  <?php 
+							$arr = explode(',',$pldywr['show_img']); 
+							//var_dump($arr);
+							foreach($arr as $key=>$value){
+								//echo $value;
+								if($value){
+									echo "<img style='width:40px;height:40px;' src=__ROOT__/uploads/".$value.">";
+								}
+							}
+						  ?>
+							<!-- <div style="width:400px;height:400px;"><img  src="__PUBLIC__/home/assets/images/xiang_8.jpg"> -->
+						  </h3>
+                          </div>
+                          <h3 class="pingjia_right">
+						  <span>
+						  <?php
+							for($i=1;$i<=$pldywr['comment_rank'];$i++){
+								echo " <img src=\"__PUBLIC__/home/assets/images/xing.jpg\" alt=\"海之澜\">";
+							}
+						  ?> 
+                          <span>{$pldywr.com_time}</span>
+                          </h3>
+                          </dd>
+						 </volist>  
+                        </dl>
+						
+						<dl id="xs" style="display:none">
+							
+						</dl>
+						<script>
+					function getmsg(v){
+						var sx = $(v).attr("value");
+						var sid = $('#dywr').html();
+						//alert(sx)
+							$.ajax({
+							url:"{:U('Good/plsx')}",
+							type:'POST',
+							dataType:'json',
+							data:{
+							sx:sx,
+							sp:sid
+							},
+							success:function(a){
+								var pldywr2 = a.pldywr2;
+								if( pldywr2 == 2){
+									//全部
+									$("#ds").show(); 
+									$("#xs").hide();
+								}else{								
+									//图片
+									$('#xs').html(pldywr2);
+									$("#xs").show(); 
+									$("#ds").hide();
+								}
+							} 
+						})
+							
+					}
+				</script>
+                    </div>
+                 </div>
+                 <div class="product_xq">
+                    <h2 class="man"><i>商品满意度：</i><span>{$qus}</span>
+				<?php
+				 for($j=1;$j<=$das;$j++){
+					echo " <img src=\"__PUBLIC__/home/assets/images/xing.jpg\" alt=\"海之澜\">";
+				 }
+				 if($xiaos){
+					echo " <img src=\"__PUBLIC__/home/assets/images/pj_77.jpg\" alt=\"海之澜\">";
+				 }
+				 ?>
+				 </h2>
+                    <div class="jilu">
+                    <form>
+                     <dl>
+                        <dt><span>买家</span><span>款式/型号</span><span>数量</span><span>成交时间</span></dt>
+                        <volist name="zhh" id="zhh">
+						<dd><span>{$zhh.user_name}</span><span>{$zhh.attr_value}</span><span>{$zhh.number}</span><span class="shijian">{$zhh.add_day}<i>{$zhh.add_time}</i></span></dd>
+                        </volist>
+                      </dl>
+                     </form>   
+                    </div>
+                 </div>
+                 <div class="tongchang">
+                  <dl>
+                    <dt><span>看了此商品的会员通常还看了</span></dt>
+					<volist name="hk" id="hk">
+					<if condition="$i eq 4 ">
+					 <dd><a href="{$hk.goods_id}"><img src="__ROOT__/uploads/{$hk.goods_thumb}" alt="{$hk.goods_name}"></a><a href="">{$hk.goods_name}</a><span>￥{$hk.market_price}</span></dd>
+					
+					     </dl>
+					<dl>
+                    <dt><span>买了此商品的会员通常还买了</span></dt>
+					
+					<else /> 
+					 <dd><a href="{$hk.goods_id}"><img src="__ROOT__/uploads/{$hk.goods_thumb}" alt="{$hk.goods_name}"></a><a href="">{$hk.goods_name}</a><span>￥{$hk.market_price}</span></dd>
+					</if>
+                   </volist>
+                  </dl> 
+			<volist name="shop" id="svo">
+		   <a class="more1" href="{:U('Shop/shop',array('shop_id'=>$svo['ghs_id']))}">
+		   进入店铺查看更多>>
+		   </a>
+		   </volist>                 
+                 </div>
+               </div>
+               <script>
+               $(function(){
+				   $(".product_xq").hide();
+	               $(".product_xq").eq(0).show();
+	             $(".product_b_r ul li").eq(0).addClass("curr"); 
+	             $(".product_b_r ul li").click(function(){
+
+	            	$(".product_b_r ul li").removeClass("curr");
+		            $(this).addClass("curr");
+	
+		           var n=$(".product_b_r ul li").index($(this));
+		           $(".product_xq").hide();
+		            $(".product_xq").eq(n).show();
+	          	  })
+	            })
+               </script>
+             </div>
+             
+          </div>
+          <div class="detail_right">
+            <volist name="shop" id="shvo">
+             <div class="detail_righttop">
+                <h2>{$shvo.shop_name}</h2>
+                <span class="zhang">掌柜：{$shvo.name}</span>
+                <p class="wang"><span>联系：</span>
+				 <a href="http://wpa.qq.com/msgrd?v=3&uin={$shvo.shop_qq}&site=qq&menu=yes"><img src="__PUBLIC__/home/assets/images/icon6.png" alt="海之澜"></a>
+				</p>
+                <p class="jin"><a href="{:U('Shop/shop',array('shop_id'=>$shvo['ghs_id']))}">进入店铺</a><a href="###" onclick="sc()">收藏店铺</a></p>
+             </div>
+		  </volist>
+              
+		  <script>
+				function sc(){		
+						var sc = $('#wd_id').html(); 	//店铺id
+							if(parseInt(sc)){
+								$.ajax({
+										 url:"{:U('Shop/sc')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												shop_id:sc,
+											},
+								success:function(a){
+									var info=a.info;
+									if(parseInt(a.info) == 0){
+										location.href = "{:U('Public/error1')}";
+									}
+									if(parseInt(a.info) == 2){
+										location.href = "{:U('User/Qtdz/login')}";
+									}
+									if(parseInt(a.info) == 1){  
+										alert("收藏成功!");
+									}
+									if(parseInt(a.info) == 3){  
+										alert("您已经收藏过了!");
+									}
+								} 
+							})
+							}
+						}
+		   </script>
+             <dl class="kan_list">
+               <dt>看了又看</dt>
+			<volist name="se" id="sevo">
+			<volist name="sevo" id="seevo">
+               <dd><a href="{:U('Good/info',array('id'=>$seevo['goods_id']))}"><img src="__ROOT__/Uploads/{$seevo.goods_thumb}" alt="{$seevo.goods_name}"></a><p>￥{$seevo.market_price}</p></dd>
+			</volist>
+			</volist>
+			 </dl>
+          </div>
+        </div> 
+      </div>
+   </div>
+ 
+ <script>
+ $(function(){
+	$(".shuliang_box .jiashu").click(function(){
+		var nn=$('#beikuncun').html();//实际库存
+		
+		var input_num=$("#num").val();
+		var n=parseInt(input_num)+1;
+		if(parseInt(n)>nn){
+		return false;
+		}
+		$("#num").val(n);
+	})
+	$(".shuliang_box .jianshu").click(function(){
+		var input_num=$("#num").val();
+		var n=parseInt(input_num)-1;
+		if(parseInt(n)<1){
+		return false;
+		}
+		$("#num").val(n);
+	})
+})
+//输入数量
+            function shuru(v){
+                var s_num=$(v).val();
+                if(!s_num){
+                    $(v).val(1);
+                }
+				var stock=$('#beikuncun').html();
+                if(parseInt(s_num)>parseInt(stock)){
+                    
+					if(stock==0){
+					$(v).val(1);
+					}else{
+					$(v).val(stock);
+					}
+                }
+                if(parseInt(s_num)<1){
+                    $(v).val(1);
+                }
+                //正则判断
+                var patt1 = new RegExp(/^([0-9]*)+$/g);
+                        var result = patt1.test(s_num);
+                        if(result==false){
+                            $(v).val(1);
+                            
+                        }
+               
+            }
+</script>

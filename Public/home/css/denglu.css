@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*******/
+.comebox{ margin:30px auto; width:1200px; min-height:400px;} 
+
+/****denglu*****/
+.comebox .denglu{ overflow:hidden; padding:0px 100px; height:400px;}
+.comebox .denglu .left{ width:468px; float:left;}
+.comebox .denglu .left img{ display:block; width:468px; height:318px;}
+.comebox .denglu .right{ width:325px; float:right; border:1px solid #ccc; margin-top:35px;}
+.comebox .denglu .right h2{ border-top:2px solid #f14e23; font-weight:bold; height:36px; line-height:36px; font-size:16px; color:#323232; text-align:center;}
+.comebox .denglu .right .biaodan{ margin:10px 0; padding:0 15px;}
+.comebox .denglu .right .biaodan input{ display:block; border:1px solid #ccc; padding-left:30px; background-position:left center; background-repeat:no-repeat; font-size:14px; color:#555; line-height:30px; margin-bottom:20px; width:263px; height:30px;}
+.comebox .denglu .right p{ font-size:12px; line-height:30px; overflow:hidden; width:295px; margin:0 auto; margin-bottom:20px; }
+.comebox .denglu .right p a{ display:block; font-size:12px; line-height:30px; color:#444;}
+.comebox .denglu .right p a.zc{ width:40%; float:left;}
+.comebox .denglu .right p a.wj{ width:40%; float:right; text-align:right; color:#0674d7;}
+.comebox .denglu .right input[type=button]{ width:295px; display:block; border:none; border-radius:4px; padding:0; margin:15px auto; background-color:#f14e23; height:30px; line-height:30px; font-size:14px; color:#fff; text-align:center;}
+
+
+/**zhuce****/
+.comebox .zhuce{ width:1158px; padding:20px; border:1px solid #ccc;}
+.comebox .zhuce h2{ font-size:20px; width:200px; height:44px; border-bottom:1px solid #f14e23; line-height:44px; text-align:center; margin:0 auto; margin-bottom:20px;}
+.comebox .zhuce .box{ width:520px; margin:0 auto;}
+.comebox .zhuce .box dl{ overflow:hidden;line-height:32px; font-size:14px; color:#444;margin-bottom:20px;}
+.comebox .zhuce .box dl dt{ width:100px; float:left; margin-right:10px; text-align:right; }
+.comebox .zhuce .box dl dd{ width:400px; float:left; overflow:hidden; }
+.comebox .zhuce .box dl dd input[type=text]{ display:block; width:360px; height:30px; line-height:30px; font-size:14px; color:#666; border:1px solid #ccc; text-indent:4px; float:left;}
+.comebox .zhuce .box dl dd input[type=password]{ display:block; width:360px; height:30px; line-height:30px; font-size:14px; color:#666; border:1px solid #ccc; text-indent:4px;float:left;}
+.comebox .zhuce .box dl dd input[type=text].small{ float:left; width:180px; margin-right:30px;}
+.comebox .zhuce .box dl dd span{ display:block; width:148px; border:1px solid #ccc; height:30px; float:left; background-color:#e6e6e6; line-height:32px; font-size:15px; color:#666; text-align:center; }
+.comebox .zhuce .box dl dd a.kuan{ font-size:14px; line-height:30px; color:#4b94ed;}
+.comebox .zhuce .box dl dd input[type=button]{ display:block; width:362px; font-size:16px; height:40px; border-radius:5px; color:#fff; line-height:40px; background-color:#f14e23; text-align:center; border:none; cursor:pointer;}
+.comebox .zhuce .box dl dd input[type=text].m5{ margin-right:5px; width:100px;}
+.comebox .zhuce .box dl dd a.huan{ display:block; min-width:60px; font-size:12px; line-height:32px; color:#444; margin-left:10px; cursor:pointer;}
+.comebox .zhuce .box dl dd img{ display:block; width:118px; height:30px; float:left; cursor:pointer; margin:1px 4px;}
+.comebox .zhuce .box dl dd i{ display:block; width:16px; text-align:center; color:red; float:left;}
+
+/***tiaokuanbox*****/
+.tiaokuanbox{ background-image:url(../images/index_48.png); width:100%; height:100%; position:fixed; left:0; top:0; padding-top:150px; display:none;}
+.tiaokuanbox .tiaokuan{ width:600px; height:400px;background-color:#fff; padding:20px; margin:0 auto; }
+.tiaokuanbox .tiaokuan h2{ font-size:18px; line-height:40px; height:40px; color:#333;}
+.tiaokuanbox .tiaokuan .text{ height:300px; overflow-y:scroll;  }
+.tiaokuanbox .tiaokuan .text p{ overflow:hidden; font-size:12px; color:#666;}
+.tiaokuanbox .tiaokuan .text p span{ width:30px; text-align:center; display:block; line-height:28px; float:left;}
+.tiaokuanbox .tiaokuan .text p i{ width:550px; display:block; line-height:28px; float:right;}
+.tiaokuanbox .tiaokuan a.sure{ display:block; width:120px; font-size:16px; height:34px; border-radius:5px; color:#fff; line-height:34px; background-color:#4b94ed; text-align:center; border:none; cursor:pointer; margin:0px auto; margin-top:20px; }
+/***tiaokuanbox*****/
+
+
+/****zhaohui****/
+.comebox .zhaohui{ width:1200px; margin:0 auto;}
+.comebox .zhaohui .ttimg{ display:block; margin:50px auto; margin-bottom:80px;}
+.comebox .zhaohui .box{ width:520px; margin:0 auto;}
+.comebox .zhaohui .box dl{ overflow:hidden;line-height:32px; font-size:14px; color:#444;margin-bottom:20px;}
+.comebox .zhaohui .box dl dt{ width:100px; float:left; margin-right:10px; text-align:right; }
+.comebox .zhaohui .box dl dd{ width:400px; float:left; overflow:hidden; }
+.comebox .zhaohui .box dl dd input[type=text]{ display:block; width:360px; height:30px; line-height:30px; font-size:14px; color:#666; border:1px solid #ccc; text-indent:4px; float:left;}
+.comebox .zhaohui .box dl dd input[type=password]{ display:block; width:360px; height:30px; line-height:30px; font-size:14px; color:#666; border:1px solid #ccc; text-indent:4px;float:left;}
+.comebox .zhaohui .box dl dd input[type=text].small{ float:left; width:180px; margin-right:30px;}
+.comebox .zhaohui .box dl dd span{ display:block; width:148px; border:1px solid #ccc; height:30px; float:left; background-color:#e6e6e6; line-height:32px; font-size:15px; color:#666; text-align:center; }
+.comebox .zhaohui .box dl dd a.kuan{ font-size:14px; line-height:30px; color:#4b94ed;}
+.comebox .zhaohui .box dl dd input[type=button]{ display:block; width:362px; font-size:16px; height:40px; border-radius:5px; color:#fff; line-height:40px; background-color:#f14e23; text-align:center; border:none; cursor:pointer;}
+.comebox .zhaohui .box dl dd input[type=text].m5{ margin-right:5px; width:100px;}
+.comebox .zhaohui .box dl dd a.huan{ display:block; min-width:60px; font-size:12px; line-height:32px; color:#444; margin-left:10px; cursor:pointer;}
+.comebox .zhaohui .box dl dd img{ display:block; width:118px; height:30px; float:left; cursor:pointer; margin:1px 4px;}
+.comebox .zhaohui .box dl dd i{ display:block; width:16px; text-align:center; color:red; float:left;}
+.comebox .zhaohui .box dl dd img.tip{ width:19px; height:19px; float:left; margin-left:5px; margin-top:6px;}
+.comebox .zhaohui .text{ text-align:center; padding:40px 0;}
+.comebox .zhaohui .text span{ display:inline-block; background-image:url(../images/find03_07.png); height:28px; padding-left:32px; font-size:16px; color:#444; background-position:left center; background-repeat:no-repeat; line-height:28px; margin-bottom:5px; }
+.comebox .zhaohui .text a{ display:inline-block; background-image:url(../images/find03_11.png); height:25px; line-height:25px; background-position:left center; background-repeat:no-repeat; padding-left:20px; font-size:12px; color:#666;}
+.comebox .zhaohui .text a i{ color:#f14e23;}
+

@@ -1,0 +1,277 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">编辑商品</div><a href="{:U('Goods/edit',array('id'=>$goods_id))}" class="col-sm-3 btn btn-turquoise">返回修改商品信息</a>
+			<div class="panel-body">
+				<div class="panel-heading">
+					<!--<a href="{:U('Goods/edit',array('id'=>$img[0]['goods_id']))}" class="col-sm-3 btn btn-turquoise">返回修改商品信息</a>-->
+					
+				</div>
+			</div>
+
+
+<section class="gallery-env">
+
+    <div class="row">
+    
+
+        <!-- Gallery Album Optipns and Images -->
+        <div class="col-sm-9 gallery-right">
+
+            <!-- Album Header -->
+            <div class="album-header">
+                <h2>图集列表</h2>
+
+                <ul class="album-options list-unstyled list-inline">
+                    <li>
+                        <input type="checkbox" class="cbr" id="select-all" />
+                        <label for="select-all">全选</label>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="#" data-action="trash" onclick="trash_all()">
+                            <i class="fa-trash"></i>
+                            全部删除
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+         <!-- <a class="btn btn-warning" href="###" >第一张图片默认为展示图</a>  -->
+
+            <!-- Album Images -->
+            <div class="album-images row">
+
+                <!-- Album Image -->
+            <volist name="img" id="vo">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <div class="album-image">
+                        <a href="#" class="thumb" data-action="edit">
+                        <if condition="$vo['pd']">
+                            <img style="width:100px;height: 100px;" src="{$vo.img_url}" class="img-responsive" />
+                        <else/>
+                            <img style="width:100px;height: 100px;" src="__PUBLIC__/../Uploads/{$vo.img_url}" class="img-responsive" />
+                         </if>
+
+                        </a>
+
+                        <a href="#" class="name">
+                            <span>{$vo.img_title}</span>
+                            <!--<em>28 September 2014</em>-->
+                        </a>
+
+                        <div class="image-options">
+                            <a href="#" data-action="edit" onclick="edit(this,{$vo.gallery_id})"><i class="fa-pencil"></i></a>
+                            <a href="#" data-action="trash" onclick="trash(this,{$vo.gallery_id})"><i class="fa-trash"></i></a>
+                        </div>
+
+                        <div class="image-checkbox">
+                            <input type="checkbox" class="cbr" value="{$vo.gallery_id}"/>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+
+               
+            </div>
+        </div>
+
+        <!-- Gallery Sidebar -->
+        <div class="col-sm-3 gallery-left">
+
+            <div class="gallery-sidebar">			
+
+                <a href="#" class="btn btn-block btn-purple btn-icon btn-icon-standalone btn-icon-standalone-right">
+                    <i class="linecons-photo"></i>
+                    <span>修改图集相册</span>
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+<!--批量添加图片-->
+     <div class="form-group">
+                                    <div class="col-sm-10">
+                                    <link rel="stylesheet" href="__PUBLIC__/mp/control/css/zyUpload.css" type="text/css">
+                                    <js href="__PUBLIC__/mp/core/zyFile.js" />
+                                    <js href="__PUBLIC__/mp/control/js/zyUpload.js" />
+        
+                                        <div id="demo" class="demo"></div> 
+                                    
+                                    </div>
+                                </div>
+
+
+    <script type="text/javascript">
+
+        $(function(){
+            // 初始化插件
+            $("#demo").zyUpload({
+                width            :   "100%",                 // 宽度
+                height           :   "",                 // 宽度
+                itemWidth        :   "120px",                 // 文件项的宽度
+                itemHeight       :   "120px",                 // 文件项的高度
+                url              :   "image_edit",  // 上传文件的路径
+                multiple         :   true,                    // 是否可以多个文件上传
+                dragDrop         :   true,                    // 是否可以拖动上传文件
+                del              :   true,                    // 是否可以删除文件
+                finishDel        :   true,                    // 是否在上传文件完成后删除预览
+
+
+            });
+        });
+
+    </script>
+
+</section>
+<script src="__PUBLIC__/admin/assets/js/bootbox/bootbox.min.js"></script>
+<script type="text/javascript">
+    // Sample Javascript code for this page
+    jQuery(document).ready(function ($)
+    {
+        // Sample Select all images
+        $("#select-all").on('change', function (ev)
+        {
+            var is_checked = $(this).is(':checked');
+
+            $(".album-image input[type='checkbox']").prop('checked', is_checked).trigger('change');
+        });
+    });
+</script>
+<script>
+    //添加图片
+  
+   //修改图片
+   function edit(v,id){
+        bootbox.dialog({
+           // message: 'title:&nbsp;&nbsp;&nbsp;<input type="text" placeholder="修改名称" id="cate_input" /><br/><br/> description:&nbsp;&nbsp;&nbsp;<textarea type="text" placeholder="修改描述" id="sort_input"></textarea><br>\n\
+                     // ',
+            message:'<div class="row"><div class="col-md-12"><div class="form-group"><label for="field-1" class="control-label">名称</label>\n\
+<input type="text" class="form-control" id="field-1_1" name="img_url" placeholder="Enter image title"></div></div></div><div class="row"></div>',			
+            title: "修改图片：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                       var cate=$('#field-1_1').val();
+                        var patt1 = new RegExp(/^([\u4E00-\uFA29]*[a-z]*[A-Z]*[0-9]*)+$/g);
+                        var result = patt1.test(cate);
+                        if(result==false){
+                            bootbox.alert("名称用中文或英文或数字表示");
+                            return ;
+                        }
+                        if(cate==''){
+                            bootbox.alert("填写不能为空");
+                            return ;
+                        }
+                       
+                        $.ajax({
+                            'type':'post',
+                            'data':'img_title='+cate+'&gallery_id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Goods/updateimg')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('修改成功');
+                                    $(v).parent().prev('a').find('span').html(cate);
+                                }else{
+                                    bootbox.alert('修改失败');
+                                        }
+                               
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+   }
+   //删除图片
+   function trash(v,id){
+        bootbox.dialog({
+            message: '你确定要删除这张图片吗？',
+            title: "删除图片：",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        $.ajax({
+                            'type':'post',
+                            'data':'gallery_id='+id,
+                            'dataType':"json",
+                            'url':"{:U('Goods/deleteimg')}",
+                            'success':function(dat){
+                                if(dat.status==1){
+                                    bootbox.alert('删除成功');
+                                    window.location.href="{:U('Goods/image_edit',array('id'=>$img[0]['goods_id']))}";
+                                }else{
+                                    bootbox.alert('删除失败');
+                                        }
+                                
+                            }
+                        });
+
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+    });
+   }
+   //批量删除
+   function trash_all(id){
+       var check=$(".album-image").find(":checked").attr("checked",'true');
+       var num=check.length;
+        if(num==0){
+        bootbox.alert("你还没有勾选");
+        return ;
+        }
+          var id='';
+          var gallery_id=$("div.album-images.row").find(':checkbox');
+          for(var i=0;i<num;i++){
+
+         id+=gallery_id.eq(i).attr('value')+'-';
+        }
+
+        $.ajax({
+        'type':'post',
+        'data':'id='+id,
+        'dataType':'json',
+        'url':"{:U('Goods/delete_all_img')}",
+        'success':function(dat){
+            if(dat.info==1){
+                bootbox.alert('删除成功');
+                var url="{:U('Goods/image_edit',array('id'=>$img[0]['goods_id']))}";
+                window.location.href=url;
+            }else{
+                bootbox.alert('删除失败');
+            }
+        }
+    });
+       
+    }
+</script>
+
+
+		</div>
+	</div>		
+</div>	

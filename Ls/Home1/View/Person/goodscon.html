@@ -1,0 +1,180 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol21.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/Css.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<script>
+
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	}); 
+  function fenlei_delmore(obj,cName){
+	  var checkall = document.getElementsByName(cName);
+	   for(var $i=0;$i<checkall.length;$i++){
+			checkall[$i].checked = obj.checked;
+		  }	  
+}
+  </script>
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="{:U('Index/index')}"><img src="__PUBLIC__/home/assets/images/logo1.png" alt="海之澜"></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="{:U('Index/index')}">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	<!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>       
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    <include file="Public:personleft"/>	       
+        <div class="main_r"><form name="sss" id="myform"  onsubmit="return false">
+        	<div class="shop">
+            		<div class="dianpu_t">
+                    	<div class="dp_l">
+                        	<p>收藏店铺</p>
+                        </div>
+                        <div class="dp_r">
+                        	<form>
+                            	<input type="checkbox" class="quanbtn" name="cName[]" onclick="fenlei_delmore(this,'cName[]')"/><span>全选</span>
+				<a href="###" id="delall" onclick="delall()">删除</a>
+                            </form>		
+                        </div>
+                    </div>
+                <div class="dianpu">
+                
+                    <div class="dp_b">
+					
+                    	<ul>
+						<volist name="goodslist" id="list">
+                        	<li>
+                            	<div class="zuo">
+                                	<div class="zuo_l">                                       
+                                       <input type="checkbox" name="cName[]" value="{$list.col_shopid}">                                       
+                                    </div>
+                                    <div class="zuo_r">
+										<a href="{:U('Shop/shop',array('shop_id'=>$list['ghs_id']))}">
+                            			<img src="__ROOT__/Uploads/{$list.shop_logo}" alt="">
+										</a>
+                                    </div>
+                                </div>
+                                <div class="you">
+									<a href="{:U('Shop/shop',array('shop_id'=>$list['ghs_id']))}">
+                                	<p>{$list.shop_name}</p>
+									</a>
+                                    <a href="http://wpa.qq.com/msgrd?v=3&uin={$list.shop_qq}&site=qq&menu=yes"><img style="padding-right:18px;" src="__PUBLIC__/home/assets/images/icon6.png" alt=""></a>
+                                    <a href="#signup" rel="leanModal">
+									<img src="__PUBLIC__/home/assets/images/icon5.png" name="picture"  onMouseOver="this.src='__PUBLIC__/home/assets/images/icon5_bj.png'" onMouseOut="this.src='__PUBLIC__/home/assets/images/icon5.png'"></a>
+                                    <div id="signup" class="tan1">
+                                    <p style="width:90px;">确定删除！</p>
+                                    <a href="###" onclick="deletesgoods({$list.col_shopid})">确定</a>
+									
+                                    <div class="dw"><img src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                    </div>
+                                </div>
+                            </li>							
+							</volist>  
+							<input type="hidden" name="type" value=""/> 
+
+							
+                        </ul>
+						<empty name="goodslist">
+						<div  class="tan1" id="dis">
+                                <p>您没有收藏任何店铺</p>
+                                <a href="###" class="dw1" style="background-color: #c40000;
+    background-image: none;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 40px;
+    width: 34px;" >确定</a>
+                                <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                            </div>
+						<else/>
+							<div id="signup1" class="tan1">
+                                <p>您确定要删除商品吗！</p>
+                                <a href="###" onclick="delall()">确定</a>
+                                <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                            </div></empty>
+                    </div>
+                </div>
+            </div>
+		</form>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){	
+	$('.dp_b ul').kkPages({
+		PagesClass:'li', //需要分页的元素
+		PagesMth:15, //每页显示个数		
+		PagesNavMth:3 //显示导航个数
+		});
+});
+/*$(function(){
+	$(".dp_r .quanbtn").click(function(){
+		$(".zuo_l input").attr('checked',true);
+		})
+	})*/
+function deletesgoods(v){
+ var del=v;
+  $.ajax({
+                   'type':'post',
+                   'url':"{:U('Person/deletegoods')}",
+                   'data':{goods:del},
+                   'dataType':'json',
+                   'success':function(dat){
+                       if(dat.status==1){
+                           //alert('88888');
+                           window.location.href="{:U('Person/goodscon')}";
+                       }else{
+					   alert('操作失败！');
+					   var url="{:U('Person/goodscon')}";
+                       window.location.href=url;
+					   }
+                   }
+               });
+}
+function delall(){
+var chcks = $('li').find(':checked').attr('checked','true');
+if(chcks.length==0){
+  alert('请选择商品！');
+ // var url="{:U('Person/goodscon')}";
+  //window.location.href=url;
+  return false;
+  }else{
+  var data=$("#myform").serialize();
+    $.ajax({
+        'type':'post',
+        'data': data,
+        'dataType':'json',
+        'url':"{:U('Person/delete_all')}",
+        'success':function(dat){
+            if(dat.status==1){
+               // alert('删除成功');
+                var url="{:U('Person/goodscon')}";
+                window.location.href=url;
+            }else{
+                alert('删除失败');
+				var url="{:U('Person/goodscon')}";
+                window.location.href=url;
+            }
+        }
+    });
+  }
+}
+</script>
+
+<!--main-->

@@ -1,0 +1,71 @@
+<css href="__PUBLIC__/home/css/center.css"/>
+<css href="__PUBLIC__/home/css/Css.css"/>
+
+<js href="__PUBLIC__/home/js/jquery.kkPages.js" />
+
+<include file="Public:nav" />
+<!--car开始-->
+<div class="carbox">
+	<h2><span>全部商品<i>2</i></span></h2>
+    <div class="liebiao">
+    	<ul class="ultitle">
+        	<li class="w1"><!--<label><input type="checkbox">&nbsp;全选</label>--></li>
+           	<li class="w2">商品信息</li>
+            <li class="w3">类型</li>
+            <li class="w4">单价（元）</li>
+            <li class="w5">重量</li>
+            <li class="w6">金额（元）</li>
+            <li class="w7">操作</li>
+        </ul>
+        <ul class="single">
+        	<li class="w1"><input type="checkbox"></li>
+           	<li class="w2"><p><span>送货上门</span>满2000kg送调和油一桶</p><div class="cp"><a class="imga"><img src="__PUBLIC__/home/images/cpxq_21.jpg"></a><a class="namea">硬质清洁无烟煤</a></div></li>
+            <li class="w3"><strong>P-N666</strong></li>
+            <li class="w4">0.52元/斤</li>
+            <li class="w5">6000kg</li>
+            <li class="w6"><b>6666.00</b></li>
+            <li class="w7"><a class="come">移入收藏夹</a><a class="de">删除</a></li>
+        </ul>
+        <ul class="single">
+        	<li class="w1"><input type="checkbox"></li>
+           	<li class="w2"><p><span>送货上门</span>满2000kg送调和油一桶</p><div class="cp"><a class="imga"><img src="__PUBLIC__/home/images/cpxq_21.jpg"></a><a class="namea">硬质清洁无烟煤</a></div></li>
+            <li class="w3"><strong>P-N666</strong></li>
+            <li class="w4">0.52元/斤</li>
+            <li class="w5">6000kg</li>
+            <li class="w6"><b>6666.00</b></li>
+            <li class="w7"><a class="come">移入收藏夹</a><a class="de">删除</a></li>
+        </ul>
+        <div class="caozuo">
+        	<label><input type="checkbox">&nbsp;全选</label>
+            <span class="ss">删除</span>
+            <span>移入收藏夹</span>
+            <a class="jiesuan" href="{:U('Order/Addorder',array('step'=>1))}">结算</a>
+            <p><i>已选商品1件</i>合计：<strong>￥666.00</strong></p>
+            
+        </div>
+    </div>
+    <div class="zuijin">
+    	<h2>最近浏览</h2>
+        <ul>
+        	<li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+            <li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+            <li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+            <li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+            <li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+            <li><a class="imga" href="page02-mei-xq.html"><img src="__PUBLIC__/home/images/cpxq_28.jpg"></a><a class="namea" href="page02-mei-xq.html">硬质清洁无烟煤</a><p>0.52元/斤</p></li>
+        </ul>
+    </div>
+</div>
+<!--car结束-->
+<script>
+$(function(){
+	$(".caozuo label").click(function(){
+		$(".single input").prop("checked",true);
+		})
+	$(".caozuo span.ss").click(function(){
+		$(".single input").prop("checked",false);
+		$(".caozuo label input").prop("checked",false);
+		})
+	})
+
+</script>                                                                                                                                                                                

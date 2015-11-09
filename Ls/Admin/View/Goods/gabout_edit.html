@@ -1,0 +1,138 @@
+
+<script src="__PUBLIC__/admin/assets/js/multiselect/js/jquery.multi-select.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/multiselect/css/multi-select.css">
+<script src="__PUBLIC__/admin/assets/js/select2/select2.min.js"></script>
+<script src="__PUBLIC__/admin/assets/js/jquery-ui/jquery-ui.min.js"></script>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="panel panel-default">
+        <div class="col-sm-5">
+             <a href="{:U('Goods/edit',array('id'=>$_SESSION['upgid']))}"><button class="btn btn-success">返回商品修改页面</button></a>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">关联商品修改 </div>
+                        <div class="panel-body">
+                            <form action="{:U('Goods/gabout_edit',array('type'=>'select','id'=>$_SESSION['upgid']))}" method="post">
+                          <!--   <input type="hidden" name="id" value="{$data1.0.goods_id}"/> -->
+                                <div class="col-sm-3"> {$data}  </div>
+				
+				   <!--<div class="col-sm-3">
+					<select  name="brand_id" id="brand_id" class="form-control" type="text">
+					  <option value="">选择商品品牌</option>
+                                           <volist name="brand" id="vo">
+                                               <option value="{$vo.brand_id}">{$vo.brand_name}</option>
+                                            </volist>
+					</select>
+				    </div>-->
+                    <div class="col-sm-4"><input class="form-control" type="text" id="goods_name" name="goods_name" placeholder="请输入商品名称"></div>
+                                    <div class="col-sm-2"><button class="btn btn-info">查询</button></div>
+                               
+                            </form>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <form role="form" class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="tagsinput-1">关联商品添加</label>
+
+                        <div class="col-sm-9">
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($)
+                                {
+                                    $("#multi-select").multiSelect({
+                                        afterInit: function ()
+                                        {
+                                            // Add alternative scrollbar to list
+                                            this.$selectableContainer.add(this.$selectionContainer).find('.ms-list').perfectScrollbar();
+                                        },
+                                        afterSelect: function ()
+                                        {
+                                            // Update scrollbar size
+                                            this.$selectableContainer.add(this.$selectionContainer).find('.ms-list').perfectScrollbar('update');
+                                        }
+                                    });
+                                });
+                            </script>
+                            <select class="form-control" multiple="multiple" id="multi-select" name="link_goods_id">
+                                <volist name="goods" id="vo">
+                                    <option value="{$vo.goods_id}">{$vo.goods_id}:{$vo.goods_name}</option>
+                                </volist>
+                            </select>
+
+                        </div>
+
+
+                    </div></form>	
+                <div class="col-sm-4">
+                    <button  class="btn btn-info" onclick='add()'>确认修改</button>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<script>
+$(function(){
+    var result={$result};
+    if(result){
+       $.each(result,function(a,b){
+       
+        $('div.ms-selection').find("ul.ms-list.ps-container").append("<li class='ms-elem-selection ms-selected' style='display:block;' onclick='hidd(this)'><span>"+b.gid+':'+b.gname+"</span></li>")
+    }) 
+    }
+    
+   
+})
+function hidd(v){
+    if(window.confirm("你要移除它吗？")){
+        $(v).css({display:'none'});
+        $(v).removeClass("ms-elem-selection ms-selected")
+    }
+    
+}
+    function add() {
+        var str = $("div.ms-selection").find("ul.ms-list").find("li.ms-elem-selection.ms-selected")
+
+        var num = str.length;var gid='';
+        
+        for (var i = 0; i < num; i++) {
+             var s=str.eq(i).find('span').html();
+             var st=s.split(":",1);
+             gid+=st+'-';
+        }
+       
+         $.ajax({
+              type:"post",
+              url:"{:U('Goods/upgabout')}",
+              data:"gid="+gid,
+     
+              dataType: 'json',
+              success:function(msg){
+                if(msg.info==1){
+                	bootbox.alert("修改成功")
+                }else{
+                	bootbox.alert("修改失败");
+                }
+              }
+            });
+
+
+    }
+</script>

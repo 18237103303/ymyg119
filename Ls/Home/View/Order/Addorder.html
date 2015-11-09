@@ -1,0 +1,256 @@
+<css href="__PUBLIC__/home/css/center.css"/>
+<css href="__PUBLIC__/home/css/Css.css"/>
+
+<js href="__PUBLIC__/home/js/jquery.kkPages.js" />
+<if condition="$step eq 1">
+<!--headerbox--> 
+<div class="headerbox">
+	<div class="header">
+    	<a class="logoa" href="{:U('Index/Index')}"><img src="__PUBLIC__/home/images/index1_07.png"></a>
+        <div class="tjimg"><img src="__PUBLIC__/home/images/tijiaotijiao_03.jpg"></div>
+    </div>
+</div> 
+<!--headerbox--> 
+
+<!--tijiaobox开始-->
+<div class="tijiaobox">
+	<h2><p>收货地址</p><!--<a>管理收货地址</a>--></h2>
+    <div class="send">
+    	<div class="divp"><span>地址</span><div class="sel"><select><option>河南省</option></select><select><option>郑州市</option></select><select><option>金水区</option></select></div></div>
+        <div class="shifou"><p>是否运送到具体位置<select><option>否</option><option>玉米楼</option></select>运费：<select><option>0</option><option>20.00</option></select>元</p></div>
+        <div class="shifou"><p>是否货到付款<label><input type="radio" name="bb">是</label><label><input type="radio" name="bb">否</label></p></div>
+        <!--<a href="center-dizhi.html">修改本地址</a>-->
+    </div>
+    <!--<a class="new">使用新地址</a>-->
+    <div class="sure">
+    	<h3>确认订单信息</h3>
+        <div class="liebiao">
+            <ul class="ultitle">
+                <li class="w2">商品信息</li>
+                <li class="w3">类型</li>
+                <li class="w4">单价（元）</li>
+                <li class="w5">重量</li>
+                <li class="w6">优惠</li>
+                <li class="w7">金额（元）</li>
+            </ul>
+            <ul class="single">
+                <li class="w2"><div class="cp"><a class="imga"><img src="__PUBLIC__/home/images/cpxq_21.jpg"></a><a class="namea">硬质清洁无烟煤</a></div></li>
+                <li class="w3"><strong>P-N666</strong></li>
+                <li class="w4">0.52元/斤</li>
+                <li class="w5">6000kg</li>
+                <li class="w6"><select><option>省300：优惠价</option></select></li>
+                <li class="w7"><b>6666.00</b></li>
+                <!--<li class="w8">给卖家留言：<input type="text"> <span>配送方式：物流快运</span></li>-->
+            </ul>
+            <ul class="single">
+                <li class="w2"><div class="cp"><a class="imga"><img src="__PUBLIC__/home/images/cpxq_21.jpg"></a><a class="namea">硬质清洁无烟煤</a></div></li>
+                <li class="w3"><strong>P-N666</strong></li>
+                <li class="w4">0.52元/斤</li>
+                <li class="w5">6000kg</li>
+                <li class="w6"><select><option>省300：优惠价</option></select></li>
+                <li class="w7"><b>6666.00</b></li>
+                <!--<li class="w8">给卖家留言：<input type="text"> <span>配送方式：物流快运</span></li>-->
+            </ul>
+        </div>
+        <div class="liuyantt">
+        	给卖家留言：<input type="text">
+        </div>
+        <style>
+        	.liuyantt{ height:30px; font-size:14px; line-height:30px; color:#444; background-color:#f5f5f5; padding:10px 15px;}
+			.liuyantt input{ display:inline-block; height:28px; width:500px; line-height:28px; border:1px solid #ccc; margin-left:10px; }
+        </style>
+        <div class="qian">
+                    <p><input type="checkbox">&nbsp;使用优煤易购积分:<input type="text">点<span>-0.12</span></p>
+                    <p><i>(可用121点)</i><em>100积分可兑换10元</em></p>
+                    <div class="sheng">
+                        <p><input type="checkbox" class="xuan">&nbsp;<i>使用优煤易购优惠券</i>&nbsp;结算时扣除</p>
+                        <div class="hide" style="display:none;">
+                        <p><a class="all">全选</a></p>
+                        <ul>
+                            <li><img src="__PUBLIC__/home/images/daijinquan_03.png"><p>有效时间：2015-07-32 至 2015-08-32</p><div class="dwimg2"><img src="__PUBLIC__/home/images/dwerwr_11.png"></div></li>
+                            <li><img src="__PUBLIC__/home/images/daijinquan_03.png"><p>有效时间：2015-07-32 至 2015-08-32</p><div class="dwimg2"><img src="__PUBLIC__/home/images/dwerwr_11.png"></div></li>
+                            <li><img src="__PUBLIC__/home/images/daijinquan_03.png"><p>有效时间：2015-07-32 至 2015-08-32</p><div class="dwimg2"><img src="__PUBLIC__/home/images/dwerwr_11.png"></div></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <p>应付金额（含运费）<b>¥136.00</b></p>
+                    <p>可获得优煤易购积分：666点</p>
+                    <p><a class="tijiao" href="{:U('Order/Addorder',array('step'=>2))}">提交订单</a><a class="back" href="center-car.html">返回购物车</a></p>
+                    <p><i class="tip">若价格变动，请在提交订单后联系卖家改价，并查看已买到的产品</i></p>
+                </div>
+        
+    </div>
+</div>
+<!--tijiaobox结束-->
+<script>
+$(function(){
+	$(".sheng ul li").click(function(){
+		$(this).children(".dwimg2").toggle();
+		})
+	$(".sheng p a.all").click(function(){
+		$(".sheng ul li .dwimg2").show();
+		})
+		
+	$(".tijiaobox a.new").click(function(){
+		$(".windowbox").show();
+		})
+	$(".windowbox a.btn").click(function(){
+		$(".windowbox").hide();
+		})
+	$(".sheng p input.xuan").click(function(){
+		$(this).parents("p").siblings(".hide").toggle();
+		})
+	})
+</script>
+
+<!--弹窗-->
+<div class="windowbox">
+	<div class="xinzeng">
+            	<dl><dt style="color:#ff0000;">新增收货地址</dt><dd>电话号码手机号选填一项，其余为必填</dd></dl>
+            	<dl><dt>所在地区：</dt><dd><select><option>中国大陆</option></select><select><option>河南省</option></select></dd></dl>
+                <dl><dt>详细地址：</dt><dd><textarea placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea></dd></dl>
+                <dl><dt>邮政编码：</dt><dd><input placeholder="如您不清楚邮递区号，请填写000000"></dd></dl>
+                <dl><dt>收货人姓名：</dt><dd><input placeholder="长度不超过25个字符"></dd></dl>
+                <dl><dt>手机号码：</dt><dd><input placeholder=""></dd></dl>
+                <dl><dt>电话号码：</dt><dd><input placeholder=""></dd></dl>
+                <dl><dt>&nbsp;</dt><dd><input type="checkbox" class="ss">设置为默认收货地址</dd></dl>
+                <dl><dt>&nbsp;</dt><dd><a class="btn">保存</a><a class="btn">取消</a></dd></dl>
+            </div>
+</div>
+<!--弹窗-->
+<elseif condition="$step eq 2"/>
+<!--tijiaobox开始-->
+<div class="tijiaobox2">
+    <div class="send">
+    	<p><i>河南省郑州市管城回族区 商都路街道 中州大道商都路阿金洪格日阿华风格附件和古人（张三 收） 15415654545</i></p>
+        <a>订单金额：<span>3600.00</span></a>
+    </div>
+    <table cellpadding="0" cellspacing="0" style="border-collapse:collapse" border="0">
+    	<tr>
+        	<th>订单号</th>
+            <th>产品种类</th>
+            <th>重量</th>
+            <th>金额</th>
+        </tr>
+        <tr>
+        	<td>231561454554</td>
+            <td>硬质清洁无烟煤</td>
+            <td>6000kg</td>
+            <td>￥6666.00</td>
+        </tr>
+        <tr>
+        	<td>231561454554</td>
+            <td>硬质清洁无烟煤</td>
+            <td>6000kg</td>
+            <td>￥6666.00</td>
+        </tr>
+    </table>
+    <div class="kuan">
+    	<h2><input type="checkbox">&nbsp;&nbsp;优煤易购积分<span>可用积分：<i>1000</i><i></i></span></h2>
+        <div class="fukuan">
+    	<div class="top">
+        	<div class="btnbox">
+            	<span class="current">第三方支付</span>
+                <span>储蓄卡</span>
+                <span>微信支付</span>
+            </div>
+        </div>
+        <div class="bottom">
+        	<div class="ways">
+            	<h4>在线支付</h4>
+            	<ul>
+                	<li><input type="radio" name="nn1" checked="checked"><a><img src="__PUBLIC__/home/images/way1_07.jpg"></a></li>
+                    <li><input type="radio" name="nn1" checked="checked"><a><img src="__PUBLIC__/home/images/way1_09.jpg"></a></li>
+                </ul>
+                <h4>手机扫描支付</h4>
+            	<ul>
+                	<li><input type="radio" name="nn1" checked="checked"><a><img src="__PUBLIC__/home/images/way1_13.jpg"></a></li>
+                </ul>
+                <a class="ben">立即支付</a>
+            </div>
+            <div class="ways">
+            	<h4>提示 ：您的银行卡需要开通网银才能进行支付</h4>
+            	<ul class="ul2">
+                	<li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_03.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_05.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_07.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_09.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_11.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_19.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_21.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_22.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_23.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_24.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_30.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_31.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_32.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_33.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_34.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_40.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_41.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_42.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_43.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_44.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_50.jpg"></a></li>
+                    <li><input type="radio" name="nn"><a><img src="__PUBLIC__/home/images/way2_51.jpg"></a></li>
+                </ul>
+                <a class="ben">立即支付</a>
+            </div>
+            <div class="ways" style="width:200px;">
+                    <h3>扫一扫付款（元）<br><span>12.00</span></h3>
+                    <div class="weixin">
+                        <img src="__PUBLIC__/home/images/weixin-3301_03.jpg">
+                        <h5>打开微信<br>扫一扫继续付款</h5>
+                    </div>
+                    <h3><a href="#">首次使用请下载微信</a></h3>
+                    <a class="ben">立即支付</a>
+                </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!--tijiaobox结束-->
+<script>
+	$(function(){
+		$(".ways ul li").click(function(){
+			$(".ways ul li a").removeClass("current");
+			$(this).children("a").addClass("current");
+			$(".ways ul li input").prop('checked',false);
+			$(this).children("input").prop('checked',true);
+			})
+		})
+	$(function(){
+		$(".bottom .ways").eq(0).show();
+		$(".fukuan .top .btnbox span").click(function(){
+			var n= $(this).index();
+			$(".fukuan .top .btnbox span").removeClass("current");
+			$(this).addClass("current");
+			$(".bottom .ways").hide();
+			$(".bottom .ways").eq(n).fadeIn();
+			})
+		})
+	$(function(){
+		$(".ways a.ben").click(function(){
+			$(".tishibox").show();
+			})
+	$(".tishibox a").click(function(){
+			$(".tishibox").hide();
+			})
+		})
+</script>
+<!--tipbox-->
+<div class="tishibox">
+	<div class="tishi">
+    	<h2>正在支付</h2>
+        <h3>请在新开的页面完成支付，支付完成前不要关闭窗口</h3>
+        <p style="background-image:url(images/frgrt_03.jpg);">如您已成功付款,请点击:<a class="wc" href="{:U('Order/Addorder',array('status'=>3))}">已完成付款</a></p>
+        <p style="background-image:url(images/frgrt_06.jpg);">如您付款失败,请点击:<a class="cx">重新支付</a>或<a class="lx">联系客服</a></p>
+        <a class="cj" href="{:U('Article/Index')}">常见问题</a>
+    </div>
+</div>
+<!--tipbox-->
+<else/>
+<div class="tijiaobox3">
+    <p><span>恭喜您，支付已经成功并且获得了一次抽奖机会。</span><a href="{:U('Lottery/Index')}">去抽奖吧</a></p>
+</div>
+</if>

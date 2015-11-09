@@ -1,0 +1,139 @@
+<!-- Removing search and results count filter -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">会员 查看类型 -- Member Select</div>
+						<div class="panel-body">
+							<div class="col-sm-7">
+							
+								<button class="btn btn-turquoise" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});">新增会员 - Add</button>
+								<button class="btn btn-secondary">已验证会员 - OK</button>
+								<button class="btn btn-orange" id="danger_msg_1">未验证会员 - Waiting</button>
+								<button class="btn btn-primary">已冻结会员 - Cold</button>
+								<button class="btn btn-turquoise">Vip会员 - VIP</button>
+								<button class="btn btn-success">代理商会员 - Admin</button>
+							</div>
+							<div class="col-sm-5">
+								
+								<div class="col-sm-10"><input class="form-control" type="text" name="s" placeholder="请输入会员账号..."></div>	
+								<div class="col-sm-2"><button class="btn btn-success">查询</button></div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">会员列表 - Member List</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th class="no-sorting">
+									批量
+								</th>
+								<td>会员编号</td>
+								<th>用户头像 / 名称</th>
+								<th>用户等级</th>
+								<th>所在地</th>
+								<th>所属学校</th>
+								<th>注册时间 / IP</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						
+						<tbody class="middle-align">
+						
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>ID：99047</td>
+								<td>头像  张啸辰</td>
+								<td>超级会员</td>
+								<td>中国.河南.郑州</td>
+								<td>河南大学</td>
+								<td>2015/10/02  -  192.168.1.1</td>
+								<td>
+									<a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
+										编辑
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+										删除
+									</a>
+
+									<a href="#" class="btn btn-warning btn-sm btn-icon icon-left">
+										封停
+									</a>
+								</td>
+							</tr>
+								
+						</tbody>
+					</table>
+					批量操作按钮 ------------------------------------------------------------分页效果
+				</div>
+			</div>
+			
+		<!-- 弹出层 -->
+                <!-- 动态弹窗，内容由JS来决定 -->
+		<!--<div class="modal fade" id="modal-6">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="tanchuang-title">会员新增</h4>
+						</div>
+						<div class="modal-body" id="tanchuang-content">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="field-1" class="control-label">账号：</label>
+										<input type="text" class="form-control" id="field-1" placeholder="John">
+									</div>	
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="field-2" class="control-label">密码：</label>
+										<input type="text" class="form-control" id="field-2" placeholder="Doe">
+									</div>	
+								</div>
+							</div>			
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-info">新增</button>
+						</div>
+					</div>
+				</div>
+		</div>-->
+<script>
+
+$("#danger_msg_1").click(function(ev)
+							{
+								ev.preventDefault();
+								
+								var opts = {
+									"closeButton": true,
+									"debug": false,
+									"positionClass": "toast-top-full-width",
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut"
+								};
+								
+								toastr.error("title.", "content", opts);
+							});
+</script>
+			
+		
+			
+				

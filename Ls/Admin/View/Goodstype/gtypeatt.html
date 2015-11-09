@@ -1,0 +1,99 @@
+<!-- Removing search and results count filter -->
+<script>  
+  function fenlei_delmore(obj,cName){
+	  var checkall = document.getElementsByName(cName);
+	  for(var $i=0;$i<checkall.length;$i++){
+			checkall[$i].checked = obj.checked;
+		  }
+}
+  </script>
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">商品类型-- Goods Type</div>
+						<div class="panel-body">
+							<div class="col-sm-7">
+							<php>
+							$id=$_GET['id'];
+							
+							</php>
+								<!-- <button class="btn btn-turquoise" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});showcontent(1);">新增会员 - Add</button> -->
+								<a href="{:U('Goodstype/gtypeattradd')}?id={$id}"><button class="btn btn-secondary">添加类型属性</button></a>
+								
+							</div>
+							
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">商品属性类型列表 - Goods List</h3>
+				</div>
+				<div class="panel-body">
+				<form name="myform" action="{:U('Goodstype/gtypeattdel')}" method="post">
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th class="no-sorting">
+								<input type="checkbox"  value="" name="cName[]" onclick="fenlei_delmore(this,'cName[]')">编号ID
+								</th>
+								<th>属性类型名称</th>
+								<th>商品类型</th>
+								<th>属性值的输入方式</th>
+								<th>可选值列表</th>
+								<th>排序</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						
+						<tbody class="middle-align">
+						<volist name="list" id="list">
+							<tr>
+								<td>
+								<input type="checkbox"  name="cName[]" value="{$list['attr_id']}">{$list.attr_id}
+								</td>
+								<td>{$list.attr_name}</td>
+								<php>
+								$p_id['type_id']=$list['cat_id'];
+								$result=M('goods_type')->where($p_id)->find();								
+								</php>
+								<td>{$result['type_name']}</td>															
+								<if condition="$list['attr_input_type'] eq 0">
+								<td>文本</td><else/>
+								<td>下拉框</td></if>
+								<td>
+								 {$list.attr_values} 
+								
+								</td>
+								<td>{$list.sort_order}</td>
+								
+								<!--<td>2015/10/02  -  192.168.1.1</td> -->
+								<td>
+									<a href="{:U('Goodstype/gtypeattedit')}?id={$list.attr_id}" class="btn btn-secondary btn-sm btn-icon icon-left">
+										编辑
+									</a>
+									
+									<a href="{:U('Goodstype/gtypeattdelete1',array('id'=>$list['attr_id'],'pid'=>$list['cat_id']))}" class="btn btn-danger btn-sm btn-icon icon-left" onclick="return confirm('确定要删除吗？');">
+										删除
+									</a>
+
+									<!-- <a href="#" class="btn btn-warning btn-sm btn-icon icon-left">
+										属性列表
+									</a> --> 
+								</td>
+							</tr>
+							</volist>	
+						</tbody>
+					</table>
+					
+					 <button class="btn btn-secondary" data-original-title="点击确定将删除您所选内容" title="" data-placement="bottom" data-toggle="tooltip" type="submit">批量删除</button>
+					</form> 
+					<!-- 批量操作按钮 ------------------------------------------------------------分页效果 -->
+				</div>
+			</div>
+		
+		
+			
+				

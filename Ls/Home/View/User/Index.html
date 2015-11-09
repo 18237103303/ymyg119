@@ -1,0 +1,24 @@
+<include file="User:center" />
+	<div class="right">
+		<div class="points">
+			<ul>
+				<li><span>可用积分</span><p><i>12345</i></p><a href="{:U('User/Integral')}">我的积分</a></li>
+                <li><span>收藏</span><p><i>123</i>商品</p><a href="{:U('User/Collect')}">查看收藏</a></li>
+                <li><span>代金券</span><p><i>5</i>张</p><a href="{:U('User/Cooper')}">查看代金券</a></li>
+			</ul>
+		</div>
+        <div class="xinxibox">
+        	<h2>个人信息</h2>
+            <div class="biaodan">
+            	<dl><dt>当前头像：</dt><dd><a class="send" href="{:U('User/EditPic')}"><img src="__PUBLIC__/home/images/index2_29.jpg"><span>上传头像</span></a></dd></dl>
+                <dl><dt>昵称：</dt><dd><input type="text" value="小糊涂"></dd></dl>
+                <dl><dt>真实姓名：</dt><dd><input type="text" value="张三"></dd></dl>
+                <dl><dt>性别：</dt><dd><label><input type="radio" name="ss">男</label><label><input type="radio" name="ss">女</label></dd></dl>
+                <dl><dt>生日：</dt><dd><div class="picker" id="picker3"></div></dd></dl>
+                <dl><dt>居住地：</dt><dd><select name="province6"></select><select name="city6"></select><select name="area6"></select></dd></dl>
+                <dl><dt>家乡：</dt><dd><select name="province7"></select><select name="city7"></select><select name="area7"></select></dd></dl>
+                <dl><dt>&nbsp;</dt><dd><input type="button" value="保存"></dd></dl>
+            </div>
+        </div>
+    </div>
+</div>

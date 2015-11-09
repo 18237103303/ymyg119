@@ -1,0 +1,140 @@
+<link href="__PUBLIC__/home/assets/css/city.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/product_list.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/Css.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+<script>
+$(function(){
+	$('.list_p').kkPages({
+		PagesClass:'li', //需要分页的元素
+		PagesMth:16, //每页显示个数		
+		PagesNavMth:2 //显示导航个数
+		});
+}); 
+</script>
+<include file="Public:dq" />
+<!--header-->
+<div class="p_list">
+  <div class="shai">
+   <h2><a href="{:U('Index/index')}">首页</a>><a href="###">{$cname.cat_name}</a></h2>
+   <form>
+     <p></p><span>共{$gcount}件相关商品</span>
+   </form>
+  </div>
+  <div class="xuan">
+    <span>品牌</span>
+    <div class="banf">
+    <ul>
+    <volist name="brand1" id="v">
+    <li><a href="{$v.site_url}"><img src="__ROOT__/Uploads/{$v.brand_logo}" alt="{$v.brand_name}"></a></li>
+    </volist>
+  
+    </ul>
+    <ul class="hidden1">
+    <volist name="brand2" id="v">
+    <li><a href="{$v.site_url}"><img src="__ROOT__/Uploads/{$v.brand_logo}" alt="{$v.brand_name}"></a></li>
+    </volist>
+    </ul>
+     <p><i>更多></i></p>
+    </div>
+   
+  </div>
+ 
+  <script>
+	$(".xuan p i").click(function(){
+	$(this).parent("p").siblings(".hidden1").toggle();
+	})
+  </script>
+  
+  <h2 class="zong">
+  <a class="ceu" href="{:U('Good/index')}">综合</a><a href="{:U('Good/index',array('action'=>1))}" >人气</a>
+  <a href="{:U('Good/index',array('action'=>2))}">销量</a>
+  <p style="overflow:hidden;">
+	<span style=" float:left;color:#666;">价格</span>
+	<a style="background-image:none;float:left;padding-right:0px; margin:0px;margin-top:-1px;margin-left:5px;" href="{:U('Good/index',array('action'=>3))}"><img src="__PUBLIC__/home/assets/images/pol_icon8.jpg"></a>
+	<a style="background-image:none;float:left;padding-right:0px; margin:0px; margin-top:-1px;margin-left:5px;" href="{:U('Good/index',array('action'=>4))}"><img src="__PUBLIC__/home/assets/images/pol_icon9.jpg"></a>
+  </p>
+  <!-- <a href="{:U('Good/index',array('action'=>3))}">价格</a>--></h2> 
+  <div class="list_box">
+  <ul class="list_p">
+  <volist name="goods" id="v">
+    <li><a href="{:U('Good/info',array('id'=>$v['goods_id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt="{$v.goods_name}"></a>
+    <p><span>￥{$v.market_price}</span><i>成交
+    <if condition="empty($v['count'])">
+    0
+    <else/>
+    {$v.count}
+    </if>
+    </i></p>
+    <a class="jianjie_01" href="{:U('Good/info',array('id'=>$v['goods_id']))}">{$v.goods_name}</a>
+    <p class="jia_qq"><a class="tb"href="http://wpa.qq.com/msgrd?v=3&uin={$v.qq}&site=qq&menu=yes"><img src="__PUBLIC__/home/assets/images/qq.jpg"></a><a href="{:U('Shop/shop',array('shop_id'=>$v['shop_id']))}" class="dp">{$v.shopname}</a></p>
+    </li>
+  </volist>
+  </ul>
+  <dl class="hot_t">
+  <dt><img src="__PUBLIC__/home/assets/images/hut.jpg" alt="{$v.goods_name}"></dt>
+  <volist name="hotgoods" id="v">
+  <dd>
+    <a href="{:U('Good/info',array('id'=>$v['goods_id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt=""></a>
+    <p><span>￥{$v.market_price}</span>
+    <a class="jianjie_01" href="{:U('Good/info',array('id'=>$v['goods_id']))}">{$v.goods_name}</a>
+    
+  </dd>
+  </volist>
+  </dl>
+  </div>
+  <div class='Pagination'>
+      {$page}
+  </div>
+  <div class="xin_list">
+    <p class="title_01"><span>新品</span><span>爆款</span><i></i></p>
+    <ul class="xin_list1">
+    <volist name="newgoods" id="v">
+      <li><a href="{:U('Good/info',array('id'=>$v['goods_id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt="{$v.goods_name}"></a>
+    <p><span>￥{$v.market_price}</span><i>成交
+    <if condition="empty($v['count'])">
+    0
+    <else/>
+    {$v.count}
+    </if>
+    </i></p>
+    <a class="jianjie_01" href="{:U('Good/info',array('id'=>$v['goods_id']))}">{$v.goods_name}</a>
+    <p class="jia_qq"><a class="tb" href="http://wpa.qq.com/msgrd?v=3&uin={$v.qq}&site=qq&menu=yes"><img src="__PUBLIC__/home/assets/images/qq.jpg"></a><a href="{:U('Shop/shop',array('shop_id'=>$v['shop_id']))}" class="dp">{$v.shopname}</a></p>
+    </li> 
+     </volist> 
+    </ul>
+    <ul class="xin_list1">
+     <volist name="baogoods" id="v">
+      <li><a href="{:U('Good/info',array('id'=>$v['goods_id']))}"><img src="__ROOT__/Uploads/{$v.goods_thumb}" alt="{$v.goods_name}"></a>
+    <p><span>￥{$v.market_price}</span><i>成交
+  
+    {$v.number}
+  
+    </i></p>
+    <a class="jianjie_01" href="{:U('Good/info',array('id'=>$v['goods_id']))}">{$v.goods_name}</a>
+    <p class="jia_qq"><a class="tb" href="http://wpa.qq.com/msgrd?v=3&uin={$v.qq}&site=qq&menu=yes"><img src="__PUBLIC__/home/assets/images/qq.jpg"></a><a href="{:U('Shop/shop',array('shop_id'=>$v['shop_id']))}" class="dp">{$v.shopname}</a></p>
+    </li> 
+     </volist>
+    </ul>
+  </div>
+</div>
+<script>
+$(function(){
+    $(".xin_list1").eq(0).show();
+    $(".title_01 span").eq(0).addClass("on1"); 
+    $(".title_01 span").click(function(){
+
+        $(".title_01 span").removeClass("on1");
+        $(this).addClass("on1");
+    
+        var n=$(".title_01 span").index($(this));
+        $(".xin_list1").hide();
+        $(".xin_list1").eq(n).show();
+        })
+    })
+
+</script>  
+
+
+
+
+

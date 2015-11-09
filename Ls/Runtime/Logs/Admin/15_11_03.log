@@ -1,0 +1,40 @@
+[ 2015-11-03T14:22:38+08:00 ] ::1 /index.php/Admin/Order/order_list.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: type C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 18 行.
+NOTIC: [8] Undefined index: filters C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 53 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-11-03T18:00:02+08:00 ] ::1 /index.php/Admin/Order/order_list.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: type C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 18 行.
+NOTIC: [8] Undefined index: filters C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 53 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-11-03T18:00:27+08:00 ] ::1 /index.php/Admin/Order/order_list.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: type C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 18 行.
+NOTIC: [8] Undefined index: filters C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 53 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-11-03T18:00:30+08:00 ] ::1 /index.php/Admin/Order/fw_list.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined index: type C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 144 行.
+NOTIC: [8] Undefined index: filters C:\Users\Administrator\Desktop\10-28\Ls\Admin\Controller\OrderController.class.php 第 177 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

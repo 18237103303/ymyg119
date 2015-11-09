@@ -1,0 +1,476 @@
+<div class="row">
+    <div class="col-sm-12">
+           <div class="panel panel-default">
+            <div class="panel-heading">添加商品 -- Goods--add</div>
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <a ata="1" class="col-sm-2 btn btn-turquoise">添加商品信息</a>
+                    <a ata="2" class="col-sm-2 btn btn-gray">添加商品属性库存</a>
+                    <a ata="3" class="col-sm-2 btn btn-gray">添加商品相册</a>
+					<a ata="4" class="col-sm-2 btn btn-gray">添加关联商品</a>
+                </div>
+            </div>
+            <div class="form-horizontal">
+                <div class="qiehuan">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="field-1">商品名称</label>
+                            <div id="field-1" class="col-sm-6">
+                                <div class="col-sm-16">
+                                    <input  class="form-control" name="goods_name" id="goods_name" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+						 <label class="col-sm-2 control-label" for="field-2">商品货号</label>
+                            <div id="field-2" class="col-sm-6" >
+                                <input  class="form-control" name="goods_sn" id="goods_sn" type="text" placeholder="编号样式：0000001" >
+                            </div>
+						 </div>
+						 <div class="form-group">
+						 <label class="col-sm-2 control-label" for="field-3" >商品分类</label>
+                            <div id="field-3" class="col-sm-2" >
+                                {$data}
+                            </div>
+						 </div>
+                        <div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-4" >商品排序</label>
+                            <div id="field-4" class="col-sm-2">
+                                <input name="sort" id="sort" class="form-control" type="text" placeholder="数字越大越靠前">
+                            </div>
+                        </div>
+                        <div class="form-group-separator"></div>
+                        <div class="form-group">
+                            <js href="__PUBLIC__/ueditor/ueditor.config.js" />
+                            <js href="__PUBLIC__/ueditor/ueditor.all.min.js" />
+                            <script>
+                                $(function () {
+                                    var ue = UE.getEditor('goods_desc',{
+                                        toolbars: [
+                                            ['source','simpleupload','insertimage','|'
+                                            ]
+                                        ],
+                                        autoHeightEnabled: true,
+                                        autoFloatEnabled: true,
+                                        initialFrameWidth:700,
+                                        initialFrameHeight:300
+                                    });
+                                })
+                            </script>
+                            <label class="col-sm-2 control-label" for="field-5">详情</label>
+                            <div id="field-5" class="col-sm-2">
+                                <script id="goods_desc" name="content" type="text/plain">
+                                </script>
+                            </div>
+                        </div>
+                        <div class="form-group-separator"></div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3">
+                            <button type="reset" class="btn btn-info cx" data-dismiss="modal">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!---->
+              <div class="form-horizontal"  style="display: none;">
+                    <div class="qiehuan">
+                        <div class="panel-body">
+                            <div class="form-group" style="margin-bottom: 40px;">
+                                <a href="##" class="btn xzsx btn-secondary btn-sm btn-icon icon-left">新增属性</a>
+                                <table class="table table-bordered table-striped" id="example-2">
+                                    <thead>
+                                    <tr>
+                                        <td>属性</td>
+                                        <th style="width:8%;">设置库存</th>
+                                        <th>价格</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="middle-align">
+                                    </tbody>
+                                </table>
+<!--增加隐藏属性-->
+<input type="hidden" id="yc" value=""/>
+<!--<input type="hidden" id="index" value=""/>-->
+<!--000-->
+                            </div>
+<!--底部信息的统一-->
+                            <div class="col-sm-4">
+                                <button type="reset" style="float: right;" class="btn btn-info cx1" data-dismiss="modal">重置</button>
+                            </div>
+<!--统一底部信息的结束-->
+                        </div>
+                    </div>
+                </div>
+<!---->
+<!--0-->
+<!--1-->
+<script type="text/javascript" src="/public/plugs/pe/uploadify/jquery.uploadify.min.js"></script>
+<link href="/public/plugs/pe/uploadify/uploadify.css" rel="stylesheet" type="text/css">
+<!--1-->
+               <div class="form-horizontal" style="display: none;">
+                   <div class="qiehuan">
+                       <div class="panel-body">
+                           <!--2-->
+
+                           <label class='control-label col-sm-3' >图集上传:</label>
+                           <div class="col-sm-6">
+                               <input type="file" name="uploadify" id="uploadify" style="border:none;">
+                               <div class="imgbox33">
+                                   <img src="/public/plugs/pe/001/15-09-16/1442373223873.jpg">
+                               </div>
+                           </div>
+                           <style>
+                               .imgbox33{ overflow: hidden;}
+                               .imgbox33 img{ display: block; width: 50px;
+                                   height: 50px;
+                                   float: left; margin: 10px;
+                               }
+                           </style>
+                           <script type="text/javascript">
+                               //上传图片
+                               /* 初始化上传插件 */
+                               $("#uploadify").uploadify({
+                                   "height"          : 30,
+                                   "width"           : 120,
+                                   //显示的高度和宽度，默认 height 30；width 120
+                                   "swf"             : "/public/plugs/pe/uploadify/uploadify.swf",
+                                   //指定swf文件
+                                   "fileObjName"     : "download",
+                                   //文件上传对象的名字 共后台处理使用
+                                   "buttonText"      : "Upload image",
+                                   //按钮显示的文字
+                                   "uploader"        : "/public/plugs/pe/yz.php",
+                                   //后台处理的页面
+                                   'removeTimeout'	  : 1,
+                                   'fileTypeDesc'       : 'Please select a JPG, PNG format file',
+                                   'fileTypeExts'       : '*.jpg;*.png;',
+                                   //上传完成后显示到显示设置个数的时间
+                                   "onUploadSuccess" : uploadFile1,
+                                   //文件上传成功是触发
+                                   'onFallback' : function() {
+                                       alert('Not detected compatible version of the Flash.');
+                                   }
+                               });
+                               function uploadFile1(file, data){
+                                   var obj = JSON.parse(data);
+                                   var dir=obj.dir;
+                                   var num= $('.imgbox33 img').length;
+                                   if(dir!=null){
+                                       $(".imgbox33").append( '<img src="/public/plugs/pe'+dir+'"/><input type="hidden" name='+num+' value="/public/plugs/pe'+dir+'">');
+                                   } else{
+                                       alert('Unpredictability mistake');
+                                   }
+                               }
+                           </script>
+                           <!--2-->
+                           <!--底部信息的统一-->
+                           <div class="col-sm-4">
+                               <button type="reset" style="float: right;" class="btn btn-info cx2" data-dismiss="modal">重置</button>
+                           </div>
+                           <!--统一底部信息的结束-->
+                       </div>
+                   </div>
+               </div>
+<!--0-->
+<!---->
+           <div class="form-horizontal" style="display: none;">
+               <div class="panel-body gl">
+                   <label class='control-label col-sm-3' ></label>
+                   <div class="col-sm-3">{$data}</div>
+                   <div class="col-sm-2"><button class=" btn btn-info cccx">查询</button></div>
+               </div>
+               <script>
+                   $(function(){
+                       $(".cccx").click(function(){
+                           var lx= $('.gl select[name=cat_id]').val();
+                           lx= lx?lx:-9;
+                           $.post("{:U('Goods/addgoods')}",{
+                               lx:lx
+                           },function(data){
+                               $('.splb').html(data);
+                           })
+                       })
+                   })
+               </script>
+               <div class="panel-body">
+               <label class="col-sm-3 control-label">关联商品添加</label>
+               <div class="col-sm-9">
+                   <!---->
+                        <div class="splb">
+                           <label class='control-label' style="cursor:pointer;"><input  disabled type="text" value="查询后添加"/></label>
+                        </div>
+                   <!---->
+               </div>
+               <!--底部信息的统一-->
+               <div class="col-sm-4" style="margin-top: 20px;">
+                   <button type="reset" style="float: right;" class="btn btn-info cx3" data-dismiss="modal">重置</button>
+               </div>
+               <div class="col-sm-5" style="margin-top: 20px;">
+                   <button type="submit" class="btn btn-info qd">确定添加</button>
+               </div>
+               <!--统一底部信息的结束-->
+               </div>
+           </div>
+<!---->
+     </div>
+   </div>
+</div>
+<script type="text/javascript">
+    /*属性设置*/
+    function szsx(index){
+        var index= index||arguments[0];
+        var zhi=$("#yc").val();
+//内容区域开始
+        bootbox.dialog({
+            message: zhi,
+            title: "属性指定",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var a= $('.icheck:checked').length;var b='';var b1;
+                        var aa=$('.lbt').length;
+                        if(a<aa){
+                            bootbox.alert('每个类必须选择其中一个属性');
+                            return false;
+                        }else if(a===1){
+                            b=$('.icheck:checked').val();
+                            b1=$('.icheck:checked').next('label').html();
+                        }else{
+                            $('.icheck:checked').each(function(){
+                                b=b?$(this).val()+'|'+b:$(this).val();
+                                b1=b1?$(this).next('label').html()+'|'+b1:$(this).next('label').html();
+                            })
+                        }
+//                        att[index]=att[index]?att[index]+'^'+b:b;
+                        $('.middle-align tr').eq(index).find('td').eq(0).html(b1);
+                        $('.middle-align tr').eq(index).find('td').eq(0).html(""+b1+"<input type='hidden' class="+index+" value="+b+"%>");
+//                            alert(b);alert(b1);alert(att);
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    }
+    /*属性设置*/
+    /*数量设置*/
+    function szkc(index){
+        var index= index||arguments[0];
+        index=index?index:0;
+        bootbox.dialog({
+            message: '<input type="text" placeholder="添加库存袋数" id="kcds" />',
+            title: "增加库存袋数",
+            buttons: {
+                success: {
+                    label: "确认",
+                    className: "btn-success",
+                    callback: function() {
+                        var ax= $('#kcds').val();
+                        if(!ax){
+                            bootbox.alert('不能为空');
+                            return false;
+                        }
+//                        att[index]=att[index]?att[index]+'^'+ax:ax;
+                        $('.middle-align tr').eq(index).find('td').eq(1).html(ax);
+                        $('.middle-align tr').eq(index).find('td').eq(1).html(""+ax+"<input type='hidden' class="+index+" value="+ax+"$>");
+                    }
+                },
+                danger: {
+                    label: "取消",
+                    className: "btn-danger",
+                    callback: function() {
+
+                    }
+                }
+            }
+        });
+    }
+/*数量设置*/
+/*价格设置*/
+function szjg(index){
+    var index= index||arguments[0];
+    index=index?index:0;
+    bootbox.dialog({
+        message: '<textarea name="jgqj" rows="3" cols="40"></textarea><p style="color: red;">示例：5-10=50|10-15=47|15-20=45</p><p style="color: red;">每个价格区间用“|”分割。范围用 “-”表示。该区域的价格用“=”表示。</p><p style="color: red;">注：输入模式为英文输入。。。</p>',
+        title: "设定区域价格 元/袋",
+        buttons: {
+            success: {
+                label: "确认",
+                className: "btn-success",
+                callback: function() {
+                    var jgqj= $("textarea[name=jgqj]").val();
+                    if(!jgqj){bootbox.alert('价格内容不能为空');return false;}
+                    /*兼容处理*/
+//                    att[index]=att[index]?att[index]+'^'+jgqj:jgqj;
+                    $('.middle-align tr').eq(index).find('td').eq(2).html(jgqj);
+                    $('.middle-align tr').eq(index).find('td').eq(2).html(""+jgqj+"<input type='hidden'  class="+index+" value="+jgqj+"#>");
+                }
+            },
+            danger: {
+                label: "取消",
+                className: "btn-danger",
+                callback: function() {
+                }
+            }
+        }
+    });
+}
+/*价格设置*/
+    $(function(){
+    $('.xzsx').click(function(){
+    var pd='';
+      $('.middle-align tr:last').find('td').each(function(){
+       var leng= $(this).text();
+       if(!leng){pd=1;}
+   })
+    if(pd==1){bootbox.alert('已经设置的属性不能有空值');}else{
+        var lens= $('.middle-align tr').length;
+        $('#index').val(lens);
+        $('.middle-align').append('<tr><td></td><td></td><td></td><td><a href="##" onclick="szsx('+lens+');" class="btn szsx btn-secondary btn-sm btn-icon icon-left">设置属性</a><a href="##"  onclick="szkc('+lens+');" class="btn szkc btn-secondary btn-sm btn-icon icon-left">增加库存</a><a href="##" onclick="szjg('+lens+');" class="btn szjg btn-danger btn-sm btn-icon icon-left">设置价格区间</a></td></tr>');
+    }
+})
+/*/属性的修改区域结束/ */
+        /*导航变色*/
+        $('.panel-heading .btn').click(function(){
+//            alert(att);
+            $('.panel-heading a').removeClass('btn-turquoise').addClass('btn-gray');
+            $(this).addClass('btn-turquoise').removeClass('btn-gray');
+            //判断属性的值
+            var ass= $(this).attr('ata')-1;
+            $('.form-horizontal').hide().eq(ass).show();
+            if(ass==1){
+                $('#yc').val('');
+                var lx= $("#sboxit-2").val();
+                if(!lx){
+                    bootbox.alert('必须指定商品的分类');
+                    $('.panel-heading .btn').eq(0).trigger('click');
+                }else{
+                        $.post("{:U('goods/Catt')}",{
+                            id:lx
+                        },function(data){
+                            $('#yc').val(data);
+                        })
+                }
+            }
+        })
+                    /**/
+                    $('#sboxit-2').change(function(){
+                        var lx=$('#sboxit-2').val();
+                        $.post("{:U('goods/Catt')}",{
+                            id:lx
+                        },function(data){
+                            $('#yc').val(data);
+                        })
+                    })
+                    /**/
+        /*变色结束*/
+        $("#goods_name").val('');
+        $("#goods_sn").val('');
+        $('#sboxit-2').val('');
+        $("#sort").val('');
+        $("#goods_count").val('');
+        $("#market_price").val('');
+        $("#shop_price").val('');
+        $('.imgbox33').html('');
+        $('.cx').click(function(){
+            $("#goods_name").val('');
+            $("#goods_sn").val('');
+            $('#sboxit-2').val('');
+            $("#sort").val('');
+            UE.getEditor('goods_desc').setContent('');
+        })
+        $('.cx1').click(function(){
+            $('#index').val('');
+            $('.middle-align').html('');
+        })
+        $('.cx2').click(function(){
+            $('.imgbox33').html('');
+        })
+        $('.cx3').click(function(){
+            $('.splb').html("<label class='control-label' style='cursor:pointer;'><input  disabled type='text' value='查询后添加'/></label>");
+        })
+//123
+        $('.qd').click(function(){
+            var goods_name = $("#goods_name").val();
+            var goods_sn = $("#goods_sn").val();
+            var cat_id = $('#sboxit-2').val();
+            var sort = $("#sort").val();
+            var ue = UE.getEditor('goods_desc').getContent();
+            var tp='';
+                    $('.imgbox33 input').each(function(){
+                        if(!tp){tp=$(this).val();}else{tp=$(this).val()+'|'+tp;}
+                    });
+           /* alert(goods_name);alert(goods_sn);alert(cat_id);alert(sort);alert(ue);alert(goods_count);alert(market_price);alert(shop_price);*/
+            /*商品属性*/
+            var len= $('#example-2 .middle-align tr').length;var i=0;var ii=0; var att=new Array();
+            for(i;i<len;i++){var val1='';
+               $('.'+i+'').each(function(){
+                   var val= $(this).val();
+                   val1=val1?val1+'^'+val:val;
+               })
+                att[ii]=val1;
+                ii++;
+            }
+            /*商品属性*/
+            /*获取关联商品*/
+            var zhi= $('input[name=nd]:checked').length;zhi1;
+            if(zhi>1){
+                $('input[name=nd]:checked').each(function(){
+                   zhi1=$(this).val()+'|'+zhi1;
+                });
+            }else{
+                var  zhi1= $('input[name=nd]:checked').val();
+            }
+            zhi1=zhi1?zhi1:'';
+/*商品属性读取*/
+/*商品属性处理结束*/
+            if (goods_name == "") {
+                bootbox.alert("商品名称不能为空");
+            } else if (goods_sn == "") {
+                bootbox.alert("商品货号不能为空，请填写编号");
+            } else if (cat_id == "") {
+                bootbox.alert("商品分类不能为空，请填选择分类");
+            }
+            else if(att == ""){
+                bootbox.alert("请添加属性");
+            }else if (tp == "") {
+                bootbox.alert("商品展示图集不能为空");
+            }
+            else{
+//
+                $.post("{:U('Goods/addaction')}",{
+                    goods_name: goods_name,
+                    goods_sn: goods_sn,
+                    sort: sort,
+                    goods_desc: ""+ue+"",
+                    cat_id: cat_id,
+                    att:att,
+                    tp:tp,
+                    zhi1:zhi1
+                },function(msg){
+                    //alert(msg);
+                    if (msg == 1) {
+                        bootbox.alert("添加成功");
+                        var url = "{:U('Goods/ceshi')}";
+                        window.location.href = url;
+                    } else {
+                        bootbox.alert("添加失败");
+                    }
+                })
+//
+            }
+        })
+//123
+    })
+
+</script>
+<!---->

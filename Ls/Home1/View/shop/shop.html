@@ -1,0 +1,132 @@
+<link href="__PUBLIC__/home/assets/css/store.css" rel="stylesheet" type="text/css">
+<!--header-->
+   <div class="store">
+      <div class="store_nav">
+         <div class="store_navtop">
+           <div class="store_logo">
+		   <a href="">
+		   <empty name="shop_logo">
+				<img src="__PUBLIC__/home/assets/images/fdff.png" style="width:302px;height:90px;">
+		   <else /> 
+				<img src="__ROOT__/uploads/{$shop_logo}" style="width:302px;height:90px;">
+		   </empty> 
+		   </a></div>
+           <div class="store_search">
+             <form action="{:U('Shop/seach')}" method="post">
+               <input class="shuru" type="text" name="ss" required="required" placeholder="输入您需要的商品名字">
+               <input class="sousuo_btn" type="submit" value="">
+               <input class="sousuo_btn" type="hidden" name="shop_id" value="{$shop_id}">
+               <input class="sousuo_btn" type="hidden" name="cat_id" value="{$cat_id}">
+             </form>
+           </div>
+           <div class="store_cang">
+              <span onclick="sc()">快收藏我吧~</span>
+			  <div style="display:none" id="wd_id">{$shop_id}</div>
+             <!--  <b><i>￥10元</i>五分好评返现</b> -->
+           </div>
+		   <script>
+				function sc(){		
+						var sc = $('#wd_id').html(); 	//商品id
+							if(parseInt(sc)){
+								$.ajax({
+										 url:"{:U('Shop/sc')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												shop_id:sc,
+											},
+								success:function(a){
+									var info=a.info;
+									if(parseInt(a.info) == 0){
+										location.href = "{:U('Public/error1')}";
+									}
+									if(parseInt(a.info) == 2){
+										location.href = "{:U('User/Qtdz/login')}";
+									}
+									if(parseInt(a.info) == 1){  
+										alert("收藏成功!");
+									}
+									if(parseInt(a.info) == 3){  
+										alert("您已经收藏过了!");
+									}
+								} 
+							})
+							}
+						}
+		   </script>
+             <!--  <b><i>￥10元</i>五分好评返现</b> -->
+         </div>
+         <div class="store_bottom">
+            <ul>
+              <li><a href="">首页</a></li>
+			  <volist name="navs" id="nvo">
+              <li><a href="{:U('Shop/shop_list',array('id'=>$nvo['cat_id']))}">{$nvo.cat_name}</a></li>
+			  </volist>
+            </ul>
+         </div>  
+      </div>  
+      <div class="store_banner">
+        <ul class="store_bannerimg">
+        <volist name="ads1" id="v">
+          <li><a href="{$v.ad_link}" target="_blank" onclick="getclick({$v.id})"><img src="__ROOT__/Uploads/{$v.ad_code}" alt="{$v.name}"></a></li>
+        </volist>
+        </ul>
+       <div class="hd">
+        <span class="prev"><img src="__PUBLIC__/home/assets/images/dian_left.png" alt=""></span>
+        <span class="next"><img src="__PUBLIC__/home/assets/images/dian_right.png" alt=""></span>
+       </div>
+      </div>
+      <div class="store_main">
+        <div class="item_1">
+        <volist name="ads2" id="v">
+         <a href="{$v.ad_link}" target="_blank" onclick="getclick({$v.id})"><img src="__ROOT__/Uploads/{$v.ad_code}" alt="{$v.name}"></a>
+        </volist>
+          <ul>
+		   <volist name="sale" id="sa">
+             <li><a href="{:U('Good/info',array('id'=>$sa['goods_id']))}"><img src="__ROOT__/uploads/{$sa.goods_thumb}" alt="{$sa.goods_name}"></a>
+             <p><b><i>¥</i>{$sa.market_price}</b><!-- <s>原价：299.00</s> --><a href="{:U('Good/info',array('id'=>$sa['goods_id']))}">立即抢购>></a></p>
+             </li>
+			</volist>
+           </ul>
+        </div>
+		<volist name="new" id="vo">
+        <div class="item_2">
+		<volist name="vo['newads']" id="newads">
+          <a href="{$newads.ad_link}" target="_blank" onclick="getclick({$newads.id})"><img class="item_2img" src="__ROOT__/Uploads/{$newads.ad_code}" alt="{$newads.name}"></a>
+		</volist>
+           <ul>
+			<volist name="vo['newgoods']" id="newvo">
+              <li><a href="{:U('Good/info',array('id'=>$newvo['goods_id']))}"><img src="__ROOT__/uploads/{$newvo.goods_thumb}" alt="{$newvo.goods_name}"></a>
+             <p><a href="{:U('Good/info',array('id'=>$newvo['goods_id']))}">{$newvo.goods_name}</a><span>惊喜价：<i>¥{$newvo.market_price}</i></span></p>
+             </li>
+			</volist>
+           </ul>
+        </div>
+		</volist>
+      </div>
+   </div>
+ <script>
+	jQuery(".store_banner").slide({mainCell:".store_bannerimg",effect:"leftLoop", autoPlay:true});
+</script>
+
+<!--点击广告数加一-->
+<script type="text/javascript">
+function getclick(id){
+
+   $.ajax({
+//接受数据的页面
+                                url: "{:U('Index/addclick')}",
+//传值方式
+                                type: 'POST',
+//数据类型
+                                dataType: 'json',
+//发送的数据
+                                data: {
+                                    id: id
+                                },
+                              
+                            });
+
+
+}
+</script>

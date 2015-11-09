@@ -1,0 +1,17 @@
+<css href="__PUBLIC__/home/css/page.css"/>
+<include file="Public:nav" />
+<div class="zhinanbox">
+	<div class="zhinan">
+    	<div class="left">
+			<volist name="article" id="art" >
+				<div class="link">
+					<h2>{$art.type_name}</h2>
+					<div class="linka">
+						<volist name='art.info' id='a'>
+						<a href="{:U('Article/Detail',array('type_id'=>$a['type_id']))}" <if condition="$current eq $a['type_name']"> class="current"</if>>{$a.type_name}</a>
+						</volist>
+					</div>
+				</div>
+			</volist>
+        </div>
+<!--zhinanbox结束-->     

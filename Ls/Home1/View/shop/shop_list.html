@@ -1,0 +1,131 @@
+<link href="__PUBLIC__/home/assets/css/index.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/city.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/product_list2.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/home/assets/css/Css.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/home/assets/js/jquery.kkPages.js"></script>
+
+
+</head>
+
+<body>
+<!--header-->
+<include file="Public/dq" /> 
+<!--header-->
+   <div class="store">
+      <div class="store_nav">
+         <div class="store_navtop">
+           <div class="store_logo">
+		   <a href="{:U('Shop/shop',array('shop_id'=>$shop_id))}">
+		   <empty name="shop_logo">
+				<img src="__PUBLIC__/home/assets/images/index_11.png" style="width:302px;height:90px;" alt="海之澜">
+		   <else /> 
+				<img src="__ROOT__/uploads/{$shop_logo}" style="width:302px;height:90px;"  alt="海之澜">
+		   </empty> 
+		   </a>
+		   </div>
+           <div class="store_search">
+             <form action="{:U('Shop/seach')}" method="post">
+               <input class="shuru" type="text" name="ss" required="required" placeholder="输入您需要的商品名字">
+               <input class="sousuo_btn" type="submit" value="">
+               <input class="sousuo_btn" type="hidden" name="shop_id" value="{$shop_id}">
+               <input class="sousuo_btn" type="hidden" name="cat_id" value="{$cat_id}">
+             </form>
+           </div>
+           <div class="store_cang">
+             <span onclick="sc()">快收藏我吧~</span>
+			  <div style="display:none" id="wd_id">{$shop_id}</div>
+             <!--  <b><i>￥10元</i>五分好评返现</b> -->
+           </div>
+		   <script>
+				function sc(){		
+						var sc = $('#wd_id').html(); 	//商品id
+							if(parseInt(sc)){
+								$.ajax({
+										 url:"{:U('Shop/sc')}",
+											type:'POST',
+											dataType:'json',
+											data:{
+												shop_id:sc,
+											},
+								success:function(a){
+									var info=a.info;
+									if(parseInt(a.info) == 0){
+										location.href = "{:U('Public/error1')}";
+									}
+									if(parseInt(a.info) == 2){
+										location.href = "{:U('User/Qtdz/login')}";
+									}
+									if(parseInt(a.info) == 1){  
+										alert("收藏成功!");
+									}
+									if(parseInt(a.info) == 3){  
+										alert("您已经收藏过了!");
+									}
+								} 
+							})
+							}
+						}
+		   </script>
+         </div>
+         <div class="store_bottom">
+            <ul>
+              <li><a href="{:U('Shop/shop',array('shop_id'=>$shop_id))}">首页</a></li>
+              <volist name="navs" id="nvo">
+              <li><a href="{:U('Shop/shop_list',array('id'=>$nvo['cat_id']))}">{$nvo.cat_name}</a></li>
+			  </volist>
+            </ul>
+         </div>  
+      </div> 
+   </div>
+ <script>
+	jQuery(".store_banner").slide({mainCell:".store_bannerimg",effect:"leftLoop", autoPlay:true});
+</script>
+<div class="p_list">
+  <h2 class="zong">
+  <a class="ceu" href="{:U('Shop/shop_list',array('id'=>$cat_id))}">综合</a>
+  <a href="{:U('Shop/shop_listr',array('id'=>$cat_id))}">人气</a>
+  <a href="{:U('Shop/shop_listx',array('id'=>$cat_id))}">销量</a>
+ <p style="overflow:hidden;"><span style=" float:left;color:#666;">价格</span><a style="background-image:none;float:left;padding-right:0px; margin:0px;margin-top:3px;margin-left:5px;" href="{:U('Shop/shop_listj',array('id'=>$cat_id))}"><img src="__PUBLIC__/home/assets/images/pol_icon8.jpg"></a>
+ <a style="background-image:none;float:left;padding-right:0px; margin:0px; margin-top:3px;margin-left:5px;" href="{:U('Shop/shop_listj',array('id'=>$cat_id,'lx'=>1))}"><img src="__PUBLIC__/home/assets/images/pol_icon9.jpg"></a>
+ </p>
+  </h2>
+  <div class="list_box">
+  <ul class="list_p">
+	<volist name="shop_goods" id="gvo">
+    <li><a href="{:U('Good/info',array('id'=>$gvo['goods_id']))}"><img src="__ROOT__/uploads/{$gvo.goods_thumb}" alt="{$gvo.goods_name}"></a>
+    <p><span>￥{$gvo.jg}</span></p>
+    <a class="jianjie_01" href="{:U('Good/info',array('id'=>$gvo['goods_id']))}">{$gvo.goods_name}</a>
+	<div class="icon2">
+        <p class="jia_qq">月销量：<empty name="gvo['xl']">
+				<span>0</span>
+		   <else /> 
+				<span>{$gvo.xl}</span>
+		   </empty> </p>
+			<b>送{$gvo.jf}积分</b>
+    </div>
+    </li>
+	</volist>
+  </ul>
+   <div class="Pagination">{$page}</div>
+  </div>
+</div>
+<script>
+$(function(){
+	$(".xin_list1").eq(0).show();
+	$(".title_01 span").eq(0).addClass("on1"); 
+	$(".title_01 span").click(function(){
+
+		$(".title_01 span").removeClass("on1");
+		$(this).addClass("on1");
+	
+		var n=$(".title_01 span").index($(this));
+		$(".xin_list1").hide();
+		$(".xin_list1").eq(n).show();
+		})
+	})
+
+</script>  
+
+
+</body>
+</html>

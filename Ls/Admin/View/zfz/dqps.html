@@ -1,0 +1,181 @@
+<!-- Removing search and results count filter -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">分站信息 - Member datail</h3>
+				</div>
+				<div class="panel-body">
+                    <p style="float: right;margin:-0.7% 1% 0.7% 0.5%;"><input type="text" placeholder="输入地区" name="sous" value="{$sous}"/><button name="sous">搜索</button></p>
+					<table class="table table-bordered table-striped" id="example">
+						<tr>
+                            <td style="width: 2%;"></td>
+                            <td style="width: 5%;">ID</td>
+                            <td>地区</td>
+                            <td>货到付款价格</td>
+                            <td>配送价格</td>
+                            <td>操作</td>
+                        </tr>
+                        <foreach  name="row" item="vo" key="k">
+                        <tr>
+                            <td class="xz"><input type="checkbox" name="dx" value="{$k+1}"/></td>
+                            <td>{$vo.id}</td>
+                            <td><input type="text" name="dq" value="{$vo.dq}"/></td>
+                            <td><input type="text" name="hd" value="{$vo.h_p}"/>元</td>
+                            <td><input type="text" name="ps" value="{$vo.p_p}"/>元</td>
+                            <td>
+                                <button class="xg btn btn-secondary btn-sm btn-icon icon-left">修改</button>
+                                <button class="sc btn btn-secondary btn-sm btn-icon icon-left">删除</button>
+                            </td>
+                        </tr>
+                        </foreach>
+					</table>
+                    <button class="xz1 btn btn-secondary btn-sm btn-icon icon-left">新增</button>
+                    <button class="xg1 btn btn-secondary btn-sm btn-icon icon-left">修改</button>
+                    <button class="sc1 btn btn-secondary btn-sm btn-icon icon-left">删除</button>
+                    <button class="qbxs btn btn-secondary btn-sm btn-icon icon-left">全部显示</button>
+                    <p style="float: right;margin-right: 1%;">{$rpage}</p>
+				</div>
+			</div>
+<style>
+    .xz input{cursor:pointer;}
+</style>
+<script>
+    $(function(){
+        //新增
+        $('.xz1').click(function(){
+            //对对象的传入
+            var len= $('#example tr').length;
+            $('#example').append('<tr>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td><input type="text" name="dq" value=""/></td>' +
+            '<td><input type="text" name="hd" value=""/>元</td>' +
+            '<td><input type="text" name="ps" value=""/>元</td>' +
+            '<td><button onclick="hqz('+len+');" class="btn btn-secondary btn-sm btn-icon icon-left">确定</button></td>' +
+            '</tr>');
+        })
+        //修改
+        $('.xg').click(function(){
+           var index= $(this).parents('tr').index();
+            var zhi1= zhi(index);
+                if(zhi1!=-99){
+                    //数据处理部分
+                    $.post("{:U('zfz/dqps')}",{xinz:'xinz',zhi2:zhi1},function(data){
+                        if(data==1){
+                            bootbox.alert('修改成功');
+                        }else{
+                            bootbox.alert('修改失败');
+                        }
+                    })
+                }else{
+                    bootbox.alert('修改参数不能有空值');
+                }
+        })
+        //删除
+        $('.sc').click(function(){
+            var index= $(this).parents('tr').index();
+            $.post("{:U('zfz/dqps')}",{xinz:'sc',index:index},function(data){
+             if(data==1){
+                 bootbox.alert('删除成功');
+                 $('#example tr').eq(index).remove();
+             }else{
+                 bootbox.alert('删除失败');
+             }
+            })
+        })
+        //进行一键修改的操作
+        $('.xg1').click(function(){
+            var zhi2=new Array();
+            var len= $('#example input:checked').length;
+            if(len<1){
+                bootbox.alert('请选择修改项');
+            }else{
+            $('#example input:checked').each(function(){
+               var index= $(this).val();
+                var index1=index-1;
+                zhi2[index1]= zhi(index);
+            });
+            var zhi3=zhi2.join('|');
+            $.post("{:U('zfz/dqps')}",{xinz:'xg1',zhi2:zhi3},function(data){
+                if(data==1){
+                    bootbox.alert('修改成功');
+                }else{
+                    bootbox.alert('修改失败');
+                }
+            })
+            }
+        })
+        //重新挂载 清楚痕迹
+        $('.xz input').removeAttr('checked');
+        //进行一键删除
+        $('.sc1').click(function(){
+                var len= $('#example input:checked').length;
+                var idd='';var idd1=''; var ls2='';
+                if(len<1){
+                    bootbox.alert('请选择删除项');
+                }else{
+                    $('#example input:checked').each(function(){
+                        var index= $(this).val();
+                        idd1=idd1?idd1+"|"+index:index;
+                        idd=idd?idd+"|"+$('#example tr').eq(index).find('td').eq(1).text():$('#example tr').eq(index).find('td').eq(1).text();
+                    });
+                    $.post("{:U('zfz/dqps')}",{xinz:'sc1',zhi2:idd},function(data){
+                        if(data==1){
+                            //bootbox.alert('删除成功');
+                           var ls= idd1.split('|');
+                            alert(ls);
+                            var ls1=ls.length-1;
+                            for(var i=ls1;i>=0;i--){
+                             $('#example tr').eq(ls[i]).remove();
+                            }
+                            bootbox.alert('删除成功');
+                        }else{
+                            bootbox.alert('删除失败');
+                        }
+                    })
+                }
+        })
+        //进行重置
+        $('.qbxs').click(function(){
+            location.href="/Admin/Zfz/dqps/chongz/1";
+        })
+        //进行搜搜
+        $('button[name=sous]').click(function(){
+           var zhi= $('input[name=sous]').val();
+            location.href="/Admin/Zfz/dqps/sous/"+zhi;
+        })
+    })
+    //新增的获取
+    function hqz(v){
+        var v = arguments[0] ? arguments[0] : 1;
+        var zhi1= zhi(v);
+        if(zhi1!=-99){
+            //数据处理部分
+            $.post("{:U('zfz/dqps')}",{xinz:'xinz',zhi2:zhi1},function(data){
+                if(data==1){
+                    bootbox.alert('新增成功');
+                }else{
+                    bootbox.alert('新增失败');
+                }
+            })
+        }else{
+            bootbox.alert('新增参数不能有空值');
+        }
+    }
+    //对对象的处理
+    function zhi(v){
+        var zh=new Array();
+        var v = arguments[0] ? arguments[0] : 1;
+        var tr= $('#example tr').eq(v);
+        zh[0]=tr.find('td').eq(1).text() || 'id' ;
+        zh[1]=tr.find('td').eq(2).find('input').val();
+        zh[2]=tr.find('td').eq(3).find('input').val();
+        zh[3]=tr.find('td').eq(4).find('input').val();
+        zh[4]={$zfz_id};
+        if(!zh[0] ||!zh[1] ||!zh[2] ||!zh[3]){
+            return -99;
+        }
+        return zh.join('-');
+    }
+</script>
+
+				

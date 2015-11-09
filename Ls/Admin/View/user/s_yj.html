@@ -1,0 +1,38 @@
+<!-- Removing search and results count filter -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">送货的订单 - Member datail</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th>订单号</th>
+                <th>付款时间</th>
+                <th>收货人</th>
+                <th style="width:8%;">服务网点名字</th>
+                <th>总利润</th>
+                <th>佣金</th>
+                <th>冻结佣金</th>
+            </tr>
+            </thead>
+            <tbody class="middle-align">
+            <foreach name="rows" item="vo" >
+            <tr>
+                <td>{$vo.order_sn}</td>
+                <td>{$vo.time}</td>
+                <td>{$vo.consignee}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.profit}</td>
+                <td>{$vo.yj}</td>
+                <td>{$vo.dj_yj}</td>
+            </tr>
+            </foreach>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+
+</div>
+<!-- 弹出层 -->

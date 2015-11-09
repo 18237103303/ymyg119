@@ -1,0 +1,196 @@
+
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker-bs3.css">
+  
+<script src="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker.js"></script>
+<script src="__PUBLIC__/admin/assets/js/datepicker/bootstrap-datepicker.js"></script>
+
+
+<div class="row">
+        <div class="col-sm-12">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">广告修改 -- AD Update</div>
+            <div class="panel-body">
+              <div class="col-sm-5">
+              
+                <a href="{:U('Ad/adsindex')}"><button class="btn btn-success">广告列表查看 -- AD List</button></a>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">广告修改 -- AD Update</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								<a href="#" data-toggle="remove">
+									
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<form  role="form" class="form-horizontal" action="{:U('Ad/adsupdate')}" method="post" enctype="multipart/form-data" onsubmit="return checkform()">
+								<div class="form-group">
+								<input type="hidden" name='id' value="{$date.id}">
+									<label class="col-sm-2 control-label" for="field-1">广告标题</label>
+									
+									<div class="col-sm-10"><input class="form-control" type="text" name="name" id="name" value="{$date.name}">
+							        </div>
+								</div>
+							
+
+								<div class="form-group-separator"></div>
+								<div class="form-group has-info">
+									<label class="col-sm-2 control-label" for="field-6">广告位置</label>
+									
+									 <div class="col-sm-10"> 
+										<select class="form-control" name="position_id"> 
+										<option value="{$date.position_id}">{$date.positionid}</option> 
+										<option value=""></option>          
+								        <foreach name="position" item="v">
+
+                                        <option value="{$v.position_id}">{$v.position_name}</option>
+                                                                        
+                                        </foreach>
+                                        </select>
+ 									</div>	
+								</div>
+								
+								<div class="form-group-separator"></div>
+								
+								<div class="form-group has-warning">
+									<label class="col-sm-2 control-label" for="field-7">开始日期</label>
+									
+									<div class="col-sm-10">
+										<input class="form-control datepicker" type="text" name='start_time' value="{$date.start_time}"  data-format="yyyy-m-d"/>
+                                    </div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+								
+								<div class="form-group has-success">
+									<label class="col-sm-2 control-label" for="field-8">结束日期</label>
+									
+									 <div class="col-sm-10">
+									 	<input class="form-control datepicker" type="text" name='end_time' value="{$date.end_time}"  data-format="yyyy-m-d"/>
+                                     </div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group has-info">
+									<label class="col-sm-2 control-label" for="field-9">广告链接</label>
+									
+									 <div class="col-sm-10">
+									 	<input class="form-control" type="text" id="url" name="ad_link" value="{$date.ad_link}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<if condition="$date['ad_type'] eq 0">
+								<div class="form-group has-error" id="0">
+									<label class="col-sm-2 control-label" for="field-10">修改广告图片</label>
+									
+							    <div class="col-sm-10">
+                                	<input class="form-control" type="file" name="ad_code">
+								</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group has-error">
+									<label class="col-sm-2 control-label" for="field-10">已经上传图片</label>
+									
+							    <div class="col-sm-10">
+                                <img src="__ROOT__/Uploads/{$date.ad_code}" style="width:80px;height:50px" alt="原图的小图展示" title="原图的小图展示">
+								</div>
+								</div>
+								<elseif condition="$date['ad_type'] eq 1"/>
+								<div class="form-group has-error">
+									<label class="col-sm-2 control-label" for="field-11">广告内容添加</label>
+									
+							    <div class="col-sm-10">
+                                	<input class="form-control" type="textarea" name="ad_code" value="{$date.ad_code}"  style="width:450px;height:100px">
+							    </div>
+								</div>
+								<else/>
+								</if>
+								<div class="form-group-separator"></div>
+								<div class="form-group has-warning">
+									<label class="col-sm-2 control-label" for="field-12">广告联系人</label>
+									
+							    <div class="col-sm-10">
+							    	<input class="form-control" type="text" id="username"  name="linkman" value="{$date.linkman}">
+								</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group has-success">
+									<label class="col-sm-2 control-label" for="field-13">联系人电话</label>
+									
+							    <div class="col-sm-10">
+							   		<input class="form-control" type="text" id="phonenum" name="linkphone" value="{$date.linkphone}">
+							    </div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									
+									<input type="submit" class="btn btn-info btn-single pull-right" value="确认修改">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+	
+ 
+<script>
+
+ function checkform(){
+
+ var name=$("#name").val();
+ var url=$("#url").val();
+ var username=$("#username").val();
+ var phonenum=$("#phonenum").val();
+ var reg =/^1((3[2-9])||(7[4-9])||(5[0-9])||(5[0-9])||(8[0-9])||(82))\d{8}$/g;
+ var reg1=/^\w+@\w+(\.\w+)+$/;
+ var reg2=/^[1-9]\d{5}$/;
+ var reg4=new RegExp(/^([\u4E00-\uFA29]*[a-z]*[A-Z]*[0-9]*)+$/g);
+
+
+
+if(name==""){
+alert("广告标题不能为空");
+$("#name").focus();
+return false;
+}else if(!reg4.test(name)){
+alert("广告标题有特殊字符");
+$("#name").focus()
+return false;
+}else if(url==""){
+alert("链接不能为空");
+$("#postcode").focus();
+return false;
+}else if(username==""){
+alert("联系人不能为空");
+$("#username").focus()
+return false;
+}else if(phonenum==""){
+alert("电话不能为空");
+$("#phonenum").focus()
+return false;
+}else if(!reg.test(phonenum)){
+alert("手机号是错的");
+$("#phonenum").focus()
+return false;
+
+}    
+
+}
+
+
+</script>
+
+			

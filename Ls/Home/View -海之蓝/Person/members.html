@@ -1,0 +1,192 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol14.css">
+<script src="js/jquery1.42.min.js"></script>
+<script src="js/jquery1.42.min.js"></script>
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+<script>
+	$(function(){
+		$("a[rel*=leanModal]").leanModal("close");
+	});
+</script>
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="index.html"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="/">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	<!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>
+        
+        <div class="search">
+        	<form>
+            	<p><input type="text" value="输入产品名称" onFocus="javascript:this.value=''"><a href="">搜索</a></p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    	<include file="Public:personleft"/>
+        <div class="main_r">
+        	<div class="shop">
+            	<h4>会员列表</h4>
+                <div class="zh">
+                	<p>
+                    	<span><a href="">综合</a></span>
+                    	<span>时间<a href="{:U('Person/members',array('desc'=>0))}"><img src="__PUBLIC__/home/assets/images/pol_icon8.jpg" alt=""></a>
+						<a href="{:U('Person/members',array('desc'=>1))}"><img src="__PUBLIC__/home/assets/images/pol_icon9.jpg" alt=""></a></span>
+                    	<span>金额
+						<a href="{:U('Person/members',array('desc'=>2))}"><img src="__PUBLIC__/home/assets/images/pol_icon8.jpg" alt=""></a>
+						<a href="{:U('Person/members',array('desc'=>3))}"><img src="__PUBLIC__/home/assets/images/pol_icon9.jpg" alt=""></a>
+						</span>
+                    </p>
+                </div>
+                <div class="text">
+                        <div class="bt">
+                            <table cellpadding="0"; cellspacing="0;" style="border-collapse:collapse;">
+                                <tr>
+                                    <td>ID号</td>
+                                    <td>昵称</td>
+                                    <td>最近购买时间</td>
+                                    <td>消费金额</td>
+                                    <td>操作</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="nr">
+                        	<table cellpadding="0"; cellspacing="0;" style="border-collapse:collapse;">
+							<volist name="memberlist" id="v">
+                            	<tr>
+                                	<td><a href="pol_14_xq.html">{$v.id}</a></td>
+                                	<td>{$v.nic}</td>
+                                	<empty name='v.ds'>
+									<td>目前还没有购买记录！</td>
+                                	<td><span>¥0</span></td>
+									<else/>
+									<volist name="v.ds" id="vo">
+									<td><php>echo date('Y-m-d H:i:s');</php></td>
+                                	<td><span>¥{$vo.order_amount }</span></td>
+									</volist>
+									</empty>
+                                	<td><span>
+									<!-- <a href="#signup2" rel="leanModal">移动</a> -->
+									<if condition="$vo.id neq 0"><a href="#signup" rel="leanModal">删除</a></if>
+									<!-- <a href="#signup" rel="leanModal">删除</a> -->
+									<a href="#signup" rel="leanModal">删除</a>
+									</span>
+                                        <div id="signup" class="tan">
+                                        	<p>确定删除该会员？</p>
+                                            <a class="tan_a1" onclick="delmember({$vo.id})">确定</a>
+											<a class="tan_a2" onclick="hidden()">取消</a>
+                                            <div class="dw">
+											<img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt="">
+											</div>
+                                        </div>
+
+                                        <div id="signup2" class="tan">
+                                        	<p>确定移动该会员？</p>
+                                            <a class="tan_a1" href="#signup3" rel="leanModal">确定</a>
+											<a class="tan_a2" href="">取消</a>
+                                            <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                              </volist>								
+                            </table>
+                        </div>
+                            <p><a href="#signup1" rel="leanModal">添加新会员</a>
+                                        <div id="signup1" class="tan1">
+                                        	<span>添加新会员</span><form name='myform' id="ss">
+                                            <p><label>会员编号：</label><input type="text" id="bianhao" onblur="bian()"><div id="add"></div></p>											
+                                            <p><label>密码：</label><input type="password" id="pwd"></p>
+                                            <a class="tan_a1" href="###" onclick="memeberadd()">确定</a></form>
+                                            <div class="dw"><img  src="__PUBLIC__/home/assets/images/tan1.jpg" alt=""></div>
+                                        </div>
+                            </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--main-->
+<script>
+function delmember(v){
+var id=v;
+$.ajax({
+   'type':'post',
+    'url':"{:U('Person/delmember')}",
+    'data':{orderid:id},
+    'dataType':'json',
+    'success':function(dat){
+    if(dat.status==1){
+    alert('删除成功！');
+    window.location.href="{:U('Person/members')}";
+    }else{
+	alert('删除失败！');
+	}
+     }
+});
+}
+$(document).ready(function(){
+  $("#signup").click(function(){
+  $(this).hide();
+  window.location.href="{:U('Person/members')}";
+  });
+});
+
+function bian(){
+var bianhao=$("#bianhao").val();
+if(bianhao==""){
+alert("请填写会员编号");
+return false;
+   }else{
+   $.ajax({
+   'type':'post',
+    'url':"{:U('Person/checkmember')}",
+    'data':{numb:bianhao},
+    'dataType':'json',
+    'success':function(dat){
+     $('#add').html(dat);
+     }
+});
+   }
+}
+function memeberadd(){
+var numb=$("#bianhao").val();
+var pwd=$("#pwd").val();
+if(numb== "" || pwd==""){
+alert("请把信息提醒完整！");
+return false;
+ }else{
+ $.ajax({
+   'type':'post',
+    'url':"{:U('Person/addmember')}",
+    'data':{numb:numb,pwd:pwd},
+    'dataType':'json',
+    'success':function(dat){
+    if(dat.status==1){
+    alert('添加成功！');
+    window.location.href="{:U('Person/members')}";
+    }else{
+	alert('添加失败！');
+	}
+     }
+});
+ }
+ 
+}
+</script>

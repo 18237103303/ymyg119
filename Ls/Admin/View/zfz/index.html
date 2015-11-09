@@ -1,0 +1,64 @@
+<div class="row">
+     <!--开始-->
+     <div class="col-sm-12">
+         <div class="panel panel-default">
+             <div class="panel-heading">配送区域 &nbsp;&nbsp;&nbsp;</div>
+            <div class="dq">
+<if condition="$tis">
+    <p class="tis" style="color: red;">{$tis}</p>
+</if>
+
+
+              <div class="panel-body">
+                 <div class="col-sm-12">
+                     <!--<div class="col-sm-2">普通会员</div></br>-->
+<script src="__PUBLIC__/yes1/js/location.js"></script>
+                     <div class="col-sm-10 tj">
+    <foreach name="rows" item="vo">
+        <a href="/Admin/Zfz/dz/id/{$vo.id}" class="btn btn-secondary btn-sm btn-icon icon-left"><b class="{$vo.id}"></b>-{$vo.name}</a>
+            <script>
+                var loc	= new Location();
+                var yij=eval('(' + loc.zhi("{$vo.dz}") + ')');
+                var dz1=yij["{$vo.dz1}"];
+                 $(".{$vo.id}").text(dz1);
+            </script>
+    </foreach>
+                     </div>
+                 </div>
+             </div>
+              </div>
+             <div class="panel-body" style="width: 8%;">
+                 <div class="col-sm-4">
+                     <button class="btn xg btn-turquoise" data-placement="bottom" data-toggle="tooltip" style="padding-left:1" type="button">新增</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!--结束-->
+     <script>
+         $(function(){
+//             $('.cx').click(function(){ })
+//                 var loc	= new Location();
+//                 var yij=eval('(' + loc.zhi('0') + ')');
+//             $.each("{$rows}",function(a,b){
+//                 $(".tj").append('');
+//                 alert(a);
+//         })
+//             alert(yij[1]);
+//                 $.each(yij,function(a, b){
+//                     $(".dq").append('<div class="fztj"><div class="panel-body"><div class="col-sm-12"><div class="col-sm-2">'+b+'</div></br><div class="col-sm-10" '+a+'></div></div></div>');
+//                     <a href='+a+' class="btn xiug btn-secondary btn-sm btn-icon icon-left">'+a+"-"+ b+'</a>
+//                     $(".col-sm-10").prepend('<div class="fztj"><div class="panel-body"><div class="col-sm-12"><div class="col-sm-2">普通会员</div></br><div class="col-sm-10 '+a+'"></div></div></div>');
+//                 });
+//                 $('p[name=4822]').prepend('你猜');
+             $('.xg').click(function(){
+                 location.href="/Admin/Zfz/adduser";
+             })
+             /*增加多少秒后消失*/
+             setTimeout("tis()",1000);
+         })
+         function tis(){
+             $('.tis').hide();
+         }
+     </script>
+</div>

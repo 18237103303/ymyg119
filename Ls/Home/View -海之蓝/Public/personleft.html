@@ -1,0 +1,62 @@
+
+
+<div class="main_l">
+        	<div class="tx"><a href=""><img src="{$u_pic}" alt="海之澜" ></a></div>
+            <div class="leftsidebar">
+            	<dl>
+                	<dt>账号管理</dt>
+                    <dd><a  href="{:U('Person/pesinfoshow')}">· 个人信息</a></dd>
+                    <dd><a href="{:U('Person/person')}">· 资料设置</a></dd>
+                    <dd><a href="{:U('Person/pesaddress')}">· 收货地址管理</a></dd>
+                </dl>
+                
+                <dl>
+                	<dt>订单信息</dt>
+                    <dd><a href="{:U('Person/allorder')}">· 全部订单</a></dd>
+                    <dd><a href="{:U('Person/nopay')}">· 等待我付款</a></dd>
+                    <dd><a href="{:U('Person/send')}">· 等待卖家发货</a></dd>
+                    <dd><a href="{:U('Person/confirm')}">· 等待确认收货</a></dd>
+					<dd><a href="{:U('Person/finish')}">· 交易完成</a></dd>
+                    <dd><a href="{:U('Person/comment')}">· 需要评价</a></dd>
+                    
+                </dl>
+                
+                 <dl>
+                	<dt>售后管理</dt>
+                    <dd><a href="{:U('Person/refund')}">· 退货/退款管理</a></dd>
+                    <!-- <dd><a href="pol_11.html">· 对网站的建议</a></dd> -->
+                </dl>
+                
+                <dl>
+                	<dt>我的账户</dt>
+                    <!-- <dd><a href="{:U('Person/balance')}">· 我的余额</a></dd> -->
+                    <dd><a href="{:U('Person/coupon')}">· 我的积分</a></dd>
+					<dd><a href="{:U('Person/goodscon')}">· 店铺收藏</a></dd>
+					<dd><a href="{:U('Person/shopcon')}">· 宝贝收藏</a></dd>
+                </dl>
+                
+                 <!--<dl>
+                	<dt>我的下级</dt>
+                    <dd><a href="{:U('Person/members')}">· 会员列表</a></dd>
+                </dl>
+                
+                <dl>
+                	<dt>佣金</dt>
+                    <dd><a href="{:U('Person/commission')}">· 佣金列表</a></dd>
+                    <dd><a href="{:U('Person/gaincom',array('type'=>'consume'))}">· 佣金消费</a></dd>
+                    <dd><a href="pol_17.html">· 佣金提取</a></dd> 
+                </dl>
+                
+                <dl>
+                	<dt>商家发货</dt>
+                    <dd><a href="{:U('Person/sendgoods')}">· 我来发货</a></dd>
+                    <dd><a href="{:U('Person/handle')}">· 退货处理</a></dd>
+                </dl> -->
+            </div>
+        </div>
+<script>
+/* 左边菜单高亮 */
+url = window.location.pathname + window.location.search;
+url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+$("a[href='" + url + "']").addClass("leftsidebar_cuttent") ;
+</script>

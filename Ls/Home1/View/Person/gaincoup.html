@@ -1,0 +1,78 @@
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol_leftsidebar.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/pol13-xq.css">
+<script src="__PUBLIC__/home/assets/js/PCASClass.js"></script>
+<!--header-->
+
+<div class="header">
+	<div class="header_wrap">
+    
+    	<div class="logo1">
+        	<a href="/"><img src="__PUBLIC__/home/assets/images/logo1.png" alt=""></a>
+        </div>
+        
+        <div class="menu">
+        	<ul>
+            	<li><a href="/">首页</a></li>
+            	<li><a href="{:U('Person/pesinfoshow')}">账号设置</a></li>
+            	<!-- <li><a href="">我是商家</a></li> -->
+            </ul>
+        </div>
+        
+  <!--       <div class="search">
+        	<form>
+            	<p><input type="text" value="输入产品名称" onFocus="javascript:this.value=''"><a href="">搜索</a></p>
+            </form>
+        </div> -->
+        
+    </div>
+</div>
+<!--header-->
+
+
+
+<!--main-->
+<div class="main">
+	<div class="main_wrap">
+    <include file="Public:personleft"/> 
+        <div class="main_r">
+        	<div class="shop">
+            	<if condition="$typelist eq 1"><h4>获得积分</h4></if>
+				<if condition="$typelist eq 2"><h4>消费积分</h4></if>
+				<if condition="$typelist eq 3"><h4>冻结积分</h4></if>
+                <div class="text">
+				<volist name="detail" id="v"><php>$countlist=count($v['goods']);</php>
+                    <div class="tab2">
+                    	<div class="tab2_bt">
+                            <p><span>订单号：</span>{$v.order_sn}</p>
+                            <p><span>下单时间：</span>{$v.add_time|date="Y-m-d H:i",###}</p>
+                        </div>
+                        <div class="tab2_text">
+                        	<TABLE>
+							<volist name="v.goods" id="vo" key="i">
+                            	<tr>
+                                    <td><a href="{:U('Good/info',array('id'=>$vo['goods_id']))}"><img src="__ROOT__/Uploads/{$vo.goods_thumb}" alt="{$vo.goods_name}" title="{$vo.goods_name}"></a></td>
+                                    <td class="tab2_1"><span><a href="">{$vo.goods_name}</a></span><br>
+									<!-- 颜色分类: 黑卡通 -->
+									{$v.attr}
+									</td><if condition="$i eq 1">
+                                    <td class="tab2_2" rowspan="{$countlist}"><i>¥{$v.order_amount}</i><br>共<span>{$v.goods_amount}</span>件</td>
+                                    <td class="tab2_3" rowspan="{$countlist}">
+									
+									<!--<if condition="$v.order_status eq 6 ">积分增加：</if>
+								    <if condition="$v.order_status eq 6 and $v.pay_name eq 2">积分减少：</if>
+									<if condition="$v.pay_status eq 2 and $v.order_status neq 6">冻结积分：</if>-->
+									{$v.bili}</td><else/></if>
+                                </tr>
+								</volist>
+                            </TABLE>
+                        </div>
+                    </div>
+					</volist>
+                    <div class="Pagination">{$page}</div>
+                </div>
+              
+            </div>
+    </div>
+</div>
+<!--main-->

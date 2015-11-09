@@ -1,0 +1,13 @@
+/* CSS Document */
+
+/*main*/
+.main_r{ float:right;overflow:hidden;}
+			.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; min-height:700px;}
+			.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px;padding-left:15px; line-height:70px;}
+			.shop span{ color:#c40000; font-size:20px; padding:20px; display:inline-block;}
+			.shop form{ padding-left:200px;}
+			.shop p{ overflow:hidden; padding:20px 0;}
+			.shop p label{ line-height:35px;float:left; width:150px; text-align:right; margin-right:10px; font-size:16px; color:#3b3b3b;}
+			.shop p input{ padding:5px; float:left; background-color:#e8e8e8;border-radius:3px; width:300px; height:35px; line-height:35px;font-size:14px;border:none;border:1px solid #999;}
+			.shop p a{ display:block;color:#FFF; padding:10px 40px; text-align:center; border-radius:3px; background-color:#c40000; font-size:18px; width:40px; margin-left:160px;}
+/*main*/

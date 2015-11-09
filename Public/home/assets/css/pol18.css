@@ -1,0 +1,59 @@
+/* CSS Document */
+
+/*main*/
+.main_r{ float:right;overflow:hidden;}
+			.shop{border:#e5e5e5 1px solid; padding-left:20px; width:958px; border-top:none; min-height:700px;}
+			.shop h4{ background:url(../images/pol_icon4.jpg) no-repeat left center; margin-left:10px;padding-left:15px; line-height:70px;}
+			
+			.shop .tab1{width:957px;color:#3b3b3b; border:#cacaca 1px solid;font-size:16px; line-height:50px; display:inline-block; background-color:#f0f0f0;}
+			.shop .tab1 .tab1_1{ padding:0 190px;}
+			.shop .tab1 .tab1_2{ padding:0 40px;}
+			.shop .tab1 .tab1_3{ padding:0 80px;}
+			.shop .tab1 .tab1_4{ padding:0 40px;}
+			
+				.tab2{display:block;border-bottom:#e7e7e7 1px dashed; width:956px;border:#e5e5e5 1px solid; margin-top:20px;}
+				.tab2:hover{ border:#c40000 1px solid;}
+				.tab2_bt{ overflow:hidden;}
+				.tab2_bt p{ float:left; overflow:hidden;color:#3a3a3a; padding:0 10px;font-size:12px; line-height:30px;}
+				.tab2_bt span{ color:#808080; font-size:12px;line-height:30px;}
+				.tab2_text{ padding:20px;}
+				.tab2_text img{ width:80px; height:80px;}
+					.tab2_1{ font-size:12px; color:#8d8d8d;width:300px; border-right:1px solid #e6e6e6; padding:0 20px;}
+					.tab2_1 span{color:#444444; display:block;}
+					.tab2_1 span a:hover{ color:#c40000;}
+					.tab2_2{ font-size:12px; color:#8d8d8d;width:70px; border-right:1px solid #e6e6e6; padding:0 20px;}
+					.tab2_2 span{color:#444444; padding:0 2px;}
+					.tab2_2 i{ color:#d41d05; font-size:18px; font-style:normal; font-weight:bold; line-height:30px;}
+					.tab2_3 i a{ color:#8b8b8b; font-size:12px; font-style:normal;line-height:30px;}
+					.tab2_3 i a:hover{ color:#c40000;}
+					.tab2_3_3{ color:#c40000; font-size:14px; line-height:30px; border-right:1px solid #e6e6e6; width:170px; text-align:center;}
+					.tab2_3{ color:#333333; font-size:14px; font-weight:bold; padding:30px 20px; width:170px; display:inline-block; text-align:center; border-right:1px solid #e6e6e6;}
+					.tab2_4>a{ color:#FFF; font-size:14px; text-align:center; background-color:#c40000; padding:5px 20px; margin:0 20px;}
+					.tab2_4_4 a{ color:#FFF; font-size:14px; text-align:center; background-color:#c40000; padding:5px 20px; margin:0 66px;}
+/*main*/
+
+
+#lean_overlay { position: fixed;z-index:100; top: 0px;left: 0px;height:100%;width:100%;background:#000; display: none;}
+.tan{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; overflow:hidden; padding-bottom:40px;display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan h5{ color:#000000; font-size:14px; padding:10px 0 0 10px; display:inline-block; margin-bottom:20px;}
+	.bt{ clear:both; overflow:hidden;}
+	.bt p{ color:#3a3a3a; font-size:14px; float:left; overflow:hidden; padding:0 10px 0 10px;}
+	.bt span{ color:#808080; font-size:14px;}
+	.tan_text{ overflow:hidden;}
+	.tan_text p{ padding:20px 0 10px 10px; color:#333333; font-size:14px;}
+	.tan_text textarea{ border:#e5e5e5 1px solid; margin:10px; padding:5px;}
+	.tan_text span{ color:#808080; font-size:12px; display:block; text-align:right; padding-right:20px;}
+.tan_a1{ font-size:14px; color:#FFF;background-color:#d62810; padding:10px 30px;display:block; margin:20px auto; width:30px;}
+.tan .dw{ position:absolute; top:5px; right:10px; cursor:pointer;}
+.tan img{ width:13px; height:13px;}
+
+
+
+.tan1{ background-color:#FFF; position:relative;border:#393636 7px solid; border-radius:5px; width:600px; overflow:hidden; padding-bottom:40px;display:none; margin-top:200px; box-shadow:3px 2px 5px #666666;}
+.tan1 h5{ color:#000000; font-size:14px; padding:10px 0 0 10px; display:inline-block; margin-bottom:20px;}
+.tan1 p{ color:#3a3a3a; font-size:14px; padding:0 10px 0 100px; margin-bottom:10px;}
+.tan1 input{ background-color:#e8e8e8; padding-left:5px; font-size:14px; line-height:50px; width:300px; height:50px; margin-left:100px; border-radius:3px;}
+.tan_a1{ font-size:14px; color:#FFF;background-color:#d62810; padding:10px 30px;display:block; margin:20px auto; width:30px;}
+.tan1 .dw{ position:absolute; top:5px; right:10px; cursor:pointer;}
+.tan1 img{ width:13px; height:13px;}
+

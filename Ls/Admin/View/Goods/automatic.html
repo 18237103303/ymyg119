@@ -1,0 +1,149 @@
+<!-- Removing search and results count filter -->
+<!--<script src="__PUBLIC__/admin/assets/js/jquery.js"></script>-->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">商品批量上下架</div>
+
+        </div>	
+    </div>
+</div>
+
+<!--js 特效选项框  -->
+<script>
+    jQuery(document).ready(function ($)
+    {
+    // Replace checkboxes when they appear
+    var $state = $("#example-2 thead input[type='checkbox']");
+            $("#example-2").on('draw.dt', function ()
+    {
+    cbr_replace();
+            $state.trigger('change');
+    });
+            // Script to select all checkboxes
+            $state.on('change', function (ev)
+            {
+            var $chcks = $("#example-2 tbody input[type='checkbox']");
+                    //alert($chcks.length);
+                    if ($state.is(':checked'))
+            {
+            $chcks.prop('checked', true).trigger('change');
+            }
+            else
+            {
+            $chcks.prop('checked', false).trigger('change');
+            }
+            });
+    });</script>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+                <tr>
+                    <th class="no-sorting">
+                        <input  type="checkbox" class="cbr">全选
+                    </th>
+                    <th>编号</th>
+                    <th>商品名称</th>
+                    <th>货号</th>
+                    <th>上架</th>
+                    <th>排序</th>
+                    <th>库存</th>
+                </tr>
+            </thead>
+            <tbody class="middle-align">
+            <volist name="goods" id="vo">
+                <tr class="pin3">
+                    <td>
+                        <input type="checkbox" class="cbr">
+                    </td>
+                    <td>{$vo.goods_id}</td>
+                    <td>{$vo.goods_name}</td>
+                    <td>{$vo.goods_sn}</td>
+                    <td>
+                <if condition="$vo['is_on_sale'] eq 1">
+                    <img src="__PUBLIC__/admin/assets/images/right.png" width="15"/>
+                    <else/>
+                   <img src="__PUBLIC__/admin/assets/images/error.png" width='15'/>
+                </if>
+                </td>
+                <td>{$vo.sort}</td>
+                <td>{$vo.goods_count}</td>
+                </tr>
+            </volist>
+            <tr>
+                <td colspan="12">
+                    <button class="btn btn-secondary" onclick="on_sale()">选中的商品上架</button>&nbsp;&nbsp;	
+                    <button class="btn btn-danger" onclick="down_sale()">选中的商品下架</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+            </tr>
+            </tbody>
+            <td colspan="12">{$rpage}</td>
+        </table>
+    </div>
+</div>
+<!-- 商品批量上架-->
+<script>
+            function on_sale(){
+            var chcks = $('tbody.middle-align').find(':checked').attr('checked', 'true');
+                    // alert($chcks.length); return ;
+                    if (chcks.length == 0){
+            bootbox.alert("你还没有勾选");
+                    return;
+            }
+            var id = '';
+                    for (var i = 0; i < chcks.length; i++){
+            id += chcks.eq(i).parent().parent().parent().next('td').html() + '-';
+            }
+
+            $.ajax({
+            'type':'post',
+                    'data':'id=' + id,
+                    'dataType':'json',
+                    'url':"{:U('Goods/all_on_sale')}",
+                    'success':function(dat){
+                    if (dat.info == 1){
+                    bootbox.alert('上架成功');
+                            var url = "{:U('Goods/automatic')}";
+                            window.location.href = url;
+                    } else{
+                    bootbox.alert('上架失败');
+                    }
+                    }
+            });
+            }
+</script>
+
+<!-- 商品批量下架-->
+<script>
+    function down_sale(){
+    var chcks = $('tbody.middle-align').find(':checked').attr('checked', 'true');
+// alert($chcks.length); return ;
+            if (chcks.length == 0){
+    bootbox.alert("你还没有勾选");
+            return;
+    }
+    var id = '';
+            for (var i = 0; i < chcks.length; i++){
+    id += chcks.eq(i).parent().parent().parent().next('td').html() + '-';
+    }
+
+    $.ajax({
+    'type':'post',
+            'data':'id=' + id,
+            'dataType':'json',
+            'url':"{:U('Goods/all_down_sale')}",
+            'success':function(dat){
+            if (dat.info == 1){
+            bootbox.alert('下架成功');
+                    var url = "{:U('Goods/automatic')}";
+                    window.location.href = url;
+            } else{
+            bootbox.alert('下架失败');
+            }
+            }
+    });
+    }
+</script>		
+
+

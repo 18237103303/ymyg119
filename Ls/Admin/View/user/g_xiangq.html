@@ -1,0 +1,59 @@
+<!-- Removing search and results count filter -->
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">供货商 - Member datail</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<tr><td style="width:15%;">供货商编号</td><td id="bh">{$row.id}</td></tr>
+						<tr><td>供货商名字</td><td>{$row.name}</td></tr>
+						<tr><td>货款</td><td>￥{$row.yj}</td></tr>
+						<tr><td>冻结的货款</td><td>￥{$row.dj_yj}</td></tr>
+                        <tr><td>密码操作</td><td><button class="btn btn-secondary btn-sm btn-icon icon-left" onclick="jQuery('#modal-9').modal('show', {backdrop: 'static'});$.cookies.set( 'user',{$row.id});">修改</button></td></tr>
+                        <tr><td>订单</td><td><button id="dd" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>商品列表</td><td><button id="zb" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+					</table>	
+				</div>
+			</div>
+<div class="panel panel-default">			
+<!--{$rpage}-->
+</div>		
+		<!-- 弹出层 -->		
+<script>
+
+							
+$(function(){
+    $('#zb').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/gh_sp/id/"+bh+'?flag=user';
+    })
+    $('#dd').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/gdd/id/"+bh+'?flag=user';
+    })
+//    开始
+    //收货地址
+    $('#sh').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/gh_sp/id/"+bh+'?flag=user';
+    })
+    //订单管理
+
+//    积分状态查看
+    $('#jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/jf/id/"+bh+'?flag=user';
+    })
+    $('#dj_jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/dj_jf/id/"+bh+'?flag=user';
+    })
+
+})
+</script>
+            <!--<script type="text/javascript"charset="utf-8" src="/Public/yes/yes.js"></script>		-->
+		
+			
+				

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Free Web tutorials">
+<meta name="keywords" content="HTML,CSS,JavaScript">
+<title>海之澜</title>
+<link href="__PUBLIC__/home/assets/css/base.css" rel="stylesheet" type="text/css">
+
+<script src="__PUBLIC__/home/assets/js/jquery1.42.min.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.SuperSlide.2.1.1.source.js"></script>
+<script src="__PUBLIC__/home/assets/js/jquery.leanModal.min.js"></script>
+</head>
+
+<body>
+<!--header-->
+<div class="topbox">
+  <div class="top">
+    <div class="wz">Hi,<?php if(session('Q_USER')){echo Name(session('Q_USER')).'|'.'<a href="/User/Qtdz/tc">退出</a>';}else{echo '欢迎来到海之澜！请 <a href="/User/Qtdz/login">登录 | </a><a href="/User/Qtdz/register">免费注册</a>';} ?></div>
+    <div class="yb">
+       
+      <div class="link">
+        <div class="hzlsy"><a href="/">海之澜首页</a> </div>
+        <div class="hzlbox">
+        	<p class="wdhzl"><a href="#">我的海之澜 </a></p>
+            <div class="tckbox">
+            	<p><a href="/Home/Person/allorder">我的订单</a></p>
+                <P><a href="/Home/Person/coupon">我的积分</a></P>
+            </div>
+         <script>
+	       $(function(){	
+		    $(".wdhzl").click(function(){
+			$(this).siblings(".tckbox").toggle();
+			 })
+			});
+		</script>
+        </div>
+        <div class="scjbox">
+        	<p class="scj">收藏夹</p>
+            <div class="tcbox">
+                 <p><a href="/Home/Person/shopcon">收藏的宝贝</a></p>
+                 <P><a href="/Home/Person/goodscon">收藏的店铺</a></P>
+             </div>
+         <script>
+	       $(function(){	
+		    $(".scj").click(function(){
+			$(this).siblings(".tcbox").toggle()
+			 })
+			});
+		</script>
+        </div>
+      </div>
+      <div class="gwc"><a href="/Home/Cart/index">购物车（{$car_count}）</a></div>
+      
+    </div>
+  </div>
+</div>

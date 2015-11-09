@@ -1,0 +1,94 @@
+<!-- Removing search and results count filter -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">权限/角色- Member List</h3>					
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <th>名称</th>
+                    <th>权限列表</th>
+                    <th>备忘</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody class="middle-align">
+            <foreach name="rows" item="vo">			
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.title}</td>
+                    <td>{$vo.quanx}</td>
+                    <td><textarea>{$vo.comment}</textarea></td>
+                    <td>
+                        <a href="{:U('Auth/index',array('id'=>$vo['id'],'yc'=>'asa'))}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                            授权
+                        </a>
+                        <a href="{:U('Auth/index',array('id'=>$vo['id'],'yc'=>'ass'))}" class="btn btn-danger btn-sm btn-icon icon-left">
+                            删除
+                        </a>
+                    </td>
+                </tr>
+            </foreach>				
+            </tbody>
+        </table>
+        <span style="color:red">此页面禁止刷新 修改过后请重新进入</span></br>
+        <!-- <button class="btn btn-turquoise" onclick="jQuery('#modal-7').modal('show', {backdrop: 'static'});">新增角色 - Add</button> -->
+    </div>
+</div>
+<!-- 弹出层 -->
+<script>
+    $("#danger_msg_1").click(function (ev)
+    {
+        ev.preventDefault();
+
+        var opts = {
+            "closeButton": true,
+            "debug": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        toastr.error("title.", "content", opts);
+    });
+
+    document.oncontextmenu = function (e) {
+        var ev = window.event || e;
+        var code = ev.keyCode || ev.which;
+        ev.keyCode ? ev.keyCode = 0 : ev.which = 0;
+        cancelBubble = true;
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        } else {
+            window.event.returnValue = false;
+        }
+    }
+    document.onkeydown = function (e) {
+        var ev = window.event || e;
+        var code = ev.keyCode || ev.which;
+        if (code == 116) {
+            ev.keyCode ? ev.keyCode = 0 : ev.which = 0;
+            cancelBubble = true;
+            if (e && e.preventDefault) {
+                e.preventDefault();
+            } else {
+                window.event.returnValue = false;
+            }
+            return false;
+        }
+    }
+</script>
+
+
+
+

@@ -1,0 +1,74 @@
+<!-- Removing search and results count filter -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">权限 设置 -- auth Config </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="col-sm-2">后台权区域：
+                    </div>
+                    <style>
+                        .col-sm-10 label{margin-bottom:17px;}
+                    </style>
+                    <div class="col-sm-10">
+                        <label  style="cursor:pointer; margin-right:3%;" for="minimal-checkbox-1-11">全选</label>
+                        <foreach name="quax_rows" item="vo">
+                            <label style="cursor:pointer;">
+                                <input value="{$vo.id}" tabindex="5" type="checkbox" {$vo.checked} class="icheck-11" id="minimal-checkbox-1-11">
+                                {$vo.title}
+                            </label>
+                        </foreach>
+                    </div>
+                </div>
+            </div>	
+
+            <div class="panel-body">
+                <div class="col-sm-4"></div>	
+                <div class="col-sm-4">
+                    <button class="btn btn-secondary qd" data-original-title="点击确定将保存修改内容" title="" data-placement="bottom" data-toggle="tooltip" type="button">确定</button>	
+                </div>
+                <div class="col-sm-4"></div>									
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 选项框JS-->				
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/icheck/skins/all.css">
+<script src="__PUBLIC__/admin/assets/js/icheck/icheck.min.js"></script>
+<script>
+    jQuery(document).ready(function ($)
+    {
+        $('input.icheck-11').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-yellow'
+        });
+    });
+    $(function () {
+        $('.qd').click(function () {
+            var xz = '';
+            var zhi = '';
+            var a = $('input:checked').each(function (i) {
+                zhi = $(this).val();
+                if (zhi != 'on') {
+                    xz += ("," + zhi);
+                }
+            });
+            $.post('/Admin/Auth/indexexe', {
+                id: {$id},
+                xz: xz
+            }, function (data) {
+                if (data == 1) {
+                    alert('修改成功');
+                    history.go(-1);
+                } else if (data == -1) {
+                    alert('没有修改项');
+                    history.go(-1);
+                } else {
+                    alert('未知错误');
+                }
+            });
+        })
+    })
+</script>

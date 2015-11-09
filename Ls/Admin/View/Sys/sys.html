@@ -1,0 +1,381 @@
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker-bs3.css">
+<!-- Imported scripts on this page -->
+<script src="__PUBLIC__/admin/assets/js/daterangepicker/daterangepicker.js"></script>
+<script src="__PUBLIC__/admin/assets/js/datepicker/bootstrap-datepicker.js"></script>
+<style>
+<!-- -->
+    .main-content{width:85%;}
+    .form-control{ width:35%;}
+    input{border:none;width:25px;}
+	.form-control{width:100%;}
+    .tp img{ margin-top: -32px;margin-left: 9px;}
+    .tp1 img{ margin-top: -32px;margin-left: 9px;}
+</style>
+<!---->
+<script type="text/javascript" src="/public/plugs/pe/uploadify/jquery.uploadify.min.js"></script>
+<link href="/public/plugs/pe/uploadify/uploadify.css" rel="stylesheet" type="text/css">
+<!---->
+<!---->
+<script type="text/javascript" src="/public/plugs/rl/laydate.js"></script>
+<!---->
+<div class="row">
+    <div class="col-sm-12">
+        <!--1-->
+        <div class="panel panel-default">
+            <div class="panel-heading">积分兑换比例设置(区域)</div>
+            <div class="panel-body">
+            </div>
+                <form action="{:U('sys/sys')}" name="jf" method="post">
+                <table style="width: 50%;margin-left:auto;margin-right:auto;" class="table table-striped">
+                <thead>
+                <tr>
+                    <th style="width:1%; padding-right: 0px;vertical-align: middle;">配置的名称</th>
+                    <th style="width: 5%; padding-left: 0px;padding-right: 0px;">配置值</th>
+                    <th style="width:1%;vertical-align: middle; padding-left: 0px;"></th>
+                    <th style="width:1%;vertical-align: middle; padding-left: 0px;">是否开启</th>
+                    <th  style="width:1%;vertical-align: middle; padding-left: 0px;">操作</th>
+                </tr>
+                </thead>
+                <tr><td style="width:2%; padding-right: 0px;vertical-align: middle;">积-金：</td>
+				<td style="width: 5%; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				<input name="config_value" class="jfbj" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="积分/金额的百分比"  value="{$rows.config_value}"/>
+                </span></td>
+				<td  style="width:1%;vertical-align: middle; padding-left: 0px;">%</td>
+				<td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                    <select name="type">
+                        <?php
+                            switch($rows['type']){
+                            case '开启':
+                                echo '<option value="1">开启</option><option value="2">关闭</option>';
+                        break;
+                        default;
+                        echo '<option value="2">关闭</option><option value="1">开启</option>';
+                        break;
+                            }
+                        ?>
+                    </select>
+                </td>
+                <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                    <button class="btn btn-success jf" type="button" data-toggle="tooltip"   data-placement="bottom"/>确定</button>
+                </td>
+                </tr>
+                </table>
+                    <input type="hidden" name="id" value="{$rows.id}"/>
+                    <input type="hidden" name="systype" value="1"/>
+                </form>
+        </div>
+        <script>
+            $(function(){
+                $('.jf').click(function(){
+                    var a=$('.jfbj').val();
+                   if(a){$('form[name=jf]').submit();}else{alert('比例不能为空');}
+                })
+            })
+        </script>
+        <!--1-->
+        <!--2-->
+        <div class="panel panel-default">
+            <div class="panel-heading">首次购买设置(区域)</div>
+            <div class="panel-body">
+            </div>
+            <form action="{:U('sys/sys')}" name="sc" method="post">
+                <table style="width: 50%;margin-left:auto;margin-right:auto;" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width:1%; padding-right: 0px;vertical-align: middle;">配置的名称</th>
+                        <th style="width: 5%; padding-left: 0px;padding-right: 0px;">配置值</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;"></th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">是否开启</th>
+                        <th  style="width:1%;vertical-align: middle; padding-left: 0px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tr><td style="width:2%; padding-right: 0px;vertical-align: middle;">首-代：</td>
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input name="config_value" class="scbj" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="代金卷"  value="{$rows1.config_value}"/></span></td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;"></td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <select name="type">
+                                <?php
+                            switch($rows1['type']){
+                            case '开启':
+                                echo '<option value="1">开启</option><option value="2">关闭</option>';
+                                break;
+                                default;
+                                echo '<option value="2">关闭</option><option value="1">开启</option>';
+                                break;
+                                }
+                                ?>
+                            </select>
+                        </td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <button class="btn btn-success scdj" type="button" data-toggle="tooltip" as="{$rows1.id}"  data-placement="bottom"/>确定</button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" value="{$rows1.id}"/>
+                <input type="hidden" name="systype" value="2"/>
+            </form>
+
+
+            <form action="{:U('sys/sys')}" name="scsp" method="post">
+                <table style="width: 50%;margin-left:auto;margin-right:auto;" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width:1%; padding-right: 0px;vertical-align: middle;">配置的名称</th>
+                        <th style="width: 5%; padding-left: 0px;padding-right: 0px;">标题</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">图片</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">是否开启</th>
+                        <th  style="width:1%;vertical-align: middle; padding-left: 0px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tr><td style="width:2%; padding-right: 0px;vertical-align: middle;">首-商：</td>
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;vertical-align: middle;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input class="scsp" name="h_title"  style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="商品名称"  value="{$rows2.h_title}"/></span></td>
+
+                        <td class="imgbox33"  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <input type="file" name="uploadify" id="uploadify" style="border:none;">
+                            <br/>
+                            <i class="tp">
+                                <if condition="$rows2.config_value">
+                                <img style="width:100px;height:50px" src="{$rows2['config_value']}">
+                                </if>
+                            </i>
+                        </td>
+
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <select name="type">
+                                <?php
+                            switch($rows2['type']){
+                            case '开启':
+                                echo '<option value="1">开启</option><option value="2">关闭</option>';
+                                break;
+                                default;
+                                echo '<option value="2">关闭</option><option value="1">开启</option>';
+                                break;
+                                }
+                                ?>
+                            </select>
+                        </td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <button class="btn btn-success scqd" type="button" data-toggle="tooltip"   data-placement="bottom"/>确定</button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" value="{$rows2.id}"/>
+                <input type="hidden" name="systype" value="3"/>
+            </form>
+        </div>
+        <script>
+            $(function(){
+                $('.scdj').click(function(){
+                    var a=$('.scbj').val();
+                    if(a){$('form[name=sc]').submit();}else{alert('比例不能为空');}
+                })
+
+               $('.scqd').click(function(){
+                    var a=$('.scsp').val();
+                    if(a){$('form[name=scsp]').submit();}else{alert('比例不能为空');}
+                })
+            })
+        </script>
+        <!--2-->
+        <!--3-->
+        <div class="panel panel-default">
+            <div class="panel-heading">时间段活动(区域)</div>
+            <div class="panel-body">
+            <form action="{:U('sys/sys')}" name="sj" method="post">
+                <table style="width: 60%;margin-left:auto;margin-right:auto;" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width:3%; padding-right: 0px;vertical-align: middle;">配置的名称</th>
+                        <th style="width:3%; padding-right: 0px;vertical-align: middle;">开始时间</th>
+                        <th style="width:3%; padding-right: 0px;vertical-align: middle;">结束时间</th>
+                        <th style="width: 5%; padding-left: 0px;padding-right: 0px;">配置值</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;"></th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">是否开启</th>
+                        <th  style="width:1%;vertical-align: middle; padding-left: 0px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tr><td style="width:2%; padding-right: 0px;vertical-align: middle;">活-代：</td>
+
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input name="ks" class="bj ks" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"  style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="开始时间"  value="{$rows3.ks}"/>
+                        </span></td>
+
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input name="js" class="bj js" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="结束时间"  value="{$rows3.js}"/>
+                        </span></td>
+
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input name="config_value"  class="djbj" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="金额/代金卷的百分比"  value="{$rows3.config_value}"/>
+                        </span></td>
+
+
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">%</td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <select name="type">
+                                <?php
+                            switch($rows3['type']){
+                            case '开启':
+                                echo '<option value="1">开启</option><option value="2">关闭</option>';
+                                break;
+                                default;
+                                echo '<option value="2">关闭</option><option value="1">开启</option>';
+                                break;
+                                }
+                                ?>
+                            </select>
+                        </td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <button class="btn btn-success sjqd" type="button" data-toggle="tooltip"  data-placement="bottom"/>确定</button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" value="{$rows3.id}"/>
+                <input type="hidden" name="systype" value="4"/>
+            </form>
+
+
+            <form action="{:U('sys/sys')}" name="sj1" method="post">
+                <table style="width: 70%;margin-left:auto;margin-right:auto;" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th style="width:1%; padding-right: 0px;vertical-align: middle;">配置的名称</th>
+                        <th style="width:3%; padding-right: 0px;vertical-align: middle;">开始时间</th>
+                        <th style="width:3%; padding-right: 0px;vertical-align: middle;">结束时间</th>
+                        <th style="width: 5%; padding-left: 0px;padding-right: 0px;">标题</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">图片</th>
+                        <th style="width:1%;vertical-align: middle; padding-left: 0px;">是否开启</th>
+                        <th  style="width:1%;vertical-align: middle; padding-left: 0px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tr><td style="width:2%; padding-right: 0px;vertical-align: middle;">活-商：</td>
+
+
+                        <td style="width: 5%; vertical-align: middle;padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input class="bj ks1" name="ks" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="开始时间"  value="{$rows4.ks}"/>
+                        </span></td>
+
+                        <td style="width: 5%;vertical-align: middle; padding-left: 0px;padding-right: 0px;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input class="bj js1" name="js" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="结束时间"  value="{$rows4.js}"/>
+                        </span></td>
+
+                        <td style="width: 5%; padding-left: 0px;padding-right: 0px;vertical-align: middle;" ><span class="form-control"  style="padding: 0;margin: 0;">
+				        <input class="bj mz" name="h_title"  style="width:100%;height:100%;padding: 0;margin: 0;"  type="text" placeholder="赠送商品的名字"  value="{$rows4.h_title}"/></span></td>
+
+                        <td class="imgbox333"  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <input type="file" name="uploadify" id="uploadify1" style="border:none;">
+                            <br/>
+                            <i class="tp1">
+                                <if condition="$rows4['config_value']">
+                                <img style="width:100px;height:50px" src="{$rows4.config_value}">
+                                </if>
+                            </i>
+                        </td>
+
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <select name="type">
+                                <?php
+                            switch($rows4['type']){
+                                case '开启':
+                                echo '<option value="1">开启</option><option value="2">关闭</option>';
+                                break;
+                                default;
+                                echo '<option value="2">关闭</option><option value="1">开启</option>';
+                                break;
+                                }
+                                ?>
+                            </select>
+                        </td>
+                        <td  style="width:1%;vertical-align: middle; padding-left: 0px;">
+                            <button class="btn btn-success sjsp" type="button" data-toggle="tooltip"   data-placement="bottom"/>确定</button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" value="{$rows4.id}"/>
+                <input type="hidden" name="systype" value="5"/>
+            </form>
+
+
+        </div>
+            <script>
+                $(function(){
+                    $('.sjqd').click(function(){
+                        var ks= $('.ks').val();
+                        var js= $('.js').val();
+                        var mz= $('.djbj').val();
+                        if(!ks || !js || !mz){
+                            alert('内容不能为空');
+                        }else{
+                            $('form[name=sj]').submit();
+                        }
+                    })
+                $('.sjsp').click(function(){
+                        var ks= $('.ks1').val();
+                        var js= $('.js1').val();
+                        var mz= $('.mz').val();
+                        if(!ks || !js || !mz){
+                            alert('内容不能为空');
+                        }else{
+                            $('form[name=sj1]').submit();
+                        }
+                    })
+
+
+                })
+            </script>
+        <!--3-->
+</div>
+</div>
+<script type="text/javascript">
+    $("#uploadify").uploadify({
+        "height"          : 30,
+        "width"           : 120,
+        "swf"             : "/public/plugs/pe/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "图片上传",
+        "uploader"        : "/public/plugs/pe/yz.php",
+        'removeTimeout'	  : 1,
+        'fileTypeDesc'       : 'Please select a JPG, PNG format file',
+        'fileTypeExts'       : '*.jpg;*.png;',
+        "onUploadSuccess" : uploadFile1,
+        'onFallback' : function() {
+            alert('Not detected compatible version of the Flash.');
+        }
+    });
+    function uploadFile1(file, data){
+        var obj = JSON.parse(data);
+        var dir=obj.dir;
+        if(dir!=null){
+            $(".tp").html( '<img style="width:100px;height:50px"  src="/public/plugs/pe'+dir+'"/><input type="hidden" name="config_value"  value="/public/plugs/pe'+dir+'">');
+        } else{
+            alert('Unpredictability mistake');
+        }
+    }
+$("#uploadify1").uploadify({
+        "height"          : 30,
+        "width"           : 120,
+        "swf"             : "/public/plugs/pe/uploadify/uploadify.swf",
+        "fileObjName"     : "download",
+        "buttonText"      : "图片上传",
+        "uploader"        : "/public/plugs/pe/yz.php",
+        'removeTimeout'	  : 1,
+        'fileTypeDesc'       : 'Please select a JPG, PNG format file',
+        'fileTypeExts'       : '*.jpg;*.png;',
+        "onUploadSuccess" : uploadFile11,
+        'onFallback' : function() {
+            alert('Not detected compatible version of the Flash.');
+        }
+    });
+    function uploadFile11(file, data){
+        var obj = JSON.parse(data);
+        var dir=obj.dir;
+        if(dir!=null){
+            $(".tp1").html( '<img style="width:100px;height:50px"  src="/public/plugs/pe'+dir+'"/><input type="hidden" name="config_value"  value="/public/plugs/pe'+dir+'">');
+        } else{
+            alert('Unpredictability mistake');
+        }
+    }
+
+
+</script>

@@ -1,0 +1,84 @@
+<!-- Removing search and results count filter -->
+
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">导航修改 -- Nav Update</div>
+						<div class="panel-body">
+							<div class="col-sm-5">
+							
+								<a href="{:U('Nav/navlist')}"><button class="btn btn-success">导航列表查看</button></a>
+							</div>
+						</div>
+						<div class="panel-body">
+						<form  role="form" class="form-horizontal" action="{:U('Nav/updatenav')}" method="post"  onsubmit="return checkform()">
+						<input type="hidden" name="id" value="{$result.id}">
+
+								<div class="form-group has-success">
+										<label class="col-sm-2 control-label" for="field-1">导航名称</label>
+									
+									<div class="col-sm-10">
+										<input class="form-control" type="text" id="navname" type="text" name="nav_name" value="{$result.nav_name}">
+							        </div>
+								</div>
+								<div class="form-group-separator"></div>
+
+								<div class="form-group has-warning">
+									<label class="col-sm-2 control-label" for="field-7">导航链接</label>
+									
+								<div class="col-sm-10">
+									<input class="form-control" id="navurl" type="text" name="nav_url" value="{$result.nav_url}">
+							    </div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+							
+							
+								
+							<div class="col-sm-5">							
+								<input class="btn btn-info" type="submit" value="确认修改"/>
+							</div>
+							
+						</form>
+							
+						</div>
+					</div>	
+				</div>
+			</div>
+			
+			
+	<script>
+
+ function checkform(){
+ var navname=$("#navname").val();
+ var navurl=$("#navurl").val();
+ var reg3=/^(http|https):\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&=]*)?$/;
+ var reg4=new RegExp(/^([\u4E00-\uFA29]*[a-z]*[A-Z]*[0-9]*)+$/g);
+
+
+if(navname==""){
+ bootbox.alert("导航名称不能为空");
+$("#navname").focus();
+return false;
+}else if(!reg4.test(navname)){
+ bootbox.alert("导航名称有特殊字符");
+$("#navname").focus()
+return false;
+}else if(navurl==""){
+ bootbox.alert("导航链接不能为空");
+$("#navurl").focus()
+return false;
+}else if(!reg3.test(navurl)){
+ bootbox.alert("导航链接非法");
+$("#navurl").focus()
+return false;
+}    
+
+}
+
+
+ </script>			
+		
+			
+				

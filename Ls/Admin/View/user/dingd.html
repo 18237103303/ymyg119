@@ -1,0 +1,62 @@
+<!-- Removing search and results count filter -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">订单查看 - Member datail</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" id="example-2">
+            <thead>
+            <tr>
+                <th>订单号</th>
+                <th>付款时间</th>
+                <th>收货人</th>
+                <th>金额</th>
+                <th>是否使用积分</th>
+                <th>订单状态</th>
+                <!--<th>操作</th>-->
+            </tr>
+            </thead>
+            <tbody class="middle-align">
+        <foreach name="rows" item="vo">
+            <tr>
+                <td>{$vo.order_sn}</td>
+                <td>{$vo.time}</td>
+                <td>{$vo.consignee}</td>
+                <td>{$vo.order_amount}</td>
+                <td>{$vo.jf}</td>
+                <td>
+                    {$vo.status}
+                    <!--     <select disabled name="ddzt">
+                           <option value="">{$vo.status}</option>
+                         <option value="0">-配货中-</option>
+                           <option value="1">-已发货-</option>
+                           <option value="2">-已取消-</option>
+                           <option value="3">-换货-</option>
+                           <option value="4">-已完成-</option>
+                    </select>-->
+                </td>
+                <!--<td><button wwd="{$vo.order_id}"   class="btn tz btn-secondary btn-sm btn-icon icon-left">确定</button></td>-->
+            </tr>
+        </foreach>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-default">
+
+</div>
+<!-- 弹出层 -->
+<script>
+    $(function(){
+        $('.tz').click(function(){
+            var aid={$id};
+            var wwd=$(this).attr('wwd');
+            var xxx=$(this).parents('tr');
+            var zt=xxx.find('td select[name=ddzt]').val();
+            zt=zt?zt:9;
+//            alert(zt);
+            location.href="/Admin/User/dingd/id/"+aid+"/wwd/"+wwd+"/zt/"+zt+'?flag=user';
+        })
+    })
+</script>
+			

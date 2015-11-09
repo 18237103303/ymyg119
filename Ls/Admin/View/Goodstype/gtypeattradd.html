@@ -1,0 +1,99 @@
+<!-- Removing search and results count filter -->
+<script>
+function radioClicked(n)
+{
+  document.forms['theForm'].elements["attr_values"].disabled = n > 0 ? false : true;
+}
+</script>
+<style>
+.col-sm-2{padding: 6px 12px;
+          border: 1px solid transparent; background-color: #8dc63f; border-color: #80b636;color: #ffffff;
+
+}
+.row{margin-bottom:15px;}
+.col-sm-2 {
+    width: 11.667%;
+}
+.col-sm-10{width:25%;}
+</style>
+<form name="theForm" action="{:U('Goodstype/gtypeattdoadd')}" method="post"> 
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+							<div class="panel-heading">商品类型属性添加</div>
+							<form name="form" method="post" action="{:U('Goodstype/gtypeattdoadd')}">
+							<div class="panel-body">
+								<div class="col-sm-12">
+								<div class="row">
+									<div class="col-sm-2">商品类型属性名称：</div>
+									<div class="col-sm-10">									
+										<input type="text" name="name"  class="form-control" id="minimal-checkbox-1-11" value="" required />
+									</div>
+									
+									<br/><br/>
+									</div>
+									<div class="row">
+									<div class="col-sm-2">所属商品类型：</div>
+									<div class="col-sm-10">
+									<select name="type"  class="form-control" >
+									
+									<option value="{$attrselect.type_id}">{$attrselect.type_name}</option>
+									
+									</select>
+									
+									</div>
+									
+									</br></br>
+									</div>
+									<div class="row">
+									<div class="col-sm-2">商品类型属性排序：</div>
+									<div class="col-sm-10">									
+										<input type="text" name="sort"  class="form-control" id="minimal-checkbox-1-11" value=""/>
+									</div>
+									<br/><br/>
+									</div>
+									<div class="row">
+									<div class="col-sm-2">该属性值的录入方式：</div>
+									<div class="col-sm-10">									
+										<input type="radio" name="attr_input_type"    value="0" onclick="radioClicked(0)" checked="true"/>手工输入&nbsp;&nbsp;
+										<input type="radio" name="attr_input_type"   value="1" onclick="radioClicked(1)"/>列表（一行代表一个可选值）
+									</div>
+									<br/><br/>
+									</div>
+									<div class="row">
+									<div class="col-sm-2">可选值列表：</div>
+									<div class="col-sm-10">	
+									
+                                   <textarea name="attr_values" cols="30" rows="5" disabled="true">	
+                                   </textarea>								   
+										
+									</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="panel-body">
+								
+								<div class="col-sm-4">
+										<button class="btn btn-secondary" data-original-title="点击确定将添加内容" title="" data-placement="bottom" data-toggle="tooltip" type="submit">添加</button>	
+								</div>
+								<div class="col-sm-4"></div>									
+							</div>
+							</form>	
+					</div>
+				</div>
+			</div>
+		
+			</form>
+<!-- 选项框JS-->				
+<link rel="stylesheet" href="__PUBLIC__/admin/assets/js/icheck/skins/all.css">
+<script src="__PUBLIC__/admin/assets/js/icheck/icheck.min.js"></script>
+<script>
+jQuery(document).ready(function($)
+{
+				$('input.icheck-11').iCheck({
+					checkboxClass: 'icheckbox_square-blue',
+					radioClass: 'iradio_square-yellow'
+				});
+});
+</script>

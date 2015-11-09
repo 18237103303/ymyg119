@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+.city_img{ position:relative;height:150px; overflow:hidden; margin-top:20px;}
+.city_img img{ width:1920px; height:150px; position:absolute; left:50%; margin-left:-960px;}
+
+.city_box{ padding-bottom:20px;background-color:#f8f8f8;padding-top:20px;}
+
+.hot_city{ overflow:hidden; margin:0 auto; padding:20px;background-color:#FFF;width:1160px; border:1px solid #dedede;}
+.hot_city span{ float:left; font-weight:bold; color:#333;}
+.hot_city a{ float:left;font-weight:bold;color:#c40000; margin-right:10px;}
+.hot_city a:hover{ text-decoration:underline;}
+
+.city_xuanze{margin:0 auto; margin-top:10px; overflow:hidden; margin-bottom:30px; padding:20px; padding-bottom:10px;background-color:#FFF;width:1160px; border:1px solid #dedede;}
+.city_xuanze h2{ margin-bottom:15px;font-size:16px;font-weight:bold; color:#333;}
+.city_xuanze .cc{ overflow:hidden; margin-bottom:15px;}
+.city_xuanze p{ overflow:hidden; float:left;}
+.city_xuanze span{ margin-right:20px; font-size:14px; font-weight:bold; color:#333333; font-size:16px;float:left !important; width:80px;}
+.city_xuanze p a{ margin-right:10px;float:left; color:#005db1; font-size:14px;}
+.city_xuanze p a:hover{ text-decoration:underline;}
+
+
+
+

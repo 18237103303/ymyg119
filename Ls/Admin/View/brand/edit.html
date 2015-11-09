@@ -1,0 +1,71 @@
+<div class='row'>
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				品牌修改 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form role="form" class="form-horizontal" action="{:U('Brand/edit')}" method='post' enctype="multipart/form-data">
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">品牌名称</label>
+						<div class="col-sm-10">
+							<input name='brand_name' type="text" class="form-control" id="field-1" placeholder="输入品牌名称" value='{$arr.brand_name}'>
+							<input name='brand_id' type='hidden' class='form-control' id='field-1' value='{$arr.brand_id}'>
+						</div>
+					</div>
+                                    
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-4">品牌logo</label>
+						<div class="col-sm-2" >
+                                                    <empty name="arr.brand_logo">
+                                                            <else/>
+                                                    <img src="__PUBLIC__/../Uploads/{$arr.brand_logo}" style="width:150px;height:50px">
+							</empty>
+						</div>
+                                                <div class="col-sm-4">
+                                                   
+							<input type="file" class="form-control" id="field-4" name='brand_logo' style="width:200px">
+						</div>
+					</div>
+					
+					
+					
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-5">品牌简介</label>
+							
+							<div class="col-sm-10">
+								<textarea class="form-control" cols="5" id="field-5" name="brand_desc" placeholder="{$arr.brand_desc}">{$arr.brand_desc}</textarea>
+							</div>
+						</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">品牌官网网址</label>
+						<div class="col-sm-10">
+							<input name='site_url' type="text" class="form-control" id="field-1" value='{$arr.site_url}'>
+						</div>
+					</div>	
+					
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="field-1">排序</label>
+						<div class="col-sm-10">
+							<input name='sort' type="text" class="form-control" id="field-1" value='{$arr.sort}'>
+						</div>
+					</div>	
+					
+					<div class="form-group">
+						<button type="reset" class="btn btn-gray btn-single">取消</button>
+						<button type="submit" class="btn btn-info btn-single pull-right">修改</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	
+	
