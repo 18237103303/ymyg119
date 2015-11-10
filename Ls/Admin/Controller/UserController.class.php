@@ -62,7 +62,7 @@ class UserController extends PublicController {
                     $rows = M('user')->where("status=1 and grand=8 and user_up=$user")->limit("$rpage1,$rpage2")->select();
                     break;
                 case 4:
-                    // echo '普通会员';
+                     //echo 'pt会员';
                     $count = M('user')->where("status=1 and grand=0 and user_up=$user")->count();
                     $rpage = Page($count, 9, $page);
                     $rpage1 = $rpage['page_l'];
@@ -174,8 +174,9 @@ class UserController extends PublicController {
                 die("$a");
                 break;
             case 3:
-                $data['status'] = '-1';
-                M('user')->where("id=$id")->save($data);
+                //$data['status'] = '-1';
+                //M('user')->where("id=$id")->save($data);
+				M('user')->where("id=$id")->delete();
                 $this->mlist(6);
 //                前一步跳转
 //                echo '<script>history.go(-1);</script>';
@@ -307,7 +308,7 @@ class UserController extends PublicController {
             header("location:/User/index/adduser/name/$name/pas/$pas/wd/$wd");
         }
     }
-    //判断服务网点存在
+    //判断线下推广人存在
     public function pdwd(){
         quanx("yhgl");
         $id= I('wdid');

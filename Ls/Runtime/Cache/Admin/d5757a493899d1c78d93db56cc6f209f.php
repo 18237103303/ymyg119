@@ -501,178 +501,43 @@
                     </ul>
                 </nav> 
 
-     <link href="/Public/tbbx/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
-<script src="/Public/tbbx/js/jquery.dataTables.js"></script>
-<style>
-    td.details-control {
-        background: url('/Public/tbbx/images/open.png') no-repeat center center;
-        cursor: pointer;
-    }
-    tr.shown td.details-control {
-        background: url('/Public/tbbx/images/close.png') no-repeat center center;
-    }
-</style>
-<style>
-    #loading{
-        width:150px;
-        height:25px;
-        border:1px solid #000;
-        border-top:none;
-        background-color:#FFC;
-
-        position:absolute;
-        top:0px;
-        left:50%;
-        margin-left:-75px;
-
-        text-align:center;
-        line-height:25px;
-        font-size:12px;
-        font-weight:bold;
-        color:#F00;
-    }
-</style>
-<div id="loading" style="display:none;">…页面加载中…</div>
+     <!-- Removing search and results count filter -->
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">商品列表</h3>
+        <h3 class="panel-title">商品列表 - Member datail</h3>
     </div>
     <div class="panel-body">
-        <a href="/index.php/admin/goods/ceshi/qingk/1" style="margin-bottom:0;margin-left: 2px;" class="btn btn-secondary btn-sm btn-icon icon-left">全部</a>
-        <!--<button class="btn btn-turquoise" onclick="delete_all()">清空列表</button>-->
-        <p style="float: right;margin-right: 15%;"><input  type="text" placeholder="输入商品名字/货号" name="sous" value="<?php echo ($sous); ?>"/><input name="qdss"   type="button" value="确定"></p>
-        <table id="example" class="display" cellspacing="0" width="100%">
+        <table class="table table-bordered table-striped" id="example-2">
             <thead>
             <tr>
-                <th></th>
-                <th>商品编号</th>
+                <th>商品ID</th>
                 <th>商品名称</th>
-                <th style="width: 5%;">
-                    类型
-                    <select name="leix">
-                    <option value=""></option>
-                        <?php if(is_array($leix)): foreach($leix as $k=>$vo): ?><option  value="<?php echo ($k); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
-                    </select>
-                </th>
-                <th>货号</th>
-                <th>排序</th>
                 <th>库存</th>
                 <th>操作</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="middle-align">
             <?php if(is_array($rows)): foreach($rows as $key=>$vo): ?><tr>
-                    <td class="details-control"></td>
-                    <td><?php echo ($vo["goods_id"]); ?></td>
-                    <td><?php echo ($vo["goods_name"]); ?></td>
-                    <td><?php echo ($vo["cid"]); ?></td>
-                    <td><?php echo ($vo["goods_sn"]); ?></td>
-                    <td><?php echo ($vo["sort"]); ?></td>
-                    <td><?php echo ($vo["count"]); ?></td>
-                    <td><a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn xiangq btn-secondary btn-sm btn-icon icon-left">详情</a>
-                        <a href="##"  att="<?php echo ($vo["goods_id"]); ?>" class="btn xiug btn-secondary btn-sm btn-icon icon-left">修改</a>
-                        <a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn ck btn-danger btn-sm btn-icon icon-left">查看销量</a>
-                    </td>
-                </tr><?php endforeach; endif; ?>
+                <td><?php echo ($vo["goods_id"]); ?></td>
+                <td><?php echo ($vo["goods_name"]); ?></td>
+                <td><?php echo ($vo["num"]); ?></td>
+                <td><button class="btn xq btn-secondary btn-sm btn-icon icon-left">详情</button></td>
+            </tr><?php endforeach; endif; ?>
             </tbody>
         </table>
-        <p style="float: right;margin-right: 15%;"><?php echo ($rpage); ?></p>
     </div>
 </div>
-<!---->
-<script src="/Public/plugs/ly/layer.min.js"></script>
-<script type="text/javascript">
-            function format ( d ) {
-                var row;
-                $.ajax({
-                    type: "post",
-                    url: "/admin/goods/ceshisx",
-                    data: {d:d},
-                    async:false,
-                    dataType: "html",
-                    complete:function(XMLHttpRequest, textStatus){
-                        $('#loading').fadeOut(2000);
-                    },
-                    success: function(data){
-                        row= data;
-                    }
-                });
-                return row;
-            }
-            $(document).ready(function(){
-                var table =$('#example').DataTable({
-                        "bPaginage":true,
-                        "dom": '<"top"<"clear">><"bottom"<"clear">>',
-                        "aoColumnDefs": [ { "bSortable": false, "aTargets": [-1,0,3]}],
-                        "aaSorting": [[5, "desc" ]]
-                    });
-                    $('#example tbody').on('click', 'td.details-control', function () {
-                        var tr = $(this).closest('tr');
-                        var ts = $(this).next('td').html();
-                        var row = table.row( tr);
-                                if ( row.child.isShown() ) {
-                                    row.child.hide();
-                                    tr.removeClass('shown');
-                                }else {
-                                    $('#loading').show();
-                                    row.child( format(ts) ).show();
-                                    tr.addClass('shown');
-                                }
-                    } );
-             } );
-    $('.xiangq').on('click', function(){
-        var w_id=$(this).attr('att');
-        $.layer({
-            type: 2,
-            border:[2,0.3,'blue'],
-            title: '详情信息',
-            fix: true,
-            moveOut:true,
-            shade: [1],
-            maxmin: true,
-            shadeClose: true, //开启点击遮罩关闭层
-            area : ['1100px' , '600px'],
-            offset : ['100px', ''],
-            iframe: {src: "/Admin/Goods/ceshi1/id/"+w_id+""}
-        });
-    });
-    $('#pagebtn').on('click', function(){
-        layer.close(pageii);
-    });
+<div class="panel panel-default">
+</div>
+<script>
     $(function(){
-       $('.xiug').click(function(){
-           var id=$(this).attr('att');
-           var url = "<?php echo U('Goods/edit');?>?id="+id;
-           window.location.href = url;
-       })
-       $('.ck').click(function(){
-           var id=$(this).attr('att');
-           var url = "<?php echo U('Goods/salecount');?>?id="+id;
-           window.location.href = url;
-       })
-        /*多条件查询*/
-        $('select[name=leix]').change(function(){
-            var leix= $(this).val();
-            location.href="/index.php/admin/goods/ceshi/leix/"+leix;
+        $('.xq').click(function(){
+           var td= $(this).parents('tr').find('td').eq(0).text();
+           location.href="/Admin/User/gh_sp/sp_id/"+td+'?flag=user';
         })
-        //搜索查询
-        $('input[name=qdss]').click(function(){
-            var sous= $('input[name=sous]').val();
-             location.href="/index.php/admin/goods/ceshi/sous/"+sous;
-        })
-
-        //默认选中
-        var zhi=<?php echo ($leixht); ?>;
-        if(zhi!=-1){
-        zhi=parseInt(zhi)
-        $('select[name=leix]').val(zhi);
-        }
     })
 </script>
-
-
-
-
+<!-- 弹出层 -->
  
 <!-- 公共footer包 -->
 

@@ -6,10 +6,10 @@ class IndexController extends Controller {
 	//session('HTQX',null);
 	if(session('HTQX')=='xdz'){
 	header("location:/admin");}else{
-	$username=I('username');
-	$passwd=I('passwd');
-	if($username && $passwd){
-/*对身份的基本信息进行查询*/
+		$username=I('username');
+		$passwd=I('passwd');
+		if($username && $passwd){
+		/*对身份的基本信息进行查询*/
         $user=M('user');
         if (!$user->autoCheckToken($_POST)){
         session('HTQX',null);$this->assign('jg','请勿重复提交');$this->display();exit;

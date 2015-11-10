@@ -501,178 +501,140 @@
                     </ul>
                 </nav> 
 
-     <link href="/Public/tbbx/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
-<script src="/Public/tbbx/js/jquery.dataTables.js"></script>
-<style>
-    td.details-control {
-        background: url('/Public/tbbx/images/open.png') no-repeat center center;
-        cursor: pointer;
-    }
-    tr.shown td.details-control {
-        background: url('/Public/tbbx/images/close.png') no-repeat center center;
-    }
-</style>
-<style>
-    #loading{
-        width:150px;
-        height:25px;
-        border:1px solid #000;
-        border-top:none;
-        background-color:#FFC;
+     <!-- Removing search and results count filter -->
 
-        position:absolute;
-        top:0px;
-        left:50%;
-        margin-left:-75px;
 
-        text-align:center;
-        line-height:25px;
-        font-size:12px;
-        font-weight:bold;
-        color:#F00;
-    }
-</style>
-<div id="loading" style="display:none;">…页面加载中…</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">商品列表</h3>
-    </div>
-    <div class="panel-body">
-        <a href="/index.php/admin/goods/ceshi/qingk/1" style="margin-bottom:0;margin-left: 2px;" class="btn btn-secondary btn-sm btn-icon icon-left">全部</a>
-        <!--<button class="btn btn-turquoise" onclick="delete_all()">清空列表</button>-->
-        <p style="float: right;margin-right: 15%;"><input  type="text" placeholder="输入商品名字/货号" name="sous" value="<?php echo ($sous); ?>"/><input name="qdss"   type="button" value="确定"></p>
-        <table id="example" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th></th>
-                <th>商品编号</th>
-                <th>商品名称</th>
-                <th style="width: 5%;">
-                    类型
-                    <select name="leix">
-                    <option value=""></option>
-                        <?php if(is_array($leix)): foreach($leix as $k=>$vo): ?><option  value="<?php echo ($k); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">会员详情 - Member datail</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-striped" id="example-2">
+						<tr><td style="width:15%;">会员编号</td><td id="bh"><?php echo ($row["id"]); ?></td></tr>
+						<tr><td>会员名字</td><td><?php echo ($row["name"]); ?></td></tr>
+                        <tr><td>城市地址</td>
+                            <td>
+                            <script type="text/javascript" src="/Public/yes1/js/area.js"></script>
+                            <script type="text/javascript" src="/Public/yes1/js/location.js"></script>
+                            <script type="text/javascript" src="/Public/yes1/js/select2.js"></script>
+                            <script type="text/javascript" src="/Public/yes1/js/select2_locale_zh-CN.js"></script>
+                            <link rel="stylesheet" href="/Public/yes1/css/common.css"/>
+                            <link rel="stylesheet" href="/Public/yes1/css/select2.css"/>
+
+
+                    <select disabled id="loc_province" style="width:120px;">
                     </select>
-                </th>
-                <th>货号</th>
-                <th>排序</th>
-                <th>库存</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php if(is_array($rows)): foreach($rows as $key=>$vo): ?><tr>
-                    <td class="details-control"></td>
-                    <td><?php echo ($vo["goods_id"]); ?></td>
-                    <td><?php echo ($vo["goods_name"]); ?></td>
-                    <td><?php echo ($vo["cid"]); ?></td>
-                    <td><?php echo ($vo["goods_sn"]); ?></td>
-                    <td><?php echo ($vo["sort"]); ?></td>
-                    <td><?php echo ($vo["count"]); ?></td>
-                    <td><a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn xiangq btn-secondary btn-sm btn-icon icon-left">详情</a>
-                        <a href="##"  att="<?php echo ($vo["goods_id"]); ?>" class="btn xiug btn-secondary btn-sm btn-icon icon-left">修改</a>
-                        <a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn ck btn-danger btn-sm btn-icon icon-left">查看销量</a>
-                    </td>
-                </tr><?php endforeach; endif; ?>
-            </tbody>
-        </table>
-        <p style="float: right;margin-right: 15%;"><?php echo ($rpage); ?></p>
-    </div>
-</div>
-<!---->
-<script src="/Public/plugs/ly/layer.min.js"></script>
-<script type="text/javascript">
-            function format ( d ) {
-                var row;
-                $.ajax({
-                    type: "post",
-                    url: "/admin/goods/ceshisx",
-                    data: {d:d},
-                    async:false,
-                    dataType: "html",
-                    complete:function(XMLHttpRequest, textStatus){
-                        $('#loading').fadeOut(2000);
-                    },
-                    success: function(data){
-                        row= data;
-                    }
-                });
-                return row;
-            }
-            $(document).ready(function(){
-                var table =$('#example').DataTable({
-                        "bPaginage":true,
-                        "dom": '<"top"<"clear">><"bottom"<"clear">>',
-                        "aoColumnDefs": [ { "bSortable": false, "aTargets": [-1,0,3]}],
-                        "aaSorting": [[5, "desc" ]]
-                    });
-                    $('#example tbody').on('click', 'td.details-control', function () {
-                        var tr = $(this).closest('tr');
-                        var ts = $(this).next('td').html();
-                        var row = table.row( tr);
-                                if ( row.child.isShown() ) {
-                                    row.child.hide();
-                                    tr.removeClass('shown');
-                                }else {
-                                    $('#loading').show();
-                                    row.child( format(ts) ).show();
-                                    tr.addClass('shown');
-                                }
-                    } );
-             } );
-    $('.xiangq').on('click', function(){
-        var w_id=$(this).attr('att');
-        $.layer({
-            type: 2,
-            border:[2,0.3,'blue'],
-            title: '详情信息',
-            fix: true,
-            moveOut:true,
-            shade: [1],
-            maxmin: true,
-            shadeClose: true, //开启点击遮罩关闭层
-            area : ['1100px' , '600px'],
-            offset : ['100px', ''],
-            iframe: {src: "/Admin/Goods/ceshi1/id/"+w_id+""}
-        });
-    });
-    $('#pagebtn').on('click', function(){
-        layer.close(pageii);
-    });
-    $(function(){
-       $('.xiug').click(function(){
-           var id=$(this).attr('att');
-           var url = "<?php echo U('Goods/edit');?>?id="+id;
-           window.location.href = url;
-       })
-       $('.ck').click(function(){
-           var id=$(this).attr('att');
-           var url = "<?php echo U('Goods/salecount');?>?id="+id;
-           window.location.href = url;
-       })
-        /*多条件查询*/
-        $('select[name=leix]').change(function(){
-            var leix= $(this).val();
-            location.href="/index.php/admin/goods/ceshi/leix/"+leix;
-        })
-        //搜索查询
-        $('input[name=qdss]').click(function(){
-            var sous= $('input[name=sous]').val();
-             location.href="/index.php/admin/goods/ceshi/sous/"+sous;
-        })
+                    <select disabled id="loc_city" style="width:120px; margin-left: 10px">
+                    </select>
+                    <select disabled id="loc_town" style="width:120px;margin-left: 10px">
+                    </select>
+                                <script>
+                                    $(function(){
+                                        var v1="<?php echo ($address[0]); ?>";
+                                        var v2="<?php echo ($address[1]); ?>";
+                                        var v3="<?php echo ($address[2]); ?>";
+                                        v1?$('#loc_province').val(v1).trigger("change"):'';
+                                        v2?$('#loc_city').val(v2).trigger("change"):'';
+                                        v3?$('#loc_town').val(v3).trigger("change"):'';
+                                    })
+                                </script>
+                        </td></tr>
+                        <tr><td>积分</td><td>￥<em><?php echo ($row["jf"]); ?></em>&nbsp;&nbsp;<i id="jf" style="cursor:pointer;">[详情信息]</i></td></tr>
+                        <tr><td>冻结积分</td><td>￥<em><?php echo ($row["dj_jf"]); ?></em>&nbsp;&nbsp;<i id="dj_jf" style="cursor:pointer;">[详情信息]</i></td></td></tr>
+                        <tr><td>负责服务网点</td><td><?php echo ($rowss); ?></td></tr>
+                        <tr><td>详细地址</td><td><?php echo ($row["user_addr"]); ?></td></tr>
+                        <tr><td>密码操作</td><td><button class="btn btn-secondary btn-sm btn-icon icon-left" onclick="jQuery('#modal-9').modal('show', {backdrop: 'static'});$.cookies.set( 'user',<?php echo ($row["id"]); ?>);">修改</button></td></tr>
+                        <tr><td>订单</td><td><button id="dd" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>收货地址</td><td><button id="sh" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+                        <tr><td>账变明细</td><td><button id="zb" class="btn btn-secondary btn-sm btn-icon icon-left">查看</button></td></tr>
+					</table>	
+				</div>
+			</div>
+<div class="panel panel-default">			
+<!--<?php echo ($rpage); ?>-->
+</div>		
+		<!-- 弹出层 -->		
+<script>
 
-        //默认选中
-        var zhi=<?php echo ($leixht); ?>;
-        if(zhi!=-1){
-        zhi=parseInt(zhi)
-        $('select[name=leix]').val(zhi);
-        }
+							
+$(function(){
+//    开始
+    //收货地址
+    $('#sh').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/diz/id/"+bh+'?flag=user';
     })
+    //订单管理
+    $('#dd').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/dingd/id/"+bh+'?flag=user';
+    })
+    //账变明细
+    $('#zb').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/id/"+bh+'?flag=user';
+    })
+//    积分状态查看
+    $('#jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/jf/id/"+bh+'?flag=user';
+    })
+    $('#dj_jf').click(function(){
+        var bh=$('#bh').text();
+        location.href="/Admin/User/jfexe/type/dj_jf/id/"+bh+'?flag=user';
+    })
+
+//    结束
+	/*修改*/
+	$('.xiug').click(function(){
+	var rows= $(this).parents('tr');
+	var id=rows.find('td').eq(0).find('span').text();
+	var name=rows.find('td input[name=name]').val();
+	var phone=rows.find('td input[name=phone]').val();
+	var email=rows.find('td input[name=email]').val();
+	var jues=rows.find('td').eq(4).find('select[name=grand]').val();
+	$.post("<?php echo U('User/userexe');?>",{
+	name:name,
+	phone:phone,
+	email:email,
+	jues:jues,
+	id:id,
+	type:2
+	},function(data){
+	//alert(data);
+	if(data==1){alert('修改成功');}else if(data==0){alert('没有修改项');}else{alert('出现未知错误');}
+	})
+	})
+	/*对输入内容进行过滤*/
+	$('input[name=name]').keyup(function(){
+	var a= $(this).val().replace(/\W/g,'');
+	$(this).val(a);
+	})
+	$('input[name=phone]').keyup(function(){
+	var a= $(this).val().replace(/\D/g,'');
+	$(this).val(a);
+	})
+	$('.xiangq').click(function(){
+	var rows= $(this).parents('tr');
+	var id=rows.find('td').eq(0).find('span').text();
+	//alert(id);
+            /*	layer.open({
+                title:'用户详情',
+                offset:['5%', '15%'],
+                fix:true,
+                move:false,
+                type: 2,
+                area: ['70%', '70%'],
+                skin: 'layui-layer-rim', //加上边框
+                content: ['/Admin/User/mlist/xq/9/xq_id/'+id, 'no']
+                });*/
+	})
+})							
 </script>
-
-
-
-
+            <!--<script type="text/javascript"charset="utf-8" src="/Public/yes/yes.js"></script>		-->
+		
+			
+				
  
 <!-- 公共footer包 -->
 

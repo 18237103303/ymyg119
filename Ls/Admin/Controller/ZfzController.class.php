@@ -71,8 +71,7 @@ class ZfzController extends PublicController {
     public function sc(){
 //        qx_amdin('xzfz');
         $id=I('id');
-        $data['status'] = '-1';
-        M('user')->where("id=$id")->save($data);
+        M('user')->where("id=$id")->delete();
         $this->index();
     }
     /*区域切换*/

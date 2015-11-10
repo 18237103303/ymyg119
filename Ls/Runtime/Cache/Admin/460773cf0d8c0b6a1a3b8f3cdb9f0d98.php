@@ -294,19 +294,19 @@
                             <?php if(quanx('order',2)): if($_GET['flag']== 'order'): ?><li class='active'>
                                     <?php else: ?>
                                     <li><?php endif; ?>
-                                <a href="<?php echo U('Order/index');?>?flag=order"><span class="title">订单列表 - Order list</span></a></li><?php endif; ?>
-                            <?php if(quanx('gorder',2)): if($_GET['flag']== 'pol'): ?><li class='active'>
+                                <a href="<?php echo U('Order/index');?>?flag=order"><span class="title">订单列表 - Order list</span></a></li><?php endif; ?>                           
+                        <!--    <?php if(quanx('sorder',2)): if($_GET['flag']== 'sol'): ?><li class='active'>
                                     <?php else: ?>
-                                    <li><?php endif; ?><a href="<?php echo U('Order/index');?>?flag=pol"><span class="title">供货商订单列表 - Supplier order list</span></a></li><?php endif; ?>
-                            <?php if(quanx('sorder',2)): if($_GET['flag']== 'sol'): ?><li class='active'>
-                                    <?php else: ?>
-                                    <li><?php endif; ?><a href="<?php echo U('Order/index');?>?flag=sol"><span class="title">送货员订单列表 - Send order list</span></a></li><?php endif; ?>
-                            <?php if(quanx('fw_order',2)): if($_GET['flag']== 'fol'): ?><li class='active'>
-                                    <?php else: ?>
-                                    <li><?php endif; ?><a href="<?php echo U('Order/fwlist');?>?flag=fol"><span class="title">服务网点订单列表 -Service order list</span></a></li><?php endif; ?>
+                                    <li><?php endif; ?><a href="<?php echo U('Order/index');?>?flag=sol"><span class="title">送货员订单列表 - Send order list</span></a></li><?php endif; ?> -->                           
                             <?php if(quanx('fz_order',2)): if($_GET['flag']== 'fzol'): ?><li class='active'>
                                     <?php else: ?>
                                     <li><?php endif; ?><a href="<?php echo U('Order/fzlist');?>?flag=fzol"><span class="title">分站订单列表 - Sub order list</span></a></li><?php endif; ?>
+							<?php if(quanx('fw_order',2)): if($_GET['flag']== 'fol'): ?><li class='active'>
+                                    <?php else: ?>
+                                    <li><?php endif; ?><a href="<?php echo U('Order/fwlist');?>?flag=fol"><span class="title">推送人订单列表 -Service order list</span></a></li><?php endif; ?>
+							<?php if(quanx('gorder',2)): if($_GET['flag']== 'pol'): ?><li class='active'>
+                                    <?php else: ?>
+                                    <li><?php endif; ?><a href="<?php echo U('Order/index');?>?flag=pol"><span class="title">售后服务订单列表 - Supplier order list</span></a></li><?php endif; ?>
                         </ul>
                     </li>
                     <!--3-->
@@ -1185,8 +1185,8 @@ function szjg(index){
                     <div class="row">
                         <div class="col-md-6" style="width:60%;">
                             <div class="form-group">
-                                <label for="field-b" style="float: left;"  class="control-label">指定服务网点：</label>
-                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="服务网点的id"/>
+                                <label for="field-b" style="float: left;"  class="control-label">线下专员id：</label>
+                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="线下专员的id"/>
                                 <span style="float: left;margin-left: 3%;" id="wdqd" class="btn btn-info">确定</span>
 
                                 <br/>

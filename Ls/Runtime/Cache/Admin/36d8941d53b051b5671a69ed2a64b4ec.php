@@ -513,7 +513,7 @@
                                 <button class="btn btn-secondary" onclick="shy();">配送合作商</button>
                                 <!-- <button class="btn btn-orange" id="danger_msg_1">未验证会员 - Waiting</button> -->
                                 <button class="btn btn-turquoise" onclick="ghs();">财务</button>
-                                <button class="btn btn-success" onclick="fwd();">线下住专员</button>
+                                <button class="btn btn-success" onclick="fwd();">线下专员</button>
                                 <button class="btn btn-success" onclick="kf();">400客服</button>
                                 <button class="btn btn-turquoise" onclick="pthy();">普通会员</button>
                                 <button class="btn btn-success" onclick="qb();">全部</button>
@@ -915,8 +915,8 @@ $(function(){
                     <div class="row">
                         <div class="col-md-6" style="width:60%;">
                             <div class="form-group">
-                                <label for="field-b" style="float: left;"  class="control-label">指定服务网点：</label>
-                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="服务网点的id"/>
+                                <label for="field-b" style="float: left;"  class="control-label">线下专员id：</label>
+                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="线下专员的id"/>
                                 <span style="float: left;margin-left: 3%;" id="wdqd" class="btn btn-info">确定</span>
 
                                 <br/>

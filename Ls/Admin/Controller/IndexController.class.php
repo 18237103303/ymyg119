@@ -1,6 +1,6 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+use Admin\Controller\PublicController;
 class IndexController extends PublicController {
     public function index(){
 	//主页示例页面
