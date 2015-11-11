@@ -303,3 +303,9 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
 
+[ 2015-11-10T19:44:50+08:00 ] ::1 /index.php/Admin/Attr/grand.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 1 C:\Users\Administrator\Desktop\ymyg119\Ls\Admin\Controller\AttrController.class.php 第 130 行.
+

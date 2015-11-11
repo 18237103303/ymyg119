@@ -149,19 +149,37 @@ class AttrController extends PublicController{
             if($zhiz){
                 $gz= explode('|',$zhiz);
                 if($gz[1]){
-                foreach($gz as $vvv1){if($vvv1){$arr[]=Aname($vvv1);}}
-                $vvv['rules1']=join("-",$arr);
-            }else{
-                $vvv['rules1'] =Aname($gz[0]);
+					//$arr=null;
+					foreach($gz as $vvv1){
+						if($vvv1){
+							$arr[]=Aname($vvv1);
+						}
+					}
+					$vvv['rules1']=join("-",$arr);
+				}else{
+					$vvv['rules1'] =Aname($gz[0]);
+				}
             }
-            }
+			 unset($arr);
         }
-        unset($vvv);
+       
             //出类型
     foreach($rules as $k=>$a){
             $i.='<div class="panel-heading"><h3 class="panel-title"><input class="icheck"  type="radio" value="'.$a['cat_id'].'" id="'.$i1.'"><label for="'.$i1.'">'.$a['cat_name'].'</label></h3></div>';
             $i1++;
-        }
+        }		
+		/*龙备份
+		foreach($rules as $k=>$a){
+			$twoid=$a['cat_id'];
+			$tworules=M('goods_attr_over')->where("parent_id='$twoid'")->select();			
+			$i.='<div class="panel-heading"><h3 class="panel-title"><label for="'.$i1.'"><input class="icheck"  type="checkbox" value="'.$a['cat_id'].'" id="'.$i1.'" name="one[]">'.$a['cat_name'];
+			
+			foreach($tworules as $kt=>$b){				
+            $i.='<div class="panel-heading"><h3 class="panel-title"><input class="icheck"  type="radio" value="'.$b['cat_id'].'" id="'.$i1.'" name="one'.$a['cat_id'].'"><label for="'.$i1.'">'.$b['cat_name'].'</label></h3></div>';
+            $i1++;
+			}
+			$i.='</label></h3></div>';			
+        }*/	
         $this->assign('rows',$rows);
         /*属性调取*/
         $this->assign('i',$i);

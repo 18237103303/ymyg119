@@ -274,7 +274,8 @@ class GoodsController extends PublicController {
     //商品信息删除
     public function delete() {
 		quanx('spin');
-        $id = I("post.id");
+        $id = I("id");
+		//dump($id);exit;
         //删除该商品的属性值
         $result1 = M('goods_attr')->where("goods_id='$id'")->delete();
         $imgpath = M('goods_gallery')->where("goods_id='$id'")->select();
@@ -309,9 +310,10 @@ class GoodsController extends PublicController {
                 $kcdata['content'] = "删除商品";
                 $kuncun = M('user_ghs_gn')->add($kcdata);
                 /* 库存日志结束 */
-                $this->success();
-            } else {
-                $this->error();
+                //$this->success("恭喜您，删除成功");
+				$this->redirect("Goods/ceshi");
+			} else {
+                $this->error("删除失败，请查看是否有该商品");
             }
         }
     }
@@ -608,7 +610,6 @@ class GoodsController extends PublicController {
             $this->display();
         }
     }
-
     /*属性修改*/
 
     //属性操作

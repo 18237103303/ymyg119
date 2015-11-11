@@ -273,12 +273,9 @@
                                     <?php }else{ ?>
                                     <li>
                                 <?php } ?><a href="<?php echo U('Comment/comment');?>?flag=comment1"><span class="title">商品评论 - Store comments</span></a></li><?php endif; ?>
-                            <?php if(quanx('index_sys',2)): if($_GET['flag']== 'sy1'){ ?>
-                                    <li class='active'>
-                                    <?php }else{ ?>
-                                    <li>
-                                <?php } ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
-                            </li><?php endif; ?>
+                            
+							<!--<?php if(quanx('index_sys',2)): ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
+                            </li><?php endif; ?>-->
                         </ul>
                         </li> 
                     <!--4-->
@@ -571,6 +568,7 @@
                     <td><?php echo ($vo["count"]); ?></td>
                     <td><a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn xiangq btn-secondary btn-sm btn-icon icon-left">详情</a>
                         <a href="##"  att="<?php echo ($vo["goods_id"]); ?>" class="btn xiug btn-secondary btn-sm btn-icon icon-left">修改</a>
+						<a href="##"  att="<?php echo ($vo["goods_id"]); ?>" class="btn shanc btn-secondary btn-sm btn-icon icon-left">删除</a>
                         <a href="##" att="<?php echo ($vo["goods_id"]); ?>" class="btn ck btn-danger btn-sm btn-icon icon-left">查看销量</a>
                     </td>
                 </tr><?php endforeach; endif; ?>
@@ -643,6 +641,11 @@
        $('.xiug').click(function(){
            var id=$(this).attr('att');
            var url = "<?php echo U('Goods/edit');?>?id="+id;
+           window.location.href = url;
+       })
+	   $('.shanc').click(function(){
+           var id=$(this).attr('att');
+           var url = "<?php echo U('Goods/delete');?>?id="+id;
            window.location.href = url;
        })
        $('.ck').click(function(){

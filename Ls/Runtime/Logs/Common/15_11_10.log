@@ -28,3 +28,9 @@ ERR: 无法加载模块:Public
 [ 2015-11-10T19:06:57+08:00 ] ::1 /public/plugs/pe/001/15-09-16/1442373223873.jpg
 ERR: 无法加载模块:Public
 
+[ 2015-11-10T19:44:09+08:00 ] ::1 /Public/admin/assets/css/wail.css
+ERR: 无法加载模块:Public
+
+[ 2015-11-10T19:44:10+08:00 ] ::1 /favicon.ico
+ERR: 无法加载模块:Favicon
+

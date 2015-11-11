@@ -71,6 +71,7 @@
                     <td>{$vo.count}</td>
                     <td><a href="##" att="{$vo.goods_id}" class="btn xiangq btn-secondary btn-sm btn-icon icon-left">详情</a>
                         <a href="##"  att="{$vo.goods_id}" class="btn xiug btn-secondary btn-sm btn-icon icon-left">修改</a>
+						<a href="##"  att="{$vo.goods_id}" class="btn shanc btn-secondary btn-sm btn-icon icon-left">删除</a>
                         <a href="##" att="{$vo.goods_id}" class="btn ck btn-danger btn-sm btn-icon icon-left">查看销量</a>
                     </td>
                 </tr>
@@ -144,6 +145,11 @@
        $('.xiug').click(function(){
            var id=$(this).attr('att');
            var url = "{:U('Goods/edit')}?id="+id;
+           window.location.href = url;
+       })
+	   $('.shanc').click(function(){
+           var id=$(this).attr('att');
+           var url = "{:U('Goods/delete')}?id="+id;
            window.location.href = url;
        })
        $('.ck').click(function(){

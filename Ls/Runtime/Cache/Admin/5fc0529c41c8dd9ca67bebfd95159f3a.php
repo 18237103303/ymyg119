@@ -273,12 +273,9 @@
                                     <?php }else{ ?>
                                     <li>
                                 <?php } ?><a href="<?php echo U('Comment/comment');?>?flag=comment1"><span class="title">商品评论 - Store comments</span></a></li><?php endif; ?>
-                            <?php if(quanx('index_sys',2)): if($_GET['flag']== 'sy1'){ ?>
-                                    <li class='active'>
-                                    <?php }else{ ?>
-                                    <li>
-                                <?php } ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
-                            </li><?php endif; ?>
+                            
+							<!--<?php if(quanx('index_sys',2)): ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
+                            </li><?php endif; ?>-->
                         </ul>
                         </li> 
                     <!--4-->
@@ -859,8 +856,8 @@ function edit(id,v){
                     <div class="row">
                         <div class="col-md-6" style="width:60%;">
                             <div class="form-group">
-                                <label for="field-b" style="float: left;"  class="control-label">指定服务网点：</label>
-                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="服务网点的id"/>
+                                <label for="field-b" style="float: left;"  class="control-label">线下专员id：</label>
+                                 <input type="text" name="wd1" value="" style="float: left;height: 32px;"  placeholder="线下专员的id"/>
                                 <span style="float: left;margin-left: 3%;" id="wdqd" class="btn btn-info">确定</span>
 
                                 <br/>

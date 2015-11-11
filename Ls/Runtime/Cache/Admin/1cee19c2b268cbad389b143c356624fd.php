@@ -273,12 +273,9 @@
                                     <?php }else{ ?>
                                     <li>
                                 <?php } ?><a href="<?php echo U('Comment/comment');?>?flag=comment1"><span class="title">商品评论 - Store comments</span></a></li><?php endif; ?>
-                            <?php if(quanx('index_sys',2)): if($_GET['flag']== 'sy1'){ ?>
-                                    <li class='active'>
-                                    <?php }else{ ?>
-                                    <li>
-                                <?php } ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
-                            </li><?php endif; ?>
+                            
+							<!--<?php if(quanx('index_sys',2)): ?><a href="<?php echo U('Goods/index_sys');?>?flag=sy1"><span class="title">商品首页展示设置 - Home set</span></a>
+                            </li><?php endif; ?>-->
                         </ul>
                         </li> 
                     <!--4-->
